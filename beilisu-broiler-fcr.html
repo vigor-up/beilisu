@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>倍力素白肉雞FCR性能提升方案 TDS｜吉升飼料有限公司</title>
+    <style>
+        /* 重置與基礎變數 */
+        :root { 
+            --primary: #0a3d62; /* 深藍色 - 更溫和 */
+            --secondary: #1e90ff; /* 亮藍色 - 更清晰 */
+            --accent: #00b894; /* 青綠色 - 現代感 */
+            --highlight: #fdcb6e; /* 亮黃色 - 強調 */
+            --success: #00cec9; /* 亮青綠 */
+            --warning: #fd79a8; /* 粉紅色 */
+            --dark: #2d3436; 
+            --light: #f5f6fa; 
+            --gray: #636e72; 
+            --light-gray: #dfe6e9;
+            --border-radius: 16px; 
+            --border-radius-sm: 10px;
+            --shadow: 0 6px 18px rgba(0,0,0,0.08); 
+            --shadow-hover: 0 10px 25px rgba(0,0,0,0.12); 
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --safe-top: env(safe-area-inset-top);
+            --safe-bottom: env(safe-area-inset-bottom);
+        }
+        
+        /* 基礎重置 */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        html {
+            font-size: 15px;
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+        
+        body { 
+            font-family: -apple-system, 'Microsoft JhengHei', 'PingFang TC', 'Helvetica Neue', Arial, sans-serif; 
+            line-height: 1.65; 
+            color: var(--dark); 
+            background: var(--light);
+            padding: 16px;
+            min-height: 100vh;
+            min-height: -webkit-fill-available;
+            position: relative;
+            padding-top: calc(var(--safe-top) + 16px);
+            padding-bottom: calc(var(--safe-bottom) + 16px);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .container { 
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* 語言切換器已移除 */
+        
+        /* 主標題區 - 手機優化 */
+        header { 
+            background: linear-gradient(145deg, var(--primary) 0%, #1a5f9e 100%); 
+            color: white; 
+            padding: 40px 20px; 
+            border-radius: var(--border-radius); 
+            margin-bottom: 24px; 
+            box-shadow: var(--shadow); 
+            position: relative; 
+            overflow: hidden; 
+            text-align: center;
+            margin-top: 0px;  /* 無語言切換器，取消上邊距 */
+            border-top: 5px solid var(--accent);
+            animation: fadeInUp 0.6s ease-out 0.1s both;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" opacity="0.05"><path d="M0,0 L100,0 L100,100 Z" fill="white"/></svg>');
+            background-size: cover;
+            pointer-events: none;
+        }
+        
+        .company-info h1 { 
+            font-size: 1.8rem; 
+            margin-bottom: 16px; 
+            font-weight: 800;
+            line-height: 1.3;
+            letter-spacing: -0.3px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .product-target {
+            font-size: 0.95rem;
+            padding: 12px 20px;
+            background: rgba(0, 184, 148, 0.25);
+            border-radius: 30px;
+            display: inline-block;
+            border: 1px solid rgba(0, 184, 148, 0.4);
+            backdrop-filter: blur(5px);
+            font-weight: 600;
+            margin: 12px 0;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        
+        .tagline { 
+            font-size: 0.9rem; 
+            background: rgba(30, 144, 255, 0.25); 
+            display: inline-block; 
+            padding: 10px 20px; 
+            border-radius: 30px; 
+            margin-top: 12px; 
+            font-weight: 500;
+            border: 1px solid rgba(30, 144, 255, 0.4);
+            backdrop-filter: blur(5px);
+            line-height: 1.4;
+        }
+        
+        .tds-badge { 
+            background: linear-gradient(135deg, var(--accent), #00a085); 
+            color: white; 
+            padding: 14px 30px; 
+            border-radius: 30px; 
+            font-weight: 700; 
+            display: inline-block; 
+            margin-top: 20px; 
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(0, 184, 148, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(5px);
+            letter-spacing: 0.5px;
+        }
+        
+        /* 區塊樣式 - 手機優化 */
+        section { 
+            background: white; 
+            padding: 24px 18px; 
+            margin-bottom: 20px; 
+            border-radius: var(--border-radius); 
+            box-shadow: var(--shadow); 
+            transition: var(--transition);
+            border-left: 5px solid var(--secondary);
+            opacity: 0;
+            transform: translateY(20px);
+            will-change: transform, opacity;
+            animation: fadeInUp 0.6s ease-out forwards;
+            animation-play-state: paused;
+        }
+        
+        section.visible {
+            animation-play-state: running;
+        }
+        
+        section:nth-child(2) { animation-delay: 0.1s; }
+        section:nth-child(3) { animation-delay: 0.15s; }
+        section:nth-child(4) { animation-delay: 0.2s; }
+        section:nth-child(5) { animation-delay: 0.25s; }
+        section:nth-child(6) { animation-delay: 0.3s; }
+        section:nth-child(7) { animation-delay: 0.35s; }
+        section:nth-child(8) { animation-delay: 0.4s; }
+        
+        section:active { 
+            transform: translateY(-3px); 
+            box-shadow: var(--shadow-hover); 
+        }
+        
+        h2 { 
+            color: var(--primary); 
+            font-size: 1.5rem; 
+            margin-bottom: 20px; 
+            padding-bottom: 12px; 
+            border-bottom: 2px solid rgba(30, 144, 255, 0.2); 
+            position: relative; 
+            font-weight: 700;
+            line-height: 1.3;
+            letter-spacing: -0.3px;
+        }
+        
+        h2::after { 
+            content: ''; 
+            position: absolute; 
+            bottom: -2px; 
+            left: 0; 
+            width: 70px; 
+            height: 3px; 
+            background: linear-gradient(90deg, var(--accent), var(--success)); 
+            border-radius: 1.5px;
+        }
+        
+        p { 
+            margin-bottom: 16px; 
+            font-size: 1rem; 
+            line-height: 1.7; 
+            color: var(--dark);
+        }
+        
+        /* 規格卡片 - 手機優化 (移除成本卡片) */
+        .specs-grid { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 14px; 
+            margin: 20px 0; 
+        }
+        
+        .spec-card { 
+            background: linear-gradient(145deg, #f8f9fa 0%, #e9ecef 100%); 
+            border-radius: var(--border-radius-sm); 
+            padding: 18px 14px; 
+            text-align: center; 
+            border: 1px solid var(--light-gray); 
+            transition: var(--transition); 
+            border-top: 4px solid var(--secondary);
+            touch-action: manipulation;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .spec-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .spec-card:active { 
+            border-color: var(--secondary); 
+            transform: translateY(-4px) scale(1.02); 
+            box-shadow: 0 10px 20px rgba(30, 144, 255, 0.15); 
+        }
+        
+        .spec-card:active::before {
+            opacity: 1;
+        }
+        
+        .spec-card .label { 
+            font-size: 0.82rem; 
+            color: var(--gray); 
+            margin-bottom: 8px; 
+            display: block; 
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        
+        .spec-card .value { 
+            font-size: 1.8rem; 
+            font-weight: 800; 
+            color: var(--primary); 
+            margin: 8px 0;
+            display: block;
+            line-height: 1;
+        }
+        
+        .spec-card .unit { 
+            font-size: 0.82rem; 
+            color: var(--gray); 
+            display: block; 
+            margin-top: 6px; 
+            font-weight: 500;
+            line-height: 1.3;
+        }
+        
+        /* 核心效益卡片 - 手機優化 (移除金額) */
+        .benefits-grid { 
+            display: grid; 
+            grid-template-columns: 1fr; 
+            gap: 18px; 
+            margin-top: 20px; 
+        }
+        
+        .benefit-card { 
+            background: white; 
+            border-radius: var(--border-radius-sm); 
+            padding: 22px 18px; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+            transition: var(--transition); 
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--light-gray);
+            touch-action: manipulation;
+        }
+        
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--accent), var(--success));
+        }
+        
+        .benefit-card:active { 
+            transform: translateY(-5px) scale(1.02); 
+            box-shadow: var(--shadow-hover); 
+        }
+        
+        .benefit-card h4 { 
+            font-size: 1.15rem; 
+            margin-bottom: 12px; 
+            color: var(--primary); 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            font-weight: 700;
+            padding-left: 8px;
+        }
+        
+        .benefit-card h4::before { 
+            content: '✓'; 
+            color: var(--accent); 
+            font-weight: bold; 
+            font-size: 1.2rem; 
+            background: rgba(0, 184, 148, 0.1);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .benefit-metric { 
+            font-size: 2rem; 
+            font-weight: 800; 
+            color: var(--primary); 
+            margin: 16px 0; 
+            display: block;
+            text-align: center;
+            background: linear-gradient(135deg, var(--accent), var(--success));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .benefit-note {
+            font-size: 0.88rem;
+            color: var(--gray);
+            padding-top: 12px;
+            border-top: 1px dashed #e2e8f0;
+            margin-top: 16px;
+            font-style: italic;
+            font-weight: 500;
+        }
+        
+        /* 經濟分析 - 手機優化 (移除金額，僅保留百分比) */
+        .economic-header {
+            background: linear-gradient(145deg, #e3f2fd 0%, #bbdefb 100%); 
+            padding: 18px 14px; 
+            border-radius: var(--border-radius-sm); 
+            margin-bottom: 20px; 
+            border-left: 5px solid var(--secondary);
+        }
+        
+        .economic-card { 
+            background: linear-gradient(145deg, #fffde7 0%, #fff9c4 100%); 
+            padding: 22px 18px; 
+            border-radius: var(--border-radius); 
+            box-shadow: var(--shadow); 
+            border: 1px solid rgba(253, 203, 110, 0.4); 
+            margin-top: 20px; 
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .profit-table { 
+            width: 100%; 
+            border-collapse: separate; 
+            border-spacing: 0;
+            margin: 20px 0; 
+            font-size: 0.9rem; 
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            min-width: 400px;
+        }
+        
+        .profit-table th { 
+            background: linear-gradient(135deg, var(--primary) 0%, #1a5f9e 100%); 
+            color: white; 
+            padding: 16px 14px; 
+            text-align: left; 
+            font-weight: 700; 
+            font-size: 0.95rem;
+            border-bottom: 3px solid var(--accent);
+        }
+        
+        .profit-table td { 
+            padding: 14px; 
+            border-bottom: 1px solid var(--light-gray); 
+        }
+        
+        .profit-table tr:nth-child(even) { 
+            background: rgba(248, 250, 252, 0.8); 
+        }
+        
+        .profit-table tr.total-row { 
+            background: linear-gradient(135deg, var(--accent) 0%, #00a085 100%); 
+            color: white; 
+            font-weight: bold; 
+            font-size: 1rem; 
+        }
+        
+        /* ROI徽章 - 手機優化 (僅保留百分比) */
+        .roi-badge { 
+            background: linear-gradient(145deg, var(--primary) 0%, #1a5f9e 100%); 
+            color: white; 
+            padding: 28px 20px; 
+            border-radius: var(--border-radius); 
+            text-align: center; 
+            margin: 24px 0; 
+            box-shadow: 0 6px 20px rgba(10, 61, 98, 0.25); 
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .roi-badge::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            pointer-events: none;
+        }
+        
+        .roi-badge .roi-value { 
+            font-size: 3.2rem; 
+            font-weight: 900; 
+            margin: 16px 0; 
+            color: white; 
+            text-shadow: 0 3px 6px rgba(0,0,0,0.2);
+        }
+        
+        .roi-badge .roi-label { 
+            font-size: 1rem; 
+            opacity: 0.95; 
+            font-weight: 600;
+            line-height: 1.5;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+        
+        /* 實施步驟 - 手機優化 (移除成本) */
+        .usage-steps { 
+            display: grid; 
+            grid-template-columns: 1fr;
+            gap: 18px; 
+            margin-top: 24px; 
+        }
+        
+        .step-card { 
+            background: white; 
+            padding: 22px 18px; 
+            border-radius: var(--border-radius-sm); 
+            box-shadow: var(--shadow); 
+            border-left: 5px solid var(--accent); 
+            position: relative; 
+            transition: var(--transition);
+            border: 1px solid var(--light-gray);
+            touch-action: manipulation;
+        }
+        
+        .step-card:active {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .step-card::before { 
+            content: attr(data-step); 
+            position: absolute; 
+            top: 16px; 
+            right: 16px; 
+            width: 36px; 
+            height: 36px; 
+            background: linear-gradient(135deg, var(--accent), #00a085); 
+            color: white; 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-weight: bold; 
+            font-size: 1rem; 
+            box-shadow: 0 3px 10px rgba(0, 184, 148, 0.4);
+        }
+        
+        .step-card h4 { 
+            margin-bottom: 12px; 
+            color: var(--primary); 
+            font-size: 1.15rem; 
+            font-weight: 700;
+            padding-right: 50px;
+        }
+        
+        .cost-highlight { 
+            background: linear-gradient(135deg, var(--highlight) 0%, #f9a825 100%); 
+            color: white; 
+            padding: 10px 18px; 
+            border-radius: 8px; 
+            display: inline-block; 
+            margin: 10px 0; 
+            font-weight: 800; 
+            font-size: 1.1rem; 
+            box-shadow: 0 3px 10px rgba(253, 203, 110, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* 對比表格 - 手機優化 */
+        .comparison-table { 
+            width: 100%; 
+            border-collapse: separate; 
+            border-spacing: 0;
+            margin: 24px 0; 
+            font-size: 0.9rem; 
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            min-width: 400px;
+        }
+        
+        .comparison-table th { 
+            background: linear-gradient(135deg, var(--primary) 0%, #1a5f9e 100%); 
+            color: white; 
+            padding: 16px 12px; 
+            text-align: center; 
+            font-weight: 700;
+            font-size: 0.95rem;
+            border-bottom: 3px solid var(--accent);
+        }
+        
+        .comparison-table td { 
+            padding: 14px 12px; 
+            border: 1px solid var(--light-gray); 
+            text-align: center; 
+            font-weight: 500;
+        }
+        
+        .comparison-table tr:nth-child(even) { 
+            background: rgba(248, 250, 252, 0.8); 
+        }
+        
+        .traditional { 
+            background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%); 
+            font-weight: 600; 
+            color: #c62828;
+        }
+        
+        .innovative { 
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); 
+            font-weight: 600; 
+            color: #2e7d32;
+        }
+        
+        /* CTA區塊 - 手機優化 */
+        .cta-section { 
+            background: linear-gradient(145deg, var(--primary) 0%, #1a5f9e 100%); 
+            color: white; 
+            padding: 40px 20px; 
+            border-radius: var(--border-radius); 
+            text-align: center; 
+            margin-top: 24px; 
+            position: relative; 
+            overflow: hidden; 
+            border-top: 5px solid var(--accent);
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" opacity="0.05"><path d="M0,100 L100,0 L100,100 Z" fill="white"/></svg>');
+            background-size: cover;
+            pointer-events: none;
+        }
+        
+        .cta-section h2 { 
+            color: white; 
+            border-bottom: 2px solid var(--accent); 
+            justify-content: center; 
+            font-size: 1.6rem; 
+            position: relative;
+        }
+        
+        .cta-section h2::after { 
+            background: linear-gradient(90deg, var(--accent), var(--highlight)); 
+            width: 100px; 
+        }
+        
+        .big-number { 
+            font-size: 2.8rem; 
+            font-weight: 900; 
+            margin: 20px 0; 
+            color: white; 
+            position: relative;
+            text-shadow: 0 3px 6px rgba(0,0,0,0.2);
+        }
+        
+        .highlight-text { 
+            background: linear-gradient(135deg, var(--accent) 0%, var(--success) 100%); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            font-weight: 800; 
+            font-size: 1.1rem; 
+            display: block; 
+            margin: 12px 0;
+            position: relative;
+            line-height: 1.4;
+        }
+        
+        .cta-buttons { 
+            display: flex; 
+            flex-direction: column;
+            gap: 16px; 
+            margin-top: 30px; 
+            position: relative;
+        }
+        
+        .btn { 
+            padding: 18px 24px; 
+            border-radius: 50px; 
+            font-size: 1.1rem; 
+            font-weight: 800; 
+            text-decoration: none; 
+            display: inline-flex; 
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition); 
+            border: none; 
+            cursor: pointer; 
+            width: 100%;
+            letter-spacing: 0.5px;
+            gap: 10px;
+            min-height: 60px;
+            touch-action: manipulation;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.1);
+            opacity: 0;
+            transition: var(--transition);
+            z-index: -1;
+        }
+        
+        .btn:active::after {
+            opacity: 1;
+        }
+        
+        .btn-primary { 
+            background: linear-gradient(135deg, var(--accent) 0%, #00a085 100%); 
+            color: white; 
+            box-shadow: 0 5px 15px rgba(0, 184, 148, 0.4); 
+        }
+        
+        .btn-primary:active { 
+            transform: translateY(-4px) scale(1.02); 
+            box-shadow: 0 8px 20px rgba(0, 184, 148, 0.5); 
+        }
+        
+        .btn-secondary { 
+            background: white; 
+            color: var(--primary); 
+            border: 2px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .btn-secondary:active { 
+            background: rgba(255, 255, 255, 0.9); 
+            transform: translateY(-4px); 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15); 
+        }
+        
+        /* 頁腳樣式 - 手機優化 */
+        footer { 
+            background: var(--primary); 
+            color: rgba(255, 255, 255, 0.9); 
+            padding: 30px 20px; 
+            border-radius: var(--border-radius); 
+            margin-top: 30px; 
+            text-align: center; 
+            font-size: 0.95rem; 
+            line-height: 1.6; 
+            border-top: 5px solid var(--accent);
+        }
+        
+        .footer-content { 
+            max-width: 100%; 
+            margin: 0 auto; 
+        }
+        
+        .copyright { 
+            margin-top: 20px; 
+            opacity: 0.85; 
+            font-size: 0.85rem; 
+            padding-top: 20px; 
+            border-top: 1px solid rgba(255, 255, 255, 0.15); 
+        }
+        
+        /* 圖片樣式 - 手機優化 */
+        .section-img {
+            width: 100%;
+            max-width: 100%;
+            margin: 20px auto;
+            border-radius: var(--border-radius-sm);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: block;
+            border: 3px solid white;
+            height: auto;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        
+        .section-img.loaded {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .img-caption {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin-top: 10px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            padding: 12px 14px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid var(--light-gray);
+            line-height: 1.4;
+        }
+        
+        /* 圖片對比網格 - 響應式優化 */
+        .image-comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin: 24px 0;
+        }
+        
+        .image-comparison-item {
+            text-align: center;
+        }
+        
+        /* 全期催肥專屬樣式 */
+        .fattening-section {
+            background: linear-gradient(145deg, #f3e5f5 0%, #e1bee7 100%);
+            border-left: 5px solid #9c27b0;
+        }
+        
+        .mechanism-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 18px;
+            margin: 24px 0;
+        }
+        
+        .mechanism-card {
+            background: white;
+            padding: 20px 16px;
+            border-radius: var(--border-radius-sm);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid var(--light-gray);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .mechanism-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--secondary), var(--accent));
+        }
+        
+        .mechanism-card:active {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .mechanism-card h5 {
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+            font-weight: 700;
+            padding-left: 8px;
+        }
+        
+        /* 水平滾動容器 */
+        .scroll-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 20px 0;
+            border-radius: var(--border-radius-sm);
+            padding-bottom: 10px;
+        }
+        
+        .scroll-container::-webkit-scrollbar {
+            height: 6px;
+        }
+        
+        .scroll-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 3px;
+        }
+        
+        .scroll-container::-webkit-scrollbar-thumb {
+            background: var(--secondary);
+            border-radius: 3px;
+        }
+        
+        /* 平板設備適配 */
+        @media (min-width: 576px) {
+            html {
+                font-size: 16px;
+            }
+            
+            body {
+                padding: 20px;
+            }
+            
+            .container {
+                max-width: 540px;
+            }
+            
+            .specs-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 16px;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .usage-steps {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .step-card:last-child {
+                grid-column: span 2;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            
+            .cta-buttons {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .btn {
+                width: auto;
+                min-width: 240px;
+                max-width: 100%;
+            }
+            
+            .image-comparison-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .mechanism-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* 小桌面適配 */
+        @media (min-width: 768px) {
+            html {
+                font-size: 16px;
+            }
+            
+            body {
+                padding: 24px;
+            }
+            
+            .container {
+                max-width: 720px;
+            }
+            
+            header {
+                padding: 50px 40px;
+                margin-top: 0px;
+            }
+            
+            .company-info h1 {
+                font-size: 2.2rem;
+            }
+            
+            .specs-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .usage-steps {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+            }
+            
+            .step-card:last-child {
+                grid-column: span 1;
+                max-width: none;
+            }
+            
+            .mechanism-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            section:hover { 
+                transform: translateY(-8px); 
+                box-shadow: 0 15px 30px rgba(0,0,0,0.12); 
+                border-left-color: var(--accent);
+            }
+            
+            .spec-card:hover { 
+                border-color: var(--secondary); 
+                transform: translateY(-6px) scale(1.03); 
+                box-shadow: 0 15px 25px rgba(30, 144, 255, 0.15); 
+            }
+            
+            .spec-card:hover::before {
+                opacity: 1;
+            }
+            
+            .benefit-card:hover { 
+                transform: translateY(-8px) scale(1.02); 
+                box-shadow: 0 18px 35px rgba(0,0,0,0.15); 
+                border-color: var(--secondary);
+            }
+            
+            .step-card:hover {
+                transform: translateY(-8px) scale(1.02);
+                box-shadow: var(--shadow-hover);
+                border-left-color: var(--highlight);
+            }
+            
+            .mechanism-card:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 15px 25px rgba(0,0,0,0.1);
+            }
+            
+            .btn:hover { 
+                transform: translateY(-4px); 
+            }
+            
+            .btn-primary:hover { 
+                transform: translateY(-4px) scale(1.03); 
+            }
+        }
+        
+        /* 大桌面適配 */
+        @media (min-width: 992px) {
+            .container {
+                max-width: 960px;
+            }
+            
+            .specs-grid {
+                grid-template-columns: repeat(6, 1fr);
+            }
+            
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .mechanism-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* 超大桌面適配 */
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1140px;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .mechanism-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
+        /* 高度適配 */
+        @media (max-height: 600px) {
+            header {
+                padding: 30px 24px;
+                margin-top: 0px;
+            }
+            
+            .company-info h1 {
+                font-size: 1.6rem;
+                margin-bottom: 12px;
+            }
+        }
+        
+        /* 打印樣式 */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+                font-size: 12pt;
+            }
+            
+            .container {
+                max-width: 100%;
+            }
+            
+            .language-switcher,
+            .cta-section,
+            .btn {
+                display: none;
+            }
+            
+            section {
+                box-shadow: none;
+                border: 1px solid #ddd;
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 語言切換器已移除，保留繁體中文 -->
+
+    <div class="container">
+        <!-- 封面抬頭 - 白肉雞專業定位 -->
+        <header>
+            <div class="company-info">
+                <h1>倍力素白肉雞FCR性能提升方案 TDS</h1>
+                <div class="product-target">適用：愛拔益加(AA)、樂斯(Ross)、科寶(Cobb)等白羽肉雞品種｜全期催肥專屬優化</div>
+                <div class="tagline">High-Efficiency FCR Optimization · Lean Meat Enhancement · Full-Stage Fattening</div>
+                <div class="tds-badge">Technical Data Sheet｜技術資料表</div>
+            </div>
+        </header>
+
+        <!-- 產品規格與添加參數 (移除成本卡片) -->
+        <section>
+            <h2>產品規格與添加參數</h2>
+            
+            <div class="specs-grid">
+                <div class="spec-card">
+                    <span class="label">後期催肥階段添加量</span>
+                    <span class="value">1.5</span>
+                    <span class="unit">公斤/噸飼料 (28-42天)</span>
+                </div>
+                <div class="spec-card">
+                    <span class="label">全期添加量</span>
+                    <span class="value">1</span>
+                    <span class="unit">公斤/噸飼料 (0-42天)</span>
+                </div>
+                <div class="spec-card">
+                    <span class="label">日採食量(白肉雞)</span>
+                    <span class="value">0.12</span>
+                    <span class="unit">公斤/隻/天</span>
+                </div>
+                <div class="spec-card">
+                    <span class="label">催肥階段體重提升</span>
+                    <span class="value">15-20%</span>
+                    <span class="unit">42天出欄增重</span>
+                </div>
+                <div class="spec-card">
+                    <span class="label">FCR改善幅度</span>
+                    <span class="value">8-12%</span>
+                    <span class="unit">飼料轉化率優化</span>
+                </div>
+                <div class="spec-card">
+                    <span class="label">適用階段</span>
+                    <span class="value" style="color: var(--primary); font-size: 1.2rem;">育雛→出欄全程</span>
+                    <span class="unit">28-42天催肥強化</span>
+                </div>
+            </div>
+
+            <!-- 圖片1：全期催肥實施步驟 -->
+            <!-- AI咒語建議: 檔名 white-broiler-full-period-fattening-steps.png，建議: 白肉雞生長階段圖，0-28天與28-42天標示，添加量1.5kg/噸，體重提升15%，專業圖表風格 -->
+            <div style="text-align: center;">
+                <img class="section-img" src="assets/white-broiler-full-period-fattening-steps.png" alt="白肉雞全期催肥實施步驟" loading="lazy" />
+                <p class="img-caption">圖1：白肉雞全期催肥實施步驟｜28天啟動後期催肥計畫，飼料添加1.5kg/噸，42天出欄體重提升15%</p>
+            </div>
+            
+            <div style="background: linear-gradient(145deg, #f1f5f9 0%, #e2e8f0 100%); padding: 18px; border-radius: 10px; margin-top: 20px; border-left: 5px solid var(--secondary);">
+                <p><strong>使用方法：</strong>全期添加模式每噸全價飼料均勻添加1公斤；後期催肥強化模式（28-42天）每噸添加1.5公斤，與預混料充分混合後使用。適用於愛拔益加(AA)、樂斯(Ross)、科寶(Cobb)等白羽肉雞品種，無需調整現有飼養流程。</p>
+            </div>
+        </section>
+
+        <!-- 全期催肥核心功效 (移除金額) -->
+        <section class="fattening-section">
+            <h2>全期催肥核心功效｜突破生長與效益天花板</h2>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h4>體重增益最大化</h4>
+                    <span class="benefit-metric">+15-20%</span>
+                    <p>42天出欄體重顯著提升，傳統2.2kg→優化後2.4kg+</p>
+                    <p><strong>實測數據：</strong>增重效率大幅提高</p>
+                    <div class="benefit-note">生長曲線加速，後期增重效率提升30%</div>
+                </div>
+                
+                <div class="benefit-card">
+                    <h4>FCR極致優化</h4>
+                    <span class="benefit-metric">-8-12%</span>
+                    <p>傳統1.8kg飼料/1kg增重→優化後1.65kg，飼料浪費大幅降低</p>
+                    <p><strong>實測數據：</strong>飼料轉化率顯著改善</p>
+                    <div class="benefit-note">每萬隻雞批次節省飼料約1,800公斤</div>
+                </div>
+                
+                <div class="benefit-card">
+                    <h4>屠體品質升級</h4>
+                    <span class="benefit-metric">腹脂↓ · 瘦肉率↑</span>
+                    <p>胸肉比例從65%提升至70-72%，屠宰率從82%提升至87%</p>
+                    <p><strong>實測數據：</strong>屠體等級提升，市場溢價顯著</p>
+                    <div class="benefit-note">屠體等級提升，增加屠宰場合作意願</div>
+                </div>
+                
+                <div class="benefit-card">
+                    <h4>存活率與穩定性提升</h4>
+                    <span class="benefit-metric">存活率↑</span>
+                    <p>後期應激抵抗力增強，減少死淘率</p>
+                    <p><strong>實測數據：</strong>全程成活率從94%提升至96-97%</p>
+                    <div class="benefit-note">死淘率降低2-3%，健康度提升</div>
+                </div>
+            </div>
+
+            <!-- 圖片2和3：生長曲線對比 + 生長對比數據 -->
+            <!-- AI咒語建議: 檔名 white-broiler-growth-curve-comparison.png，建議: 生長曲線對比圖，傳統與倍力素兩條曲線，42天體重差異明顯，專業圖表 -->
+            <!-- AI咒語建議: 檔名 white-broiler-growth-fcr-comparison.png，建議: 長條圖對比FCR，傳統1.8 vs 倍力素1.65，百分比下降標註 -->
+            <div class="image-comparison-grid">
+                <div class="image-comparison-item">
+                    <img class="section-img" src="assets/white-broiler-growth-curve-comparison.png" alt="白肉雞生長曲線對比" loading="lazy" />
+                    <p class="img-caption">圖2：白肉雞生長曲線對比｜42天體重提升15-20%</p>
+                </div>
+                <div class="image-comparison-item">
+                    <img class="section-img" src="assets/white-broiler-growth-fcr-comparison.png" alt="白肉雞生長與FCR對比" loading="lazy" />
+                    <p class="img-caption">圖3：生長與FCR對比｜傳統FCR 1.8→優化1.6</p>
+                </div>
+            </div>
+
+            <!-- 圖片4：屠體品質對比 -->
+            <!-- AI咒語建議: 檔名 white-broiler-carcass-quality-comparison.png，建議: 左右對比圖，左側腹脂較多，右側胸肉飽滿、腹脂少，肉雞屠體剖面圖 -->
+            <div style="text-align: center;">
+                <img class="section-img" src="assets/white-broiler-carcass-quality-comparison.png" alt="白肉雞屠體品質對比" loading="lazy" />
+                <p class="img-caption">圖4：白肉雞屠體品質對比｜傳統vs倍力素催肥方案，腹脂減少、胸肉比例提升</p>
+            </div>
+        </section>
+
+        <!-- 核心技術機制 (更新成分名稱，加入天然來源說明) -->
+        <section>
+            <h2>🔬 核心作用機轉｜全期催肥的科學底層</h2>
+            
+            <div class="mechanism-grid">
+                <div class="mechanism-card">
+                    <h5>1. 營養代謝優化機轉</h5>
+                    <p><strong>重組型煙醯胺蛋白酶（蛋白草萃取）</strong>、非澱粉多糖酶等複合酶系破解飼料抗營養因子，提升營養吸收率22%；同時調控腸道微生物菌群，強化營養利用效率，實現FCR從1.8→1.65的突破（如圖5）。</p>
+                    <p>針對白羽肉雞後期高採食量特點，減少飼料過渡浪費，每萬隻雞14天飼料節省顯著。</p>
+                </div>
+                <div class="mechanism-card">
+                    <h5>2. 肌肉生長定向調控</h5>
+                    <p><strong>單核苷小核酸（蛋白草萃取）</strong>靶向激活肌纖維增生通路，同時抑制脂肪合成酶（ACC）活性，實現「增肌減脂」雙重效果：胸肉比例從65%提升至70-72%，腹腔脂肪沉積減少10-15%。</p>
+                    <p>匹配白羽肉雞後期肌肉生長黃金期（28-42天），最大化瘦肉產出與屠體價值。</p>
+                </div>
+                <div class="mechanism-card">
+                    <h5>3. 能量代謝強化</h5>
+                    <p>添加代謝調節因子提升ATP生成效率，加速營養物質向肌肉組織轉運，而非脂肪沉積；後期生長速度提升15-20%，42天出欄體重從2.2kg提升至2.4kg以上。</p>
+                    <p>降低後期生長緩慢問題，縮短養殖週期同時提升單隻收益。</p>
+                </div>
+                <div class="mechanism-card">
+                    <h5>4. 抗應激與存活率提升</h5>
+                    <p><strong>褐藻萃取物</strong>結合免疫肽強化腸道黏膜屏障與整體免疫力，減少後期高密度飼養帶來的應激反應，死淘率降低2-3%。</p>
+                    <p>支持無抗養殖模式，符合現代養殖政策與市場需求。</p>
+                </div>
+            </div>
+
+            <!-- 圖片5：FCR優化數據 -->
+            <!-- AI咒語建議: 檔名 white-broiler-fcr-optimization-data.png，建議: 數據圖表顯示FCR從1.8降至1.65，節省比例8-12%，箭頭向下 -->
+            <div style="text-align: center;">
+                <img class="section-img" src="assets/white-broiler-fcr-optimization-data.png" alt="白肉雞FCR優化數據" loading="lazy" />
+                <p class="img-caption">圖5：白肉雞FCR優化數據｜傳統1.8kg飼料/1kg增重→優化1.65kg，飼料減少8-12%</p>
+            </div>
+            
+            <div class="data-source" style="background: #e8f5e9; border-left: 4px solid #2e7d32; padding: 15px; border-radius: 0 10px 10px 0; margin-top: 20px;">
+                <strong>天然來源說明：</strong> 本方案所含「重組型煙醯胺蛋白酶」與「單核苷小核酸」均源自蛋白草萃取物，「褐藻萃取物」源自天然褐藻，確保安全與效能，符合永續農業理念。
+            </div>
+        </section>
+
+        <!-- 經濟效益分析 (移除所有金額，保留百分比) -->
+        <section>
+            <h2>經濟效益分析｜每萬隻雞批次收益（全期催肥方案）</h2>
+            
+            <div class="economic-header">
+                <p><strong>計算基準：</strong>白羽肉雞42天週期｜後期催肥添加量1.5kg/噸｜FCR 1.8→1.65｜出欄體重提升15-20%</p>
+            </div>
+            
+            <div class="economic-card">
+                <div class="scroll-container">
+                    <table class="profit-table">
+                        <thead>
+                            <tr>
+                                <th>效益項目</th>
+                                <th>改善幅度</th>
+                                <th>效益說明</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>體重增益收益</td>
+                                <td>+15-20% 體重</td>
+                                <td>每萬隻雞增重收益顯著提升</td>
+                            </tr>
+                            <tr>
+                                <td>FCR優化節省飼料成本</td>
+                                <td>-8-12% FCR</td>
+                                <td>飼料節省約8-12%，成本大幅降低</td>
+                            </tr>
+                            <tr>
+                                <td>屠體溢價收益</td>
+                                <td>胸肉↑5-7% + 屠宰率↑5%</td>
+                                <td>屠體等級提升，市場溢價增加</td>
+                            </tr>
+                            <tr>
+                                <td>存活率提升減少損失</td>
+                                <td>+2-3% 存活率</td>
+                                <td>死淘率降低，減少經濟損失</td>
+                            </tr>
+                            <tr>
+                                <td><strong>總效益增加</strong></td>
+                                <td colspan="2">綜合效益極顯著</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- 圖片6：ROI計算總表 -->
+                <!-- AI咒語建議: 檔名 white-broiler-roi-calculation.png，建議: ROI圓餅圖或長條圖，顯示816% ROI，簡潔商業圖表 -->
+                <div style="text-align: center; margin: 20px 0;">
+                    <img class="section-img" src="assets/white-broiler-roi-calculation.png" alt="白肉雞催肥ROI計算" loading="lazy" />
+                    <p class="img-caption">圖6：白肉雞後期催肥ROI計算｜投資報酬率816%</p>
+                </div>
+                
+                <div class="roi-badge">
+                    <div>每萬隻雞批次投資報酬率 (ROI) - 全期催肥方案</div>
+                    <div class="roi-value">816%</div>
+                    <div class="roi-label">每投入1元，創造8.16元淨收益｜投資回收期 &lt;3天</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 三階段導入方案 (移除成本數字) -->
+        <section>
+            <h2>✅ 快速導入方案｜低風險驗證</h2>
+            
+            <div class="usage-steps">
+                <div class="step-card" data-step="1">
+                    <h4>小群驗證(1週)</h4>
+                    <p><strong>規模：</strong>500隻AA雞</p>
+                    <p><strong>驗證指標：</strong>採食量、糞便形態、生長速度</p>
+                </div>
+                
+                <div class="step-card" data-step="2">
+                    <h4>批次驗證(2週)</h4>
+                    <p><strong>規模：</strong>2,000隻Ross雞</p>
+                    <p><strong>驗證指標：</strong>體重抽測、FCR計算、屠體品質</p>
+                </div>
+                
+                <div class="step-card" data-step="3">
+                    <h4>全場導入(持續)</h4>
+                    <p><strong>規模：</strong>全場白羽肉雞</p>
+                    <p><strong>核心效益：</strong>每萬隻雞淨利顯著提升，ROI達816%</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 傳統vs倍力素方案對比 -->
+        <section>
+            <h2>🔄 傳統白肉雞養殖 vs 倍力素全期催肥方案</h2>
+            
+            <div class="scroll-container">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>評估項目</th>
+                            <th class="traditional">傳統養殖模式</th>
+                            <th class="innovative">倍力素全期催肥方案</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>FCR水準</strong></td>
+                            <td class="traditional">1.8:1</td>
+                            <td class="innovative">1.65:1 (-8-12%)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>42天體重</strong></td>
+                            <td class="traditional">2.2kg</td>
+                            <td class="innovative">2.4kg+ (+15-20%)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>胸肉比例</strong></td>
+                            <td class="traditional">65%</td>
+                            <td class="innovative">70-72% (+5-7%)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>屠宰率</strong></td>
+                            <td class="traditional">82%</td>
+                            <td class="innovative">87% (+5%)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>每萬隻淨利</strong></td>
+                            <td class="traditional">基準線</td>
+                            <td class="innovative">大幅提升 (+334%)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- CTA行動區塊 (電話更新) -->
+        <section class="cta-section">
+            <h2>🚀 立即提升白肉雞養殖獲利效率</h2>
+            
+            <div class="big-number">816%</div>
+            <p>投資報酬率(ROI) - 全期催肥方案</p>
+            
+            <div class="highlight-text">年出欄10批次，總效益累積極為可觀</div>
+            <div class="highlight-text">完全匹配AA/Ross/Cobb等主流白肉雞品種｜28-42天催肥黃金期專屬優化</div>
+            
+            <div class="cta-buttons">
+                <a class="btn btn-primary" href="tel:+886-5-6972238">📞 立即技術諮詢 +886-5-6972238</a>
+                <a class="btn btn-secondary" href="mailto:info@chishengfeed.com">📋 獲取全期催肥專屬試用方案</a>
+            </div>
+        </section>
+
+        <!-- 頁腳 (吉升飼料資訊) -->
+        <footer>
+            <div class="footer-content">
+                <p><strong>吉升飼料有限公司</strong>｜高效養殖 × 生物技術 × 全期催肥解決方案</p>
+                <p>地址：634雲林縣褒忠鄉中正路28-18號｜電話：+886-5-6972238｜Email：info@chishengfeed.com</p>
+                <p>本技術資料表數據基於白羽肉雞(AA/Ross/Cobb)規模化養殖場實測結果，實際效果因管理條件略有差異</p>
+                <div class="copyright">
+                    © 2026 吉升飼料有限公司 版權所有｜本技術資料內容為商業機密，未經授權禁止轉載
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 滾動淡入效果 - 優化性能
+            const observerOptions = {
+                threshold: 0.05,
+                rootMargin: '0px 0px -40px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('section').forEach(section => {
+                observer.observe(section);
+            });
+            
+            // 圖片懶加載和淡入效果
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.classList.add('loaded');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            }, {
+                rootMargin: '0px 0px 100px 0px'
+            });
+            
+            document.querySelectorAll('.section-img').forEach(img => {
+                if (img.complete) {
+                    img.classList.add('loaded');
+                } else {
+                    img.addEventListener('load', function() {
+                        this.classList.add('loaded');
+                    });
+                    img.addEventListener('error', function() {
+                        this.style.display = 'none';
+                        const caption = this.nextElementSibling;
+                        if (caption && caption.classList.contains('img-caption')) {
+                            caption.style.display = 'none';
+                        }
+                    });
+                }
+                imageObserver.observe(img);
+            });
+            
+            // 觸摸反饋效果
+            document.querySelectorAll('.spec-card, .benefit-card, .step-card, .mechanism-card, .btn').forEach(card => {
+                card.addEventListener('touchstart', function(e) {
+                    this.classList.add('touch-active');
+                }, { passive: true });
+                
+                card.addEventListener('touchend', function(e) {
+                    this.classList.remove('touch-active');
+                }, { passive: true });
+            });
+            
+            // 檢測觸控設備
+            function isTouchDevice() {
+                return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+            }
+            
+            if (isTouchDevice()) {
+                document.body.classList.add('touch-device');
+                document.querySelectorAll('section, .spec-card, .benefit-card, .step-card, .mechanism-card, .btn').forEach(el => {
+                    el.classList.add('touch-optimized');
+                });
+            }
+            
+            // 防止滾動時的性能問題
+            let ticking = false;
+            window.addEventListener('scroll', function() {
+                if (!ticking) {
+                    window.requestAnimationFrame(function() {
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
+            
+            // 處理iOS 100vh問題
+            function setVH() {
+                let vh = window.innerHeight * 0.01;
+                document.documentElement.style.setProperty('--vh', `${vh}px`);
+            }
+            
+            setVH();
+            window.addEventListener('resize', setVH);
+            window.addEventListener('orientationchange', setVH);
+        });
+    </script>
+</body>
+</html>
