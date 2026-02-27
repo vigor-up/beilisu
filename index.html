@@ -9,21 +9,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        /* === 行動裝置優先變數定義 === */
+        /* === 淺色農業風格變數 === */
         :root {
-            --primary-green: #1a5d1a;
-            --secondary-green: #0f3d0f;
-            --accent-gold: #d4af37;
-            --accent-light: #f0e6d2;
-            --primary-dark: #1a1a1a;
-            --secondary-dark: #2d2d2d;
-            --light-bg: #f8f9fa;
+            --primary-green: #2a7a2a;
+            --secondary-green: #1b5e1b;
+            --accent-gold: #d4a017;
+            --accent-light: #f5f0e1;
+            --primary-dark: #2e3b2e;
+            --secondary-dark: #4a5a4a;
+            --light-bg: #f9fff9;
             --card-bg: #ffffff;
-            --border-radius: 16px;
-            --card-radius: 20px;
-            --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-            --card-shadow-hover: 0 12px 40px rgba(26, 93, 26, 0.15);
-            --header-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --border-radius: 20px;
+            --card-radius: 28px;
+            --card-shadow: 0 8px 30px rgba(0, 40, 0, 0.08);
+            --card-shadow-hover: 0 12px 40px rgba(42, 122, 42, 0.15);
+            --header-shadow: 0 4px 20px rgba(0, 30, 0, 0.1);
             --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
             --font-heading: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
             --font-body: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
@@ -66,8 +66,8 @@
             right: 0;
             bottom: 0;
             background: 
-                radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(26, 93, 26, 0.03) 0%, transparent 50%);
+                radial-gradient(circle at 20% 80%, rgba(212, 160, 23, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(42, 122, 42, 0.03) 0%, transparent 50%);
             pointer-events: none;
             z-index: -1;
         }
@@ -81,14 +81,15 @@
 
         header {
             background: linear-gradient(135deg, 
-                rgba(26, 93, 26, 0.95) 0%, 
-                rgba(15, 61, 15, 0.95) 100%);
+                rgba(42, 122, 42, 0.95) 0%, 
+                rgba(27, 94, 27, 0.95) 100%);
             color: white;
             position: relative;
             overflow: hidden;
             padding: clamp(60px, 15vw, 120px) 0 clamp(80px, 15vw, 120px);
             padding-top: calc(clamp(60px, 15vw, 120px) + var(--safe-top));
             margin-bottom: 40px;
+            border-radius: 0 0 var(--border-radius) var(--border-radius);
         }
 
         header::before {
@@ -99,8 +100,8 @@
             right: 0;
             bottom: 0;
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.05) 0%, transparent 20%);
+                radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(212, 160, 23, 0.1) 0%, transparent 20%);
             pointer-events: none;
         }
 
@@ -142,7 +143,7 @@
             margin-bottom: clamp(16px, 3vw, 24px);
             line-height: 1.2;
             letter-spacing: -0.5px;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
             background: linear-gradient(135deg, #ffffff, var(--accent-light));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -183,13 +184,13 @@
         }
 
         .stat-item {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             padding: clamp(20px, 4vw, 28px);
             border-radius: var(--border-radius);
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             transition: var(--transition);
             position: relative;
             overflow: hidden;
@@ -203,6 +204,11 @@
             right: 0;
             height: 3px;
             background: linear-gradient(90deg, var(--accent-gold), transparent);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.25);
         }
 
         .stat-value {
@@ -221,6 +227,7 @@
             line-height: 1.4;
             font-weight: 500;
             letter-spacing: 0.3px;
+            color: white;
         }
 
         main {
@@ -298,7 +305,7 @@
             display: flex;
             flex-direction: column;
             position: relative;
-            border: 1px solid rgba(26, 93, 26, 0.1);
+            border: 1px solid rgba(42, 122, 42, 0.1);
             cursor: pointer;
             opacity: 0;
             transform: translateY(20px);
@@ -308,7 +315,7 @@
         .product-card:hover {
             transform: translateY(-12px);
             box-shadow: var(--card-shadow-hover);
-            border-color: rgba(26, 93, 26, 0.2);
+            border-color: rgba(42, 122, 42, 0.2);
         }
 
         .product-card::before {
@@ -327,7 +334,7 @@
             width: 100%;
             overflow: hidden;
             position: relative;
-            background: linear-gradient(135deg, #f5f5f5, #e8e8e8);
+            background: linear-gradient(135deg, #f0f7f0, #e0eee0);
         }
 
         .product-image img {
@@ -345,10 +352,10 @@
             position: absolute;
             top: 16px;
             left: 16px;
-            background: rgba(26, 93, 26, 0.95);
+            background: var(--primary-green);
             color: white;
             padding: 8px 16px;
-            border-radius: 20px;
+            border-radius: 30px;
             font-size: 0.8rem;
             font-weight: 600;
             backdrop-filter: blur(4px);
@@ -416,7 +423,7 @@
         }
 
         .product-benefits li:hover {
-            background: rgba(26, 93, 26, 0.02);
+            background: rgba(42, 122, 42, 0.02);
             padding-left: 8px;
         }
 
@@ -467,7 +474,7 @@
             text-decoration: none;
             font-weight: 600;
             transition: var(--transition);
-            box-shadow: 0 6px 20px rgba(26, 93, 26, 0.2);
+            box-shadow: 0 6px 20px rgba(42, 122, 42, 0.2);
             border: 2px solid transparent;
             cursor: pointer;
             font-size: clamp(0.95rem, 2.3vw, 1.05rem);
@@ -493,8 +500,13 @@
             left: 100%;
         }
 
+        .btn-view:hover {
+            background: linear-gradient(135deg, var(--secondary-green), var(--primary-green));
+            transform: scale(1.02);
+        }
+
         footer {
-            background: linear-gradient(135deg, var(--primary-dark) 0%, #1a1a1a 100%);
+            background: linear-gradient(135deg, var(--primary-dark) 0%, #1a2b1a 100%);
             color: rgba(255, 255, 255, 0.85);
             padding: clamp(60px, 12vw, 100px) 0 clamp(40px, 8vw, 60px);
             position: relative;
@@ -520,8 +532,8 @@
             right: 0;
             bottom: 0;
             background-image: 
-                radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(26, 93, 26, 0.03) 0%, transparent 50%);
+                radial-gradient(circle at 20% 30%, rgba(212, 160, 23, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(42, 122, 42, 0.03) 0%, transparent 50%);
             pointer-events: none;
         }
 
@@ -689,12 +701,31 @@
         ::-webkit-scrollbar { width: 10px; height: 10px; }
         ::-webkit-scrollbar-track { background: rgba(0,0,0,0.05); border-radius: 10px; }
         ::-webkit-scrollbar-thumb { background: linear-gradient(135deg, var(--primary-green), var(--accent-gold)); border-radius: 10px; border: 2px solid transparent; background-clip: padding-box; }
-        @media (prefers-reduced-motion: reduce) { * { animation-duration: 0.01ms !important; } }
-        @media print { .btn-view { display: none !important; } }
+
+        @media (prefers-reduced-motion: reduce) {
+            * { animation-duration: 0.01ms !important; }
+        }
+
+        @media print {
+            .btn-view { display: none !important; }
+        }
+
+        /* 平板與電腦字體自動放大 (避免稀疏) */
+        @media (min-width: 768px) {
+            html { font-size: 17px; }
+            .product-benefits span { font-size: 1rem; }
+            .btn-view { font-size: 1rem; }
+        }
+
+        @media (min-width: 1024px) {
+            html { font-size: 18px; }
+            .product-benefits span { font-size: 1.05rem; }
+            .btn-view { font-size: 1.05rem; }
+        }
     </style>
 </head>
 <body>
-    <!-- 頁頭區域 (已移除語言切換器) -->
+    <!-- 頁頭區域 -->
     <header role="banner">
         <div class="container">
             <div class="header-content">
@@ -854,7 +885,7 @@
                 </div>
             </article>
 
-            <!-- 5. 育肥豬FCR性能提升方案 (核心成分更新) -->
+            <!-- 5. 育肥豬FCR性能提升方案 (已移除核心成分) -->
             <article class="product-card fade-in" role="listitem" tabindex="0" aria-label="育肥豬FCR性能提升方案" style="animation-delay: 0.5s;">
                 <div class="product-image">
                     <img src="assets/finisher-pig-fcr-improvement.jpg" alt="育肥豬FCR性能提升" loading="lazy">
@@ -876,7 +907,7 @@
                         <li><i class="fas fa-check"></i> <span>出肉率>80%，屠體增重5.2%</span></li>
                         <li><i class="fas fa-check"></i> <span>背脂<2.0cm，溢價30%</span></li>
                         <li><i class="fas fa-check"></i> <span>出欄>140kg，雪花肉提升80%</span></li>
-                        <li><i class="fas fa-check"></i> <span><strong>核心成分：</strong>重組型煙醯胺蛋白酶(蛋白草萃取)、單核苷小核酸(蛋白草萃取)、褐藻萃取物</span></li>
+                        <!-- 核心成分描述已刪除 -->
                     </ul>
                     <div class="product-footer">
                         <a href="beilisu-finisher-fcr.html" class="btn-view">查看方案</a>
@@ -1000,7 +1031,7 @@
                 </div>
             </article>
 
-            <!-- 10. 吳郭魚存活率提升方案 -->
+            <!-- 10. 吳郭魚存活率提升方案 (已移除核心成分) -->
             <article class="product-card fade-in" role="listitem" tabindex="0" aria-label="吳郭魚存活率提升方案" style="animation-delay: 0.95s;">
                 <div class="product-image">
                     <img src="assets/tilapia-harvest-closeup.jpg" alt="吳郭魚豐收特寫" loading="lazy">
@@ -1022,7 +1053,7 @@
                         <li><i class="fas fa-check"></i> <span>腸道絨毛高度提升30%</span></li>
                         <li><i class="fas fa-check"></i> <span>FCR降低0.12-0.18</span></li>
                         <li><i class="fas fa-check"></i> <span>養殖週期縮短10-18天</span></li>
-                        <li><i class="fas fa-check"></i> <span><strong>核心成分：</strong>重組型煙醯胺蛋白酶(蛋白草萃取)、單核苷小核酸(蛋白草萃取)、褐藻萃取物</span></li>
+                        <!-- 核心成分描述已刪除 -->
                     </ul>
                     <div class="product-footer">
                         <a href="beilisu-tilapia.html" class="btn-view">查看方案</a>
@@ -1030,7 +1061,7 @@
                 </div>
             </article>
 
-            <!-- 11. 白蝦存活率提升方案 -->
+            <!-- 11. 白蝦存活率提升方案 (已移除核心成分) -->
             <article class="product-card fade-in" role="listitem" tabindex="0" aria-label="白蝦存活率提升方案" style="animation-delay: 1.0s;">
                 <div class="product-image">
                     <img src="assets/shrimp-cover.jpg" alt="白蝦存活率提升" loading="lazy">
@@ -1044,7 +1075,7 @@
                         </div>
                         <div>
                             <h3>白蝦存活率提升方案</h3>
-                            <div class="product-subtitle">褐藻萃取物·重組型煙醯胺蛋白酶·單核苷小核酸｜抗WSSV·抗弧菌</div>
+                            <div class="product-subtitle">抗WSSV·抗弧菌｜高密度養殖專用</div>
                         </div>
                     </div>
                     <ul class="product-benefits" role="list">
@@ -1052,7 +1083,7 @@
                         <li><i class="fas fa-check"></i> <span>弧菌菌落數↓95% (TCBS)</span></li>
                         <li><i class="fas fa-check"></i> <span>FCR 1.32→1.12，省15.1%</span></li>
                         <li><i class="fas fa-check"></i> <span>存活率62%→78%</span></li>
-                        <li><i class="fas fa-check"></i> <span><strong>核心成分：</strong>褐藻萃取物、重組型煙醯胺蛋白酶(蛋白草萃取)、單核苷小核酸(蛋白草萃取)</span></li>
+                        <!-- 核心成分描述已刪除 -->
                     </ul>
                     <div class="product-footer">
                         <a href="beilisu-shrimp.html" class="btn-view">查看方案</a>
@@ -1062,7 +1093,7 @@
         </section>
     </main>
 
-    <!-- 頁尾 (公司資訊更新) -->
+    <!-- 頁尾 -->
     <footer role="contentinfo">
         <div class="container">
             <div class="footer-content">
