@@ -5,37 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>倍力素土雞性能提升方案 TDS｜吉升飼料有限公司</title>
     <style>
-        :root { 
-            --primary: #e63946; 
-            --secondary: #2a9d8f; 
-            --accent: #f4a261; 
-            --dark: #264653; 
-            --light: #f8f9fa; 
-            --gray: #6c757d; 
-            --border-radius: 12px; 
-            --shadow: 0 4px 12px rgba(0,0,0,0.08); 
-            --shadow-hover: 0 6px 16px rgba(0,0,0,0.12); 
+        /* ===== 設計令牌：淺色農業風格 ===== */
+        :root {
+            --primary-green: #2a7a2a;
+            --secondary-green: #1b5e1b;
+            --accent-gold: #d4a017;
+            --accent-light: #f5f0e1;
+            --primary-dark: #2e3b2e;
+            --secondary-dark: #4a5a4a;
+            --light-bg: #f9fff9;
+            --card-bg: #ffffff;
+            --border-light: rgba(0, 0, 0, 0.05);
+            --border-dark: rgba(0, 0, 0, 0.1);
+            --header-gradient-start: rgba(42, 122, 42, 0.95);
+            --header-gradient-end: rgba(27, 94, 27, 0.95);
+            --footer-gradient-start: #2e3b2e;
+            --footer-gradient-end: #1a2b1a;
+            --stat-item-bg: rgba(255, 255, 255, 0.15);
+            --stat-border: rgba(255, 255, 255, 0.2);
+            --stat-hover-bg: rgba(255, 255, 255, 0.25);
+            --product-category-bg: var(--primary-green);
+            --product-category-text: #ffffff;
+            --product-icon-gradient-start: var(--primary-green);
+            --product-icon-gradient-end: var(--secondary-green);
+            --product-icon-text: #ffffff;
+            --btn-view-gradient-start: var(--primary-green);
+            --btn-view-gradient-end: var(--secondary-green);
+            --btn-view-text: #ffffff;
+            --btn-view-hover-gradient-start: var(--secondary-green);
+            --btn-view-hover-gradient-end: var(--primary-green);
+            --footer-text: rgba(255, 255, 255, 0.85);
+            --footer-link-color: rgba(255, 255, 255, 0.75);
+            --footer-link-hover-color: var(--accent-gold);
+            --copyright-text: rgba(255, 255, 255, 0.6);
+            
+            --font-heading: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+            --font-body: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+            
+            --border-radius-small: 8px;
+            --border-radius-medium: 16px;
+            --border-radius-large: 20px;
+            --border-radius-xlarge: 28px;
+            --border-radius-pill: 30px;
+            --border-radius-circle: 50%;
+            
+            --shadow-card: 0 8px 30px rgba(0, 40, 0, 0.08);
+            --shadow-card-hover: 0 12px 40px rgba(42, 122, 42, 0.15);
+            --shadow-header: 0 4px 20px rgba(0, 30, 0, 0.1);
+            --shadow-btn-view: 0 6px 20px rgba(42, 122, 42, 0.2);
+            
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
         }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-            font-family: 'Microsoft JhengHei', '微軟正黑體', 'PingFang TC', sans-serif; 
+            font-family: var(--font-body); 
             line-height: 1.6; 
-            color: var(--dark); 
-            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%); 
+            color: var(--primary-dark); 
+            background: linear-gradient(135deg, var(--light-bg) 0%, #e8f0e8 100%); 
             padding: 15px; 
         }
         .container { max-width: 1200px; margin: 0 auto; }
 
-        /* 導航列 - 返回首頁 + 返回頂部 */
+        /* 導航列 */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: white;
+            background: var(--card-bg);
             padding: 10px 20px;
-            border-radius: 50px;
+            border-radius: var(--border-radius-pill);
             margin-bottom: 20px;
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-card);
             position: sticky;
             top: 10px;
             z-index: 1000;
@@ -45,44 +86,44 @@
             align-items: center;
             gap: 8px;
             padding: 8px 20px;
-            border-radius: 30px;
+            border-radius: var(--border-radius-pill);
             text-decoration: none;
             font-weight: 500;
             font-size: 0.95rem;
-            transition: 0.2s;
+            transition: var(--transition);
             border: none;
             cursor: pointer;
         }
         .nav-left a {
-            background: var(--light);
-            color: var(--dark);
+            background: var(--light-bg);
+            color: var(--primary-dark);
         }
         .nav-left a:hover {
-            background: var(--secondary);
+            background: var(--secondary-green);
             color: white;
         }
         .nav-right button {
-            background: var(--primary);
+            background: var(--primary-green);
             color: white;
         }
         .nav-right button:hover {
-            background: var(--accent);
-            color: var(--dark);
+            background: var(--accent-gold);
+            color: var(--primary-dark);
         }
         
-        /* 優化封面抬頭樣式 */
+        /* 頁首 */
         header { 
-            background: linear-gradient(135deg, var(--dark) 0%, #1a323c 100%); 
+            background: linear-gradient(135deg, var(--header-gradient-start) 0%, var(--header-gradient-end) 100%); 
             color: white; 
             padding: 45px 30px; 
-            border-radius: var(--border-radius); 
+            border-radius: var(--border-radius-medium); 
             margin-bottom: 30px; 
-            box-shadow: 0 8px 24px rgba(0,0,0,0.12); 
+            box-shadow: var(--shadow-header); 
             position: relative; 
             overflow: hidden; 
             text-align: center; 
-            border-top: 5px solid var(--secondary);
-            border-bottom: 5px solid var(--accent);
+            border-top: 5px solid var(--secondary-green);
+            border-bottom: 5px solid var(--accent-gold);
         }
         header::before { 
             content: ''; 
@@ -102,7 +143,7 @@
             left: 0;
             width: 100%;
             height: 8px;
-            background: linear-gradient(90deg, var(--secondary), var(--accent), var(--primary));
+            background: linear-gradient(90deg, var(--secondary-green), var(--accent-gold), var(--primary-green));
             opacity: 0.8;
         }
         .company-info {
@@ -128,7 +169,7 @@
             left: 10%;
             width: 80%;
             height: 3px;
-            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
         }
         .company-info p { 
             font-size: 20px; 
@@ -147,7 +188,7 @@
             font-weight: 500;
         }
         .tds-badge { 
-            background: linear-gradient(135deg, var(--secondary), #1d7d72); 
+            background: linear-gradient(135deg, var(--secondary-green), #1d7d72); 
             color: white; 
             padding: 8px 22px; 
             border-radius: 25px; 
@@ -158,26 +199,26 @@
             box-shadow: 0 3px 10px rgba(0,0,0,0.15);
         }
         
-        /* 區塊樣式優化 */
+        /* 通用區塊 */
         section { 
-            background: white; 
+            background: var(--card-bg); 
             padding: 30px; 
             margin-bottom: 25px; 
-            border-radius: var(--border-radius); 
-            box-shadow: var(--shadow); 
+            border-radius: var(--border-radius-medium); 
+            box-shadow: var(--shadow-card); 
             transition: transform 0.3s ease, box-shadow 0.3s ease; 
-            border-top: 4px solid var(--secondary);
+            border-top: 4px solid var(--secondary-green);
         }
         section:hover { 
             transform: translateY(-4px); 
-            box-shadow: var(--shadow-hover); 
+            box-shadow: var(--shadow-card-hover); 
         }
         h2 { 
-            color: var(--dark); 
+            color: var(--primary-dark); 
             font-size: 28px; 
             margin-bottom: 25px; 
             padding-bottom: 15px; 
-            border-bottom: 3px solid var(--accent); 
+            border-bottom: 3px solid var(--accent-gold); 
             position: relative; 
             font-weight: 700;
             letter-spacing: 1px;
@@ -189,7 +230,7 @@
             left: 0; 
             width: 70px; 
             height: 3px; 
-            background: var(--secondary); 
+            background: var(--secondary-green); 
         }
         p { 
             margin-bottom: 12px; 
@@ -197,7 +238,7 @@
             line-height: 1.7; 
         }
         
-        /* 規格卡片樣式 (移除成本數字) */
+        /* 規格卡片 */
         .specs-grid { 
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
@@ -205,22 +246,22 @@
             margin: 25px 0; 
         }
         .spec-card { 
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); 
-            border-radius: var(--border-radius); 
+            background: linear-gradient(135deg, var(--light-bg) 0%, #e2f0e2 100%); 
+            border-radius: var(--border-radius-medium); 
             padding: 20px; 
             text-align: center; 
-            border: 1px solid #dee2e6; 
+            border: 1px solid var(--border-dark); 
             transition: all 0.3s ease; 
-            border-top: 3px solid var(--secondary);
+            border-top: 3px solid var(--secondary-green);
         }
         .spec-card:hover { 
-            border-color: var(--secondary); 
+            border-color: var(--secondary-green); 
             transform: translateY(-3px); 
-            box-shadow: var(--shadow); 
+            box-shadow: var(--shadow-card); 
         }
         .spec-card .label { 
             font-size: 14px; 
-            color: var(--gray); 
+            color: var(--secondary-dark); 
             margin-bottom: 8px; 
             display: block; 
             font-weight: 500;
@@ -228,16 +269,16 @@
         .spec-card .value { 
             font-size: 24px; 
             font-weight: bold; 
-            color: var(--primary); 
+            color: var(--primary-green); 
         }
         .spec-card .unit { 
             font-size: 14px; 
-            color: var(--gray); 
+            color: var(--secondary-dark); 
             display: block; 
             margin-top: 3px; 
         }
         
-        /* 效益卡片樣式 */
+        /* 效益卡片 */
         .benefits-grid { 
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
@@ -245,21 +286,21 @@
             margin-top: 25px; 
         }
         .benefit-card { 
-            background: white; 
-            border-radius: var(--border-radius); 
+            background: var(--card-bg); 
+            border-radius: var(--border-radius-medium); 
             padding: 25px; 
-            box-shadow: var(--shadow); 
-            border-top: 4px solid var(--secondary); 
+            box-shadow: var(--shadow-card); 
+            border-top: 4px solid var(--secondary-green); 
             transition: all 0.3s ease; 
         }
         .benefit-card:hover { 
             transform: translateY(-5px); 
-            box-shadow: var(--shadow-hover); 
+            box-shadow: var(--shadow-card-hover); 
         }
         .benefit-card h4 { 
             font-size: 20px; 
             margin-bottom: 15px; 
-            color: var(--dark); 
+            color: var(--primary-dark); 
             display: flex; 
             align-items: center; 
             gap: 10px; 
@@ -267,25 +308,25 @@
         }
         .benefit-card h4::before { 
             content: '✓'; 
-            color: var(--secondary); 
+            color: var(--secondary-green); 
             font-weight: bold; 
             font-size: 20px; 
         }
         .benefit-card .improvement { 
             font-size: 28px; 
             font-weight: bold; 
-            color: var(--primary); 
+            color: var(--primary-green); 
             margin: 10px 0; 
             display: block; 
         }
         
-        /* 經濟分析卡片 (移除金額數字) */
+        /* 經濟分析卡片 */
         .economic-card { 
             background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%); 
             padding: 25px; 
-            border-radius: var(--border-radius); 
-            box-shadow: var(--shadow); 
-            border: 2px solid var(--accent); 
+            border-radius: var(--border-radius-medium); 
+            box-shadow: var(--shadow-card); 
+            border: 2px solid var(--accent-gold); 
             margin-top: 20px; 
         }
         .profit-table { 
@@ -295,7 +336,7 @@
             font-size: 15px; 
         }
         .profit-table th { 
-            background: linear-gradient(135deg, var(--dark) 0%, #000000 100%); 
+            background: linear-gradient(135deg, var(--primary-dark) 0%, #000000 100%); 
             color: white; 
             padding: 12px 15px; 
             text-align: left; 
@@ -306,13 +347,13 @@
             border-bottom: 1px solid #e9ecef; 
         }
         .profit-table tr:nth-child(even) { 
-            background: #f8f9fa; 
+            background: var(--light-bg); 
         }
         .profit-table tr:hover { 
             background: #e8f5e9; 
         }
         .profit-table tr.total-row { 
-            background: linear-gradient(135deg, var(--secondary) 0%, #1b5e20 100%); 
+            background: linear-gradient(135deg, var(--secondary-green) 0%, #1b5e1b 100%); 
             color: white; 
             font-weight: bold; 
             font-size: 17px; 
@@ -320,13 +361,13 @@
         
         /* ROI徽章 */
         .roi-badge { 
-            background: linear-gradient(135deg, var(--secondary) 0%, #0d3b36 100%); 
+            background: linear-gradient(135deg, var(--secondary-green) 0%, #0d3b36 100%); 
             color: white; 
             padding: 20px; 
-            border-radius: var(--border-radius); 
+            border-radius: var(--border-radius-medium); 
             text-align: center; 
             margin: 25px 0; 
-            box-shadow: var(--shadow); 
+            box-shadow: var(--shadow-card); 
         }
         .roi-badge .roi-value { 
             font-size: 36px; 
@@ -340,7 +381,7 @@
             opacity: 0.95; 
         }
         
-        /* 實施步驟 (移除成本數字) */
+        /* 實施步驟 */
         .usage-steps { 
             display: flex; 
             justify-content: space-between; 
@@ -351,18 +392,18 @@
         .step-card { 
             flex: 1; 
             min-width: 220px; 
-            background: white; 
+            background: var(--card-bg); 
             padding: 25px; 
-            border-radius: var(--border-radius); 
-            box-shadow: var(--shadow); 
-            border-left: 5px solid var(--primary); 
+            border-radius: var(--border-radius-medium); 
+            box-shadow: var(--shadow-card); 
+            border-left: 5px solid var(--primary-green); 
             position: relative; 
             overflow: hidden; 
             transition: all 0.3s ease;
         }
         .step-card:hover {
             transform: translateY(-3px);
-            box-shadow: var(--shadow-hover);
+            box-shadow: var(--shadow-card-hover);
         }
         .step-card::before { 
             content: attr(data-step); 
@@ -371,7 +412,7 @@
             right: 12px; 
             width: 32px; 
             height: 32px; 
-            background: var(--primary); 
+            background: var(--primary-green); 
             color: white; 
             border-radius: 50%; 
             display: flex; 
@@ -383,7 +424,7 @@
         }
         .step-card h4 { 
             margin-bottom: 12px; 
-            color: var(--dark); 
+            color: var(--primary-dark); 
             font-size: 19px; 
             font-weight: 600;
         }
@@ -397,7 +438,7 @@
             font-size: 15px; 
         }
         .comparison-table th { 
-            background: linear-gradient(135deg, var(--dark) 0%, #000000 100%); 
+            background: linear-gradient(135deg, var(--primary-dark) 0%, #000000 100%); 
             color: white; 
             padding: 14px; 
             text-align: center; 
@@ -408,7 +449,7 @@
             text-align: center; 
         }
         .comparison-table tr:nth-child(even) { 
-            background: #f8f9fa; 
+            background: var(--light-bg); 
         }
         .traditional { 
             background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%); 
@@ -421,15 +462,15 @@
         
         /* CTA區塊 */
         .cta-section { 
-            background: linear-gradient(135deg, var(--dark) 0%, #1d3540 100%); 
+            background: linear-gradient(135deg, var(--primary-dark) 0%, #1d3540 100%); 
             color: white; 
             padding: 45px 30px; 
-            border-radius: var(--border-radius); 
+            border-radius: var(--border-radius-medium); 
             text-align: center; 
             margin-top: 25px; 
             position: relative; 
             overflow: hidden; 
-            border-top: 5px solid var(--accent);
+            border-top: 5px solid var(--accent-gold);
         }
         .cta-section::before { 
             content: ''; 
@@ -438,33 +479,33 @@
             left: -50%; 
             width: 200%; 
             height: 200%; 
-            background: radial-gradient(circle, rgba(42, 157, 143, 0.15) 0%, rgba(255,255,255,0) 70%); 
+            background: radial-gradient(circle, rgba(42, 122, 42, 0.15) 0%, rgba(255,255,255,0) 70%); 
             transform: rotate(30deg); 
             z-index: 1;
         }
         .cta-section h2 { 
             color: white; 
-            border-bottom: 3px solid var(--accent); 
+            border-bottom: 3px solid var(--accent-gold); 
             justify-content: center; 
             font-size: 30px; 
             position: relative;
             z-index: 2;
         }
         .cta-section h2::after { 
-            background: var(--secondary); 
+            background: var(--secondary-green); 
             width: 80px; 
         }
         .big-number { 
             font-size: 48px; 
             font-weight: bold; 
             margin: 15px 0; 
-            color: var(--secondary); 
+            color: var(--secondary-green); 
             text-shadow: 0 2px 8px rgba(0,0,0,0.3);
             position: relative;
             z-index: 2;
         }
         .highlight-text { 
-            background: linear-gradient(135deg, var(--secondary) 0%, #1d3540 100%); 
+            background: linear-gradient(135deg, var(--secondary-green) 0%, #1d3540 100%); 
             -webkit-background-clip: text; 
             -webkit-text-fill-color: transparent; 
             font-weight: bold; 
@@ -485,48 +526,48 @@
         }
         .btn { 
             padding: 14px 35px; 
-            border-radius: 30px; 
+            border-radius: var(--border-radius-pill); 
             font-size: 18px; 
             font-weight: bold; 
             text-decoration: none; 
             display: inline-block; 
-            transition: all 0.3s ease; 
+            transition: var(--transition); 
             border: none; 
             cursor: pointer; 
             min-width: 180px;
             letter-spacing: 1px;
         }
         .btn-primary { 
-            background: linear-gradient(135deg, var(--secondary) 0%, #0d3b36 100%); 
+            background: linear-gradient(135deg, var(--secondary-green) 0%, #0d3b36 100%); 
             color: white; 
-            box-shadow: 0 4px 10px rgba(42, 157, 143, 0.3); 
+            box-shadow: 0 4px 10px rgba(42, 122, 42, 0.3); 
         }
         .btn-primary:hover { 
             transform: translateY(-3px); 
-            box-shadow: 0 6px 15px rgba(42, 157, 143, 0.45); 
+            box-shadow: 0 6px 15px rgba(42, 122, 42, 0.45); 
         }
         .btn-secondary { 
             background: white; 
-            color: var(--dark); 
-            border: 2px solid var(--secondary); 
+            color: var(--primary-dark); 
+            border: 2px solid var(--secondary-green); 
         }
         .btn-secondary:hover { 
-            background: var(--light); 
+            background: var(--light-bg); 
             transform: translateY(-3px); 
             box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
         }
         
-        /* 頁腳樣式 (公司資訊更新) */
+        /* 頁腳 */
         footer { 
-            background: var(--dark); 
-            color: rgba(255, 255, 255, 0.85); 
+            background: linear-gradient(135deg, var(--footer-gradient-start), var(--footer-gradient-end)); 
+            color: var(--footer-text); 
             padding: 30px; 
-            border-radius: var(--border-radius); 
+            border-radius: var(--border-radius-medium); 
             margin-top: 25px; 
             text-align: center; 
             font-size: 15px; 
             line-height: 1.8; 
-            border-top: 4px solid var(--secondary);
+            border-top: 4px solid var(--secondary-green);
         }
         .footer-content { 
             max-width: 800px; 
@@ -537,20 +578,20 @@
             font-size: 16px;
         }
         .contact-info a {
-            color: var(--accent);
+            color: var(--accent-gold);
             text-decoration: none;
         }
         .contact-info a:hover {
             text-decoration: underline;
         }
         
-        /* 圖片樣式優化 */
+        /* 圖片樣式 */
         .section-img {
             width: 100%;
             max-width: 1000px;
             margin: 25px auto;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
+            border-radius: var(--border-radius-medium);
+            box-shadow: var(--shadow-card);
             transition: transform 0.3s ease-in-out;
             display: block;
             border: 3px solid white;
@@ -562,13 +603,13 @@
         .img-caption {
             text-align: center;
             font-size: 14px;
-            color: var(--gray);
+            color: var(--secondary-dark);
             margin-top: 8px;
             margin-bottom: 20px;
             font-weight: 500;
             padding: 8px;
-            background: #f8f9fa;
-            border-radius: 8px;
+            background: var(--light-bg);
+            border-radius: var(--border-radius-small);
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
@@ -661,7 +702,7 @@
                 </div>
                 <div class="spec-card">
                     <span class="label">適用對象</span>
-                    <span class="value" style="color: var(--secondary); font-size: 20px;">紅羽/黑羽土雞</span>
+                    <span class="value" style="color: var(--secondary-green); font-size: 20px;">紅羽/黑羽土雞</span>
                     <span class="unit">全程飼養</span>
                 </div>
             </div>
@@ -672,7 +713,7 @@
                 <p class="img-caption">圖1：倍力素產品添加比例示意圖｜每噸飼料添加1公斤倍力素</p>
             </div>
             
-            <div style="background: #e8f5e9; padding: 18px; border-radius: 10px; margin-top: 20px; border-left: 4px solid var(--secondary);">
+            <div style="background: #e8f5e9; padding: 18px; border-radius: 10px; margin-top: 20px; border-left: 4px solid var(--secondary-green);">
                 <p><strong>使用方法：</strong>每噸全價飼料均勻添加倍力素1公斤，與預混料充分混合後使用。適用於紅羽/黑羽土雞全程飼養階段，無需調整飼養管理流程。</p>
             </div>
         </section>
@@ -722,7 +763,7 @@
         <section>
             <h2>經濟效益分析｜每隻土雞淨利提升</h2>
             
-            <div style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); padding: 20px; border-radius: 10px; margin-bottom: 25px; border-left: 4px solid var(--primary);">
+            <div style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); padding: 20px; border-radius: 10px; margin-bottom: 25px; border-left: 4px solid var(--primary-green);">
                 <p><strong>計算基準：</strong>土雞飼養週期16週(112天)｜出欄體重提升5-8%｜料肉比優化3-5%｜成活率提升2-3%</p>
             </div>
             
@@ -775,7 +816,7 @@
                 <p class="img-caption">圖3：倍力素土雞投資報酬率分析｜ROI達310%</p>
             </div>
             
-            <div style="background: #fff8e1; padding: 18px; border-radius: 10px; margin-top: 20px; border-left: 4px solid var(--accent);">
+            <div style="background: #fff8e1; padding: 18px; border-radius: 10px; margin-top: 20px; border-left: 4px solid var(--accent-gold);">
                 <p><strong>萬隻土雞場年度效益：</strong>每批次淨利增加極顯著，年出欄3批次效益倍增。</p>
             </div>
         </section>
@@ -844,7 +885,7 @@
                 </div>
             </div>
             
-            <div style="background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); padding: 18px; border-radius: 10px; margin-top: 20px; border-left: 4px solid var(--secondary);">
+            <div style="background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); padding: 18px; border-radius: 10px; margin-top: 20px; border-left: 4px solid var(--secondary-green);">
                 <p><strong>技術支援：</strong>吉升飼料提供全程技術指導，包括添加比例校準、效果追蹤、數據分析，確保效益最大化。</p>
             </div>
         </section>
