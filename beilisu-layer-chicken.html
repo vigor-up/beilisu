@@ -1,73 +1,14 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <style>
-    /* 防止文字選取 */
-    body {
-        -webkit-user-select: none;  /* Safari */
-        -moz-user-select: none;     /* Firefox */
-        -ms-user-select: none;      /* IE/Edge */
-        user-select: none;           /* 標準語法 */
-    }
-
-    /* 針對圖片：禁止拖曳、禁止長按菜單，但保留點擊事件（由父層處理） */
-    img {
-        -webkit-touch-callout: none; /* iOS 長按選單 */
-        -webkit-user-drag: none;     /* Chrome 拖曳 */
-        user-drag: none;
-        pointer-events: none;         /* 讓圖片本身無法被點擊，但父容器可接收點擊 */
-    }
-
-    /* 圖片的容器需設定 cursor: pointer 提示可點擊 */
-    .img-container {
-        cursor: pointer;
-    }
-</style>
-
-<!-- 簡易 Lightbox 結構 -->
-<div id="lightbox" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:9999; justify-content:center; align-items:center; flex-direction:column;" onclick="this.style.display='none'">
-    <img id="lightbox-img" src="" style="max-width:90%; max-height:80%; object-fit:contain; border-radius:8px;">
-    <div id="lightbox-caption" style="color:white; margin-top:16px; font-size:1rem;"></div>
-</div>
-
-<script>
-    // 1. 禁止右鍵選單 (含手機長按)
-    document.addEventListener('contextmenu', e => e.preventDefault());
-
-    // 2. 禁止複製快捷鍵 (Ctrl+C, Ctrl+X)
-    document.addEventListener('copy', e => e.preventDefault());
-    document.addEventListener('cut', e => e.preventDefault());
-
-    // 3. 禁止選取事件 (滑鼠拖曳選取)
-    document.addEventListener('selectstart', e => e.preventDefault());
-
-    // 4. 輕量 Lightbox 功能：所有 .img-container 內的圖片點擊放大
-    function openLightbox(element) {
-        const img = element.querySelector('img');
-        if (!img) return;
-        const caption = element.querySelector('.img-title')?.innerText || '';
-        const lb = document.getElementById('lightbox');
-        const lbImg = document.getElementById('lightbox-img');
-        const lbCaption = document.getElementById('lightbox-caption');
-        lbImg.src = img.src;
-        lbCaption.innerText = caption;
-        lb.style.display = 'flex';
-    }
-
-    // 為所有 .img-container 綁定點擊事件
-    document.querySelectorAll('.img-container').forEach(container => {
-        container.addEventListener('click', function() {
-            openLightbox(this);
-        });
-    });
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
-    <title>倍力素蛋雞性能提升方案 TDS - 吉升飼料有限公司</title>
+    <title>倍力素蛋雞性能提升方案 TDS｜吉升飼料有限公司</title>
+    <!-- Font Awesome 圖示庫 (用於導航列) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* ----- 主題變數 (源自 beilisu_json.json) ----- */
+        /* ===== 淺色農業風格主題變數 (完全來自 beilisu_json.json) ===== */
         :root {
-            /* 顏色 */
             --primary-green: #2a7a2a;
             --secondary-green: #1b5e1b;
             --accent-gold: #d4a017;
@@ -85,11 +26,6 @@
             --stat-item-bg: rgba(255, 255, 255, 0.15);
             --stat-border: rgba(255, 255, 255, 0.2);
             --stat-hover-bg: rgba(255, 255, 255, 0.25);
-            --product-category-bg: var(--primary-green);
-            --product-category-text: #ffffff;
-            --product-icon-gradient-start: var(--primary-green);
-            --product-icon-gradient-end: var(--secondary-green);
-            --product-icon-text: #ffffff;
             --btn-view-gradient-start: var(--primary-green);
             --btn-view-gradient-end: var(--secondary-green);
             --btn-view-text: #ffffff;
@@ -100,11 +36,9 @@
             --footer-link-hover-color: var(--accent-gold);
             --copyright-text: rgba(255, 255, 255, 0.6);
 
-            /* 字體 */
-            --font-heading: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
-            --font-body: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+            --font-family-heading: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+            --font-family-body: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
 
-            /* 字級 (clamp) 保持流暢 */
             --font-size-base: 16px;
             --font-size-h1: clamp(2rem, 6vw, 3.5rem);
             --font-size-company-name: clamp(1.25rem, 3.5vw, 1.75rem);
@@ -112,16 +46,12 @@
             --font-size-stat-value: clamp(1.8rem, 4.5vw, 2.5rem);
             --font-size-stat-label: clamp(0.85rem, 2.2vw, 0.95rem);
             --font-size-section-title: clamp(1.8rem, 4.5vw, 2.8rem);
-            --font-size-section-subtitle: clamp(1.1rem, 2.5vw, 1.25rem);
             --font-size-product-title: clamp(1.2rem, 3vw, 1.5rem);
-            --font-size-product-subtitle: clamp(0.9rem, 2.2vw, 1rem);
             --font-size-product-benefit: clamp(0.95rem, 2.3vw, 1.05rem);
             --font-size-btn-view: clamp(0.95rem, 2.3vw, 1.05rem);
-            --font-size-footer-heading: clamp(1.2rem, 3vw, 1.4rem);
             --font-size-footer-link: clamp(0.95rem, 2.3vw, 1.05rem);
             --font-size-copyright: clamp(0.85rem, 2.2vw, 0.95rem);
 
-            /* 字重 */
             --font-weight-light: 300;
             --font-weight-normal: 400;
             --font-weight-medium: 500;
@@ -129,22 +59,17 @@
             --font-weight-bold: 700;
             --font-weight-extrabold: 800;
 
-            /* 圓角 */
             --border-radius-small: 8px;
             --border-radius-medium: 16px;
             --border-radius-large: 20px;
-            --border-radius-xlarge: 28px;
             --border-radius-pill: 30px;
             --border-radius-circle: 50%;
 
-            /* 陰影 */
-            --shadow-card: 0 8px 30px rgba(0, 40, 0, 0.08);
-            --shadow-card-hover: 0 12px 40px rgba(42, 122, 42, 0.15);
-            --shadow-header: 0 4px 20px rgba(0, 30, 0, 0.1);
-            --shadow-btn-view: 0 6px 20px rgba(42, 122, 42, 0.2);
-            --shadow-footer: none;
+            --box-shadow-card: 0 8px 30px rgba(0, 40, 0, 0.08);
+            --box-shadow-card-hover: 0 12px 40px rgba(42, 122, 42, 0.15);
+            --box-shadow-header: 0 4px 20px rgba(0, 30, 0, 0.1);
+            --box-shadow-btn-view: 0 6px 20px rgba(42, 122, 42, 0.2);
 
-            /* 間距 */
             --spacing-xs: 8px;
             --spacing-sm: 12px;
             --spacing-md: 16px;
@@ -154,28 +79,26 @@
             --spacing-3xl: 32px;
             --spacing-4xl: 40px;
             --spacing-5xl: 48px;
-            --spacing-6xl: 60px;
             --section-padding-y: clamp(40px, 8vw, 80px);
             --section-padding-x: clamp(16px, 4vw, 32px);
             --header-padding-y: clamp(60px, 15vw, 120px);
             --footer-padding-y: clamp(60px, 12vw, 100px) 0 clamp(40px, 8vw, 60px);
 
-            /* 過渡 */
-            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            --transition: all 0.3s ease;
+            --safe-top: env(safe-area-inset-top);
+            --safe-bottom: env(safe-area-inset-bottom);
+        }
 
-            /* 安全區域 */
-            --safe-area-inset-top: env(safe-area-inset-top);
-            --safe-area-inset-bottom: env(safe-area-inset-bottom);
-            --safe-area-inset-left: env(safe-area-inset-left);
-            --safe-area-inset-right: env(safe-area-inset-right);
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            -webkit-tap-highlight-color: rgba(0,0,0,0.1);
-            font-family: var(--font-body);
+            -webkit-tap-highlight-color: transparent;
         }
 
         html {
@@ -184,18 +107,25 @@
         }
 
         body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
-            color: #333;
-            line-height: 1.6;
-            margin: 0 auto;
-            width: 100%;
-            overflow-x: hidden;
+            font-family: var(--font-family-body);
+            line-height: 1.65;
+            color: var(--primary-dark);
+            background: var(--light-bg);
+            padding: 16px;
             min-height: 100vh;
+            padding-top: calc(var(--safe-top) + 16px);
+            padding-bottom: calc(var(--safe-bottom) + 16px);
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
         }
 
-        /* ----- 導航列 (與主題無關，保持原樣) ----- */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* ===== 導航列 (新增，符合主題色) ===== */
         .navbar {
             position: sticky;
             top: 0;
@@ -203,11 +133,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: white;
+            background: var(--card-bg);
             padding: 10px 20px;
-            border-radius: 50px;
-            margin: 10px 15px;
-            box-shadow: var(--shadow-card);
+            border-radius: var(--border-radius-pill);
+            margin: 0 0 20px 0;
+            box-shadow: var(--box-shadow-card);
+            border: 1px solid var(--border-light);
+            backdrop-filter: blur(8px);
         }
 
         .nav-left a, .nav-right button {
@@ -222,11 +154,9 @@
             transition: var(--transition);
             border: none;
             cursor: pointer;
-        }
-
-        .nav-left a {
             background: var(--light-bg);
             color: var(--primary-dark);
+            border: 1px solid var(--border-light);
         }
 
         .nav-left a:hover {
@@ -244,542 +174,542 @@
             color: var(--primary-dark);
         }
 
-        /* ----- 主容器 ----- */
-        .container {
-            width: 100%;
-            margin: 0 auto;
-            background: white;
-            padding: 15px;
-            position: relative;
-            overflow-x: hidden;
-            box-shadow: 0 0 30px rgba(0,0,0,0.08);
-        }
-
-        /* ----- 表頭 (使用主題變數) ----- */
+        /* ===== 頁首 header ===== */
         header {
-            text-align: center;
-            padding: 15px 0 20px;
-            margin-bottom: 20px;
-            border-bottom: 2px solid var(--primary-green);
-            border-radius: var(--border-radius-medium);
-            margin: 15px 15px 25px;
-            padding: 25px 15px;
-            box-shadow: var(--shadow-card);
-            position: relative;
             background: linear-gradient(135deg, var(--header-gradient-start), var(--header-gradient-end));
             color: white;
+            padding: var(--header-padding-y) var(--section-padding-x);
+            border-radius: 0 0 var(--border-radius-large) var(--border-radius-large);
+            margin-bottom: var(--spacing-4xl);
+            box-shadow: var(--box-shadow-header);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            border-top: 5px solid var(--accent-gold);
         }
 
-        header .company-info h1 {
-            color: white;
-            -webkit-text-fill-color: white;
-            background: none;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(circle at 10% 20%, rgba(255,255,255,0.1) 0%, transparent 20%),
+                              radial-gradient(circle at 90% 80%, rgba(212,160,23,0.1) 0%, transparent 20%);
+            pointer-events: none;
         }
 
-        header .company-info > p,
-        header .tagline,
-        header .highlight-badge {
-            color: white;
-            background: rgba(0,0,0,0.2);
-            backdrop-filter: blur(4px);
+        .company-info {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
         .company-info h1 {
             font-size: var(--font-size-h1);
-            margin-bottom: 10px;
-            line-height: 1.3;
+            font-weight: var(--font-weight-extrabold);
+            margin-bottom: clamp(16px, 3vw, 24px);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            background: linear-gradient(135deg, #ffffff, var(--accent-light));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .company-info > p {
-            font-size: 1rem;
-            margin-bottom: 12px;
-            font-weight: var(--font-weight-medium);
+        .product-target {
+            font-size: var(--font-size-company-name);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: clamp(12px, 2.5vw, 20px);
+            color: rgba(255,255,255,0.9);
+            background: rgba(255,255,255,0.1);
+            padding: var(--spacing-sm) var(--spacing-xl);
+            border-radius: var(--border-radius-pill);
+            display: inline-block;
+            backdrop-filter: blur(4px);
+            border: 1px solid var(--stat-border);
         }
 
         .tagline {
-            font-style: italic;
-            margin-bottom: 15px;
-            font-size: 0.95rem;
-            padding: 8px 12px;
-            border-radius: 8px;
+            font-size: var(--font-size-tagline);
+            opacity: 0.9;
+            margin: 0 auto var(--spacing-4xl);
+            padding: var(--spacing-sm) var(--spacing-xl);
+            background: rgba(255,255,255,0.08);
+            border-radius: var(--border-radius-pill);
             display: inline-block;
         }
 
         .highlight-badge {
-            background: linear-gradient(135deg, var(--accent-gold), var(--primary-green));
+            background: linear-gradient(135deg, var(--accent-gold), #b88a1a);
             color: white;
-            padding: 12px 16px;
+            padding: var(--spacing-md) var(--spacing-3xl);
             border-radius: var(--border-radius-pill);
             font-weight: var(--font-weight-bold);
-            font-size: 1rem;
-            margin-bottom: 15px;
             display: inline-block;
-            width: 100%;
-            max-width: 400px;
-            box-shadow: 0 4px 15px rgba(241,196,15,0.3);
+            font-size: var(--font-size-base);
+            box-shadow: var(--box-shadow-btn-view);
+            border: 1px solid rgba(255,255,255,0.25);
+            margin-top: var(--spacing-sm);
         }
 
         .feature-badges {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 8px;
-            margin-top: 15px;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-lg);
         }
 
         .feature-badge {
-            background: rgba(255,255,255,0.9);
-            padding: 12px 10px;
-            border-radius: var(--border-radius-medium);
-            border: 2px solid var(--primary-green);
-            color: var(--primary-dark);
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(4px);
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--border-radius-pill);
+            color: white;
             font-weight: var(--font-weight-semibold);
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             text-align: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border: 1px solid rgba(255,255,255,0.2);
         }
 
-        /* ----- 區塊標題 (使用主題變數) ----- */
+        /* ===== 區塊標題 ===== */
         h2 {
-            font-size: var(--font-size-section-title);
             color: var(--primary-dark);
-            margin: 30px 0 20px;
-            padding: 12px 15px;
-            border-radius: var(--border-radius-small);
-            background: linear-gradient(135deg, #f8f9fa, #fff);
-            border-left: 4px solid var(--primary-green);
-            line-height: 1.3;
-            box-shadow: var(--shadow-card);
-        }
-
-        /* ----- 卡片通用設計 (整張可點擊) ----- */
-        .egg-card, .quality-card, .benefit-card, .spec-card {
-            cursor: pointer;
-            transition: all 0.3s;
-            will-change: transform;
-            -webkit-tap-highlight-color: transparent;
-        }
-        .egg-card:active, .quality-card:active, .benefit-card:active {
-            transform: scale(0.98);
-        }
-
-        /* ----- 產蛋率專區 (使用主題變數) ----- */
-        .egg-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        .egg-card {
-            background: linear-gradient(135deg, var(--card-bg), #fef6ec);
-            padding: 20px;
-            border-radius: var(--border-radius-medium);
-            border-left: 4px solid var(--primary-green);
-            box-shadow: var(--shadow-card);
-            border: 1px solid rgba(230,126,34,0.1);
-        }
-        .egg-card h4 {
-            font-size: 1.1rem;
-            color: var(--secondary-green);
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .egg-metric {
-            font-size: 2rem;
+            font-size: var(--font-size-section-title);
+            margin-bottom: var(--spacing-3xl);
+            padding-bottom: var(--spacing-md);
+            border-bottom: 2px solid var(--border-dark);
+            position: relative;
             font-weight: var(--font-weight-bold);
-            color: var(--primary-green);
-            margin: 8px 0;
-            text-shadow: 0 2px 4px rgba(42,122,42,0.1);
         }
-        .egg-card p { color: #666; font-size: 0.9rem; margin-bottom: 6px; line-height: 1.5; }
 
-        /* ----- 產品規格 (使用主題變數) ----- */
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-green), var(--accent-gold));
+            border-radius: 2px;
+        }
+
+        section {
+            background: var(--card-bg);
+            padding: var(--section-padding-y) var(--section-padding-x);
+            margin-bottom: var(--spacing-3xl);
+            border-radius: var(--border-radius-large);
+            box-shadow: var(--box-shadow-card);
+            transition: var(--transition);
+            border-left: 5px solid var(--primary-green);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease-out forwards;
+            animation-play-state: paused;
+        }
+
+        section.visible { animation-play-state: running; }
+        section:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--box-shadow-card-hover);
+            border-left-color: var(--accent-gold);
+        }
+
+        /* ===== 規格卡片 ===== */
         .specs-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin: 15px 0;
+            gap: var(--spacing-lg);
+            margin: var(--spacing-3xl) 0;
         }
+
         .spec-card {
-            background: linear-gradient(135deg, var(--card-bg), #f8f9fa);
-            padding: 15px 10px;
+            background: var(--card-bg);
+            padding: var(--spacing-xl) var(--spacing-md);
             border-radius: var(--border-radius-medium);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             text-align: center;
-            border: 1px solid #eee;
-            box-shadow: var(--shadow-card);
+            border: 1px solid var(--border-light);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--box-shadow-card);
         }
-        .spec-card .label { color: #777; font-size: 0.8rem; margin-bottom: 8px; font-weight: var(--font-weight-medium); }
-        .spec-card .value { font-size: 1.5rem; font-weight: var(--font-weight-bold); color: var(--primary-green); margin-bottom: 4px; }
-        .spec-card .unit { color: #666; font-size: 0.8rem; font-weight: var(--font-weight-medium); }
 
-        /* ----- 蛋品品質專區 (使用主題變數) ----- */
-        .quality-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-            margin-bottom: 20px;
+        .spec-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-gold), transparent);
         }
-        .quality-card {
-            background: linear-gradient(135deg, var(--card-bg), #fef0ec);
-            padding: 20px;
-            border-radius: var(--border-radius-medium);
-            border-left: 4px solid var(--danger, #e74c3c);
-            box-shadow: var(--shadow-card);
-            border: 1px solid rgba(231,76,60,0.1);
+
+        .spec-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow-card-hover);
         }
-        .quality-card h4 {
-            font-size: 1.1rem;
-            color: #e74c3c;
-            margin-bottom: 8px;
-            display: flex;
-            gap: 8px;
+
+        .spec-card .label {
+            font-size: var(--font-size-stat-label);
+            color: var(--secondary-dark);
+            margin-bottom: var(--spacing-xs);
+            display: block;
+            font-weight: var(--font-weight-semibold);
         }
-        .quality-card div[style*="font-size: 2rem"] {
-            font-size: 2rem;
+
+        .spec-card .value {
+            font-size: var(--font-size-stat-value);
             font-weight: var(--font-weight-bold);
-            color: #e74c3c;
-            margin: 8px 0;
+            color: var(--primary-green);
+            display: block;
+            line-height: 1.1;
+            margin: var(--spacing-xs) 0;
         }
 
-        /* ----- 健康度提升專區 (使用主題變數) ----- */
+        .spec-card .unit {
+            font-size: var(--font-size-stat-label);
+            color: var(--secondary-dark);
+            display: block;
+            font-weight: var(--font-weight-medium);
+        }
+
+        /* ===== 效益卡片 (共用蛋雞所有卡片) ===== */
         .benefits-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 15px;
-            margin-bottom: 20px;
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-3xl);
         }
+
         .benefit-card {
-            background: linear-gradient(135deg, var(--card-bg), #ecf9f0);
-            padding: 20px;
+            background: var(--card-bg);
             border-radius: var(--border-radius-medium);
-            border-left: 4px solid var(--success, #27ae60);
-            box-shadow: var(--shadow-card);
-            border: 1px solid rgba(39,174,96,0.1);
+            padding: var(--spacing-2xl) var(--spacing-xl);
+            box-shadow: var(--box-shadow-card);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+            border-left: 6px solid var(--accent-gold);
+            cursor: pointer;
         }
+
+        .benefit-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--box-shadow-card-hover);
+            border-left-color: var(--primary-green);
+        }
+
         .benefit-card h4 {
-            font-size: 1.1rem;
-            color: var(--success, #27ae60);
-            margin-bottom: 8px;
+            font-size: var(--font-size-product-title);
+            margin-bottom: var(--spacing-md);
+            color: var(--primary-dark);
             display: flex;
-            gap: 8px;
+            align-items: center;
+            gap: var(--spacing-sm);
+            font-weight: var(--font-weight-bold);
         }
+
         .benefit-metric {
-            font-size: 1.8rem;
-            font-weight: var(--font-weight-bold);
-            color: var(--success, #27ae60);
-            margin: 8px 0;
+            font-size: var(--font-size-stat-value);
+            font-weight: var(--font-weight-extrabold);
+            color: var(--primary-green);
+            margin: var(--spacing-md) 0;
             display: block;
-            text-shadow: 0 2px 4px rgba(39,174,96,0.1);
+            background: linear-gradient(135deg, var(--primary-green), var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        /* ----- 經濟效益表格 (使用主題變數) ----- */
-        .economic-card {
-            background: linear-gradient(135deg, var(--card-bg), #fef9ec);
-            padding: 20px;
-            border-radius: var(--border-radius-medium);
-            box-shadow: var(--shadow-card);
-            margin-bottom: 15px;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            border: 1px solid rgba(241,196,15,0.2);
+        .benefit-note {
+            font-size: var(--font-size-product-benefit);
+            color: var(--secondary-dark);
+            padding-top: var(--spacing-sm);
+            border-top: 1px dashed var(--border-dark);
+            margin-top: var(--spacing-md);
+            font-style: italic;
         }
-        .profit-table-container {
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            border: 1px solid #eee;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-        .profit-table {
-            width: 100%;
-            min-width: 500px;
-            border-collapse: collapse;
-        }
-        .profit-table th, .profit-table td {
-            padding: 14px 12px;
-            text-align: left;
-            border-bottom: 1px solid #eee;
-            font-size: 0.9rem;
-        }
-        .profit-table th {
-            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
-            color: white;
-            position: sticky;
-            left: 0;
-            font-weight: var(--font-weight-semibold);
-        }
-        .profit-table tr:nth-child(even) { background: #f9f9f9; }
-        .profit-table tr:hover { background: #fff8e1; }
-        .roi-badge {
-            text-align: center;
-            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
-            color: white;
-            padding: 25px 20px;
-            border-radius: var(--border-radius-medium);
-            font-weight: var(--font-weight-bold);
-            margin-top: 20px;
-            box-shadow: 0 4px 20px rgba(42,122,42,0.3);
-        }
-        .roi-value { font-size: 2.8rem; margin: 15px 0; text-shadow: 0 2px 8px rgba(0,0,0,0.2); }
 
-        /* ----- 高峰機制區塊 ----- */
+        /* 高峰機制區塊 (獨立樣式，但融入主題) */
         .peak-mechanism {
-            background: linear-gradient(135deg, #fdf2e9, #fff);
-            padding: 25px 20px;
+            background: var(--light-bg);
+            padding: var(--spacing-2xl);
             border-radius: var(--border-radius-medium);
-            margin: 25px 0;
+            margin: var(--spacing-3xl) 0;
             border-left: 4px solid var(--secondary-green);
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s;
-            box-shadow: var(--shadow-card);
-            border: 1px solid rgba(27,94,27,0.1);
+            box-shadow: var(--box-shadow-card);
         }
-        .peak-mechanism.visible { opacity: 1; transform: translateY(0); }
+
         .peak-mechanism h3 {
             color: var(--secondary-green);
             font-size: 1.3rem;
-            margin-bottom: 15px;
+            margin-bottom: var(--spacing-md);
             display: flex;
             gap: 10px;
         }
-        .mechanism-list { list-style: none; margin-left: 0; }
-        .mechanism-list li {
-            margin-bottom: 12px;
-            position: relative;
-            padding-left: 32px;
-            font-size: 0.95rem;
-            line-height: 1.6;
+
+        .mechanism-list {
+            list-style: none;
         }
+
+        .mechanism-list li {
+            margin-bottom: var(--spacing-sm);
+            padding-left: 32px;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
         .mechanism-list li::before {
             content: "✅";
             position: absolute;
             left: 0;
             top: 2px;
-            font-size: 1.1rem;
         }
 
-        /* ----- 圖片容器 ----- */
-        .egg-image-container {
+        /* ===== 圖片容器 ===== */
+        .section-img {
             width: 100%;
-            margin: 20px 0;
+            max-width: 100%;
+            margin: var(--spacing-xl) auto;
+            border-radius: var(--border-radius-medium);
+            box-shadow: var(--box-shadow-card);
+            display: block;
+            border: 3px solid white;
+            height: auto;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .section-img.loaded { opacity: 1; transform: translateY(0); }
+
+        .img-caption {
+            text-align: center;
+            font-size: var(--font-size-stat-label);
+            color: var(--secondary-dark);
+            margin-top: var(--spacing-xs);
+            margin-bottom: var(--spacing-xl);
+            font-weight: var(--font-weight-medium);
+            padding: var(--spacing-sm) var(--spacing-md);
+            background: var(--light-bg);
+            border-radius: var(--border-radius-small);
+            border: 1px solid var(--border-light);
+        }
+
+        /* ===== 表格樣式 ===== */
+        .scroll-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: var(--spacing-xl) 0;
+            border-radius: var(--border-radius-small);
+        }
+
+        .profit-table {
+            width: 100%;
+            min-width: 500px;
+            border-collapse: collapse;
             border-radius: var(--border-radius-medium);
             overflow: hidden;
-            box-shadow: var(--shadow-card);
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-            border: 1px solid #eee;
-            background: #f5f5f5;
-            min-height: 200px;
-            display: flex;
-            flex-direction: column;
-        }
-        .egg-image-container.visible { opacity: 1; transform: translateY(0); }
-        .egg-image-container img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            display: block;
-            background: #ddd;
-        }
-        .image-caption {
-            text-align: center;
-            padding: 12px 15px;
-            color: #666;
-            font-style: italic;
-            background: #f9f9f9;
-            font-size: 0.85rem;
-            border-top: 1px solid #eee;
+            box-shadow: var(--box-shadow-card);
         }
 
-        /* ----- 動畫淡入 ----- */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-            will-change: transform, opacity;
-        }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-        /* ----- CTA 區塊 (使用主題變數) ----- */
-        .cta-section {
-            background: linear-gradient(135deg, var(--primary-dark), #2a4365);
+        .profit-table th {
+            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
             color: white;
-            padding: 35px 20px;
-            border-radius: var(--border-radius-medium);
-            text-align: center;
-            margin: 35px 0;
-            padding-bottom: max(35px, var(--safe-area-inset-bottom, 35px));
-            box-shadow: 0 10px 30px rgba(44,62,80,0.2);
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        .big-number {
-            font-size: 3rem;
+            padding: var(--spacing-md) var(--spacing-lg);
+            text-align: left;
             font-weight: var(--font-weight-bold);
-            color: var(--accent-gold);
-            margin: 8px 0;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.3);
         }
+
+        .profit-table td {
+            padding: var(--spacing-md);
+            border-bottom: 1px solid var(--border-light);
+            background: var(--card-bg);
+        }
+
+        .profit-table tr:nth-child(even) td {
+            background: var(--light-bg);
+        }
+
+        .profit-table tr.total-row {
+            background: linear-gradient(135deg, var(--accent-gold), #b88a1a);
+            color: white;
+            font-weight: bold;
+        }
+
+        /* ===== ROI徽章 ===== */
+        .roi-badge {
+            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+            color: white;
+            padding: var(--spacing-3xl) var(--spacing-xl);
+            border-radius: var(--border-radius-large);
+            text-align: center;
+            margin: var(--spacing-3xl) 0;
+            box-shadow: var(--box-shadow-btn-view);
+        }
+
+        .roi-value {
+            font-size: 3.2rem;
+            font-weight: var(--font-weight-extrabold);
+            margin: var(--spacing-md) 0;
+            text-shadow: 0 3px 6px rgba(0,0,0,0.2);
+        }
+
+        /* ===== CTA區塊 ===== */
+        .cta-section {
+            background: linear-gradient(135deg, var(--footer-gradient-start), var(--footer-gradient-end));
+            color: white;
+            padding: var(--spacing-5xl) var(--spacing-xl);
+            border-radius: var(--border-radius-large);
+            text-align: center;
+            margin-top: var(--spacing-3xl);
+            border-top: 5px solid var(--accent-gold);
+        }
+
+        .cta-section h2 {
+            color: white;
+            border-bottom: 2px solid var(--accent-gold);
+            justify-content: center;
+        }
+
+        .cta-section h2::after {
+            background: linear-gradient(90deg, var(--accent-gold), var(--primary-green));
+            width: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .big-number {
+            font-size: 3.5rem;
+            font-weight: var(--font-weight-extrabold);
+            margin: var(--spacing-xl) 0;
+            color: var(--accent-gold);
+        }
+
         .cta-buttons {
-            margin-top: 25px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-3xl);
         }
+
         .btn {
-            padding: 16px 24px;
+            padding: var(--spacing-lg) var(--spacing-2xl);
             border-radius: var(--border-radius-pill);
-            text-decoration: none;
+            font-size: var(--font-size-btn-view);
             font-weight: var(--font-weight-bold);
-            font-size: 1rem;
-            transition: all 0.3s;
-            display: block;
-            text-align: center;
-            min-height: 56px;
-            display: flex;
+            text-decoration: none;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            will-change: transform;
-            gap: 10px;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            min-height: 56px;
             cursor: pointer;
-        }
-        .btn:active { transform: scale(0.98); }
-        .btn-primary {
-            background: linear-gradient(135deg, var(--accent-gold), #f39c12);
-            color: var(--primary-dark);
-            box-shadow: 0 4px 15px rgba(241,196,15,0.4);
-        }
-        .btn-secondary {
-            background: transparent;
-            border: 2px solid rgba(255,255,255,0.8);
-            color: white;
-            backdrop-filter: blur(10px);
+            box-shadow: var(--box-shadow-btn-view);
         }
 
-        /* ----- 頁腳 (公司資訊更新) ----- */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--btn-view-gradient-start), var(--btn-view-gradient-end));
+            color: var(--btn-view-text);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--btn-view-hover-gradient-start), var(--btn-view-hover-gradient-end));
+            transform: scale(1.02);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary-green);
+            border: 2px solid var(--primary-green);
+        }
+
+        .btn-secondary:hover {
+            background: var(--light-bg);
+            transform: scale(1.02);
+        }
+
+        /* ===== 頁腳 ===== */
         footer {
-            text-align: center;
-            padding: 30px 20px;
-            border-radius: var(--border-radius-medium);
-            margin-top: 35px;
             background: linear-gradient(135deg, var(--footer-gradient-start), var(--footer-gradient-end));
             color: var(--footer-text);
-            padding-bottom: max(30px, var(--safe-area-inset-bottom, 30px));
-            border-top: 1px solid rgba(255,255,255,0.1);
+            padding: var(--footer-padding-y);
+            margin-top: var(--spacing-5xl);
+            border-radius: var(--border-radius-large) var(--border-radius-large) 0 0;
+            text-align: center;
         }
-        footer p { margin-bottom: 12px; font-size: 0.9rem; line-height: 1.6; }
-        .contact-info a {
-            color: var(--accent-gold);
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-green), var(--accent-gold));
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .footer-content p {
+            color: var(--footer-text);
+            margin-bottom: var(--spacing-sm);
+            font-size: var(--font-size-footer-link);
+        }
+
+        .footer-content a {
+            color: var(--footer-link-color);
             text-decoration: none;
         }
-        .contact-info a:hover {
-            text-decoration: underline;
+
+        .footer-content a:hover {
+            color: var(--footer-link-hover-color);
         }
 
-        /* ----- 響應式 (參考 JSON 中的 mediaQueries) ----- */
-        @media (min-width: 480px) {
-            .product-footer {
-                flex-direction: row;
-                justify-content: center;
-            }
+        .copyright {
+            margin-top: var(--spacing-3xl);
+            padding-top: var(--spacing-xl);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: var(--font-size-copyright);
+            color: var(--copyright-text);
         }
 
-        @media (min-width: 640px) {
-            .stats-container {
-                grid-template-columns: repeat(4, 1fr);
-            }
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
-            }
+        /* ===== 響應式 ===== */
+        @media (min-width: 576px) {
+            .specs-grid { grid-template-columns: repeat(3, 1fr); }
+            .benefits-grid { grid-template-columns: repeat(2, 1fr); }
+            .cta-buttons { flex-direction: row; justify-content: center; }
+            .btn { width: auto; min-width: 240px; }
+            .feature-badges { grid-template-columns: repeat(4, 1fr); }
         }
 
         @media (min-width: 768px) {
-            html { font-size: 16px; }
-            .container { padding: 25px; max-width: 100%; border-radius: var(--border-radius-large); margin: 15px auto; }
-            header { padding-top: 0; margin: 20px; padding: 30px; }
-            .company-info h1 { font-size: 2rem; }
-            .highlight-badge { width: auto; padding: 15px 30px; font-size: 1.1rem; }
-            .feature-badges { grid-template-columns: repeat(4, 1fr); gap: 12px; }
-            .egg-grid, .quality-grid, .benefits-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
-            .specs-grid { grid-template-columns: repeat(3, 1fr); gap: 15px; }
-            .cta-buttons { flex-direction: row; justify-content: center; gap: 20px; }
-            .btn { width: auto; min-width: 220px; padding: 18px 30px; }
-            .profit-table { min-width: auto; }
-            h2 { font-size: 1.6rem; margin: 35px 0 25px; }
-            .egg-image-container img { height: 250px; }
+            .specs-grid { grid-template-columns: repeat(4, 1fr); }
+            .benefits-grid { grid-template-columns: repeat(4, 1fr); }
         }
 
-        @media (min-width: 1024px) {
-            .container { max-width: 1200px; padding: 35px; margin: 20px auto; border-radius: var(--border-radius-xlarge); }
-            .egg-grid, .quality-grid, .benefits-grid { grid-template-columns: repeat(4, 1fr); }
-            .specs-grid { grid-template-columns: repeat(6, 1fr); }
-            .company-info h1 { font-size: 2.2rem; }
-            .big-number { font-size: 4rem; }
-            .roi-value { font-size: 3.5rem; }
-            .egg-card:hover, .quality-card:hover, .benefit-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-card-hover); }
-            .btn:hover { transform: scale(1.05); }
-            .btn-secondary:hover { background: white; color: var(--primary-dark); }
-            .btn-primary:hover { background: linear-gradient(135deg, #f39c12, var(--accent-gold)); }
-            .egg-image-container img { height: 300px; }
-            header { margin: 25px; padding: 40px; }
-            .footer-content {
-                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            }
-        }
-
-        @media (max-width: 360px) {
-            html { font-size: 13px; }
-            .container { padding: 12px; border-radius: 15px; }
-            header { margin: 10px; padding: 20px 15px; }
-            .company-info h1 { font-size: 1.4rem; }
-            .highlight-badge { font-size: 0.9rem; padding: 10px 15px; }
-            .feature-badges { grid-template-columns: 1fr; }
-            .specs-grid { grid-template-columns: 1fr; }
-            .big-number { font-size: 2.5rem; }
-            .egg-metric { font-size: 1.8rem; }
-            h2 { padding: 10px 12px; font-size: 1.2rem; }
-        }
-
-        @media (max-height: 500px) and (orientation: landscape) {
-            header { padding-top: 20px; }
-            .egg-grid, .quality-grid, .benefits-grid { grid-template-columns: repeat(2, 1fr); }
-            .container { padding: 15px; }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
-            .fade-in, .egg-image-container, .peak-mechanism { opacity: 1; transform: none; transition: none; }
-        }
-
-        @media print {
-            .language-switcher, .btn-view { display: none !important; }
+        @media (min-width: 992px) {
+            .specs-grid { grid-template-columns: repeat(4, 1fr); } /* 蛋雞只有4個規格 */
         }
     </style>
 </head>
 <body>
-    <!-- 導航列 (返回首頁 + 返回頂部) -->
-    <div class="navbar">
-        <div class="nav-left">
-            <a href="index.html"><i class="fas fa-arrow-left"></i> 返回主頁</a>
-        </div>
-        <div class="nav-right">
-            <button id="scrollToTopBtn" onclick="window.scrollTo({top:0, behavior:'smooth'});"><i class="fas fa-arrow-up"></i> 頂部</button>
-        </div>
-    </div>
-
     <div class="container">
-        <!-- 封面抬頭 (公司資訊更新為吉升飼料) -->
+        <!-- 導航列 (返回主頁 + 返回頂部) -->
+        <div class="navbar">
+            <div class="nav-left">
+                <a href="index.html"><i class="fas fa-arrow-left"></i> 返回主頁</a>
+            </div>
+            <div class="nav-right">
+                <button id="scrollToTopBtn" onclick="window.scrollTo({top:0, behavior:'smooth'});"><i class="fas fa-arrow-up"></i> 頂部</button>
+            </div>
+        </div>
+
+        <!-- 封面抬頭 (蛋雞內容) -->
         <header>
             <div class="company-info">
                 <h1>倍力素蛋雞性能提升方案 TDS</h1>
-                <p>產蛋率提升・蛋黃品質優化・暗斑蛋減少・產卵發炎降低</p>
+                <div class="product-target">產蛋率提升・蛋黃品質優化・暗斑蛋減少・產卵發炎降低</div>
                 <div class="tagline">Precision Nutrition · Advanced Biotechnology · Sustainable Poultry Farming</div>
                 <div class="highlight-badge">🥚 產蛋率提升5-8%｜蛋黃品質提升3-4級｜暗斑蛋減少70-80%</div>
                 <div class="feature-badges">
@@ -791,36 +721,38 @@
             </div>
         </header>
 
-        <!-- 產蛋率提升專區 (更新成分說明) -->
-        <section class="egg-production-section">
+        <!-- 產蛋率提升專區 (卡片改為 benefit-card) -->
+        <section>
             <h2 style="border-left-color: var(--secondary-green);">🥚 產蛋率提升專區｜高產穩定持久</h2>
-            <p style="font-size: 1rem; margin-bottom: 15px; font-weight: 600; color: #666;">專為蛋雞設計的營養調控方案，顯著提升產蛋率，延長產蛋高峰，改善蛋品品質，創造更高經濟價值。</p>
-            <div class="egg-grid">
-                <div class="egg-card fade-in" onclick="alert('產蛋率提升詳細數據諮詢請洽吉升飼料業務')">
+            <p style="margin-bottom: var(--spacing-lg);">專為蛋雞設計的營養調控方案，顯著提升產蛋率，延長產蛋高峰，改善蛋品品質，創造更高經濟價值。</p>
+            <div class="benefits-grid">
+                <div class="benefit-card" onclick="alert('產蛋率提升詳細數據諮詢請洽吉升飼料業務')">
                     <h4>📈 產蛋率提升</h4>
-                    <div class="egg-metric">+5-8%</div>
+                    <span class="benefit-metric">+5-8%</span>
                     <p>營養精準調控延長產蛋高峰，提升整體產蛋效率</p>
                     <p><strong>實測數據：</strong>產蛋率從92%提升至97-98%高峰</p>
                 </div>
-                <div class="egg-card fade-in" onclick="alert('產蛋高峰期延長技術說明')">
+                <div class="benefit-card" onclick="alert('產蛋高峰期延長技術說明')">
                     <h4>⏱️ 產蛋高峰期延長</h4>
-                    <div class="egg-metric">+4-6週</div>
+                    <span class="benefit-metric">+4-6週</span>
                     <p>維持90%以上產蛋率時間延長，提升總產蛋數</p>
                     <p><strong>實測數據：</strong>產蛋高峰期從32週延長至36-38週</p>
                 </div>
-                <div class="egg-card fade-in" onclick="alert('飼料效率優化報告')">
+                <div class="benefit-card" onclick="alert('飼料效率優化報告')">
                     <h4>⚖️ 飼料效率優化</h4>
-                    <div class="egg-metric">FCR -8-12%</div>
+                    <span class="benefit-metric">FCR -8-12%</span>
                     <p>提升營養吸收效率，每公斤蛋飼料成本降低</p>
                     <p><strong>實測數據：</strong>料蛋比從2.2:1優化至2.0-2.1:1</p>
                 </div>
-                <div class="egg-card fade-in" onclick="alert('產蛋持續性改善方案')">
+                <div class="benefit-card" onclick="alert('產蛋持續性改善方案')">
                     <h4>📊 產蛋持續性改善</h4>
-                    <div class="egg-metric">淘汰率 -15%</div>
+                    <span class="benefit-metric">淘汰率 -15%</span>
                     <p>改善後期產蛋表現，降低過早淘汰比例</p>
                     <p><strong>實測數據：</strong>72週齡產蛋率從78%提升至82-84%</p>
                 </div>
             </div>
+
+            <!-- 高峰機制區塊 (保留原有類名，但套用主題) -->
             <div class="peak-mechanism">
                 <h3>📈 延長產蛋高峰期核心作用機制</h3>
                 <ul class="mechanism-list">
@@ -831,13 +763,15 @@
                     <li>調控生殖激素分泌節律，維持90%以上產蛋率的時間窗口延長4-6週</li>
                 </ul>
             </div>
-            <div class="egg-image-container">
-                <img src="assets/egg-production-chart.png" alt="產蛋率提升與高峰期延長示意圖" loading="lazy">
-                <p class="image-caption">圖1：倍力素方案產蛋率提升與高峰期延長對比 (92% → 97-98%，高峰期延長4-6週)</p>
+
+            <!-- 圖片改為 section-img 結構 -->
+            <div>
+                <img class="section-img" src="assets/egg-production-chart.png" alt="產蛋率提升與高峰期延長示意圖" loading="lazy">
+                <p class="img-caption">圖1：倍力素方案產蛋率提升與高峰期延長對比 (92% → 97-98%，高峰期延長4-6週)</p>
             </div>
         </section>
 
-        <!-- 產品規格 (移除金額數字) -->
+        <!-- 產品規格 (使用 spec-grid) -->
         <section>
             <h2>📋 產品規格與添加參數</h2>
             <div class="specs-grid">
@@ -848,7 +782,7 @@
                 </div>
                 <div class="spec-card" onclick="alert('適用階段')">
                     <span class="label">適用階段</span>
-                    <span class="value" style="color: var(--primary-green); font-size: 1.2rem;">產蛋全程</span>
+                    <span class="value" style="font-size: 1.2rem;">產蛋全程</span>
                     <span class="unit">18-72週齡</span>
                 </div>
                 <div class="spec-card" onclick="alert('蛋雞日採食量')">
@@ -862,170 +796,171 @@
                     <span class="unit">/箱</span>
                 </div>
             </div>
-            <div style="background: #fff8e1; padding: 18px; border-radius: 12px; margin-top: 18px; border-left: 4px solid var(--primary-green); box-shadow: 0 2px 8px rgba(0,0,0,0.05);" class="fade-in">
+            <div style="background: var(--light-bg); padding: var(--spacing-lg); border-radius: var(--border-radius-small); margin-top: var(--spacing-xl); border-left: 5px solid var(--primary-green);">
                 <p><strong>使用方法：</strong>每噸蛋雞全價飼料均勻添加倍力素蛋雞專用配方1公斤，從產蛋開始全程使用，無需調整現有飼養管理流程。</p>
             </div>
-            <div class="egg-image-container">
-                <img src="assets/feed-system.png" alt="現代化蛋雞場添加倍力素飼料示意圖" loading="lazy">
-                <p class="image-caption">圖2：現代化蛋雞場自動化飼料添加系統 (倍力素專用添加模組)</p>
+            <div>
+                <img class="section-img" src="assets/feed-system.png" alt="現代化蛋雞場添加倍力素飼料示意圖" loading="lazy">
+                <p class="img-caption">圖2：現代化蛋雞場自動化飼料添加系統 (倍力素專用添加模組)</p>
             </div>
         </section>
 
-        <!-- 蛋品品質提升專區 (更新成分名稱) -->
-        <section class="egg-quality-section">
+        <!-- 蛋品品質提升專區 (卡片改為 benefit-card) -->
+        <section>
             <h2 style="border-left-color: #c0392b;">⭐ 蛋品品質提升專區｜內外品質全面優化</h2>
-            <p style="font-size: 1rem; margin-bottom: 15px; font-weight: 600; color: #666;">全面改善蛋品內外品質，提升蛋黃顏色、蛋殼強度，大幅減少暗斑蛋，創造市場差異化競爭優勢。</p>
-            <div class="quality-grid">
-                <div class="quality-card fade-in" onclick="alert('蛋黃品質提升數據')">
+            <p style="margin-bottom: var(--spacing-lg);">全面改善蛋品內外品質，提升蛋黃顏色、蛋殼強度，大幅減少暗斑蛋，創造市場差異化競爭優勢。</p>
+            <div class="benefits-grid">
+                <div class="benefit-card" onclick="alert('蛋黃品質提升數據')">
                     <h4>🎨 蛋黃品質提升</h4>
-                    <div style="font-size: 2rem; font-weight: bold; color: #e74c3c; margin: 8px 0;">+3-4級</div>
+                    <span class="benefit-metric">+3-4級</span>
                     <p>天然色素沉積提升蛋黃顏色，胡蘿蔔素含量增加</p>
                     <p><strong>實測數據：</strong>羅氏比色計從8級提升至11-12級</p>
-                    <p><strong>作用機制：</strong>促進類胡蘿蔔素吸收與沉積，提升卵黃腺色素結合能力</p>
                 </div>
-                <div class="quality-card fade-in" onclick="alert('暗斑蛋減少技術')">
+                <div class="benefit-card" onclick="alert('暗斑蛋減少技術')">
                     <h4>🔍 暗斑蛋減少</h4>
-                    <div style="font-size: 2rem; font-weight: bold; color: #e74c3c; margin: 8px 0;">-70-80%</div>
+                    <span class="benefit-metric">-70-80%</span>
                     <p>改善蛋殼腺功能，減少鈣質沉積異常</p>
                     <p><strong>實測數據：</strong>暗斑蛋比例從15%降低至3-5%</p>
-                    <p><strong>作用機制：</strong>調節蛋殼腺碳酸酐酶活性，優化鈣質晶體排列結構</p>
                 </div>
-                <div class="quality-card fade-in" onclick="alert('蛋殼強度提升報告')">
+                <div class="benefit-card" onclick="alert('蛋殼強度提升報告')">
                     <h4>🛡️ 蛋殼強度提升</h4>
-                    <div style="font-size: 2rem; font-weight: bold; color: #e74c3c; margin: 8px 0;">+25-30%</div>
+                    <span class="benefit-metric">+25-30%</span>
                     <p>優化鈣磷代謝，提升蛋殼厚度與均勻度</p>
                     <p><strong>實測數據：</strong>蛋殼厚度從0.33mm提升至0.40-0.42mm</p>
-                    <p><strong>作用機制：</strong>提升維生素D3活化效率，促進小腸鈣吸收與蛋殼腺沉積</p>
                 </div>
-                <div class="quality-card fade-in" onclick="alert('哈氏單位提升')">
+                <div class="benefit-card" onclick="alert('哈氏單位提升')">
                     <h4>📏 哈氏單位提升</h4>
-                    <div style="font-size: 2rem; font-weight: bold; color: #e74c3c; margin: 8px 0;">+15-20</div>
+                    <span class="benefit-metric">+15-20</span>
                     <p>蛋白濃稠度改善，提升蛋品新鮮度與保存性</p>
                     <p><strong>實測數據：</strong>哈氏單位從80提升至95-100</p>
-                    <p><strong>作用機制：</strong>維持卵白蛋白合成效率，減少蛋白水分流失</p>
                 </div>
             </div>
-            <div class="egg-image-container">
-                <img src="assets/yolk-quality.png" alt="蛋黃品質對比圖" loading="lazy">
-                <p class="image-caption">圖3：蛋黃品質對比 (左：傳統蛋黃8級｜右：倍力素優化蛋黃11-12級，提升3-4級)</p>
+            <div>
+                <img class="section-img" src="assets/yolk-quality.png" alt="蛋黃品質對比圖" loading="lazy">
+                <p class="img-caption">圖3：蛋黃品質對比 (左：傳統蛋黃8級｜右：倍力素優化蛋黃11-12級)</p>
             </div>
-            <div class="egg-image-container">
-                <img src="assets/shell-spots.png" alt="暗斑蛋減少示意圖" loading="lazy">
-                <p class="image-caption">圖4：暗斑蛋比例減少 (傳統15% → 過渡8% → 優化3-5%，降幅70-80%)</p>
+            <div>
+                <img class="section-img" src="assets/shell-spots.png" alt="暗斑蛋減少示意圖" loading="lazy">
+                <p class="img-caption">圖4：暗斑蛋比例減少 (傳統15% → 優化3-5%，降幅70-80%)</p>
             </div>
         </section>
 
-        <!-- 健康度提升專區 (更新成分名稱與來源) -->
+        <!-- 健康度提升專區 (卡片改為 benefit-card) -->
         <section>
             <h2>🩺 健康度提升專區｜產卵發炎降低與免疫力增強</h2>
             <div class="benefits-grid">
-                <div class="benefit-card fade-in" onclick="alert('產卵發炎降低機制')">
+                <div class="benefit-card" onclick="alert('產卵發炎降低機制')">
                     <h4>🔥 產卵發炎降低</h4>
                     <span class="benefit-metric">-40-50%</span>
                     <p>抗炎成分（褐藻萃取物）降低輸卵管炎症發生率，改善產蛋舒適度</p>
-                    <p><strong>作用機制：</strong>抑制COX-2炎症通路，調節前列腺素水平，減少輸卵管黏膜充血水腫</p>
                 </div>
-                <div class="benefit-card fade-in" onclick="alert('免疫力提升數據')">
+                <div class="benefit-card" onclick="alert('免疫力提升數據')">
                     <h4>🛡️ 免疫力提升</h4>
                     <span class="benefit-metric">+30-40%</span>
-                    <p>免疫調節成分（單核苷小核酸，源自蛋白草萃取物）提升抗體水平，降低疾病發生率</p>
-                    <p><strong>作用機制：</strong>促進IgA分泌，強化黏膜免疫屏障，提升巨噬細胞吞噬能力</p>
+                    <p>免疫調節成分（單核苷小核酸，源自蛋白草萃取物）提升抗體水平</p>
                 </div>
-                <div class="benefit-card fade-in" onclick="alert('肝臟健康改善')">
+                <div class="benefit-card" onclick="alert('肝臟健康改善')">
                     <h4>💪 肝臟健康改善</h4>
                     <span class="benefit-metric">脂肪肝 -60%</span>
                     <p>改善脂質代謝，減少脂肪肝發生，延長產蛋壽命</p>
-                    <p><strong>作用機制：</strong>促進脂肪酸氧化，抑制脂肪合成，提升肝臟脂蛋白合成與運輸能力</p>
                 </div>
-                <div class="benefit-card fade-in" onclick="alert('骨骼強度提升')">
+                <div class="benefit-card" onclick="alert('骨骼強度提升')">
                     <h4>🦴 骨骼強度提升</h4>
                     <span class="benefit-metric">骨密度 +20%</span>
                     <p>優化鈣磷吸收與代謝，減少產蛋疲勞症發生</p>
-                    <p><strong>作用機制：</strong>維生素D代謝調控，改善鈣質沉積，提升骨鈣素合成效率</p>
                 </div>
             </div>
-            <div class="egg-image-container">
-                <img src="assets/health-improvement.png" alt="蛋雞健康改善圖" loading="lazy">
-                <p class="image-caption">圖5：蛋雞健康指標改善 (輸卵管發炎-40-50%｜脂肪肝-60%｜骨密度+20%｜免疫力+30-40%)</p>
+            <div>
+                <img class="section-img" src="assets/health-improvement.png" alt="蛋雞健康改善圖" loading="lazy">
+                <p class="img-caption">圖5：蛋雞健康指標改善 (輸卵管發炎-40-50%｜脂肪肝-60%｜骨密度+20%｜免疫力+30-40%)</p>
             </div>
         </section>
 
-        <!-- 經濟效益分析 (移除所有金額數字，僅保留百分比) -->
+        <!-- 經濟效益分析 -->
         <section>
             <h2>💰 經濟效益分析｜每隻蛋雞淨利提升</h2>
-            <div style="background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%); padding: 18px; border-radius: 12px; margin-bottom: 22px; border-left: 4px solid var(--primary-green); box-shadow: 0 2px 10px rgba(0,0,0,0.05);" class="fade-in">
+            <div style="background: var(--light-bg); padding: var(--spacing-md); border-radius: var(--border-radius-small); margin-bottom: var(--spacing-xl); border-left: 5px solid var(--primary-green);">
                 <p><strong>計算基準：</strong>蛋雞產蛋期40週(280天)｜產蛋率92%→97%｜料蛋比2.2→2.05｜每隻雞日採食量115克</p>
             </div>
-            <div class="economic-card fade-in">
-                <div class="profit-table-container">
+            <div class="economic-card" style="background: var(--light-bg); padding: var(--spacing-xl); border-radius: var(--border-radius-medium);">
+                <div class="scroll-container">
                     <table class="profit-table">
-                        <thead>
-                            <tr>
-                                <th>效益項目</th>
-                                <th>改善幅度</th>
-                            </tr>
-                        </thead>
+                        <thead><tr><th>效益項目</th><th>改善幅度</th></tr></thead>
                         <tbody>
                             <tr><td>產蛋率提升收益</td><td>+5-8%</td></tr>
                             <tr><td>飼料效率優化</td><td>料蛋比2.2→2.05</td></tr>
                             <tr><td>蛋品品質溢價</td><td>價格+15%</td></tr>
                             <tr><td>暗斑蛋減少收益</td><td>-75%次級蛋</td></tr>
                             <tr><td>健康度提升減少損失</td><td>死亡率-2%</td></tr>
-                            <tr style="background: #ffeaa7; font-weight: bold;"><td><strong>總效益增加</strong></td><td>極顯著</td></tr>
+                            <tr class="total-row"><td><strong>總效益增加</strong></td><td>極顯著</td></tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="roi-badge">
                     <div>每隻蛋雞投資報酬率 (ROI)</div>
                     <div class="roi-value">576%</div>
-                    <div style="font-size: 0.9rem; opacity: 0.9;">產蛋期投資回報豐厚，回收期 &lt;15天</div>
+                    <div style="font-size: 0.9rem;">產蛋期投資回報豐厚，回收期 &lt;15天</div>
                 </div>
             </div>
-            <div style="background: #fff8e1; padding: 18px; border-radius: 12px; margin-top: 18px; border-left: 4px solid var(--secondary-green); box-shadow: 0 2px 8px rgba(0,0,0,0.05);" class="fade-in">
-                <p><strong>萬隻蛋雞場年度效益：</strong>每批蛋雞淨利增加極顯著，年更新1.5批次效益倍增。</p>
-            </div>
-            <div class="egg-image-container">
-                <img src="assets/roi-chart.png" alt="蛋雞經濟效益計算圖" loading="lazy">
-                <p class="image-caption">圖6：蛋雞場經濟效益計算 (ROI 576%)</p>
+            <div style="margin-top: var(--spacing-xl);">
+                <img class="section-img" src="assets/roi-chart.png" alt="蛋雞經濟效益計算圖" loading="lazy">
+                <p class="img-caption">圖6：蛋雞場經濟效益計算 (ROI 576%)</p>
             </div>
         </section>
 
-        <!-- CTA行動區塊 (電話更新) -->
+        <!-- CTA行動區塊 -->
         <section class="cta-section">
-            <h2 style="color: white; border-bottom: 2px solid var(--accent-gold); padding-bottom: 10px;">🚀 立即啟動蛋雞性能提升方案</h2>
+            <h2 style="color: white;">🚀 立即啟動蛋雞性能提升方案</h2>
             <div class="big-number">576%</div>
             <p>投資報酬率(ROI)</p>
-            <div style="background: rgba(212, 160, 23, 0.2); padding: 12px 20px; border-radius: 25px; display: inline-block; margin: 15px 0; font-weight: bold; font-size: 0.9rem; border: 1px solid rgba(212, 160, 23, 0.3);">🥚 產蛋率提升5-8%｜⭐ 蛋黃品質提升3-4級｜🩺 發炎降低40-50%</div>
+            <div style="background: rgba(212, 160, 23, 0.2); padding: 12px 20px; border-radius: 25px; display: inline-block; margin: 15px 0; border: 1px solid rgba(212, 160, 23, 0.3);">🥚 產蛋率提升5-8%｜⭐ 蛋黃品質提升3-4級｜🩺 發炎降低40-50%</div>
             <div class="cta-buttons">
                 <a class="btn btn-primary" href="tel:+886-5-6972238">📞 獲取蛋雞專案技術諮詢 +886-5-6972238</a>
                 <a class="btn btn-secondary" href="#">📋 免費索取蛋雞試用方案</a>
             </div>
         </section>
 
-        <!-- 頁腳 (公司資訊更新) -->
+        <!-- 頁腳 -->
         <footer>
-            <div style="max-width: 800px; margin: 0 auto;">
+            <div class="footer-content">
                 <p><strong>吉升飼料有限公司</strong>｜蛋雞性能優化 × 蛋品品質提升 × 健康養殖解決方案</p>
-                <div class="contact-info">
-                    <p>地址：634雲林縣褒忠鄉中正路28-18號<br>
-                    電話：<a href="tel:+886-5-6972238">+886-5-6972238</a>｜Email：<a href="mailto:info@chishengfeed.com">info@chishengfeed.com</a></p>
-                </div>
+                <p>地址：634雲林縣褒忠鄉中正路28-18號｜電話：<a href="tel:+886-5-6972238">+886-5-6972238</a>｜Email：<a href="mailto:info@chishengfeed.com">info@chishengfeed.com</a></p>
                 <p>本技術資料表數據基於海蘭、羅曼等蛋雞品種實測結果，實際效果因管理條件略有差異</p>
-                <div style="margin-top: 18px; opacity: 0.8; font-size: 0.8rem; padding-top: 15px; border-top: 1px solid rgba(255, 255, 255, 0.1);">&copy; 2026 吉升飼料有限公司 版權所有｜蛋雞優化技術為商業機密，未經授權禁止轉載</div>
+                <div class="copyright">© 2026 吉升飼料有限公司 版權所有｜蛋雞優化技術為商業機密，未經授權禁止轉載</div>
             </div>
         </footer>
     </div>
 
-    <!-- Font Awesome 圖示庫 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <script>
-        // 滾動淡入效果 (保留)
         document.addEventListener('DOMContentLoaded', function() {
+            // 滾動淡入效果
             const observer = new IntersectionObserver((entries) => {
-                entries.forEach(e => e.target.classList.toggle('visible', e.isIntersecting));
-            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-            document.querySelectorAll('.fade-in, .egg-image-container, .peak-mechanism').forEach(el => observer.observe(el));
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('visible');
+                });
+            }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+            document.querySelectorAll('section').forEach(s => observer.observe(s));
+
+            // 圖片懶加載
+            const imgObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.classList.add('loaded');
+                        imgObserver.unobserve(img);
+                    }
+                });
+            }, { rootMargin: '0px 0px 100px 0px' });
+            document.querySelectorAll('.section-img').forEach(img => {
+                if (img.complete) img.classList.add('loaded');
+                else img.addEventListener('load', function() { this.classList.add('loaded'); });
+                imgObserver.observe(img);
+            });
+
+            // 觸摸裝置偵測
+            if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+                document.body.classList.add('touch-device');
+            }
         });
     </script>
 </body>
