@@ -25,7 +25,7 @@
             padding: 15px; 
         }
         .container { max-width: 1200px; margin: 0 auto; }
-        
+
         /* 導航列 - 返回首頁 + 返回頂部 */
         .navbar {
             display: flex;
@@ -197,7 +197,7 @@
             line-height: 1.7; 
         }
         
-        /* 規格卡片樣式 (移除成本數字後調整) */
+        /* 規格卡片樣式 (移除成本數字) */
         .specs-grid { 
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
@@ -279,7 +279,7 @@
             display: block; 
         }
         
-        /* 經濟分析卡片 (移除金額數字，僅留百分比) */
+        /* 經濟分析卡片 (移除金額數字) */
         .economic-card { 
             background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%); 
             padding: 25px; 
@@ -389,7 +389,7 @@
         }
         .step-card p { margin-bottom: 6px; }
         
-        /* 成本高亮 (已移除金額，改為定性) */
+        /* 成本高亮 (已移除金額) */
         .cost-highlight { 
             background: linear-gradient(135deg, var(--accent) 0%, #e76f51 100%); 
             color: white; 
@@ -670,7 +670,7 @@
                     <span class="unit">公斤/噸</span>
                 </div>
                 <div class="spec-card">
-                    <span class="label">產品包裝</span>
+                    <span class="label">包裝規格</span>
                     <span class="value">20公斤/箱</span>
                     <span class="unit">常溫儲存</span>
                 </div>
@@ -697,7 +697,7 @@
             </div>
         </section>
 
-        <!-- Core Benefits -->
+        <!-- Core Benefits (更新成分名稱與來源) -->
         <section>
             <h2>核心效益｜土雞性能全面提升</h2>
             
@@ -712,7 +712,7 @@
                 <div class="benefit-card">
                     <h4>料肉比優化</h4>
                     <span class="improvement">-3-5%</span>
-                    <p>重組型煙醯胺蛋白酶（蛋白草萃取）提升營養吸收率18%，降低飼料浪費</p>
+                    <p>重組型煙醯胺蛋白酶（蛋白草萃取）提升營養吸收率18%，降低飼料浪費，每公斤增重節省飼料</p>
                     <p><strong>實測數據：</strong>料肉比從3.45:1優化至3.30-3.35:1</p>
                 </div>
                 
@@ -785,7 +785,7 @@
                 <div class="roi-badge">
                     <div>每隻土雞投資報酬率 (ROI)</div>
                     <div class="roi-value">310%</div>
-                    <div class="roi-label">投資回報豐厚，短期內即可回收</div>
+                    <div class="roi-label">投資回報豐厚，回收期 &lt;7天</div>
                 </div>
             </div>
 
@@ -869,7 +869,7 @@
             </div>
         </section>
 
-        <!-- Traditional vs Innovative -->
+        <!-- Traditional vs Innovative (品牌名更新) -->
         <section>
             <h2>🔄 傳統飼養 vs 倍力素方案</h2>
             
@@ -948,5 +948,19 @@
 
     <!-- Font Awesome 圖示庫 (用於導航列圖示) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        // 滾動時返回頂部按鈕顯示/隱藏 (可選)
+        window.addEventListener('scroll', function() {
+            const btn = document.getElementById('scrollToTopBtn');
+            if (window.scrollY > 300) {
+                btn.style.opacity = '1';
+                btn.style.visibility = 'visible';
+            } else {
+                btn.style.opacity = '0';
+                btn.style.visibility = 'hidden';
+            }
+        });
+    </script>
 </body>
 </html>
