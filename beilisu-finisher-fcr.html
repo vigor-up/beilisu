@@ -4,18 +4,18 @@
     <style>
     /* 防止文字選取 */
     body {
-        -webkit-user-select: none;  /* Safari */
-        -moz-user-select: none;     /* Firefox */
-        -ms-user-select: none;      /* IE/Edge */
-        user-select: none;           /* 標準語法 */
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
     }
 
     /* 針對圖片：禁止拖曳、禁止長按菜單，但保留點擊事件（由父層處理） */
     img {
-        -webkit-touch-callout: none; /* iOS 長按選單 */
-        -webkit-user-drag: none;     /* Chrome 拖曳 */
+        -webkit-touch-callout: none;
+        -webkit-user-drag: none;
         user-drag: none;
-        pointer-events: none;         /* 讓圖片本身無法被點擊，但父容器可接收點擊 */
+        pointer-events: none;
     }
 
     /* 圖片的容器需設定 cursor: pointer 提示可點擊 */
@@ -77,23 +77,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #e67e22;
-            --secondary: #d35400;
-            --dark: #2c3e50;
-            --light: #f8f9fa;
-            --warning: #f1c40f;
-            --success: #27ae60;
-            --blue: #3498db;
+            --primary: #00adb5;          /* 科技藍綠 */
+            --secondary: #3a6ea5;        /* 深藍 */
+            --accent: #ffd369;            /* 暖黃 */
+            --dark: #1a1a2e;              /* 深色背景 */
+            --light: #f0f5fa;              /* 淺色文字背景 */
+            --warning: #f08a5d;            /* 橘 */
+            --success: #4ecca3;             /* 綠 */
+            --blue: #1e56a0;                /* 深藍 */
             --gray-100: #f8f9fc;
             --gray-200: #e9ecef;
             --gray-300: #dee2e6;
-            --border-radius: 16px;
-            --card-radius: 20px;
-            --shadow-sm: 0 4px 12px rgba(0,0,0,0.04);
-            --shadow-md: 0 8px 24px rgba(0,0,0,0.08);
-            --shadow-lg: 0 16px 32px rgba(0,0,0,0.12);
+            --border-radius: 20px;
+            --card-radius: 24px;
+            --shadow-sm: 0 4px 20px rgba(0,0,0,0.3);
+            --shadow-md: 0 8px 30px rgba(0,173,181,0.2);
+            --shadow-lg: 0 16px 40px rgba(0,173,181,0.3);
             --safe-area-inset-top: env(safe-area-inset-top);
             --safe-area-inset-bottom: env(safe-area-inset-bottom);
+            --bg-pattern: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.05"><path d="M10 10 L 90 10 L 50 90 Z" fill="none" stroke="%2300adb5" stroke-width="1"/><circle cx="20" cy="30" r="2" fill="%2300adb5"/><circle cx="70" cy="60" r="3" fill="%233a6ea5"/></svg>');
         }
         * {
             margin: 0;
@@ -108,96 +110,125 @@
         }
         body {
             font-family: 'Microsoft JhengHei', '微軟正黑體', 'Noto Sans TC', 'PingFang TC', 'Helvetica Neue', sans-serif;
-            background-color: #f9fbfd;
-            color: var(--dark);
+            background: var(--dark);
+            color: #e0e0e0;
             line-height: 1.6;
             overflow-x: hidden;
             -webkit-text-size-adjust: 100%;
+            position: relative;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: var(--bg-pattern);
+            pointer-events: none;
+            z-index: 0;
         }
         .container {
             width: 100%;
             max-width: 100%;
             margin: 0 auto;
             padding: 0 16px;
+            position: relative;
+            z-index: 1;
         }
 
-        /* 語言切換器 - 固定右上角 (僅語言) */
-        .language-switcher {
-            position: fixed;
-            top: 12px;
-            right: 12px;
+        /* 導航列 (返回首頁 + 返回頂部) */
+        .navbar {
+            position: sticky;
+            top: 10px;
             z-index: 1000;
             display: flex;
-            gap: 4px;
-            background: white;
-            padding: 6px;
-            border-radius: 20px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            border: 1px solid var(--primary);
-            max-width: 90%;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(26, 26, 46, 0.8);
+            backdrop-filter: blur(12px);
+            padding: 8px 16px;
+            border-radius: 50px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 20px rgba(0,173,181,0.3);
+            border: 1px solid rgba(0,173,181,0.3);
         }
-        .lang-btn {
-            padding: 6px 12px;
+        .nav-left a, .nav-right button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: 0.2s;
             border: none;
-            border-radius: 16px;
-            background: transparent;
-            color: var(--dark);
-            font-weight: 500;
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.85rem;
-            white-space: nowrap;
-            flex: 1;
         }
-        .lang-btn.active {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        .nav-left a {
+            background: var(--primary);
+            color: var(--dark);
+            box-shadow: 0 0 15px var(--primary);
+        }
+        .nav-left a:hover {
+            background: var(--accent);
+            color: var(--dark);
+            box-shadow: 0 0 20px var(--accent);
+        }
+        .nav-right button {
+            background: transparent;
             color: white;
+            border: 1px solid rgba(255,255,255,0.5);
         }
-        .lang-btn:hover:not(.active) {
-            background: #f1f5f9;
+        .nav-right button:hover {
+            background: var(--primary);
+            color: var(--dark);
+            border-color: var(--primary);
         }
 
         /* 頁頭 */
         header {
-            background: linear-gradient(rgba(230, 126, 34, 0.92), rgba(211, 84, 0, 0.95)), url('assets/finisher-pig-feeding.jpg');
+            background: linear-gradient(rgba(0, 173, 181, 0.85), rgba(26, 26, 46, 0.95)), url('assets/finisher-pig-feeding.jpg');
             background-size: cover;
             background-position: center 30%;
             color: white;
             padding: 40px 0 30px;
             text-align: center;
             position: relative;
-            margin-top: 50px;
             min-height: 40vh;
             display: flex;
             align-items: center;
+            border-radius: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 30px rgba(0,173,181,0.4);
+            border: 1px solid var(--primary);
         }
         header .container {
             padding: 0 20px;
         }
         h1 {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             margin-bottom: 12px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            text-shadow: 0 0 15px var(--primary);
             letter-spacing: 0.5px;
             line-height: 1.3;
+            color: #fff;
         }
         .subtitle {
-            font-size: 0.95rem;
+            font-size: 1rem;
             opacity: 0.95;
             margin: 0 auto 18px;
             line-height: 1.5;
             padding: 0 10px;
         }
         .tagline {
-            background: linear-gradient(90deg, var(--warning), #e67e22);
+            background: linear-gradient(90deg, var(--accent), var(--primary));
             color: var(--dark);
             padding: 12px 20px;
-            border-radius: 20px;
+            border-radius: 30px;
             display: inline-block;
             font-weight: bold;
             margin: 15px auto;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-            font-size: 0.95rem;
+            box-shadow: 0 0 20px var(--accent);
+            font-size: 1rem;
             letter-spacing: 0.3px;
             max-width: 90%;
         }
@@ -215,40 +246,59 @@
         }
         .section-title {
             text-align: center;
-            font-size: 1.4rem;
-            color: var(--primary);
+            font-size: 1.5rem;
+            color: var(--accent);
             margin-bottom: 30px;
             position: relative;
             font-weight: 700;
             letter-spacing: 0.3px;
             padding: 0 10px;
+            text-shadow: 0 0 10px var(--accent);
         }
         .section-title::after {
             content: "";
             display: block;
             width: 60px;
             height: 4px;
-            background: var(--warning);
+            background: linear-gradient(90deg, var(--primary), var(--accent));
             margin: 15px auto;
             border-radius: 2px;
+            box-shadow: 0 0 10px var(--primary);
         }
 
-        /* 卡片通用樣式 */
+        /* 卡片通用樣式 - 生化醫學風格 */
         .card {
-            background: white;
-            border-radius: 12px;
+            background: rgba(26, 26, 46, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
             padding: 25px 20px;
-            box-shadow: var(--shadow-md);
+            box-shadow: 0 0 30px rgba(0,173,181,0.2);
             transition: all 0.3s ease;
             margin-bottom: 25px;
-            border-top: 4px solid var(--secondary);
+            border: 1px solid rgba(0,173,181,0.3);
             cursor: pointer;
             -webkit-tap-highlight-color: rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        .card::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0,173,181,0.1) 0%, transparent 70%);
+            z-index: 0;
         }
         .card:hover, .card:active {
             transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-            border-top-color: var(--warning);
+            box-shadow: 0 0 40px var(--primary);
+            border-color: var(--primary);
+        }
+        .card * {
+            position: relative;
+            z-index: 1;
         }
 
         /* 圖片區塊樣式 */
@@ -261,30 +311,33 @@
             width: 100%;
             max-width: 100%;
             height: auto;
-            border-radius: 10px;
-            box-shadow: var(--shadow-md);
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0,173,181,0.3);
             transition: all 0.3s ease;
+            border: 2px solid var(--primary);
         }
         .responsive-img:hover {
             transform: scale(1.02);
-            box-shadow: var(--shadow-lg);
+            box-shadow: 0 0 40px var(--primary);
         }
         .img-title {
             font-size: 1.1rem;
             font-weight: bold;
             margin: 15px 0 8px;
-            color: var(--dark);
+            color: var(--accent);
             padding: 0 10px;
+            text-shadow: 0 0 8px var(--accent);
         }
 
         /* 影片區塊 */
         .video-block {
             width: 100%;
             margin: 25px 0;
-            border-radius: 12px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: var(--shadow-md);
+            box-shadow: 0 0 30px var(--primary);
             background: #000;
+            border: 2px solid var(--primary);
         }
         .video-block video {
             width: 100%;
@@ -293,11 +346,11 @@
         }
         .video-caption {
             padding: 12px 16px;
-            background: var(--dark);
-            color: white;
+            background: rgba(26,26,46,0.9);
+            color: var(--accent);
             font-size: 0.9rem;
             text-align: center;
-            border-top: 1px solid var(--gray-300);
+            border-top: 1px solid var(--primary);
         }
 
         /* 表格樣式 */
@@ -306,37 +359,38 @@
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
             margin: 20px 0;
-            border-radius: 10px;
+            border-radius: 15px;
         }
         table {
             width: 100%;
             min-width: 600px;
             border-collapse: collapse;
-            background: white;
-            border-radius: 10px;
+            background: rgba(26,26,46,0.8);
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: var(--shadow-sm);
+            box-shadow: 0 0 30px rgba(0,173,181,0.2);
         }
         th {
             background: linear-gradient(120deg, var(--primary), var(--secondary));
-            color: white;
+            color: var(--dark);
             padding: 14px 12px;
             text-align: center;
-            font-weight: 600;
-            font-size: 0.85rem;
+            font-weight: 700;
+            font-size: 0.9rem;
             white-space: nowrap;
         }
         td {
             padding: 12px 10px;
-            border-bottom: 1px solid #eaeaea;
+            border-bottom: 1px solid rgba(0,173,181,0.3);
             text-align: center;
             font-size: 0.85rem;
+            color: #e0e0e0;
         }
         tr:last-child td {
             border-bottom: none;
         }
         tr:hover td {
-            background-color: #fef5e7;
+            background-color: rgba(0,173,181,0.1);
         }
         .positive {
             color: var(--success);
@@ -345,13 +399,14 @@
 
         /* 純百分比高亮區塊 */
         .efficiency-highlight {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            background: linear-gradient(135deg, rgba(0,173,181,0.2) 0%, rgba(26,26,46,0.9) 100%);
+            border: 1px solid var(--primary);
             color: white;
-            border-radius: 15px;
+            border-radius: 30px;
             padding: 35px 20px;
             text-align: center;
             margin: 40px 0;
-            box-shadow: 0 10px 25px rgba(230, 126, 34, 0.25);
+            box-shadow: 0 0 40px var(--primary);
             position: relative;
             overflow: hidden;
         }
@@ -362,24 +417,24 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            background: radial-gradient(circle, rgba(0,173,181,0.2) 0%, rgba(0,173,181,0) 70%);
             z-index: 0;
         }
         .efficiency-value {
-            font-size: 2.8rem;
+            font-size: 3rem;
             font-weight: bold;
             margin: 20px 0;
-            text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            text-shadow: 0 0 20px var(--accent);
             position: relative;
             z-index: 1;
-            background: linear-gradient(90deg, #ffeb3b, #ffc107, #ffeb3b);
+            background: linear-gradient(90deg, var(--accent), var(--primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             line-height: 1.2;
         }
 
-        /* 參數卡片 - 手機2列，平板/桌機4列 (移除空數據後只保留關鍵指標) */
+        /* 參數卡片 */
         .param-cards {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -387,22 +442,24 @@
             margin: 25px 0;
         }
         .param-card {
-            background: white;
-            border-radius: 10px;
+            background: rgba(26,26,46,0.7);
+            backdrop-filter: blur(5px);
+            border-radius: 20px;
             padding: 18px 12px;
             text-align: center;
-            box-shadow: var(--shadow-sm);
-            border-top: 3px solid var(--warning);
+            box-shadow: 0 0 20px rgba(0,173,181,0.2);
+            border: 1px solid rgba(0,173,181,0.3);
             transition: all 0.3s ease;
             cursor: pointer;
         }
         .param-card:hover, .param-card:active {
             transform: translateY(-3px);
-            box-shadow: var(--shadow-md);
+            box-shadow: 0 0 30px var(--primary);
+            border-color: var(--primary);
         }
         .param-label {
             font-size: 0.8rem;
-            color: #6c7a9c;
+            color: #aaa;
             margin-bottom: 5px;
         }
         .param-value {
@@ -414,16 +471,16 @@
 
         /* 機制卡片 */
         .mechanism-card {
-            background: linear-gradient(135deg, #fef9e7, #fff8e1);
+            background: rgba(0,0,0,0.3);
             border-left: 4px solid var(--primary);
             padding: 18px 16px;
-            border-radius: 0 10px 10px 0;
+            border-radius: 0 15px 15px 0;
             margin: 18px 0;
-            box-shadow: var(--shadow-sm);
+            box-shadow: 0 0 20px rgba(0,173,181,0.2);
         }
         .mechanism-title {
             font-weight: bold;
-            color: var(--primary);
+            color: var(--accent);
             margin-bottom: 8px;
             font-size: 1rem;
         }
@@ -431,29 +488,34 @@
         /* 天然來源標籤 */
         .natural-source {
             display: inline-block;
-            background: #d4edda;
-            color: #155724;
+            background: #1e5631;
+            color: #a8e6a8;
             font-size: 0.75rem;
             padding: 2px 8px;
             border-radius: 30px;
             margin-left: 8px;
             font-weight: normal;
+            border: 1px solid #4ecca3;
         }
 
         /* CTA 區塊 */
         .cta-block {
-            background: linear-gradient(145deg, #2c3e50, #1a2c3a);
+            background: linear-gradient(145deg, rgba(26,26,46,0.9), rgba(0,0,0,0.8));
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--primary);
             color: white;
             padding: 40px 25px;
-            border-radius: 28px;
+            border-radius: 40px;
             text-align: center;
             margin: 45px 0;
+            box-shadow: 0 0 40px var(--primary);
         }
         .cta-block .big-number {
             font-size: 2.8rem;
             font-weight: 900;
-            color: var(--warning);
+            color: var(--accent);
             margin: 12px 0;
+            text-shadow: 0 0 20px var(--accent);
         }
         .btn {
             padding: 14px 28px;
@@ -471,9 +533,9 @@
             cursor: pointer;
         }
         .btn-primary {
-            background: linear-gradient(145deg, var(--warning), #f39c12);
+            background: var(--primary);
             color: var(--dark);
-            box-shadow: 0 8px 20px rgba(241,196,15,0.4);
+            box-shadow: 0 0 20px var(--primary);
         }
         .btn-secondary {
             background: transparent;
@@ -482,15 +544,19 @@
         }
         .btn:hover {
             transform: scale(1.05);
+            box-shadow: 0 0 30px var(--accent);
         }
 
         /* 頁尾 */
         footer {
-            background: linear-gradient(135deg, var(--dark), #1a252f);
+            background: rgba(10,10,20,0.95);
+            backdrop-filter: blur(10px);
             color: rgba(255,255,255,0.85);
             text-align: center;
             padding: 40px 0 25px;
             margin-top: 50px;
+            border-top: 2px solid var(--primary);
+            box-shadow: 0 -10px 30px rgba(0,173,181,0.2);
         }
         .product-links {
             display: flex;
@@ -504,14 +570,17 @@
             color: white;
             text-decoration: none;
             padding: 10px 18px;
-            background: rgba(255,255,255,0.12);
+            background: rgba(0,173,181,0.2);
             border-radius: 30px;
             font-size: 0.85rem;
             font-weight: 600;
             transition: 0.2s;
+            border: 1px solid rgba(0,173,181,0.3);
         }
         .product-links a:hover {
             background: var(--primary);
+            color: var(--dark);
+            border-color: var(--primary);
         }
 
         /* 響應式 */
@@ -520,24 +589,12 @@
                 max-width: 1200px;
                 padding: 0 25px;
             }
-            .language-switcher {
-                top: 20px;
-                right: 20px;
-                gap: 8px;
-                padding: 8px;
-                border-radius: 30px;
-            }
-            .lang-btn {
-                padding: 8px 18px;
-                font-size: 0.95rem;
-            }
             header {
                 padding: 60px 0 40px;
-                margin-top: 70px;
                 min-height: 50vh;
             }
             h1 {
-                font-size: 2.4rem;
+                font-size: 2.5rem;
             }
             .subtitle {
                 font-size: 1.2rem;
@@ -595,90 +652,98 @@
 
         .fade-in { opacity: 0; transform: translateY(20px); transition: 0.6s; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* 返回頂部按鈕 */
+        #scrollToTopBtn {
+            transition: opacity 0.3s, visibility 0.3s;
+        }
     </style>
 </head>
 <body>
-    <!-- 語言切換器 -->
-    <div class="language-switcher">
-        <button class="lang-btn active" data-lang="zh-TW">繁</button>
-        <button class="lang-btn" data-lang="zh-CN">简</button>
-        <button class="lang-btn" data-lang="en">EN</button>
+    <!-- 導航列 (返回首頁 + 返回頂部) -->
+    <div class="navbar">
+        <div class="nav-left">
+            <a href="index.html"><i class="fas fa-arrow-left"></i> 返回主頁</a>
+        </div>
+        <div class="nav-right">
+            <button id="scrollToTopBtn" onclick="window.scrollTo({top:0, behavior:'smooth'});"><i class="fas fa-arrow-up"></i> 頂部</button>
+        </div>
     </div>
 
     <!-- 頁頭 -->
     <header>
         <div class="container">
-            <h1 data-translate="title">🐗 倍力素®育肥豬 · FCR 2.8→<2.0</h1>
-            <p class="subtitle" data-translate="subtitle">三大機密載體｜重組型煙醯胺蛋白酶‧單核苷小核酸‧褐藻萃取物 · 50萬頭實證</p>
-            <div class="tagline" data-translate="highlight_badge">🏆 飼料效率↑28% | 屠體評級↑30% | 50萬頭實證</div>
+            <h1>🐗 倍力素®育肥豬 · FCR 2.8→<2.0</h1>
+            <p class="subtitle">三大機密載體｜重組型煙醯胺蛋白酶‧單核苷小核酸‧褐藻萃取物 · 50萬頭實證</p>
+            <div class="tagline">🏆 飼料效率↑28% | 屠體評級↑30% | 50萬頭實證</div>
         </div>
     </header>
 
     <div class="container">
         <!-- ===== 1. 三大機密載體 ===== -->
         <section class="fade-in">
-            <h2 class="section-title" data-translate="confidential_title">🔬 倍力素® 育肥專利配方 – 三大機密載體</h2>
+            <h2 class="section-title">🔬 倍力素® 育肥專利配方 – 三大機密載體</h2>
             <div class="card">
                 <!-- 重組型煙醯胺蛋白酶 -->
                 <div style="margin-bottom: 30px;">
                     <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px; flex-wrap: wrap;">
                         <span style="font-size: 2rem;">🧪</span>
-                        <h3 style="font-size: 1.3rem; color: var(--primary);" data-translate="protease_title">1. 「重組型煙醯胺蛋白酶」—— 長鏈脂肪醇萃取物</h3>
-                        <span class="natural-source" data-translate="protease_source">🌱 來源：蛋白草萃取</span>
+                        <h3 style="font-size: 1.3rem; color: var(--primary);">1. 「重組型煙醯胺蛋白酶」—— 長鏈脂肪醇萃取物</h3>
+                        <span class="natural-source">🌱 來源：蛋白草萃取</span>
                     </div>
-                    <p data-translate="protease_desc"><strong>降FCR、能量重分配</strong> · AMPK/mTOR訊號軸 · FCR 2.8→<2.0 · 每頭省飼料28.6%</p>
+                    <p><strong>降FCR、能量重分配</strong> · AMPK/mTOR訊號軸 · FCR 2.8→<2.0 · 每頭省飼料28.6%</p>
                     <div class="mechanism-card">
-                        <span class="mechanism-title" data-translate="protease_mechanism">🧬 分子機轉：</span>
-                        <span data-translate="protease_mechanism_text">重組型煙醯胺蛋白酶透過激活AMPK路徑，上調骨骼肌脂肪酸氧化及葡萄糖攝取；同時透過mTORC1訊號促進肌肉蛋白合成。此雙重調控機制經Genova等 (2023, PMID:37008356) 證實可於代謝能降低85 kcal/kg下維持增重。倍力素重組型煙醯胺蛋白酶將能量由脂肪堆積「重定向」至瘦肉沉積，實現FCR突破2.0。原料萃取自天然蛋白草，保留活性胜肽。</span>
+                        <span class="mechanism-title">🧬 分子機轉：</span>
+                        <span>重組型煙醯胺蛋白酶透過激活AMPK路徑，上調骨骼肌脂肪酸氧化及葡萄糖攝取；同時透過mTORC1訊號促進肌肉蛋白合成。此雙重調控機制經Genova等 (2023, PMID:37008356) 證實可於代謝能降低85 kcal/kg下維持增重。倍力素重組型煙醯胺蛋白酶將能量由脂肪堆積「重定向」至瘦肉沉積，實現FCR突破2.0。原料萃取自天然蛋白草，保留活性胜肽。</span>
                     </div>
                     <div class="img-container" onclick="openLightbox(this)">
                         <img src="assets/protease-complex.jpg" alt="重組型煙醯胺蛋白酶分子結構" class="responsive-img" loading="lazy">
-                        <div class="img-title" data-translate="protease_caption">重組型煙醯胺蛋白酶 · 長鏈脂肪醇3D結構示意</div>
+                        <div class="img-title">重組型煙醯胺蛋白酶 · 長鏈脂肪醇3D結構示意</div>
                     </div>
                 </div>
                 <!-- 單核苷小核酸 -->
                 <div style="margin-bottom: 30px;">
                     <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px; flex-wrap: wrap;">
                         <span style="font-size: 2rem;">🧬</span>
-                        <h3 style="font-size: 1.3rem; color: var(--primary);" data-translate="rna_title">2. 「單核苷小核酸」—— 非編碼RNA片段</h3>
-                        <span class="natural-source" data-translate="rna_source">🌱 來源：蛋白草萃取</span>
+                        <h3 style="font-size: 1.3rem; color: var(--primary);">2. 「單核苷小核酸」—— 非編碼RNA片段</h3>
+                        <span class="natural-source">🌱 來源：蛋白草萃取</span>
                     </div>
-                    <p data-translate="rna_desc"><strong>背脂率↓30%、出肉率↑</strong> · IGF2基因調控 · 背脂<2.0cm · 出肉率>82%</p>
+                    <p><strong>背脂率↓30%、出肉率↑</strong> · IGF2基因調控 · 背脂<2.0cm · 出肉率>82%</p>
                     <div class="mechanism-card">
-                        <span class="mechanism-title" data-translate="rna_mechanism">🧬 表觀遺傳調控：</span>
-                        <span data-translate="rna_mechanism_text">倍力素單核苷小核酸片段靶向IGF2基因啟動子區域，模擬「A等位基因」優勢表現型，顯著下調脂肪生成轉錄因子。Liu等 (2019, PMID:31159441) 證實microRNA可直接調控豬隻背脂沉積。Yu等 (2020, PMID:32782789) 指出高直鏈澱粉比例可上調FAS/SCD基因表現，提高肌內脂肪(IMF)達3.2%以上。倍力素單核苷小核酸整合此雙重路徑：皮下脂肪抑制、肌內脂肪定向沉積，同時達成瘦肉率提升與雪花肉生成。小核酸源自蛋白草發酵萃取，純天然。</span>
+                        <span class="mechanism-title">🧬 表觀遺傳調控：</span>
+                        <span>倍力素單核苷小核酸片段靶向IGF2基因啟動子區域，模擬「A等位基因」優勢表現型，顯著下調脂肪生成轉錄因子。Liu等 (2019, PMID:31159441) 證實microRNA可直接調控豬隻背脂沉積。Yu等 (2020, PMID:32782789) 指出高直鏈澱粉比例可上調FAS/SCD基因表現，提高肌內脂肪(IMF)達3.2%以上。倍力素單核苷小核酸整合此雙重路徑：皮下脂肪抑制、肌內脂肪定向沉積，同時達成瘦肉率提升與雪花肉生成。小核酸源自蛋白草發酵萃取，純天然。</span>
                     </div>
                     <div class="img-container" onclick="openLightbox(this)">
                         <img src="assets/rna-nucleic.jpg" alt="單核苷小核酸表觀遺傳調控" class="responsive-img" loading="lazy">
-                        <div class="img-title" data-translate="rna_caption">單核苷小核酸 · 非編碼RNA與DNA結合示意</div>
+                        <div class="img-title">單核苷小核酸 · 非編碼RNA與DNA結合示意</div>
                     </div>
                 </div>
                 <!-- 褐藻萃取物 -->
                 <div>
                     <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
                         <span style="font-size: 2rem;">🌿</span>
-                        <h3 style="font-size: 1.3rem; color: var(--primary);" data-translate="fucoxanthin_title">3. 「褐藻萃取物」—— 藻源性類胡蘿蔔素</h3>
+                        <h3 style="font-size: 1.3rem; color: var(--primary);">3. 「褐藻萃取物」—— 藻源性類胡蘿蔔素</h3>
                     </div>
-                    <p data-translate="fucoxanthin_desc"><strong>抗病毒免疫力、抗應激</strong> · Nrf2路徑 · 屠宰失重↓1.2%</p>
+                    <p><strong>抗病毒免疫力、抗應激</strong> · Nrf2路徑 · 屠宰失重↓1.2%</p>
                     <div class="mechanism-card">
-                        <span class="mechanism-title" data-translate="fucoxanthin_mechanism">🌿 抗氧化與腸道健康：</span>
-                        <span data-translate="fucoxanthin_mechanism_text">褐藻萃取物透過激活Nrf2/KEAP1抗氧化反應元件，提升SOD、GPx活性，有效清除自由基。Liotta等 (2019, PMID:31861062) 發現多酚類物質可降低背脂厚度、提高MUFA與ω-3 PUFA濃度。Ferrer等 (2022, PMID:36308921) 觀察到皮下脂肪MUFA/SFA比例上升。褐藻萃取物憑藉獨特雙親分子結構，嵌入細胞膜淬滅單重態氧，降低運輸緊迫及屠宰失重，同時維護腸道屏障完整性，減少發炎因子IL-6、IL-1β表現。</span>
+                        <span class="mechanism-title">🌿 抗氧化與腸道健康：</span>
+                        <span>褐藻萃取物透過激活Nrf2/KEAP1抗氧化反應元件，提升SOD、GPx活性，有效清除自由基。Liotta等 (2019, PMID:31861062) 發現多酚類物質可降低背脂厚度、提高MUFA與ω-3 PUFA濃度。Ferrer等 (2022, PMID:36308921) 觀察到皮下脂肪MUFA/SFA比例上升。褐藻萃取物憑藉獨特雙親分子結構，嵌入細胞膜淬滅單重態氧，降低運輸緊迫及屠宰失重，同時維護腸道屏障完整性，減少發炎因子IL-6、IL-1β表現。</span>
                     </div>
                     <div class="img-container" onclick="openLightbox(this)">
                         <img src="assets/astaxanthin-algae.jpg" alt="褐藻萃取物巨藻實拍" class="responsive-img" loading="lazy">
-                        <div class="img-title" data-translate="fucoxanthin_caption">褐藻萃取物 · 天然巨藻來源</div>
+                        <div class="img-title">褐藻萃取物 · 天然巨藻來源</div>
                     </div>
                 </div>
                 <!-- 效能總表 -->
                 <div style="overflow-x:auto; margin-top: 30px;">
-                    <table style="background: #fef5e7;">
-                        <thead><tr><th data-translate="benefit_item">效能項目</th><th data-translate="mechanism">對應載體</th><th data-translate="performance">實證績效</th><th data-translate="literature">文獻來源</th></tr></thead>
+                    <table style="background: rgba(26,26,46,0.8);">
+                        <thead><tr><th>效能項目</th><th>對應載體</th><th>實證績效</th><th>文獻來源</th></tr></thead>
                         <tbody>
-                            <tr><td data-translate="benefit1">降FCR</td><td data-translate="carrier1">重組型煙醯胺蛋白酶</td><td>2.8 → <2.0 (↓28.6%)</td><td>PMID:37008356,40652548</td></tr>
-                            <tr><td data-translate="benefit2">背脂率下降</td><td data-translate="carrier2">單核苷小核酸</td><td>>2.5cm → <2.0cm (↓30%)</td><td>PMID:31159441,32782789</td></tr>
-                            <tr><td data-translate="benefit3">出肉率＞80%</td><td><span data-translate="carrier1">重組型煙醯胺蛋白酶</span>+<span data-translate="carrier2">單核苷小核酸</span></td><td>77% → 82.5% (↑5.2%)</td><td>PMID:32782789,40652548</td></tr>
-                            <tr><td data-translate="benefit4">抗病毒・免疫力</td><td data-translate="carrier3">褐藻萃取物</td><td>IL-6↓42%</td><td>PMID:31861062,36308921</td></tr>
-                            <tr><td data-translate="benefit5">抗應激・耐運輸</td><td data-translate="carrier3">褐藻萃取物</td><td>失重減少1.2%</td><td>PMID:31861062,37008356</td></tr>
+                            <tr><td>降FCR</td><td>重組型煙醯胺蛋白酶</td><td>2.8 → <2.0 (↓28.6%)</td><td>PMID:37008356,40652548</td></tr>
+                            <tr><td>背脂率下降</td><td>單核苷小核酸</td><td>>2.5cm → <2.0cm (↓30%)</td><td>PMID:31159441,32782789</td></tr>
+                            <tr><td>出肉率＞80%</td><td>重組型煙醯胺蛋白酶+單核苷小核酸</td><td>77% → 82.5% (↑5.2%)</td><td>PMID:32782789,40652548</td></tr>
+                            <tr><td>抗病毒・免疫力</td><td>褐藻萃取物</td><td>IL-6↓42%</td><td>PMID:31861062,36308921</td></tr>
+                            <tr><td>抗應激・耐運輸</td><td>褐藻萃取物</td><td>失重減少1.2%</td><td>PMID:31861062,37008356</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -687,102 +752,102 @@
 
         <!-- ===== 2. 屠宰場實證 ===== -->
         <section class="fade-in">
-            <h2 class="section-title" data-translate="slaughter_title">📋 全台三大產區屠宰場實證（2025-2026）</h2>
+            <h2 class="section-title">📋 全台三大產區屠宰場實證（2025-2026）</h2>
             <div class="card">
-                <div style="background: var(--gray-100); padding: 18px; border-radius: 10px; margin-bottom: 20px; border-left: 6px solid var(--success);">
-                    <p style="font-weight: 700; font-size: 1rem;" data-translate="slaughter_scope">📍 北部(桃竹苗)·中部(彰雲嘉)·南部(屏東) 23場 · 47,826頭</p>
+                <div style="background: rgba(0,173,181,0.1); padding: 18px; border-radius: 10px; margin-bottom: 20px; border-left: 6px solid var(--success);">
+                    <p style="font-weight: 700; font-size: 1rem;">📍 北部(桃竹苗)·中部(彰雲嘉)·南部(屏東) 23場 · 47,826頭</p>
                 </div>
                 <div class="img-container" onclick="openLightbox(this)">
                     <img src="assets/slaughterhouse-data.jpg" alt="屠宰場背脂超音波實測" class="responsive-img" loading="lazy">
-                    <div class="img-title" data-translate="slaughter_caption">彰化屠宰場屠體評級 · 背脂實測1.9cm (2026.02)</div>
+                    <div class="img-title">彰化屠宰場屠體評級 · 背脂實測1.9cm (2026.02)</div>
                 </div>
                 <div class="table-container">
                     <table>
-                        <thead><tr><th data-translate="region">產區</th><th data-translate="yard_count">場數</th><th data-translate="control">對照組<br>出肉率/背脂</th><th data-translate="vitality">倍力素組<br>出肉率/背脂</th><th data-translate="improvement">改善</th><th data-translate="premium">收購溢價</th></tr></thead>
+                        <thead><tr><th>產區</th><th>場數</th><th>對照組<br>出肉率/背脂</th><th>倍力素組<br>出肉率/背脂</th><th>改善</th><th>收購溢價</th></tr></thead>
                         <tbody>
-                            <tr><td data-translate="north">北部</td><td>7</td><td>78.2% / 2.7cm</td><td><span style="color:var(--success);font-weight:700;">82.1% / 1.9cm</span></td><td>↑3.9% / ↓0.8cm</td><td>+12%</td></tr>
-                            <tr><td data-translate="central">中部</td><td>10</td><td>77.6% / 2.8cm</td><td><span style="color:var(--success);font-weight:700;">81.5% / 1.8cm</span></td><td>↑3.9% / ↓1.0cm</td><td>+15%</td></tr>
-                            <tr><td data-translate="south">南部</td><td>6</td><td>78.9% / 2.6cm</td><td><span style="color:var(--success);font-weight:700;">82.8% / 1.8cm</span></td><td>↑3.9% / ↓0.8cm</td><td>+13%</td></tr>
+                            <tr><td>北部</td><td>7</td><td>78.2% / 2.7cm</td><td><span style="color:var(--success);font-weight:700;">82.1% / 1.9cm</span></td><td>↑3.9% / ↓0.8cm</td><td>+12%</td></tr>
+                            <tr><td>中部</td><td>10</td><td>77.6% / 2.8cm</td><td><span style="color:var(--success);font-weight:700;">81.5% / 1.8cm</span></td><td>↑3.9% / ↓1.0cm</td><td>+15%</td></tr>
+                            <tr><td>南部</td><td>6</td><td>78.9% / 2.6cm</td><td><span style="color:var(--success);font-weight:700;">82.8% / 1.8cm</span></td><td>↑3.9% / ↓0.8cm</td><td>+13%</td></tr>
                         </tbody>
                     </table>
                 </div>
-                <p style="margin-top: 20px; background: #e3f2fd; padding: 14px; border-radius: 10px; font-weight: 600;" data-translate="slaughter_conclusion">🔬 屠體評級提升1~2等級 · 中部溢價達15%</p>
+                <p style="margin-top: 20px; background: rgba(0,173,181,0.1); padding: 14px; border-radius: 10px; font-weight: 600;">🔬 屠體評級提升1~2等級 · 中部溢價達15%</p>
             </div>
         </section>
 
-        <!-- ===== 3. 核心規格對比 (僅保留關鍵指標，無空數據) ===== -->
+        <!-- ===== 3. 核心規格對比 ===== -->
         <section class="fade-in">
-            <h2 class="section-title" data-translate="spec_title">⚙️ 育肥規格｜30→140kg 高性能參數</h2>
+            <h2 class="section-title">⚙️ 育肥規格｜30→140kg 高性能參數</h2>
             <div class="param-cards">
                 <div class="param-card">
-                    <div class="param-label" data-translate="metric_fcr_title">飼料轉換率 (FCR)</div>
-                    <div class="param-value"><span class="metric-old">2.8</span> <span data-translate="fcr_new"><2.0</span></div>
-                    <div style="color: var(--success); font-weight: 700;" data-translate="fcr_improve">↓ 28.6%</div>
+                    <div class="param-label">飼料轉換率 (FCR)</div>
+                    <div class="param-value"><span class="metric-old">2.8</span> <span><2.0</span></div>
+                    <div style="color: var(--success); font-weight: 700;">↓ 28.6%</div>
                 </div>
                 <div class="param-card">
-                    <div class="param-label" data-translate="metric_yield_title">出肉率</div>
-                    <div class="param-value"><span class="metric-old"><80%</span> <span data-translate="yield_new">>80%</span></div>
-                    <div style="color: var(--success); font-weight: 700;" data-translate="yield_improve">↑ 3.9~5.2%</div>
+                    <div class="param-label">出肉率</div>
+                    <div class="param-value"><span class="metric-old"><80%</span> <span>>80%</span></div>
+                    <div style="color: var(--success); font-weight: 700;">↑ 3.9~5.2%</div>
                 </div>
                 <div class="param-card">
-                    <div class="param-label" data-translate="metric_bf_title">背脂厚度</div>
-                    <div class="param-value"><span class="metric-old">>2.5cm</span> <span data-translate="bf_new"><2.0cm</span></div>
-                    <div style="color: var(--success); font-weight: 700;" data-translate="bf_improve">↓ 30%</div>
+                    <div class="param-label">背脂厚度</div>
+                    <div class="param-value"><span class="metric-old">>2.5cm</span> <span><2.0cm</span></div>
+                    <div style="color: var(--success); font-weight: 700;">↓ 30%</div>
                 </div>
                 <div class="param-card">
-                    <div class="param-label" data-translate="metric_weight_title">出欄體重</div>
-                    <div class="param-value"><span class="metric-old"><130kg</span> <span data-translate="weight_new">>140kg</span></div>
-                    <div style="color: var(--success); font-weight: 700;" data-translate="weight_improve">↑ 10kg+</div>
+                    <div class="param-label">出欄體重</div>
+                    <div class="param-value"><span class="metric-old"><130kg</span> <span>>140kg</span></div>
+                    <div style="color: var(--success); font-weight: 700;">↑ 10kg+</div>
                 </div>
             </div>
             <div class="img-container" onclick="openLightbox(this)">
                 <img src="assets/heavy-pigs-140kg.jpg" alt="140kg杜洛克肉豬" class="responsive-img" loading="lazy">
-                <div class="img-title" data-translate="heavy_pig_caption">雲林示範場 · 140kg杜洛克 · 背脂1.9cm</div>
+                <div class="img-title">雲林示範場 · 140kg杜洛克 · 背脂1.9cm</div>
             </div>
             <div class="img-container" onclick="openLightbox(this)">
                 <img src="assets/feed-efficiency-triptych.jpg" alt="FCR 2.8 vs 2.4 vs <2.0 三格對比" class="responsive-img" loading="lazy">
-                <div class="img-title" data-translate="fcr_triptych_caption">左FCR 2.8 · 中FCR 2.4 · 右FCR <2.0｜台灣現代化豬舍</div>
+                <div class="img-title">左FCR 2.8 · 中FCR 2.4 · 右FCR <2.0｜台灣現代化豬舍</div>
             </div>
             <div class="img-container" onclick="openLightbox(this)">
                 <img src="assets/feed-efficiency.jpg" alt="飼料效率輔助圖表" class="responsive-img" loading="lazy">
-                <div class="img-title" data-translate="fcr_chart_caption">飼料轉換效率對比 · 節省28.6%飼料</div>
+                <div class="img-title">飼料轉換效率對比 · 節省28.6%飼料</div>
             </div>
         </section>
 
-        <!-- ===== 4. 經濟效益精算 (改為百分比表格，無空數據) ===== -->
+        <!-- ===== 4. 經濟效益精算 ===== -->
         <section class="fade-in">
-            <h2 class="section-title" data-translate="profit_title">💰 單頭效益精算（改善百分比）</h2>
+            <h2 class="section-title">💰 單頭效益精算（改善百分比）</h2>
             <div class="card">
-                <div style="background:#fff3e0; padding:16px; border-radius:10px; margin-bottom:20px;">
-                    <p style="font-size:0.95rem;"><strong data-translate="calc_basis">📐 基準：</strong><span data-translate="calc_detail">30→140kg · FCR 2.8→2.0 · 飼料效率↑28.6% · 出肉率↑5.2% · 背脂↓30%</span></p>
+                <div style="background:rgba(0,173,181,0.1); padding:16px; border-radius:10px; margin-bottom:20px;">
+                    <p style="font-size:0.95rem;"><strong>📐 基準：</strong>30→140kg · FCR 2.8→2.0 · 飼料效率↑28.6% · 出肉率↑5.2% · 背脂↓30%</p>
                 </div>
                 <div class="table-container">
                     <table>
-                        <thead><tr><th data-translate="profit_item">效益項目</th><th data-translate="improvement_range">改善幅度</th><th data-translate="improvement_percent">改善百分比</th></tr></thead>
+                        <thead><tr><th>效益項目</th><th>改善幅度</th><th>改善百分比</th></tr></thead>
                         <tbody>
-                            <tr><td data-translate="feed_saving">飼料節省</td><td data-translate="fcr_saving_detail">FCR 2.8→2.0 · 省28.6%</td><td>28.6%</td></tr>
-                            <tr><td data-translate="carcass_gain">屠體增重</td><td data-translate="yield_gain_detail">出肉率77%→81% · +5.2%</td><td>5.2%</td></tr>
-                            <tr><td data-translate="bf_premium">背脂溢價</td><td data-translate="bf_premium_detail">背脂2.5→1.8cm · A級</td><td>30%</td></tr>
-                            <tr><td data-translate="quality_premium">肉質溢價</td><td data-translate="quality_detail">肌間脂肪3.2% (提升80%)</td><td>+80%</td></tr>
+                            <tr><td>飼料節省</td><td>FCR 2.8→2.0 · 省28.6%</td><td>28.6%</td></tr>
+                            <tr><td>屠體增重</td><td>出肉率77%→81% · +5.2%</td><td>5.2%</td></tr>
+                            <tr><td>背脂溢價</td><td>背脂2.5→1.8cm · A級</td><td>30%</td></tr>
+                            <tr><td>肉質溢價</td><td>肌間脂肪3.2% (提升80%)</td><td>+80%</td></tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="efficiency-highlight">
-                    <h3 style="font-size:1.3rem; margin-bottom:12px;" data-translate="efficiency_title">綜合效率提升</h3>
+                    <h3 style="font-size:1.3rem; margin-bottom:12px;">綜合效率提升</h3>
                     <div class="efficiency-value">FCR ↓28.6%</div>
-                    <p style="font-size:1.1rem; margin:15px 0;" data-translate="efficiency_desc">🐖 出肉率 ↑5.2% · 背脂 ↓30% · 肌間脂肪 ↑80%</p>
+                    <p style="font-size:1.1rem; margin:15px 0;">🐖 出肉率 ↑5.2% · 背脂 ↓30% · 肌間脂肪 ↑80%</p>
                 </div>
             </div>
         </section>
 
         <!-- ===== 5. 屠體影片 ===== -->
         <section class="fade-in">
-            <h2 class="section-title" data-translate="video_title">🎥 屠體評級實錄｜背脂與瘦肉實測</h2>
+            <h2 class="section-title">🎥 屠體評級實錄｜背脂與瘦肉實測</h2>
             <div class="video-block">
                 <video src="assets/carcass-video.mp4" controls playsinline poster="assets/slaughterhouse-data.jpg">
                     您的瀏覽器不支援影片播放。
                 </video>
-                <div class="video-caption" data-translate="video_caption">屠體分級現場 · 背脂厚度1.8cm · 瘦肉率>68%</div>
+                <div class="video-caption">屠體分級現場 · 背脂厚度1.8cm · 瘦肉率>68%</div>
             </div>
         </section>
 
@@ -790,21 +855,21 @@
         <section class="fade-in">
             <div class="img-container" onclick="openLightbox(this)">
                 <img src="assets/marbling-raw-pork.jpg" alt="豬里肌雪花肉 · 肌間脂肪3.2%" class="responsive-img" loading="lazy">
-                <div class="img-title" data-translate="marbling_caption">肌內脂肪達3.2% · 大理石紋明顯 · 品牌豬口感</div>
+                <div class="img-title">肌內脂肪達3.2% · 大理石紋明顯 · 品牌豬口感</div>
             </div>
             <div class="img-container" onclick="openLightbox(this)">
                 <img src="assets/roi-infographic-1102.jpg" alt="效率提升資訊圖表" class="responsive-img" loading="lazy">
-                <div class="img-title" data-translate="roi_caption_new">📊 FCR ↓28.6% · 出肉率 ↑5.2% · 背脂 ↓30% · 肌間脂肪 ↑80%</div>
+                <div class="img-title">📊 FCR ↓28.6% · 出肉率 ↑5.2% · 背脂 ↓30% · 肌間脂肪 ↑80%</div>
             </div>
         </section>
 
-        <!-- ===== 7. 產品規格 (移除空白欄位，僅保留有數據的卡片) ===== -->
+        <!-- ===== 7. 產品規格 ===== -->
         <section class="fade-in">
-            <h2 class="section-title" data-translate="product_spec_title">📋 產品規格｜每噸全價飼料添加1kg</h2>
+            <h2 class="section-title">📋 產品規格｜每噸全價飼料添加1kg</h2>
             <div class="param-cards" style="grid-template-columns: repeat(3,1fr);">
-                <div class="param-card"><div class="param-label" data-translate="spec_dosage_label">添加量</div><div class="param-value">1</div><div>kg/噸</div><div class="spec-note" data-translate="spec_dosage_note">強化1.5kg</div></div>
-                <div class="param-card"><div class="param-label" data-translate="spec_stage_label">適用階段</div><div class="param-value" data-translate="spec_stage_value">育肥全程</div><div>30-140kg</div></div>
-                <div class="param-card"><div class="param-label" data-translate="spec_feed_label">每頭耗料</div><div class="param-value">~220</div><div>kg</div><div class="spec-note" data-translate="spec_feed_note">FCR 2.0基準</div></div>
+                <div class="param-card"><div class="param-label">添加量</div><div class="param-value">1</div><div>kg/噸</div><div class="spec-note">強化1.5kg</div></div>
+                <div class="param-card"><div class="param-label">適用階段</div><div class="param-value">育肥全程</div><div>30-140kg</div></div>
+                <div class="param-card"><div class="param-label">每頭耗料</div><div class="param-value">~220</div><div>kg</div><div class="spec-note">FCR 2.0基準</div></div>
             </div>
         </section>
 
@@ -812,27 +877,26 @@
         <section class="fade-in">
             <div style="display: grid; gap: 20px; margin: 30px 0;">
                 <div class="card">
-                    <p style="font-size:1rem; line-height:1.6;" data-translate="testimonial1">「原本擔心養太重被扣錢，倍力素養到143kg背脂才1.8cm，牌價+15%，一頭多賺很多！」</p>
-                    <div style="margin-top: 16px; font-weight: 700;" data-translate="testimonial1_author">雲林 · 吳勝華</div>
-                    <div style="color: #777; font-size:0.85rem;" data-translate="testimonial1_meta">1,200頭一貫場 · 2026.01</div>
+                    <p style="font-size:1rem; line-height:1.6;">「原本擔心養太重被扣錢，倍力素養到143kg背脂才1.8cm，牌價+15%，一頭多賺很多！」</p>
+                    <div style="margin-top: 16px; font-weight: 700;">雲林 · 吳勝華</div>
+                    <div style="color: #aaa; font-size:0.85rem;">1,200頭一貫場 · 2026.01</div>
                 </div>
                 <div class="card">
-                    <p style="font-size:1rem; line-height:1.6;" data-translate="testimonial2">「南部屠宰場主動簽約每公斤+13%，全場1,800頭都走140kg規格。」</p>
-                    <div style="margin-top: 16px; font-weight: 700;" data-translate="testimonial2_author">屏東 · 陳信男</div>
-                    <div style="color: #777; font-size:0.85rem;" data-translate="testimonial2_meta">契養戶 · 年出欄3500頭</div>
+                    <p style="font-size:1rem; line-height:1.6;">「南部屠宰場主動簽約每公斤+13%，全場1,800頭都走140kg規格。」</p>
+                    <div style="margin-top: 16px; font-weight: 700;">屏東 · 陳信男</div>
+                    <div style="color: #aaa; font-size:0.85rem;">契養戶 · 年出欄3500頭</div>
                 </div>
             </div>
 
             <div class="cta-block">
-                <h2 style="font-size:1.8rem; color:white;" data-translate="cta_title">🚀 試算您牧場的效率提升</h2>
+                <h2 style="font-size:1.8rem; color:white;">🚀 試算您牧場的效率提升</h2>
                 <div class="big-number">FCR ↓28.6%</div>
-                <p style="font-size:1.2rem;" data-translate="cta_sub1">出肉率↑5.2%  · 背脂↓30%</p>
+                <p style="font-size:1.2rem;">出肉率↑5.2%  · 背脂↓30%</p>
                 <div style="margin:25px 0;">
-                    <!-- 修正電話號碼為 +886-5-6972238 -->
-                    <a class="btn btn-primary" href="tel:+886-5-6972238" data-translate="cta_btn1">📞 免費效率試算｜限場8折</a>
-                    <a class="btn btn-secondary" href="#" data-translate="cta_btn2">📋 領取140kg實證手冊</a>
+                    <a class="btn btn-primary" href="tel:+886-5-6972238">📞 免費效率試算｜限場8折</a>
+                    <a class="btn btn-secondary" href="#">📋 領取140kg實證手冊</a>
                 </div>
-                <p style="opacity:0.9; font-size:0.9rem;" data-translate="cta_footnote">* 50萬頭田間實證 · 23屠宰場 · 吉升無效退費</p>
+                <p style="opacity:0.9; font-size:0.9rem;">* 50萬頭田間實證 · 23屠宰場 · 吉升無效退費</p>
             </div>
         </section>
     </div>
@@ -840,21 +904,21 @@
     <!-- 頁尾 (公司資訊更新) -->
     <footer>
         <div class="container">
-            <p style="font-size:1.1rem; margin-bottom:16px;"><strong data-translate="footer_company">吉升飼料有限公司</strong>｜<span data-translate="footer_slogan">育肥豬140kg高效方案 · 屠宰溢價領導品牌</span></p>
+            <p style="font-size:1.1rem; margin-bottom:16px;"><strong>吉升飼料有限公司</strong>｜育肥豬140kg高效方案 · 屠宰溢價領導品牌</p>
             <p style="margin: 10px 0;">地址：634雲林縣褒忠鄉中正路28-18號<br>電話：+886-5-6972238｜Email: info@chishengfeed.com</p>
             <ul class="product-links">
-                <li><a href="index.html">🏠 <span data-translate="home">主頁</span></a></li>
-                <li><a href="beilisu-boar-semen.html">🐗 <span data-translate="boar">種公豬</span></a></li>
-                <li><a href="beilisu-pregnant-sow.html">🤰 <span data-translate="preg_sow">懷孕母豬</span></a></li>
-                <li><a href="beilisu-lactating-sow.html">🍼 <span data-translate="lact_sow">哺乳母豬</span></a></li>
-                <li><a href="beilisu-piglet-milk.html">🐷 <span data-translate="piglet">仔豬</span></a></li>
-                <li><a href="beilisu-finisher-fcr.html">📈 <span data-translate="finisher">育肥豬</span></a></li>
-                <li><a href="beilisu-breeder-chicken.html">🐔 <span data-translate="breeder">種雞</span></a></li>
-                <li><a href="beilisu-layer-chicken.html">🥚 <span data-translate="layer">蛋雞</span></a></li>
-                <li><a href="beilisu-native-chicken.html">🌾 <span data-translate="native">土雞</span></a></li>
-                <li><a href="beilisu-broiler-fcr.html">🍗 <span data-translate="broiler">白肉雞</span></a></li>
+                <li><a href="index.html">🏠 主頁</a></li>
+                <li><a href="倍力素種公豬精液品質提升方案.html">🐗 種公豬</a></li>
+                <li><a href="倍力素懷孕期母豬生產性能優化方案.html">🤰 懷孕母豬</a></li>
+                <li><a href="倍力素哺乳母豬性能提升方案.html">🍼 哺乳母豬</a></li>
+                <li><a href="倍力素仔豬人工乳性能提升方案.html">🐷 仔豬</a></li>
+                <li><a href="倍力素育肥豬性能提升方案.html">📈 育肥豬</a></li>
+                <li><a href="倍力素種雞性能提升方案.html">🐔 種雞</a></li>
+                <li><a href="倍力素蛋雞性能提升方案.html">🥚 蛋雞</a></li>
+                <li><a href="倍力素土雞性能提升方案.html">🌾 土雞</a></li>
+                <li><a href="倍力素白肉雞FCR性能提升方案.html">🍗 白肉雞</a></li>
             </ul>
-            <p style="opacity:0.8; font-size:0.85rem;" data-translate="footer_copyright">© 2026 吉升飼料有限公司 · 引用PubMed/國科會文獻 · 圖片實拍</p>
+            <p style="opacity:0.8; font-size:0.85rem;">© 2026 吉升飼料有限公司 · 引用PubMed/國科會文獻 · 圖片實拍</p>
         </div>
     </footer>
 
@@ -865,199 +929,27 @@
     </div>
 
     <script>
-        // ========== 🌍 完整多語言翻譯物件（包含新增大鍵值）==========
-        const translations = {
-            'zh-TW': {
-                'title': '🐗 倍力素®育肥豬 · FCR 2.8→<2.0',
-                'subtitle': '三大機密載體｜重組型煙醯胺蛋白酶‧單核苷小核酸‧褐藻萃取物 · 50萬頭實證',
-                'highlight_badge': '🏆 飼料效率↑28% | 屠體評級↑30% | 50萬頭實證',
-                'confidential_title': '🔬 倍力素® 育肥專利配方 – 三大機密載體',
-                'protease_title': '1. 「重組型煙醯胺蛋白酶」—— 長鏈脂肪醇萃取物',
-                'protease_source': '🌱 來源：蛋白草萃取',
-                'protease_desc': '<strong>降FCR、能量重分配</strong> · AMPK/mTOR訊號軸 · FCR 2.8→<2.0 · 每頭省飼料28.6%',
-                'protease_caption': '重組型煙醯胺蛋白酶 · 長鏈脂肪醇3D結構示意',
-                'protease_mechanism': '🧬 分子機轉：',
-                'protease_mechanism_text': '重組型煙醯胺蛋白酶透過激活AMPK路徑，上調骨骼肌脂肪酸氧化及葡萄糖攝取；同時透過mTORC1訊號促進肌肉蛋白合成。此雙重調控機制經Genova等 (2023, PMID:37008356) 證實可於代謝能降低85 kcal/kg下維持增重。倍力素重組型煙醯胺蛋白酶將能量由脂肪堆積「重定向」至瘦肉沉積，實現FCR突破2.0。原料萃取自天然蛋白草，保留活性胜肽。',
-                'rna_title': '2. 「單核苷小核酸」—— 非編碼RNA片段',
-                'rna_source': '🌱 來源：蛋白草萃取',
-                'rna_desc': '<strong>背脂率↓30%、出肉率↑</strong> · IGF2基因調控 · 背脂<2.0cm · 出肉率>82%',
-                'rna_caption': '單核苷小核酸 · 非編碼RNA與DNA結合示意',
-                'rna_mechanism': '🧬 表觀遺傳調控：',
-                'rna_mechanism_text': '倍力素單核苷小核酸片段靶向IGF2基因啟動子區域，模擬「A等位基因」優勢表現型，顯著下調脂肪生成轉錄因子。Liu等 (2019, PMID:31159441) 證實microRNA可直接調控豬隻背脂沉積。Yu等 (2020, PMID:32782789) 指出高直鏈澱粉比例可上調FAS/SCD基因表現，提高肌內脂肪(IMF)達3.2%以上。倍力素單核苷小核酸整合此雙重路徑：皮下脂肪抑制、肌內脂肪定向沉積，同時達成瘦肉率提升與雪花肉生成。小核酸源自蛋白草發酵萃取，純天然。',
-                'fucoxanthin_title': '3. 「褐藻萃取物」—— 藻源性類胡蘿蔔素',
-                'fucoxanthin_desc': '<strong>抗病毒免疫力、抗應激</strong> · Nrf2路徑 · 屠宰失重↓1.2%',
-                'fucoxanthin_caption': '褐藻萃取物 · 天然巨藻來源',
-                'fucoxanthin_mechanism': '🌿 抗氧化與腸道健康：',
-                'fucoxanthin_mechanism_text': '褐藻萃取物透過激活Nrf2/KEAP1抗氧化反應元件，提升SOD、GPx活性，有效清除自由基。Liotta等 (2019, PMID:31861062) 發現多酚類物質可降低背脂厚度、提高MUFA與ω-3 PUFA濃度。Ferrer等 (2022, PMID:36308921) 觀察到皮下脂肪MUFA/SFA比例上升。褐藻萃取物憑藉獨特雙親分子結構，嵌入細胞膜淬滅單重態氧，降低運輸緊迫及屠宰失重，同時維護腸道屏障完整性，減少發炎因子IL-6、IL-1β表現。',
-                'benefit_item': '效能項目',
-                'mechanism': '對應載體',
-                'performance': '實證績效',
-                'literature': '文獻來源',
-                'benefit1': '降FCR',
-                'benefit2': '背脂率下降',
-                'benefit3': '出肉率＞80%',
-                'benefit4': '抗病毒・免疫力',
-                'benefit5': '抗應激・耐運輸',
-                'carrier1': '重組型煙醯胺蛋白酶',
-                'carrier2': '單核苷小核酸',
-                'carrier3': '褐藻萃取物',
-                'slaughter_title': '📋 全台三大產區屠宰場實證（2025-2026）',
-                'slaughter_scope': '📍 北部(桃竹苗)·中部(彰雲嘉)·南部(屏東) 23場 · 47,826頭',
-                'slaughter_caption': '彰化屠宰場屠體評級 · 背脂實測1.9cm (2026.02)',
-                'region': '產區',
-                'yard_count': '場數',
-                'control': '對照組<br>出肉率/背脂',
-                'vitality': '倍力素組<br>出肉率/背脂',
-                'improvement': '改善',
-                'premium': '收購溢價',
-                'north': '北部',
-                'central': '中部',
-                'south': '南部',
-                'slaughter_conclusion': '🔬 屠體評級提升1~2等級 · 中部溢價達15%',
-                'spec_title': '⚙️ 育肥規格｜30→140kg 高性能參數',
-                'metric_fcr_title': '飼料轉換率 (FCR)',
-                'fcr_new': '<2.0',
-                'fcr_improve': '↓ 28.6%',
-                'metric_yield_title': '出肉率',
-                'yield_new': '>80%',
-                'yield_improve': '↑ 3.9~5.2%',
-                'metric_bf_title': '背脂厚度',
-                'bf_new': '<2.0cm',
-                'bf_improve': '↓ 30%',
-                'metric_weight_title': '出欄體重',
-                'weight_new': '>140kg',
-                'weight_improve': '↑ 10kg+',
-                'heavy_pig_caption': '雲林示範場 · 140kg杜洛克 · 背脂1.9cm',
-                'fcr_triptych_caption': '左FCR 2.8 · 中FCR 2.4 · 右FCR <2.0｜台灣現代化豬舍',
-                'fcr_chart_caption': '飼料轉換效率對比 · 節省28.6%飼料',
-                'profit_title': '💰 單頭效益精算（改善百分比）',
-                'calc_basis': '📐 基準：',
-                'calc_detail': '30→140kg · FCR 2.8→2.0 · 飼料效率↑28.6% · 出肉率↑5.2% · 背脂↓30%',
-                'profit_item': '效益項目',
-                'improvement_range': '改善幅度',
-                'improvement_percent': '改善百分比',
-                'feed_saving': '飼料節省',
-                'fcr_saving_detail': 'FCR 2.8→2.0 · 省28.6%',
-                'carcass_gain': '屠體增重',
-                'yield_gain_detail': '出肉率77%→81% · +5.2%',
-                'bf_premium': '背脂溢價',
-                'bf_premium_detail': '背脂2.5→1.8cm · A級',
-                'quality_premium': '肉質溢價',
-                'quality_detail': '肌間脂肪3.2% (提升80%)',
-                'efficiency_title': '綜合效率提升',
-                'efficiency_desc': '🐖 出肉率 ↑5.2% · 背脂 ↓30% · 肌間脂肪 ↑80%',
-                'video_title': '🎥 屠體評級實錄｜背脂與瘦肉實測',
-                'video_caption': '屠體分級現場 · 背脂厚度1.8cm · 瘦肉率>68%',
-                'marbling_caption': '肌內脂肪達3.2% · 大理石紋明顯 · 品牌豬口感',
-                'roi_caption_new': '📊 FCR ↓28.6% · 出肉率 ↑5.2% · 背脂 ↓30% · 肌間脂肪 ↑80%',
-                'product_spec_title': '📋 產品規格｜每噸全價飼料添加1kg',
-                'spec_dosage_label': '添加量',
-                'spec_dosage_note': '強化1.5kg',
-                'spec_stage_label': '適用階段',
-                'spec_stage_value': '育肥全程',
-                'spec_feed_label': '每頭耗料',
-                'spec_feed_note': 'FCR 2.0基準',
-                'testimonial1': '「原本擔心養太重被扣錢，倍力素養到143kg背脂才1.8cm，牌價+15%，一頭多賺很多！」',
-                'testimonial1_author': '雲林 · 吳勝華',
-                'testimonial1_meta': '1,200頭一貫場 · 2026.01',
-                'testimonial2': '「南部屠宰場主動簽約每公斤+13%，全場1,800頭都走140kg規格。」',
-                'testimonial2_author': '屏東 · 陳信男',
-                'testimonial2_meta': '契養戶 · 年出欄3500頭',
-                'cta_title': '🚀 試算您牧場的效率提升',
-                'cta_sub1': '出肉率↑5.2%  · 背脂↓30%',
-                'cta_btn1': '📞 免費效率試算｜限場8折',
-                'cta_btn2': '📋 領取140kg實證手冊',
-                'cta_footnote': '* 50萬頭田間實證 · 23屠宰場 · 吉升無效退費',
-                'footer_company': '吉升飼料有限公司',
-                'footer_slogan': '育肥豬140kg高效方案 · 屠宰溢價領導品牌',
-                'footer_copyright': '© 2026 吉升飼料有限公司 · 引用PubMed/國科會文獻 · 圖片實拍',
-                'home': '主頁',
-                'boar': '種公豬',
-                'preg_sow': '懷孕母豬',
-                'lact_sow': '哺乳母豬',
-                'piglet': '仔豬',
-                'finisher': '育肥豬',
-                'breeder': '種雞',
-                'layer': '蛋雞',
-                'native': '土雞',
-                'broiler': '白肉雞',
-            },
-            'zh-CN': {
-                // 僅列舉部分關鍵，實際完整版本應包含所有對應鍵值（此處略以節省空間，但使用時應完整）
-                'title': '🐗 倍力素®育肥猪 · FCR 2.8→<2.0',
-                'subtitle': '三大机密载体｜重组型烟酰胺蛋白酶‧单核苷小核酸‧褐藻萃取物 · 50万头实证',
-                'highlight_badge': '🏆 饲料效率↑28% | 屠体评级↑30% | 50万头实证',
-                'protease_source': '🌱 来源：蛋白草萃取',
-                'rna_source': '🌱 来源：蛋白草萃取',
-                'cta_btn1': '📞 免费效率试算｜限场8折',
-                'footer_company': '吉升饲料有限公司',
-                'cta_footnote': '* 50万头田间实证 · 23屠宰场 · 吉升无效退费',
-                // 其餘省略，實際應用時應補齊
-            },
-            'en': {
-                'title': '🐗 Beilisu® Finisher · FCR 2.8→<2.0',
-                'subtitle': 'Three Confidential Carriers | Recombinant Nicotinamide Protease · Mononucleotide Small Nucleic Acid · Fucoxanthin Extract · 500K+ heads',
-                'highlight_badge': '🏆 Feed efficiency ↑28% | Carcass grade ↑30% | 500K+ validated',
-                'protease_source': '🌱 Source: Protein Grass Extract',
-                'rna_source': '🌱 Source: Protein Grass Extract',
-                'cta_btn1': '📞 Free Efficiency Calc｜20% off',
-                'footer_company': 'Chi Sheng Feed Co., Ltd.',
-                'cta_footnote': '* 500K+ heads, 23 slaughterhouses, money-back guarantee by Chi Sheng',
-                // 其餘省略
+        // 滾動時返回頂部按鈕顯示/隱藏
+        window.addEventListener('scroll', function() {
+            const btn = document.getElementById('scrollToTopBtn');
+            if (window.scrollY > 300) {
+                btn.style.opacity = '1';
+                btn.style.visibility = 'visible';
+            } else {
+                btn.style.opacity = '0';
+                btn.style.visibility = 'hidden';
             }
-        };
+        });
 
-        let currentLang = 'zh-TW';
-
-        function openLightbox(element) {
-            const img = element.querySelector('img');
-            if (!img) return;
-            const caption = element.querySelector('.img-title')?.innerText || '';
-            const lb = document.getElementById('lightbox');
-            const lbImg = document.getElementById('lightbox-img');
-            const lbCaption = document.getElementById('lightbox-caption');
-            lbImg.src = img.src;
-            lbCaption.innerText = caption;
-            lb.style.display = 'flex';
-        }
-
+        // 滾動淡入效果
         document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    switchLanguage(this.getAttribute('data-lang'));
-                });
-            });
-
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) entry.target.classList.add('visible');
                 });
             }, { threshold: 0.1 });
             document.querySelectorAll('section, .fade-in').forEach(el => observer.observe(el));
-
-            switchLanguage('zh-TW');
         });
-
-        function switchLanguage(lang) {
-            currentLang = lang;
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
-            });
-            document.documentElement.lang = lang;
-
-            const dict = translations[lang] || translations['zh-TW'];
-            document.querySelectorAll('[data-translate]').forEach(el => {
-                const key = el.getAttribute('data-translate');
-                if (dict[key] !== undefined) {
-                    if (el.tagName === 'IMG' && el.hasAttribute('alt')) {
-                        el.alt = dict[key];
-                    } else {
-                        el.innerHTML = dict[key];
-                    }
-                }
-            });
-        }
     </script>
 </body>
 </html>
