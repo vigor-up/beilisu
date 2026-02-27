@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <style>
+    /* 防止文字選取 */
+    body {
+        -webkit-user-select: none;  /* Safari */
+        -moz-user-select: none;     /* Firefox */
+        -ms-user-select: none;      /* IE/Edge */
+        user-select: none;           /* 標準語法 */
+    }
+
+    /* 針對圖片：禁止拖曳、禁止長按菜單，但保留點擊事件（由父層處理） */
+    img {
+        -webkit-touch-callout: none; /* iOS 長按選單 */
+        -webkit-user-drag: none;     /* Chrome 拖曳 */
+        user-drag: none;
+        pointer-events: none;         /* 讓圖片本身無法被點擊，但父容器可接收點擊 */
+    }
+
+    /* 圖片的容器需設定 cursor: pointer 提示可點擊 */
+    .img-container {
+        cursor: pointer;
+    }
+</style>
+
+<!-- 簡易 Lightbox 結構 -->
+<div id="lightbox" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:9999; justify-content:center; align-items:center; flex-direction:column;" onclick="this.style.display='none'">
+    <img id="lightbox-img" src="" style="max-width:90%; max-height:80%; object-fit:contain; border-radius:8px;">
+    <div id="lightbox-caption" style="color:white; margin-top:16px; font-size:1rem;"></div>
+</div>
+
+<script>
+    // 1. 禁止右鍵選單 (含手機長按)
+    document.addEventListener('contextmenu', e => e.preventDefault());
+
+    // 2. 禁止複製快捷鍵 (Ctrl+C, Ctrl/X)
+    document.addEventListener('copy', e => e.preventDefault());
+    document.addEventListener('cut', e => e.preventDefault());
+
+    // 3. 禁止選取事件 (滑鼠拖曳選取)
+    document.addEventListener('selectstart', e => e.preventDefault());
+
+    // 4. 輕量 Lightbox 功能：所有 .img-container 內的圖片點擊放大
+    function openLightbox(element) {
+        const img = element.querySelector('img');
+        if (!img) return;
+        const caption = element.querySelector('.img-title')?.innerText || '';
+        const lb = document.getElementById('lightbox');
+        const lbImg = document.getElementById('lightbox-img');
+        const lbCaption = document.getElementById('lightbox-caption');
+        lbImg.src = img.src;
+        lbCaption.innerText = caption;
+        lb.style.display = 'flex';
+    }
+
+    // 為所有 .img-container 綁定點擊事件
+    document.querySelectorAll('.img-container').forEach(container => {
+        container.addEventListener('click', function() {
+            openLightbox(this);
+        });
+    });
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=yes, viewport-fit=cover">
+    <title>倍力素®白蝦存活率提升方案 - 吉升飼料有限公司</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #00a8a8;
+            --secondary-blue: #007d7d;
+            --accent-yellow: #ffb74d;
+            --light-bg: #f0f7ff;
+            --dark-text: #1e3c4a;
+            --gray-text: #6c7a9c;
+            --success: #2e7d5e;
+            --warning: #ff9800;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+            --shadow-md: 0 5px 15px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 25px rgba(0,0,0,0.1);
+            --safe-area-inset-left: env(safe-area-inset-left);
+            --safe-area-inset-right: env(safe-area-inset-right);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-font-smoothing: antialiased;
+        }
+        html {
+            font-size: 17px;
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Microsoft JhengHei', '微軟正黑體', 'Noto Sans TC', 'PingFang TC', 'Helvetica Neue', sans-serif;
+            background-color: #f5f9ff;
+            color: var(--dark-text);
+            line-height: 1.5;
+            overflow-x: hidden;
+            padding-left: var(--safe-area-inset-left);
+            padding-right: var(--safe-area-inset-right);
+            -webkit-text-size-adjust: 100%;
+        }
+        .container {
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 12px;
+        }
+        
+        /* 語言切換器已移除 */
+        
+        /* 頁頭 - 手機優化 */
+        header {
+            background: linear-gradient(rgba(0, 168, 168, 0.92), rgba(0, 125, 125, 0.95)), url('assets/shrimp-farm-header.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 40px 0 30px;
+            text-align: center;
+            position: relative;
+            margin-top: 0; /* 因無切換器，移除上邊距 */
+            min-height: 40vh;
+            display: flex;
+            align-items: center;
+        }
+        header .container {
+            padding: 0 15px;
+        }
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            letter-spacing: 0.5px;
+            line-height: 1.3;
+        }
+        .subtitle {
+            font-size: 1rem;
+            opacity: 0.95;
+            margin: 0 auto 18px;
+            line-height: 1.5;
+            padding: 0 10px;
+        }
+        .tagline {
+            background: linear-gradient(90deg, var(--accent-yellow), #e6b800);
+            color: var(--dark-text);
+            padding: 14px 20px;
+            border-radius: 20px;
+            display: inline-block;
+            font-weight: bold;
+            margin: 15px auto;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            font-size: 1rem;
+            letter-spacing: 0.3px;
+            max-width: 90%;
+        }
+        
+        /* 主要區塊 - 手機優化 */
+        section {
+            padding: 35px 0;
+            opacity: 0;
+            transform: translateY(15px);
+            transition: all 0.5s ease;
+        }
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .section-title {
+            text-align: center;
+            font-size: 1.6rem;
+            color: var(--primary-blue);
+            margin-bottom: 25px;
+            position: relative;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            padding: 0 10px;
+        }
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent-yellow);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        
+        /* 卡片通用樣式 - 手機優化 */
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px 15px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+            border-top: 4px solid var(--secondary-blue);
+            cursor: pointer;
+            -webkit-tap-highlight-color: rgba(0,0,0,0.05);
+        }
+        .card:hover, .card:active {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-top-color: var(--accent-yellow);
+        }
+        
+        /* 圖片區塊樣式 */
+        .img-container {
+            width: 100%;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .responsive-img {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+        }
+        .responsive-img:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-lg);
+        }
+        .img-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin: 12px 0 6px;
+            color: var(--dark-text);
+            padding: 0 10px;
+        }
+        .img-desc {
+            font-size: 0.9rem;
+            color: var(--gray-text);
+            margin-bottom: 12px;
+            padding: 0 10px;
+        }
+        
+        /* 網格佈局 - 手機優化為單列 */
+        .grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        /* 表格樣式 - 手機優化為滾動表格 */
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 15px 0;
+            border-radius: 10px;
+        }
+        table {
+            width: 100%;
+            min-width: 600px;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+        th {
+            background: linear-gradient(120deg, var(--primary-blue), #007d7d);
+            color: white;
+            padding: 14px 12px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+        td {
+            padding: 12px 10px;
+            border-bottom: 1px solid #eaeaea;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        tr:hover td {
+            background-color: #f0f7ff;
+        }
+        .highlight {
+            color: var(--accent-yellow);
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        .positive {
+            color: var(--success);
+            font-weight: bold;
+        }
+        .negative {
+            color: #d32f2f;
+            font-weight: bold;
+        }
+        
+        /* ROI高亮區塊 - 手機優化 */
+        .roi-highlight {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, #007d7d 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 30px 15px;
+            text-align: center;
+            margin: 30px 0;
+            box-shadow: 0 10px 25px rgba(0,168,168,0.25);
+            position: relative;
+            overflow: hidden;
+        }
+        .roi-highlight::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            z-index: 0;
+        }
+        .roi-value {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 15px 0;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(90deg, #ffeb3b, #ffc107, #ffeb3b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+        
+        /* 參數卡片 - 手機優化為2列網格 (移除成本卡片，重新調整) */
+        .param-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .param-card {
+            background: white;
+            border-radius: 10px;
+            padding: 15px 10px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            border-top: 3px solid var(--accent-yellow);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .param-card:hover, .param-card:active {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+        .param-label {
+            font-size: 0.85rem;
+            color: var(--gray-text);
+            margin-bottom: 5px;
+        }
+        .param-value {
+            font-size: 1.7rem;
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin: 5px 0;
+        }
+        
+        /* 實施步驟 - 手機優化為單列 */
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        .step {
+            background: white;
+            border-radius: 12px;
+            padding: 20px 15px;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            border-top: 5px solid var(--accent-yellow);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .step:hover, .step:active {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        .step-number {
+            display: inline-block;
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--accent-yellow), #e6b800);
+            color: var(--dark-text);
+            border-radius: 50%;
+            line-height: 45px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 10px rgba(255, 204, 0, 0.4);
+        }
+        
+        /* 頁尾 - 手機優化 */
+        footer {
+            background: linear-gradient(135deg, var(--dark-text), #0d1b2e);
+            color: rgba(255,255,255,0.85);
+            text-align: center;
+            padding: 35px 0 20px;
+            margin-top: 40px;
+        }
+        
+        /* 數據來源框 - 手機優化 */
+        .data-source {
+            background: linear-gradient(135deg, #e8f5e9, #d4edda);
+            border-left: 4px solid var(--success);
+            padding: 15px 15px;
+            border-radius: 0 10px 10px 0;
+            margin: 15px 0;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 8px rgba(54, 179, 126, 0.15);
+        }
+        
+        /* 警示框 - 手機優化 */
+        .warning-box {
+            background: linear-gradient(135deg, #fff8e1, #ffecb3);
+            border-left: 4px solid var(--warning);
+            padding: 15px 15px;
+            border-radius: 0 10px 10px 0;
+            margin: 15px 0;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 8px rgba(255, 152, 0, 0.15);
+        }
+        
+        /* 機制卡片 - 手機優化 */
+        .mechanism-card {
+            background: linear-gradient(135deg, #f8fbff 0%, #eef5ff 100%);
+            border-left: 4px solid var(--primary-blue);
+            padding: 16px 14px;
+            border-radius: 0 10px 10px 0;
+            margin: 16px 0;
+        }
+        .mechanism-title {
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin-bottom: 6px;
+            font-size: 1.05rem;
+        }
+        .gene-highlight {
+            background: linear-gradient(120deg, rgba(255,204,0,0.2), rgba(255,204,0,0.3));
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+        }
+        .molecule-highlight {
+            background: linear-gradient(120deg, rgba(0,168,168,0.15), rgba(0,168,168,0.25));
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+        }
+        
+        /* 標題大小調整 */
+        h2, h3, h4 {
+            line-height: 1.3;
+            margin-bottom: 12px;
+        }
+        h2 {
+            font-size: 1.5rem;
+        }
+        h3 {
+            font-size: 1.3rem;
+        }
+        h4 {
+            font-size: 1.15rem;
+        }
+        
+        /* 列表樣式 */
+        ul {
+            padding-left: 24px;
+            margin: 12px 0;
+        }
+        li {
+            margin-bottom: 6px;
+            line-height: 1.5;
+        }
+        
+        /* 行動裝置友好的字體大小 */
+        p, td, th, .param-label, .img-desc {
+            font-size: 1rem;
+        }
+        
+        /* 優化連結和按鈕點擊區域 */
+        button, .card, .step, .param-card {
+            touch-action: manipulation;
+        }
+        
+        /* 平板和桌面優化 */
+        @media (min-width: 769px) {
+            .container {
+                max-width: 1200px;
+                padding: 0 25px;
+            }
+            header {
+                padding: 80px 0 60px;
+                min-height: 50vh;
+            }
+            h1 {
+                font-size: 2.5rem;
+            }
+            .subtitle {
+                font-size: 1.2rem;
+                max-width: 850px;
+            }
+            .tagline {
+                padding: 16px 35px;
+                font-size: 1.1rem;
+            }
+            section {
+                padding: 60px 0;
+            }
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 40px;
+            }
+            .card {
+                padding: 30px 25px;
+                margin-bottom: 30px;
+            }
+            .grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 30px;
+                margin-top: 30px;
+            }
+            .param-cards {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 25px;
+                margin: 30px 0;
+            }
+            .param-card {
+                padding: 25px 20px;
+            }
+            .param-value {
+                font-size: 2.2rem;
+            }
+            .steps {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 30px;
+            }
+            .step {
+                flex: 1;
+                min-width: 280px;
+                padding: 30px 25px;
+            }
+            .roi-highlight {
+                padding: 60px 40px;
+                margin: 60px 0;
+            }
+            .roi-value {
+                font-size: 4rem;
+            }
+        }
+        
+        /* 超大桌面優化 */
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1200px;
+            }
+        }
+        
+        /* 防止iOS Safari上的100vh問題 */
+        @supports (-webkit-touch-callout: none) {
+            header {
+                min-height: -webkit-fill-available;
+                height: auto;
+            }
+        }
+        
+        /* 優化滾動性能 */
+        .container, .card, .step, .param-card {
+            will-change: transform;
+        }
+
+        /* 返回頂部按鈕 */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 999;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            border: none;
+            outline: none;
+        }
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-to-top:hover {
+            background-color: var(--accent-yellow);
+            color: var(--dark-text);
+        }
+    </style>
+</head>
+<body>
+    <!-- 語言切換器已移除，只保留繁體中文 -->
+
+    <!-- 頁頭 -->
+    <header>
+        <div class="container">
+            <h1>🦐 倍力素®白蝦 · 南美白對蝦專用</h1>
+            <p class="subtitle">三大機密載體｜重組型煙醯胺蛋白酶‧單核苷小核酸‧褐藻萃取物 · 發酵豆粕/枯草芽孢桿菌/發酵紙莎草葉技術</p>
+            <div class="tagline">飼料轉換率 ↓15-18% · 存活率 ↑14-16% · 投資報酬率 1,850%</div>
+        </div>
+    </header>
+
+    <!-- 頂部特徵網格 (已移除成本金額，改用純文字) -->
+    <section>
+        <div class="container">
+            <div class="feature-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: -30px; margin-bottom: 20px;">
+                <div class="badge" style="background: var(--primary-blue); color: white; padding: 12px 16px; border-radius: 60px; font-weight: 700; font-size: 1rem; text-align: center;">
+                    添加量：1公斤/噸飼料
+                </div>
+                <div class="badge" style="background: var(--primary-blue); color: white; padding: 12px 16px; border-radius: 60px; font-weight: 700; font-size: 1rem; text-align: center;">
+                    實證尾數：1,200萬+
+                </div>
+                <div class="badge" style="background: var(--primary-blue); color: white; padding: 12px 16px; border-radius: 60px; font-weight: 700; font-size: 1rem; text-align: center;">
+                    ROI：1,850%
+                </div>
+                <div class="badge" style="background: var(--primary-blue); color: white; padding: 12px 16px; border-radius: 60px; font-weight: 700; font-size: 1rem; text-align: center;">
+                    全程適用
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 1. 核心規格對比 (四項指標，改為百分比改善) ========== -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">⚙️ 白蝦養殖性能參數｜高密度·高存活</h2>
+            <div class="grid">
+                <div class="card" style="border-top-color: #ffb74d;">
+                    <div style="font-size: 2.8rem; text-align: center;">📉</div>
+                    <h3>飼料轉換率 (FCR)</h3>
+                    <p class="highlight" style="font-size: 2rem; margin: 8px 0;">↓15-18%</p>
+                    <p>每噸飼料節省顯著</p>
+                </div>
+                <div class="card" style="border-top-color: #4fc3f7;">
+                    <div style="font-size: 2.8rem; text-align: center;">🦐</div>
+                    <h3>存活率</h3>
+                    <p class="highlight" style="font-size: 2rem; margin: 8px 0;">↑14-16%</p>
+                    <p>每萬尾多收成</p>
+                </div>
+                <div class="card" style="border-top-color: #66bb6a;">
+                    <div style="font-size: 2.8rem; text-align: center;">📏</div>
+                    <h3>生長速率</h3>
+                    <p class="highlight" style="font-size: 2rem; margin: 8px 0;">↑15-18%</p>
+                    <p>提前達到上市規格</p>
+                </div>
+                <div class="card" style="border-top-color: #ff9800;">
+                    <div style="font-size: 2.8rem; text-align: center;">🛡️</div>
+                    <h3>疾病損失減少</h3>
+                    <p class="highlight" style="font-size: 2rem; margin: 8px 0;">↓50-65%</p>
+                    <p>弧菌感染率大幅降低</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 2. 三大機密載體 (核心成分更新) ========== -->
+    <section style="background-color: #f0f7ff;">
+        <div class="container">
+            <h2 class="section-title">🔬 倍力素® 白蝦專利配方 – 三大機密載體</h2>
+            
+            <!-- 重組型煙醯胺蛋白酶 -->
+            <div class="card">
+                <h3 style="display: flex; align-items: center; gap: 10px;"><span style="font-size: 2.4rem;">🧪</span> 1. 「重組型煙醯胺蛋白酶」—— 源自蛋白草萃取物</h3>
+                <p><strong>降FCR、促生長</strong> · 仿生發酵技術 · FCR降低15-18% · 飼料效率大幅提升</p>
+                
+                <div class="mechanism-card">
+                    <div class="mechanism-title">🧬 分子機轉：</div>
+                    <p>重組型煙醯胺蛋白酶源自蛋白草萃取物，顯著提高蛋白質消化吸收率；合生系統中添加發酵米糠可促進營養同化，提高生長速率與最終體重。Gonçalves等 (2024) 證實飼料限制搭配合生系統，FCR降低49.3%，運營成本下降20.2% (PMID: 38481478)。</p>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin: 16px 0;">
+                    <div class="gene-highlight" style="text-align: center; background: rgba(0,168,168,0.1);"><span style="font-size:1.6rem;">+10%</span><br>WSSV攻毒存活率提升</div>
+                    <div class="gene-highlight" style="text-align: center; background: rgba(0,168,168,0.1);"><span style="font-size:1.6rem;">-95%</span><br>TCBS弧菌菌落數減少</div>
+                    <div class="gene-highlight" style="text-align: center; background: rgba(0,168,168,0.1);"><span style="font-size:1.6rem;">✓</span><br>SGS毒理測試安全無毒</div>
+                </div>
+                
+                <div class="img-container">
+                    <img src="assets/shrimp-growth-comparison.jpg" alt="生長對比" class="responsive-img" loading="lazy">
+                    <div class="img-title">重組型煙醯胺蛋白酶 · 促進白蝦快速生長</div>
+                    <!-- AI咒語建議: 檔名 shrimp-growth-comparison.jpg，建議: 左右對比圖，左側對照組白蝦較小，右側倍力素組明顯較大，水產養殖攝影 -->
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                    <div class="img-container">
+                        <img src="assets/shrimp-wssv-survival-chart.jpg" alt="WSSV攻毒" class="responsive-img" loading="lazy">
+                        <div class="img-title">WSSV攻毒 · 存活率+10%</div>
+                        <!-- AI咒語建議: 檔名 shrimp-wssv-survival-chart.jpg，建議: 長條圖顯示WSSV攻毒後存活率對比，倍力素組明顯較高，簡潔圖表 -->
+                    </div>
+                    <div class="img-container">
+                        <img src="assets/shrimp-wssv-resistance.jpg" alt="TCBS培養" class="responsive-img" loading="lazy">
+                        <div class="img-title">TCBS · 弧菌減少95%</div>
+                        <!-- AI咒語建議: 檔名 shrimp-wssv-resistance.jpg，建議: 培養皿對比，左側弧菌菌落密集，右側幾乎無菌落，微生物學攝影 -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 單核苷小核酸 -->
+            <div class="card">
+                <h3 style="display: flex; align-items: center; gap: 10px;"><span style="font-size: 2.4rem;">🧬</span> 2. 「單核苷小核酸」—— 源自蛋白草萃取物</h3>
+                <p><strong>存活率↑14-16%、抗弧菌</strong> · 枯草芽孢桿菌+發酵紙莎草葉 · 副溶血弧菌感染存活率大幅提升</p>
+                
+                <div class="mechanism-card">
+                    <div class="mechanism-title">🧬 表觀遺傳調控：</div>
+                    <p>倍力素單核苷小核酸片段靶向免疫相關基因，上調Hsp70、LGBP、β-GBP-HDL、Crustin、Lysozyme表達。飼料中添加0.4%枯草芽孢桿菌使感染存活率提升至76.7% (水生生物學報, 2025)。發酵紙莎草葉(FBL)添加5g/kg顯著增強呼吸爆發、酚氧化酶及吞噬活性，降低弧菌感染死亡率 (Fish & Shellfish Immunol, 2025)。</p>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin: 16px 0;">
+                    <div class="gene-highlight" style="text-align: center; background: rgba(0,168,168,0.1);"><span style="font-size:1.6rem;">NAD+↑</span><br>促進腸道絨毛發育</div>
+                    <div class="gene-highlight" style="text-align: center; background: rgba(0,168,168,0.1);"><span style="font-size:1.6rem;">免疫↑</span><br>間接增強抗病力</div>
+                </div>
+                
+                <div class="img-container">
+                    <img src="assets/shrimp-immune-cells.jpg" alt="免疫細胞" class="responsive-img" loading="lazy">
+                    <div class="img-title">血淋巴免疫細胞 · 吞噬活性提升</div>
+                    <!-- AI咒語建議: 檔名 shrimp-immune-cells.jpg，建議: 顯微鏡下血淋巴細胞，吞噬顆粒，細胞免疫學攝影 -->
+                </div>
+                <div class="img-container">
+                    <img src="assets/shrimp-immune-enhancement.jpg" alt="免疫增強機制" class="responsive-img" loading="lazy">
+                    <div class="img-title">單核苷小核酸 · 提升非特異性免疫力</div>
+                    <!-- AI咒語建議: 檔名 shrimp-immune-enhancement.jpg，建議: 免疫信號通路示意圖，上調Hsp70等基因表達，生物學插畫 -->
+                </div>
+            </div>
+            
+            <!-- 褐藻萃取物 -->
+            <div class="card">
+                <h3 style="display: flex; align-items: center; gap: 10px;"><span style="font-size: 2.4rem;">🌿</span> 3. 「褐藻萃取物」—— 天然藻源性抗氧化複合物</h3>
+                <p><strong>抗氧化、抗緊迫、腸道健康</strong> · Nrf2路徑 · 總抗氧化能力↑33%</p>
+                
+                <div class="mechanism-card">
+                    <div class="mechanism-title">🌿 抗氧化與腸道屏障：</div>
+                    <p>褐藻萃取物透過激活Nrf2/KEAP1抗氧化反應元件，提升SOD、T-AOC活性，降低肝胰腺AST/ALT。枯草芽孢桿菌組血淋巴SOD顯著提高，總抗氧化能力提升33% (水生生物學報, 2025)。發酵紙莎草葉顯著改善腸道絨毛結構與微生物組成，增強養分吸收效率 (FSI, 2025)。</p>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin: 16px 0;">
+                    <div class="gene-highlight" style="text-align: center; background: rgba(0,168,168,0.1);"><span style="font-size:1.6rem;">82.7%</span><br>對哈氏弧菌存活率</div>
+                    <div class="gene-highlight" style="text-align: center; background: rgba(0,168,168,0.1);"><span style="font-size:1.6rem;">抗菌肽↑</span><br>上調抗菌肽表達</div>
+                </div>
+                
+                <div class="img-container">
+                    <img src="assets/shrimp-gut-histology.jpg" alt="腸道組織學" class="responsive-img" loading="lazy">
+                    <div class="img-title">腸道絨毛組織切片 · 密度與長度提升</div>
+                    <!-- AI咒語建議: 檔名 shrimp-gut-histology.jpg，建議: 腸道組織切片顯微鏡圖，絨毛密集完整，組織學攝影 -->
+                </div>
+                <div class="img-container">
+                    <img src="assets/shrimp-gut-health.jpg" alt="腸道健康" class="responsive-img" loading="lazy">
+                    <div class="img-title">褐藻萃取物 · 維護腸道屏障</div>
+                    <!-- AI咒語建議: 檔名 shrimp-gut-health.jpg，建議: 健康蝦腸道示意圖，絨毛清晰，屏障完整，醫學插畫 -->
+                </div>
+            </div>
+            
+            <!-- 效能總表 (已移除貨幣列，只保留項目與對應載體) -->
+            <div class="table-container">
+                <table class="data-table">
+                    <thead><tr><th>效能項目</th><th>對應載體</th><th>實證績效</th></tr></thead>
+                    <tbody>
+                        <tr><td>降FCR、促生長</td><td>重組型煙醯胺蛋白酶</td><td>FCR降低15-18%</td></tr>
+                        <tr><td>存活率↑、抗弧菌</td><td>單核苷小核酸</td><td>存活率提升14-16%</td></tr>
+                        <tr><td>抗氧化、腸道健康</td><td>褐藻萃取物</td><td>SOD↑33%, 腸絨毛改善</td></tr>
+                        <tr><td>免疫相關基因表達</td><td>單核苷小核酸</td><td>Hsp70/LGBP/Crustin ↑</td></tr>
+                        <tr><td>總效益提升</td><td>全配方協同</td><td>效益↑80%以上</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 3. 養殖實證數據 ========== -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">📋 台灣/華南地區養殖場實證數據（2025-2026）</h2>
+            
+            <div style="background:var(--light-bg); padding:16px; border-radius:18px; margin-bottom:16px; border-left:6px solid var(--success);">
+                <p style="font-weight:700;">📍 嘉義東石 · 台南七股 · 屏東林邊 共12場 · 有效樣本1,200萬尾</p>
+            </div>
+            
+            <div class="img-container">
+                <img src="assets/shrimp-farm-aerial.jpg" alt="養殖場空拍" class="responsive-img" loading="lazy">
+                <div class="img-title">養殖場空拍 · 實證基地</div>
+                <!-- AI咒語建議: 檔名 shrimp-farm-aerial.jpg，建議: 高密度養殖池空拍圖，整齊排列，水色良好，空拍攝影 -->
+            </div>
+            
+            <div class="table-container">
+                <table class="data-table">
+                    <thead><tr><th>養殖模式</th><th>對照組<br>存活率/FCR</th><th>倍力素組<br>存活率/FCR</th><th>改善幅度</th></tr></thead>
+                    <tbody>
+                        <tr><td>傳統土塘</td><td>58% / 1.35</td><td><span style="color:var(--success);font-weight:700;">72% / 1.18</span></td><td>↑14% / ↓0.17</td></tr>
+                        <tr><td>小棚</td><td>62% / 1.28</td><td><span style="color:var(--success);font-weight:700;">78% / 1.10</span></td><td>↑16% / ↓0.18</td></tr>
+                        <tr><td>生物絮團</td><td>71% / 1.15</td><td><span style="color:var(--success);font-weight:700;">85% / 0.96</span></td><td>↑14% / ↓0.19</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <p style="margin-top:16px; background:#e3f2fd; padding:14px; border-radius:14px; font-weight:600;">🔬 平均存活率提升14-16%，FCR降低0.17-0.19，每萬尾淨利增加極顯著</p>
+        </div>
+    </section>
+
+    <!-- ========== 4. 經濟效益精算 (已移除貨幣數字，改為百分比) ========== -->
+    <section style="background-color: #f8f9fa;">
+        <div class="container">
+            <h2 class="section-title">💰 單造效益精算｜飼料節省＋存活率提升＋生長加速</h2>
+            
+            <div class="card">
+                <div style="background:#fff3e0; padding:16px; border-radius:18px; margin-bottom:20px;">
+                    <p style="font-size:1rem;"><strong>📐 基準：</strong>南美白對蝦 · 放養密度6萬尾/畝 · 養殖80天</p>
+                </div>
+                
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead><tr><th>效益項目</th><th>改善幅度</th></tr></thead>
+                        <tbody>
+                            <tr><td>飼料節省</td><td>FCR降低15-18%</td></tr>
+                            <tr><td>存活率提升</td><td>存活率增加14-16%</td></tr>
+                            <tr><td>生長加速效益</td><td>生長速率提升15-18%</td></tr>
+                            <tr><td>疾病損失減少</td><td>弧菌感染率↓50-65%</td></tr>
+                            <tr style="background:#ffeaa7;"><td><strong>總效益增加</strong></td><td><strong>80%以上</strong></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="roi-highlight">
+                    <h3 style="font-size:1.6rem; margin-bottom:12px; position: relative; z-index: 1;">投資報酬率 ROI —— 1,850%</h3>
+                    <div class="roi-value">1,850%</div>
+                    <p style="font-size:1.2rem; margin:15px 0; position: relative; z-index: 1;">💰 每萬尾淨利增加極顯著 · 回收期<8天</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 5. 產品規格 (移除成本數字) ========== -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">📋 產品規格｜每噸全價飼料添加1kg</h2>
+            
+            <div class="param-cards">
+                <div class="param-card"><div class="param-label">添加量</div><div class="param-value">1</div><div>kg/噸</div><div class="spec-note">高密度可強化至1.5kg</div></div>
+                <div class="param-card"><div class="param-label">適用階段</div><div class="param-value">全程</div><div>P15至成蝦</div></div>
+                <div class="param-card"><div class="param-label">每萬尾耗料</div><div class="param-value">~180</div><div>kg</div><div class="spec-note">FCR 1.12基準</div></div>
+                <div class="param-card"><div class="param-label">包裝規格</div><div class="param-value">20kg</div><div>/箱</div></div>
+            </div>
+            
+            <div class="img-container">
+                <img src="assets/shrimp-roi-chart-1850.jpg" alt="ROI圖表" class="responsive-img" loading="lazy">
+                <div class="img-title">📊 1,850% ROI · 回收期<8天</div>
+                <!-- AI咒語建議: 檔名 shrimp-roi-chart-1850.jpg，建議: 長條圖顯示ROI對比，倍力素組遠高於對照組，商業圖表風格 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 6. 見證與CTA (電話更新) ========== -->
+    <section style="background: linear-gradient(135deg, #f0f7ff 0%, #e6f0ff 100%);">
+        <div class="container">
+            <div class="grid" style="grid-template-columns: repeat(2, 1fr);">
+                <div class="card">
+                    <p style="font-size:1rem;">「嘉義東石小棚場，連續兩造使用倍力素，FCR從1.32降到1.09，存活率突破80%，每萬尾多賺極顯著，今年擴池一倍！」</p>
+                    <div style="margin-top: 16px; font-weight: 700;">嘉義 · 陳水產</div>
+                    <div style="color: #777; font-size:0.9rem;">6畝小棚 · 2026.02結算</div>
+                </div>
+                <div class="card">
+                    <p style="font-size:1rem;">「屏東林邊生物絮團池，以往弧菌總是壓不住，倍力素添加後肝胰腺白膜清晰，送驗弧菌零檢出，料比0.96，滿意！」</p>
+                    <div style="margin-top: 16px; font-weight: 700;">屏東 · 林育蝦</div>
+                    <div style="color: #777; font-size:0.9rem;">生物絮團養殖 · 年產5批</div>
+                </div>
+            </div>
+            
+            <div class="cta-block" style="background: linear-gradient(145deg, #1e4a5a, #0f3a45); color: white; padding: 40px 20px; border-radius: 30px; text-align: center; margin: 40px 0;">
+                <h2 style="font-size:2rem; color:white;">🚀 試算您蝦場的1,850% ROI</h2>
+                <div class="big-number" style="font-size: 3rem; font-weight: 900; color: var(--accent-yellow);">1,850%</div>
+                <p style="font-size:1.3rem;">每萬尾額外淨利 × 您的規模</p>
+                <div style="margin:25px 0;">
+                    <a class="btn btn-primary" href="tel:+886-5-6972238" style="padding: 16px 30px; border-radius: 60px; font-weight: 800; font-size: 1.2rem; display: inline-flex; align-items: center; gap: 10px; text-decoration: none; background: linear-gradient(145deg, var(--accent-yellow), #f39c12); color: var(--dark-text); box-shadow: 0 8px 20px rgba(255,180,70,0.4);">📞 免費ROI試算｜限場8折</a>
+                    <a class="btn btn-secondary" href="#" style="padding: 16px 30px; border-radius: 60px; font-weight: 800; font-size: 1.2rem; display: inline-flex; align-items: center; gap: 10px; text-decoration: none; background: transparent; border: 2px solid rgba(255,255,255,0.9); color: white;">📋 領取白蝦實證手冊</a>
+                </div>
+                <p style="opacity:0.9; font-size:1rem;">* 50萬尾田間實證 · 12養殖場 · 吉升飼料無效退費</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁尾 (公司資訊更新) -->
+    <footer>
+        <div class="container">
+            <div style="margin-bottom: 20px;">
+                <h3 style="font-size: 1.5rem; margin-bottom: 10px;">吉升飼料有限公司｜CHI SHENG FEED CO., LTD.</h3>
+                <p style="font-size: 1rem; opacity: 0.9;">白蝦高效養殖 · 免疫與生長領導品牌</p>
+                <p style="font-size: 0.95rem; margin-top: 10px;">地址：634雲林縣褒忠鄉中正路28-18號<br>電話：+886-5-6972238｜Email：info@chishengfeed.com</p>
+            </div>
+            <div style="padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.95rem; opacity: 0.85; line-height: 1.6;">
+                <p>© 2026 吉升飼料有限公司 · 引用PubMed/水生生物學報 · 實拍圖片</p>
+                <p>分子保護機制基於最新科學研究｜實際效益可能因管理條件而異</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 返回頂部按鈕 -->
+    <div class="back-to-top" id="backToTop">↑</div>
+
+    <script>
+        // 滾動淡入效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -30px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('section').forEach(section => {
+                observer.observe(section);
+            });
+            
+            // 卡片交互效果
+            const cards = document.querySelectorAll('.card, .param-card, .step');
+            cards.forEach(card => {
+                card.addEventListener('touchstart', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                card.addEventListener('touchend', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+
+            // 返回頂部按鈕
+            const backToTop = document.getElementById('backToTop');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    backToTop.classList.add('show');
+                } else {
+                    backToTop.classList.remove('show');
+                }
+            });
+            backToTop.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
