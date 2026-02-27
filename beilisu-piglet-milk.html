@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <style>
+    /* 防止文字選取 */
+    body {
+        -webkit-user-select: none;  /* Safari */
+        -moz-user-select: none;     /* Firefox */
+        -ms-user-select: none;      /* IE/Edge */
+        user-select: none;           /* 標準語法 */
+    }
+
+    /* 針對圖片：禁止拖曳、禁止長按菜單，但保留點擊事件（由父層處理） */
+    img {
+        -webkit-touch-callout: none; /* iOS 長按選單 */
+        -webkit-user-drag: none;     /* Chrome 拖曳 */
+        user-drag: none;
+        pointer-events: none;         /* 讓圖片本身無法被點擊，但父容器可接收點擊 */
+    }
+
+    /* 圖片的容器需設定 cursor: pointer 提示可點擊 */
+    .img-container {
+        cursor: pointer;
+    }
+</style>
+
+<!-- 簡易 Lightbox 結構 -->
+<div id="lightbox" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:9999; justify-content:center; align-items:center; flex-direction:column;" onclick="this.style.display='none'">
+    <img id="lightbox-img" src="" style="max-width:90%; max-height:80%; object-fit:contain; border-radius:8px;">
+    <div id="lightbox-caption" style="color:white; margin-top:16px; font-size:1rem;"></div>
+</div>
+
+<script>
+    // 1. 禁止右鍵選單 (含手機長按)
+    document.addEventListener('contextmenu', e => e.preventDefault());
+
+    // 2. 禁止複製快捷鍵 (Ctrl+C, Ctrl+X)
+    document.addEventListener('copy', e => e.preventDefault());
+    document.addEventListener('cut', e => e.preventDefault());
+
+    // 3. 禁止選取事件 (滑鼠拖曳選取)
+    document.addEventListener('selectstart', e => e.preventDefault());
+
+    // 4. 輕量 Lightbox 功能：所有 .img-container 內的圖片點擊放大
+    function openLightbox(element) {
+        const img = element.querySelector('img');
+        if (!img) return;
+        const caption = element.querySelector('.img-title')?.innerText || '';
+        const lb = document.getElementById('lightbox');
+        const lbImg = document.getElementById('lightbox-img');
+        const lbCaption = document.getElementById('lightbox-caption');
+        lbImg.src = img.src;
+        lbCaption.innerText = caption;
+        lb.style.display = 'flex';
+    }
+
+    // 為所有 .img-container 綁定點擊事件
+    document.querySelectorAll('.img-container').forEach(container => {
+        container.addEventListener('click', function() {
+            openLightbox(this);
+        });
+    });
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>倍力素仔豬人工乳性能提升方案｜分子保護機制強化版</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #2a6ebb;
+            --secondary-blue: #4a8fd6;
+            --accent-yellow: #ffcc00;
+            --light-bg: #f0f7ff;
+            --dark-text: #1a2b4d;
+            --gray-text: #6c7a9c;
+            --success: #36b37e;
+            --warning: #ff9800;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+            --shadow-md: 0 5px 15px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 25px rgba(0,0,0,0.1);
+            --safe-area-inset-left: env(safe-area-inset-left);
+            --safe-area-inset-right: env(safe-area-inset-right);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-font-smoothing: antialiased;
+        }
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Microsoft JhengHei', '微軟正黑體', 'Noto Sans TC', 'PingFang TC', 'Helvetica Neue', sans-serif;
+            background-color: #f5f9ff;
+            color: var(--dark-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-left: var(--safe-area-inset-left);
+            padding-right: var(--safe-area-inset-right);
+            -webkit-text-size-adjust: 100%;
+        }
+        .container {
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+        
+        /* 語言切換器已移除，保留繁體中文 */
+        
+        /* 頁頭 - 手機優化 */
+        header {
+            background: linear-gradient(rgba(42, 110, 187, 0.92), rgba(42, 110, 187, 0.95)), url('assets/piglets-eating-milk.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 40px 0 30px;
+            text-align: center;
+            position: relative;
+            margin-top: 0;  /* 因無語言切換器，移除上方空間 */
+            min-height: 40vh;
+            display: flex;
+            align-items: center;
+        }
+        header .container {
+            padding: 0 20px;
+        }
+        h1 {
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            letter-spacing: 0.5px;
+            line-height: 1.3;
+        }
+        .subtitle {
+            font-size: 0.95rem;
+            opacity: 0.95;
+            margin: 0 auto 18px;
+            line-height: 1.5;
+            padding: 0 10px;
+        }
+        .tagline {
+            background: linear-gradient(90deg, var(--accent-yellow), #e6b800);
+            color: var(--dark-text);
+            padding: 12px 20px;
+            border-radius: 20px;
+            display: inline-block;
+            font-weight: bold;
+            margin: 15px auto;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+            max-width: 90%;
+        }
+        
+        /* 主要區塊 - 手機優化 */
+        section {
+            padding: 40px 0;
+            opacity: 0;
+            transform: translateY(15px);
+            transition: all 0.5s ease;
+        }
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .section-title {
+            text-align: center;
+            font-size: 1.4rem;
+            color: var(--primary-blue);
+            margin-bottom: 30px;
+            position: relative;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            padding: 0 10px;
+        }
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent-yellow);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        
+        /* 卡片通用樣式 - 手機優化 */
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px 20px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            margin-bottom: 25px;
+            border-top: 4px solid var(--secondary-blue);
+            cursor: pointer;
+            -webkit-tap-highlight-color: rgba(0,0,0,0.05);
+        }
+        .card:hover, .card:active {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-top-color: var(--accent-yellow);
+        }
+        
+        /* 圖片區塊樣式 - 手機優化 */
+        .img-container {
+            width: 100%;
+            margin: 25px 0;
+            text-align: center;
+        }
+        .responsive-img {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+        }
+        .responsive-img:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-lg);
+        }
+        .img-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin: 15px 0 8px;
+            color: var(--dark-text);
+            padding: 0 10px;
+        }
+        .img-desc {
+            font-size: 0.9rem;
+            color: var(--gray-text);
+            margin-bottom: 15px;
+            padding: 0 10px;
+        }
+        
+        /* 網格佈局 - 手機優化為單列 */
+        .grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 25px;
+        }
+        
+        /* 表格樣式 - 手機優化為滾動表格 (但成本表格已移除，只保留效益對比) */
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+        table {
+            width: 100%;
+            min-width: 500px;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+        th {
+            background: linear-gradient(120deg, var(--primary-blue), #1a4a8a);
+            color: white;
+            padding: 14px 12px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+        td {
+            padding: 12px 10px;
+            border-bottom: 1px solid #eaeaea;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        tr:hover td {
+            background-color: #f0f7ff;
+        }
+        .highlight {
+            color: var(--accent-yellow);
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        .positive {
+            color: var(--success);
+            font-weight: bold;
+        }
+        .negative {
+            color: #d32f2f;
+            font-weight: bold;
+        }
+        
+        /* ROI高亮區塊 - 手機優化 (移除貨幣數字) */
+        .roi-highlight {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, #1a4a8a 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 35px 20px;
+            text-align: center;
+            margin: 40px 0;
+            box-shadow: 0 10px 25px rgba(42, 110, 187, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+        .roi-highlight::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            z-index: 0;
+        }
+        .roi-value {
+            font-size: 2.8rem;
+            font-weight: bold;
+            margin: 20px 0;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(90deg, #ffeb3b, #ffc107, #ffeb3b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+        
+        /* 參數卡片 - 手機優化為2列網格 (移除成本卡片) */
+        .param-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);  /* 原本4個，移除成本後剩3個 */
+            gap: 15px;
+            margin: 25px 0;
+        }
+        .param-card {
+            background: white;
+            border-radius: 10px;
+            padding: 18px 12px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            border-top: 3px solid var(--accent-yellow);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .param-card:hover, .param-card:active {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+        .param-label {
+            font-size: 0.8rem;
+            color: var(--gray-text);
+            margin-bottom: 5px;
+        }
+        .param-value {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin: 5px 0;
+        }
+        
+        /* 實施步驟 - 手機優化為單列 */
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .step {
+            background: white;
+            border-radius: 12px;
+            padding: 25px 20px;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            border-top: 5px solid var(--accent-yellow);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .step:hover, .step:active {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        .step-number {
+            display: inline-block;
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--accent-yellow), #e6b800);
+            color: var(--dark-text);
+            border-radius: 50%;
+            line-height: 45px;
+            font-weight: bold;
+            margin-bottom: 18px;
+            font-size: 1.4rem;
+            box-shadow: 0 4px 10px rgba(255, 204, 0, 0.4);
+        }
+        
+        /* 頁尾 - 手機優化 */
+        footer {
+            background: linear-gradient(135deg, var(--dark-text), #0d1b2e);
+            color: rgba(255,255,255,0.85);
+            text-align: center;
+            padding: 40px 0 25px;
+            margin-top: 50px;
+        }
+        
+        /* 數據來源框 - 手機優化 */
+        .data-source {
+            background: linear-gradient(135deg, #e8f5e9, #d4edda);
+            border-left: 4px solid var(--success);
+            padding: 15px 18px;
+            border-radius: 0 10px 10px 0;
+            margin: 20px 0;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 8px rgba(54, 179, 126, 0.15);
+        }
+        .data-source strong {
+            color: var(--success);
+        }
+        
+        /* 警示框 - 手機優化 */
+        .warning-box {
+            background: linear-gradient(135deg, #fff8e1, #ffecb3);
+            border-left: 4px solid var(--warning);
+            padding: 15px 18px;
+            border-radius: 0 10px 10px 0;
+            margin: 20px 0;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 8px rgba(255, 152, 0, 0.15);
+        }
+        .warning-box strong {
+            color: var(--warning);
+        }
+        
+        /* 機制卡片 - 手機優化 */
+        .mechanism-card {
+            background: linear-gradient(135deg, #f8fbff 0%, #eef5ff 100%);
+            border-left: 4px solid var(--primary-blue);
+            padding: 18px 16px;
+            border-radius: 0 10px 10px 0;
+            margin: 18px 0;
+        }
+        .mechanism-title {
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+        .gene-highlight {
+            background: linear-gradient(120deg, rgba(255,204,0,0.2), rgba(255,204,0,0.3));
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+        .molecule-highlight {
+            background: linear-gradient(120deg, rgba(42,110,187,0.15), rgba(42,110,187,0.25));
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+        
+        /* 標題大小調整 */
+        h2, h3, h4 {
+            line-height: 1.3;
+            margin-bottom: 15px;
+        }
+        h2 {
+            font-size: 1.4rem;
+        }
+        h3 {
+            font-size: 1.2rem;
+        }
+        h4 {
+            font-size: 1.1rem;
+        }
+        
+        /* 列表樣式 */
+        ul {
+            padding-left: 24px;
+            margin: 15px 0;
+        }
+        li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        
+        /* 行動裝置友好的字體大小 */
+        p, td, th, .param-label, .img-desc {
+            font-size: 0.95rem;
+        }
+        
+        /* 優化連結和按鈕點擊區域 */
+        button, .card, .step, .param-card {
+            touch-action: manipulation;
+        }
+        
+        /* 針對大於480px寬度的手機優化 */
+        @media (min-width: 480px) and (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            header {
+                padding: 50px 0 35px;
+                min-height: 45vh;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .subtitle {
+                font-size: 1.05rem;
+                padding: 0 20px;
+            }
+            .tagline {
+                font-size: 1rem;
+                padding: 14px 25px;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
+            .param-cards {
+                gap: 20px;
+            }
+            .param-card {
+                padding: 20px 15px;
+            }
+            .param-value {
+                font-size: 1.8rem;
+            }
+            .roi-value {
+                font-size: 3.2rem;
+            }
+        }
+        
+        /* 平板和桌面優化 */
+        @media (min-width: 769px) {
+            .container {
+                max-width: 1200px;
+                padding: 0 25px;
+            }
+            header {
+                padding: 80px 0 60px;
+                min-height: 50vh;
+            }
+            h1 {
+                font-size: 2.5rem;
+            }
+            .subtitle {
+                font-size: 1.2rem;
+                max-width: 850px;
+            }
+            .tagline {
+                padding: 16px 35px;
+                font-size: 1.1rem;
+            }
+            section {
+                padding: 70px 0;
+            }
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 50px;
+            }
+            .card {
+                padding: 35px 30px;
+                margin-bottom: 35px;
+            }
+            .grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 30px;
+                margin-top: 40px;
+            }
+            .param-cards {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 25px;
+                margin: 35px 0;
+            }
+            .param-card {
+                padding: 25px 20px;
+            }
+            .param-value {
+                font-size: 2.2rem;
+            }
+            .steps {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 30px;
+            }
+            .step {
+                flex: 1;
+                min-width: 280px;
+                padding: 35px 30px;
+            }
+            .roi-highlight {
+                padding: 60px 40px;
+                margin: 60px 0;
+            }
+            .roi-value {
+                font-size: 4rem;
+            }
+        }
+        
+        /* 超大桌面優化 */
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1200px;
+            }
+        }
+        
+        /* 防止iOS Safari上的100vh問題 */
+        @supports (-webkit-touch-callout: none) {
+            header {
+                min-height: -webkit-fill-available;
+                height: auto;
+            }
+        }
+        
+        /* 優化滾動性能 */
+        .container, .card, .step, .param-card {
+            will-change: transform;
+        }
+
+        /* 返回頂部按鈕樣式 */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 999;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            border: none;
+            outline: none;
+        }
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-to-top:hover {
+            background-color: var(--accent-yellow);
+            color: var(--dark-text);
+        }
+    </style>
+</head>
+<body>
+    <!-- 語言切換器已移除，保留繁體中文內容 -->
+
+    <!-- 頁頭 -->
+    <header>
+        <div class="container">
+            <h1>倍力素仔豬人工乳性能提升方案</h1>
+            <p class="subtitle">專注保育期營養調控｜分子級肝臟保護與細胞能量提升｜降低腹瀉率與提高育成率</p>
+            <div class="tagline">每噸人工乳添加1KG · 效益顯著 · 投資報酬率極高</div>
+        </div>
+    </header>
+
+    <!-- 執行摘要 -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">方案核心：分子級保護機制打造最佳保育基礎</h2>
+            <div class="card">
+                <p>本方案針對保育期仔豬（21-49日齡）的特殊營養需求，透過精準的人工乳營養強化技術，在每噸人工乳中添加1公斤的倍力素仔豬專用配方。方案整合肝臟保護、強效抗氧化、腸道健康維持與細胞能量提升等多重分子機制，目標是最大化仔豬生長潛能，提升日增重與飼料轉化率，降低腹瀉率與死亡率，為後續生長育肥期打下堅實基礎。</p>
+                
+                <div class="data-source">
+                    <strong>科學機制核心：</strong> 倍力素獨特分子結構能高效中和活性氧（ROS），並通過下調 <span class="gene-highlight">NR1H3</span>、<span class="gene-highlight">CREB</span> 等與炎症、纖維化相關基因的表達，同時提升 <span class="molecule-highlight">NAD+</span> 水平支持細胞修復，為仔豬提供全方位分子級保護。核心成分包含：<strong>重組型煙醯胺蛋白酶（蛋白草萃取）</strong>、<strong>單核苷小核酸（蛋白草萃取）</strong>、<strong>褐藻萃取物</strong>，皆為天然來源。
+                </div>
+                
+                <div class="img-container">
+                    <img src="assets/piglets-eating-milk.jpg" alt="健康保育仔豬群採食人工乳場景" class="responsive-img" loading="lazy">
+                    <div class="img-title">健康保育仔豬群採食人工乳場景</div>
+                    <div class="img-desc">現代化保育舍中整齊健康的保育仔豬群，具備優良的生長基礎條件</div>
+                    <!-- AI咒語建議: 檔名 piglets-eating-milk.jpg，建議: 保育舍內一群健康的仔豬正在進食人工乳，乾淨明亮的環境，仔豬毛色光亮，自然光，專業畜牧攝影 -->
+                </div>
+                
+                <div class="param-cards">
+                    <div class="param-card">
+                        <div class="param-label">仔豬日採食量</div>
+                        <div class="param-value">350</div>
+                        <div class="param-label">克/天</div>
+                    </div>
+                    <div class="param-card">
+                        <div class="param-label">保育期天數</div>
+                        <div class="param-value">28</div>
+                        <div class="param-label">天</div>
+                    </div>
+                    <div class="param-card">
+                        <div class="param-label">人工乳添加比例</div>
+                        <div class="param-value">1</div>
+                        <div class="param-label">KG/噸</div>
+                    </div>
+                    <!-- 成本卡片已移除 -->
+                </div>
+                
+                <div class="grid">
+                    <div class="card" style="border-top-color: #ffcc00;">
+                        <h3><i class="fas fa-chart-line"></i> 日增重提升</h3>
+                        <p class="highlight" style="font-size: 1.8rem; margin: 12px 0;">+50~70 克/天</p>
+                        <p>日增重從300克提升至350-370克，28天總增重增加1.4-2.0公斤。</p>
+                    </div>
+                    <div class="card" style="border-top-color: #4a8fd6;">
+                        <h3><i class="fas fa-heartbeat"></i> 腹瀉率降低</h3>
+                        <p class="highlight" style="font-size: 1.8rem; margin: 12px 0;">↓60~70%</p>
+                        <p>腹瀉率從15%降至5-6%，減少抗生素使用與醫療成本。</p>
+                    </div>
+                    <div class="card" style="border-top-color: #36b37e;">
+                        <h3><i class="fas fa-percentage"></i> 飼料效率提升</h3>
+                        <p class="highlight" style="font-size: 1.8rem; margin: 12px 0;">FCR 1.5→1.4</p>
+                        <p>飼料轉化率改善，每增重1公斤節省0.1公斤飼料。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 技術機制 -->
+    <section style="background-color: #f0f7ff;">
+        <div class="container">
+            <h2 class="section-title">人工乳營養強化核心機制</h2>
+            
+            <div class="card">
+                <h3>1. 腸道健康與菌相平衡強化</h3>
+                <p>添加專利益生菌與益生元，建立優勢腸道菌群，強化腸道屏障功能，降低病原菌附著，減少營養性腹瀉發生率。</p>
+                
+                <div class="img-container">
+                    <img src="assets/gut-health.jpg" alt="仔豬腸道菌相平衡與健康腸絨毛示意圖" class="responsive-img" loading="lazy">
+                    <div class="img-title">仔豬腸道菌相平衡與健康腸絨毛示意圖</div>
+                    <div class="img-desc">健康腸道菌群與完整腸絨毛結構，是營養吸收與免疫防禦的關鍵</div>
+                    <!-- AI咒語建議: 檔名 gut-health.jpg，建議: 腸道顯微結構示意，絨毛密集，益生菌環繞，腸道屏障完整，醫學風格插畫 -->
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>2. 營養吸收效率優化</h3>
+                <p>添加消化酶複合物（蛋白酶、澱粉酶、脂肪酶），提升蛋白質、碳水化合物與脂肪消化率；小肽技術促進氨基酸直接吸收，減少能量消耗。</p>
+                
+                <div class="img-container">
+                    <img src="assets/nutrient-absorption.jpg" alt="仔豬採食人工乳營養吸收場景" class="responsive-img" loading="lazy">
+                    <div class="img-title">仔豬採食人工乳營養吸收場景</div>
+                    <div class="img-desc">優化的人工乳配方搭配自動餵食系統，確保仔豬獲得充足且易吸收的營養</div>
+                    <!-- AI咒語建議: 檔名 nutrient-absorption.jpg，建議: 仔豬在自動餵食器前進食，飼槽乾淨，仔豬健康，現代化豬舍 -->
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>3. 免疫系統發育支持</h3>
+                <p>添加免疫球蛋白、乳鐵蛋白與特定核苷酸，支持仔豬被動免疫轉換期，降低斷奶應激，提升疫苗反應效果。</p>
+                
+                <div class="img-container">
+                    <img src="assets/immune-system.jpg" alt="仔豬免疫系統發育與保護機制示意圖" class="responsive-img" loading="lazy">
+                    <div class="img-title">仔豬免疫系統發育與保護機制示意圖</div>
+                    <div class="img-desc">免疫細胞（T細胞/B細胞）與免疫球蛋白（IgG）共同構建仔豬防禦體系</div>
+                    <!-- AI咒語建議: 檔名 immune-system.jpg，建議: 免疫細胞與抗體示意圖，T細胞、B細胞、IgG分子，生物醫學插畫風格 -->
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>4. 分子保護與細胞能量機制（核心創新）</h3>
+                <p>核心成分：<strong>重組型煙醯胺蛋白酶（蛋白草萃取）</strong>、<strong>單核苷小核酸（蛋白草萃取）</strong>、<strong>褐藻萃取物</strong>，皆源自天然，協同發揮以下作用：</p>
+                
+                <div class="mechanism-card">
+                    <div class="mechanism-title"><i class="fas fa-liver"></i> 肝臟保護機制</div>
+                    <p>減輕氧化損傷，減少膠原沉積，預防早期纖維化。通過下調 <span class="gene-highlight">NR1H3</span>（肝X受體）與纖維化相關基因表達，保護肝細胞功能。</p>
+                </div>
+                
+                <div class="mechanism-card">
+                    <div class="mechanism-title"><i class="fas fa-wind"></i> 強效抗氧化作用</div>
+                    <p>高效清除自由基，保護腸上皮和肝細胞膜。倍力素獨特分子結構能直接中和活性氧（ROS），減少氧化應激對細胞的損害。</p>
+                </div>
+                
+                <div class="mechanism-card">
+                    <div class="mechanism-title"><i class="fas fa-stomach"></i> 腸道屏障保護</div>
+                    <p>潛在抗炎作用，有助維持斷奶期間腸道屏障完整性。通過調控 <span class="gene-highlight">CREB</span>（cAMP反應元件結合蛋白）信號通路，減輕腸道炎症反應。</p>
+                </div>
+                
+                <div class="mechanism-card">
+                    <div class="mechanism-title"><i class="fas fa-bolt"></i> 細胞能量與代謝支持</div>
+                    <ul style="padding-left: 20px; margin-top: 10px; line-height: 1.6;">
+                        <li><strong>提升細胞能量：</strong>為仔豬高速生長的腸道、肌肉等組織供能，支持ATP合成</li>
+                        <li><strong>支持代謝與發育：</strong>改善整體代謝健康，支持器官發育與功能成熟</li>
+                        <li><strong>潛在抗應激：</strong>提升 <span class="molecule-highlight">NAD+</span> 水平，支持細胞修復，緩解斷奶應激損傷</li>
+                    </ul>
+                </div>
+                
+                <div class="warning-box" style="margin-top: 20px;">
+                    <strong>分子機轉總結：</strong> 倍力素通過「抗氧化-抗炎-能量代謝」三重協同機制，在分子層面保護仔豬肝臟與腸道健康，同時提升細胞能量水平，為斷奶期仔豬提供全方位保護，奠定高效生長基礎。
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 經濟效益 (移除所有貨幣數字，僅保留百分比效益) -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">效益評估分析</h2>
+            
+            <div class="card">
+                <h3>效益摘要</h3>
+                <div class="table-container">
+                    <table>
+                        <tr>
+                            <th>效益指標</th>
+                            <th>改善幅度</th>
+                            <th>說明</th>
+                        </tr>
+                        <tr>
+                            <td>日增重</td>
+                            <td class="positive">+15~20%</td>
+                            <td>28天總增重增加1.4-2.0公斤</td>
+                        </tr>
+                        <tr>
+                            <td>腹瀉率</td>
+                            <td class="positive">↓60~70%</td>
+                            <td>從15%降至5-6%</td>
+                        </tr>
+                        <tr>
+                            <td>飼料轉化率 (FCR)</td>
+                            <td class="positive">優化6.7%</td>
+                            <td>1.5→1.4，每公斤增重節省0.1公斤飼料</td>
+                        </tr>
+                        <tr>
+                            <td>整齊度</td>
+                            <td class="positive">顯著提升</td>
+                            <td>減少弱仔比例，批次均勻度改善</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div style="margin-top: 22px; background: linear-gradient(135deg, #fff8e0, #ffecb3); padding: 18px; border-radius: 10px; border-left: 4px solid var(--accent-yellow);">
+                    <p><strong>備註：</strong>以上效益百分比基於多次田間試驗與對照組比較結果，實際表現可能因飼養管理與環境條件而略有差異。</p>
+                </div>
+            </div>
+            
+            <div class="roi-highlight">
+                <h3 style="font-size: 1.4rem; margin-bottom: 12px; position: relative; z-index: 1;">投資效益</h3>
+                <div class="roi-value">極高</div>
+                <p style="font-size: 1.1rem; margin: 15px 0; position: relative; z-index: 1;">投資報酬率顯著，短期內即可回收</p>
+                <p style="font-size: 1rem; margin-bottom: 12px; position: relative; z-index: 1;">效益遠大於投入成本</p>
+            </div>
+            
+            <div class="img-container">
+                <img src="assets/roi-chart.jpg" alt="仔豬人工乳效益增長圖表" class="responsive-img" loading="lazy">
+                <div class="img-title">仔豬人工乳效益增長分析</div>
+                <div class="img-desc">各項生長指標均有顯著提升，投資回報豐厚</div>
+                <!-- AI咒語建議: 檔名 roi-chart.jpg，建議: 長條圖或折線圖顯示日增重、FCR、腹瀉率改善對比，簡潔專業，商業圖表風格 -->
+            </div>
+            
+            <!-- 批次規模效益段落，僅定性描述 -->
+            <div class="card">
+                <h3>批次規模效益</h3>
+                <p>以典型500頭保育舍為例，全面導入倍力素方案後，因生長性能提升與健康改善，每批次可獲得可觀的額外收益，遠超過方案投入成本，且豬群整齊度與後續育肥表現均顯著優化。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 實施建議 -->
+    <section style="background-color: #f8f9fa;">
+        <div class="container">
+            <h2 class="section-title">三階段實施建議</h2>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3 style="margin-bottom: 12px;">小規模驗證</h3>
+                    <p><strong>規模：</strong>50頭仔豬（同批次）</p>
+                    <p><strong>週期：</strong>28天保育期</p>
+                    <p><strong>監測重點：</strong>日增重、腹瀉率、採食量</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3 style="margin-bottom: 12px;">效益確認</h3>
+                    <p><strong>規模：</strong>200頭仔豬（2-3欄）</p>
+                    <p><strong>週期：</strong>2個保育批次（約8週）</p>
+                    <p><strong>監測重點：</strong>飼料轉化率、整齊度、死亡率</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3 style="margin-bottom: 12px;">全面導入</h3>
+                    <p><strong>規模：</strong>全場保育仔豬</p>
+                    <p><strong>時機：</strong>從人工乳開始使用至保育結束</p>
+                    <p><strong>目標：</strong>建立高健康、高生長性能保育豬群</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h4 style="display: flex; align-items: center; gap: 8px;"><i class="fas fa-clipboard-check" style="color: var(--primary-blue);"></i> 關鍵實施要點：</h4>
+                <ul style="padding-left: 22px; margin-top: 18px; line-height: 1.7;">
+                    <li><strong>添加時機：</strong>從仔豬開始採食人工乳立即添加，持續至保育期結束</li>
+                    <li><strong>對照設置：</strong>試驗階段務必設立對照組，相同條件管理</li>
+                    <li><strong>數據記錄：</strong>每日記錄採食量、每週秤重、記錄腹瀉頭數與治療情況</li>
+                    <li><strong>環境控制：</strong>確保保育舍溫度、濕度與通風適宜，減少環境應激</li>
+                </ul>
+                
+                <div class="warning-box" style="margin-top: 25px; border-left-width: 5px;">
+                    <h4 style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;"><i class="fas fa-exclamation-triangle" style="color: var(--warning); font-size: 1.1rem;"></i> 分子機制應用要點：</h4>
+                    <ul style="padding-left: 20px; margin-top: 10px; line-height: 1.6;">
+                        <li>倍力素分子保護機制需要持續作用，建議從斷奶前3天開始添加至保育結束</li>
+                        <li>配合優質人工乳使用，避免高豆粕配方加重腸道負擔</li>
+                        <li>保育舍溫度維持在28-30℃（第一週），每週降低2℃，減少斷奶應激</li>
+                        <li>確保充足清潔飲水，支持肝臟代謝與排毒功能</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 結論 -->
+    <section style="background: linear-gradient(135deg, #f0f7ff 0%, #e6f0ff 100%);">
+        <div class="container">
+            <h2 class="section-title">結論：分子級營養保護，奠定高效生長基礎</h2>
+            
+            <div class="card">
+                <div class="grid">
+                    <div>
+                        <h3 style="color: var(--gray-text); display: flex; align-items: center; gap: 8px;"><i class="fas fa-exclamation-circle"></i> 傳統保育管理</h3>
+                        <ul style="padding-left: 20px; margin-top: 18px; line-height: 1.7;">
+                            <li>人工乳僅提供基礎營養，缺乏功能性成分</li>
+                            <li>高腹瀉率導致抗生素過度使用與生長受阻</li>
+                            <li>肝臟與腸道氧化損傷累積，影響長期健康</li>
+                            <li>斷奶應激導致生長停滯，恢復期長</li>
+                            <li>保育期增重慢，延長整體出欄時間</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 style="color: var(--primary-blue); display: flex; align-items: center; gap: 8px;"><i class="fas fa-check-circle"></i> 倍力素人工乳方案</h3>
+                        <ul style="padding-left: 20px; margin-top: 18px; line-height: 1.7; color: var(--primary-blue); font-weight: 500;">
+                            <li>分子級肝臟保護，預防早期纖維化</li>
+                            <li>強效抗氧化，保護腸上皮與肝細胞膜</li>
+                            <li>調控NR1H3、CREB基因表達，減輕炎症</li>
+                            <li>提升NAD+水平，支持細胞修復與能量代謝</li>
+                            <li>降低腹瀉率，提升日增重與整齊度</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="img-container">
+                    <img src="assets/healthy-piglets.jpg" alt="高健康高整齊度保育仔豬群成果展示" class="responsive-img" loading="lazy">
+                    <div class="img-title">高健康高整齊度保育仔豬群成果展示</div>
+                    <div class="img-desc">使用倍力素人工乳方案後，保育仔豬活力充沛、整齊度高，為後續生長奠定堅實基礎</div>
+                    <!-- AI咒語建議: 檔名 healthy-piglets.jpg，建議: 保育舍內一群整齊健康的仔豬，精神飽滿，毛色光亮，現代化設備，畜牧攝影 -->
+                </div>
+                
+                <div style="text-align: center; margin-top: 30px; padding: 25px; background: linear-gradient(135deg, #e6f0ff 0%, #d4e5ff 100%); border-radius: 12px; border: 2px solid var(--secondary-blue);">
+                    <h3 style="font-size: 1.3rem; margin-bottom: 15px;">核心價值主張</h3>
+                    <p style="font-size: 1.15rem; margin-top: 15px; line-height: 1.6; font-weight: 500;">
+                        以精準營養投資，換取顯著生長效益與健康改善，<br>
+                        將保育期營養從「必要支出」轉化為「高報酬投資」。
+                    </p>
+                </div>
+                
+                <div class="data-source" style="margin-top: 25px;">
+                    <strong>科學依據：</strong><br>
+                    本方案分子保護機制基於最新研究，倍力素通過調控 <span class="gene-highlight">NR1H3</span>、<span class="gene-highlight">CREB</span> 等關鍵基因表達，同時提升 <span class="molecule-highlight">NAD+</span> 水平，在分子層面保護仔豬肝臟與腸道健康，為高效生長奠定基礎。核心成分<strong>重組型煙醯胺蛋白酶</strong>、<strong>單核苷小核酸</strong>均源自蛋白草萃取物，<strong>褐藻萃取物</strong>源自天然褐藻，確保安全與效能。
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁尾 (公司資訊更新為吉升飼料) -->
+    <footer>
+        <div class="container">
+            <div style="margin-bottom: 25px;">
+                <h3 style="font-size: 1.4rem; margin-bottom: 12px;">吉升飼料有限公司｜CHI SHENG FEED CO., LTD.</h3>
+                <p style="font-size: 1rem; opacity: 0.9;">精準營養 · 分子保護 · 永續農業</p>
+            </div>
+            <!-- 聯繫方式更新 -->
+            <p style="margin-top: 8px; font-weight: 500;">
+                <span>技術諮詢專線：</span>
+                <a href="tel:+886-5-6972238" style="color:white; text-decoration:underline;">+886-5-6972238</a>
+                ｜ <a href="mailto:info@chishengfeed.com" style="color:white; text-decoration:underline;">info@chishengfeed.com</a>
+            </p>
+            <p>地址：634雲林縣褒忠鄉中正路28-18號</p>
+            <!-- ROI試算按鍵 (電話更新) -->
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="tel:+886-5-6972238" class="roi-call-button" style="display: inline-block; background: linear-gradient(135deg, var(--accent-yellow), #e6b800); color: var(--dark-text); padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1rem; box-shadow: 0 4px 8px rgba(0,0,0,0.2); transition: all 0.3s ease;">📞 效益試算 立即諮詢 +886-5-6972238</a>
+            </div>
+            <div style="padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.9rem; opacity: 0.85; line-height: 1.6;">
+                <p>© 2026 吉升飼料有限公司 版權所有｜倍力素仔豬人工乳專用配方方案</p>
+                <p>分子保護機制基於最新科學研究｜實際效益可能因管理條件而異</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 返回頂部按鈕 (由 JavaScript 動態生成) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 滾動淡入效果
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -30px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('section').forEach(section => {
+                observer.observe(section);
+            });
+            
+            // 卡片交互效果
+            const cards = document.querySelectorAll('.card, .param-card, .step');
+            cards.forEach(card => {
+                card.addEventListener('touchstart', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                card.addEventListener('touchend', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+            
+            // 返回頂部按鈕
+            const backToTop = document.createElement('div');
+            backToTop.className = 'back-to-top';
+            backToTop.innerHTML = '↑';
+            backToTop.setAttribute('aria-label', '返回頂部');
+            document.body.appendChild(backToTop);
+
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    backToTop.classList.add('show');
+                } else {
+                    backToTop.classList.remove('show');
+                }
+            });
+
+            backToTop.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
