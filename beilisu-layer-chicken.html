@@ -65,34 +65,124 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
     <title>倍力素蛋雞性能提升方案 TDS - 吉升飼料有限公司</title>
     <style>
-        /* ----- 全域變數與重置 (手機優先) ----- */
+        /* ----- 主題變數 (源自 beilisu_json.json) ----- */
         :root {
-            --primary: #e67e22;
-            --secondary: #d35400;
-            --dark: #2c3e50;
-            --light: #f8f9fa;
-            --warning: #f1c40f;
-            --danger: #e74c3c;
-            --success: #27ae60;
-            --blue: #3498db;
-            --border-radius: 12px;
-            --shadow: 0 4px 12px rgba(0,0,0,0.1);
+            /* 顏色 */
+            --primary-green: #2a7a2a;
+            --secondary-green: #1b5e1b;
+            --accent-gold: #d4a017;
+            --accent-light: #f5f0e1;
+            --primary-dark: #2e3b2e;
+            --secondary-dark: #4a5a4a;
+            --light-bg: #f9fff9;
+            --card-bg: #ffffff;
+            --border-light: rgba(0, 0, 0, 0.05);
+            --border-dark: rgba(0, 0, 0, 0.1);
+            --header-gradient-start: rgba(42, 122, 42, 0.95);
+            --header-gradient-end: rgba(27, 94, 27, 0.95);
+            --footer-gradient-start: #2e3b2e;
+            --footer-gradient-end: #1a2b1a;
+            --stat-item-bg: rgba(255, 255, 255, 0.15);
+            --stat-border: rgba(255, 255, 255, 0.2);
+            --stat-hover-bg: rgba(255, 255, 255, 0.25);
+            --product-category-bg: var(--primary-green);
+            --product-category-text: #ffffff;
+            --product-icon-gradient-start: var(--primary-green);
+            --product-icon-gradient-end: var(--secondary-green);
+            --product-icon-text: #ffffff;
+            --btn-view-gradient-start: var(--primary-green);
+            --btn-view-gradient-end: var(--secondary-green);
+            --btn-view-text: #ffffff;
+            --btn-view-hover-gradient-start: var(--secondary-green);
+            --btn-view-hover-gradient-end: var(--primary-green);
+            --footer-text: rgba(255, 255, 255, 0.85);
+            --footer-link-color: rgba(255, 255, 255, 0.75);
+            --footer-link-hover-color: var(--accent-gold);
+            --copyright-text: rgba(255, 255, 255, 0.6);
+
+            /* 字體 */
+            --font-heading: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+            --font-body: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+
+            /* 字級 (clamp) 保持流暢 */
+            --font-size-base: 16px;
+            --font-size-h1: clamp(2rem, 6vw, 3.5rem);
+            --font-size-company-name: clamp(1.25rem, 3.5vw, 1.75rem);
+            --font-size-tagline: clamp(1.1rem, 2.8vw, 1.4rem);
+            --font-size-stat-value: clamp(1.8rem, 4.5vw, 2.5rem);
+            --font-size-stat-label: clamp(0.85rem, 2.2vw, 0.95rem);
+            --font-size-section-title: clamp(1.8rem, 4.5vw, 2.8rem);
+            --font-size-section-subtitle: clamp(1.1rem, 2.5vw, 1.25rem);
+            --font-size-product-title: clamp(1.2rem, 3vw, 1.5rem);
+            --font-size-product-subtitle: clamp(0.9rem, 2.2vw, 1rem);
+            --font-size-product-benefit: clamp(0.95rem, 2.3vw, 1.05rem);
+            --font-size-btn-view: clamp(0.95rem, 2.3vw, 1.05rem);
+            --font-size-footer-heading: clamp(1.2rem, 3vw, 1.4rem);
+            --font-size-footer-link: clamp(0.95rem, 2.3vw, 1.05rem);
+            --font-size-copyright: clamp(0.85rem, 2.2vw, 0.95rem);
+
+            /* 字重 */
+            --font-weight-light: 300;
+            --font-weight-normal: 400;
+            --font-weight-medium: 500;
+            --font-weight-semibold: 600;
+            --font-weight-bold: 700;
+            --font-weight-extrabold: 800;
+
+            /* 圓角 */
+            --border-radius-small: 8px;
+            --border-radius-medium: 16px;
+            --border-radius-large: 20px;
+            --border-radius-xlarge: 28px;
+            --border-radius-pill: 30px;
+            --border-radius-circle: 50%;
+
+            /* 陰影 */
+            --shadow-card: 0 8px 30px rgba(0, 40, 0, 0.08);
+            --shadow-card-hover: 0 12px 40px rgba(42, 122, 42, 0.15);
+            --shadow-header: 0 4px 20px rgba(0, 30, 0, 0.1);
+            --shadow-btn-view: 0 6px 20px rgba(42, 122, 42, 0.2);
+            --shadow-footer: none;
+
+            /* 間距 */
+            --spacing-xs: 8px;
+            --spacing-sm: 12px;
+            --spacing-md: 16px;
+            --spacing-lg: 20px;
+            --spacing-xl: 24px;
+            --spacing-2xl: 28px;
+            --spacing-3xl: 32px;
+            --spacing-4xl: 40px;
+            --spacing-5xl: 48px;
+            --spacing-6xl: 60px;
+            --section-padding-y: clamp(40px, 8vw, 80px);
+            --section-padding-x: clamp(16px, 4vw, 32px);
+            --header-padding-y: clamp(60px, 15vw, 120px);
+            --footer-padding-y: clamp(60px, 12vw, 100px) 0 clamp(40px, 8vw, 60px);
+
+            /* 過渡 */
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+
+            /* 安全區域 */
             --safe-area-inset-top: env(safe-area-inset-top);
             --safe-area-inset-bottom: env(safe-area-inset-bottom);
             --safe-area-inset-left: env(safe-area-inset-left);
             --safe-area-inset-right: env(safe-area-inset-right);
         }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             -webkit-tap-highlight-color: rgba(0,0,0,0.1);
-            font-family: -apple-system, BlinkMacSystemFont, 'Microsoft JhengHei', 'Noto Sans TC', sans-serif;
+            font-family: var(--font-body);
         }
+
         html {
-            font-size: 14px;
+            font-size: var(--font-size-base);
             scroll-behavior: smooth;
         }
+
         body {
             background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
             color: #333;
@@ -104,7 +194,8 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
-        /* ----- 導航列 (返回首頁 + 返回頂部) ----- */
+
+        /* ----- 導航列 (與主題無關，保持原樣) ----- */
         .navbar {
             position: sticky;
             top: 0;
@@ -116,37 +207,43 @@
             padding: 10px 20px;
             border-radius: 50px;
             margin: 10px 15px;
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-card);
         }
+
         .nav-left a, .nav-right button {
             display: flex;
             align-items: center;
             gap: 8px;
             padding: 8px 20px;
-            border-radius: 30px;
+            border-radius: var(--border-radius-pill);
             text-decoration: none;
-            font-weight: 500;
+            font-weight: var(--font-weight-medium);
             font-size: 0.95rem;
-            transition: 0.2s;
+            transition: var(--transition);
             border: none;
             cursor: pointer;
         }
+
         .nav-left a {
-            background: var(--light);
-            color: var(--dark);
+            background: var(--light-bg);
+            color: var(--primary-dark);
         }
+
         .nav-left a:hover {
-            background: var(--primary);
+            background: var(--primary-green);
             color: white;
         }
+
         .nav-right button {
-            background: var(--primary);
+            background: var(--primary-green);
             color: white;
         }
+
         .nav-right button:hover {
-            background: var(--warning);
-            color: var(--dark);
+            background: var(--accent-gold);
+            color: var(--primary-dark);
         }
+
         /* ----- 主容器 ----- */
         .container {
             width: 100%;
@@ -157,26 +254,29 @@
             overflow-x: hidden;
             box-shadow: 0 0 30px rgba(0,0,0,0.08);
         }
-        /* ----- 表頭 (純色漸層) ----- */
+
+        /* ----- 表頭 (使用主題變數) ----- */
         header {
             text-align: center;
             padding: 15px 0 20px;
             margin-bottom: 20px;
-            border-bottom: 2px solid var(--primary);
-            border-radius: var(--border-radius);
+            border-bottom: 2px solid var(--primary-green);
+            border-radius: var(--border-radius-medium);
             margin: 15px 15px 25px;
             padding: 25px 15px;
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-card);
             position: relative;
-            background: linear-gradient(135deg, #2c3e50, #1a252f);
+            background: linear-gradient(135deg, var(--header-gradient-start), var(--header-gradient-end));
             color: white;
         }
+
         header .company-info h1 {
             color: white;
             -webkit-text-fill-color: white;
             background: none;
             text-shadow: 0 2px 8px rgba(0,0,0,0.3);
         }
+
         header .company-info > p,
         header .tagline,
         header .highlight-badge {
@@ -184,16 +284,19 @@
             background: rgba(0,0,0,0.2);
             backdrop-filter: blur(4px);
         }
+
         .company-info h1 {
-            font-size: 1.6rem;
+            font-size: var(--font-size-h1);
             margin-bottom: 10px;
             line-height: 1.3;
         }
+
         .company-info > p {
             font-size: 1rem;
             margin-bottom: 12px;
-            font-weight: 500;
+            font-weight: var(--font-weight-medium);
         }
+
         .tagline {
             font-style: italic;
             margin-bottom: 15px;
@@ -202,12 +305,13 @@
             border-radius: 8px;
             display: inline-block;
         }
+
         .highlight-badge {
-            background: linear-gradient(135deg, var(--warning), var(--primary));
+            background: linear-gradient(135deg, var(--accent-gold), var(--primary-green));
             color: white;
             padding: 12px 16px;
-            border-radius: 25px;
-            font-weight: bold;
+            border-radius: var(--border-radius-pill);
+            font-weight: var(--font-weight-bold);
             font-size: 1rem;
             margin-bottom: 15px;
             display: inline-block;
@@ -215,35 +319,39 @@
             max-width: 400px;
             box-shadow: 0 4px 15px rgba(241,196,15,0.3);
         }
+
         .feature-badges {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 8px;
             margin-top: 15px;
         }
+
         .feature-badge {
             background: rgba(255,255,255,0.9);
             padding: 12px 10px;
-            border-radius: 16px;
-            border: 2px solid var(--primary);
-            color: var(--dark);
-            font-weight: 600;
+            border-radius: var(--border-radius-medium);
+            border: 2px solid var(--primary-green);
+            color: var(--primary-dark);
+            font-weight: var(--font-weight-semibold);
             font-size: 0.85rem;
             text-align: center;
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
-        /* ----- 區塊標題 ----- */
+
+        /* ----- 區塊標題 (使用主題變數) ----- */
         h2 {
-            font-size: 1.4rem;
-            color: var(--dark);
+            font-size: var(--font-size-section-title);
+            color: var(--primary-dark);
             margin: 30px 0 20px;
             padding: 12px 15px;
-            border-radius: 10px;
+            border-radius: var(--border-radius-small);
             background: linear-gradient(135deg, #f8f9fa, #fff);
-            border-left: 4px solid var(--primary);
+            border-left: 4px solid var(--primary-green);
             line-height: 1.3;
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-card);
         }
+
         /* ----- 卡片通用設計 (整張可點擊) ----- */
         .egg-card, .quality-card, .benefit-card, .spec-card {
             cursor: pointer;
@@ -254,7 +362,8 @@
         .egg-card:active, .quality-card:active, .benefit-card:active {
             transform: scale(0.98);
         }
-        /* ----- 產蛋率專區 ----- */
+
+        /* ----- 產蛋率專區 (使用主題變數) ----- */
         .egg-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -262,16 +371,16 @@
             margin-bottom: 20px;
         }
         .egg-card {
-            background: linear-gradient(135deg, #fff, #fef6ec);
+            background: linear-gradient(135deg, var(--card-bg), #fef6ec);
             padding: 20px;
-            border-radius: var(--border-radius);
-            border-left: 4px solid var(--primary);
-            box-shadow: var(--shadow);
+            border-radius: var(--border-radius-medium);
+            border-left: 4px solid var(--primary-green);
+            box-shadow: var(--shadow-card);
             border: 1px solid rgba(230,126,34,0.1);
         }
         .egg-card h4 {
             font-size: 1.1rem;
-            color: var(--secondary);
+            color: var(--secondary-green);
             margin-bottom: 8px;
             display: flex;
             align-items: center;
@@ -279,13 +388,14 @@
         }
         .egg-metric {
             font-size: 2rem;
-            font-weight: bold;
-            color: var(--primary);
+            font-weight: var(--font-weight-bold);
+            color: var(--primary-green);
             margin: 8px 0;
-            text-shadow: 0 2px 4px rgba(230,126,34,0.1);
+            text-shadow: 0 2px 4px rgba(42,122,42,0.1);
         }
         .egg-card p { color: #666; font-size: 0.9rem; margin-bottom: 6px; line-height: 1.5; }
-        /* ----- 產品規格 (響應式網格，移除金額數字) ----- */
+
+        /* ----- 產品規格 (使用主題變數) ----- */
         .specs-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -293,20 +403,21 @@
             margin: 15px 0;
         }
         .spec-card {
-            background: linear-gradient(135deg, #fff, #f8f9fa);
+            background: linear-gradient(135deg, var(--card-bg), #f8f9fa);
             padding: 15px 10px;
-            border-radius: var(--border-radius);
+            border-radius: var(--border-radius-medium);
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
             border: 1px solid #eee;
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-card);
         }
-        .spec-card .label { color: #777; font-size: 0.8rem; margin-bottom: 8px; font-weight: 500; }
-        .spec-card .value { font-size: 1.5rem; font-weight: bold; color: var(--primary); margin-bottom: 4px; }
-        .spec-card .unit { color: #666; font-size: 0.8rem; font-weight: 500; }
-        /* ----- 蛋品品質專區 ----- */
+        .spec-card .label { color: #777; font-size: 0.8rem; margin-bottom: 8px; font-weight: var(--font-weight-medium); }
+        .spec-card .value { font-size: 1.5rem; font-weight: var(--font-weight-bold); color: var(--primary-green); margin-bottom: 4px; }
+        .spec-card .unit { color: #666; font-size: 0.8rem; font-weight: var(--font-weight-medium); }
+
+        /* ----- 蛋品品質專區 (使用主題變數) ----- */
         .quality-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -314,21 +425,28 @@
             margin-bottom: 20px;
         }
         .quality-card {
-            background: linear-gradient(135deg, #fff, #fef0ec);
+            background: linear-gradient(135deg, var(--card-bg), #fef0ec);
             padding: 20px;
-            border-radius: var(--border-radius);
-            border-left: 4px solid var(--danger);
-            box-shadow: var(--shadow);
+            border-radius: var(--border-radius-medium);
+            border-left: 4px solid var(--danger, #e74c3c);
+            box-shadow: var(--shadow-card);
             border: 1px solid rgba(231,76,60,0.1);
         }
         .quality-card h4 {
             font-size: 1.1rem;
-            color: var(--danger);
+            color: #e74c3c;
             margin-bottom: 8px;
             display: flex;
             gap: 8px;
         }
-        /* ----- 健康度提升專區 ----- */
+        .quality-card div[style*="font-size: 2rem"] {
+            font-size: 2rem;
+            font-weight: var(--font-weight-bold);
+            color: #e74c3c;
+            margin: 8px 0;
+        }
+
+        /* ----- 健康度提升專區 (使用主題變數) ----- */
         .benefits-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -336,34 +454,35 @@
             margin-bottom: 20px;
         }
         .benefit-card {
-            background: linear-gradient(135deg, #fff, #ecf9f0);
+            background: linear-gradient(135deg, var(--card-bg), #ecf9f0);
             padding: 20px;
-            border-radius: var(--border-radius);
-            border-left: 4px solid var(--success);
-            box-shadow: var(--shadow);
+            border-radius: var(--border-radius-medium);
+            border-left: 4px solid var(--success, #27ae60);
+            box-shadow: var(--shadow-card);
             border: 1px solid rgba(39,174,96,0.1);
         }
         .benefit-card h4 {
             font-size: 1.1rem;
-            color: var(--success);
+            color: var(--success, #27ae60);
             margin-bottom: 8px;
             display: flex;
             gap: 8px;
         }
         .benefit-metric {
             font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--success);
+            font-weight: var(--font-weight-bold);
+            color: var(--success, #27ae60);
             margin: 8px 0;
             display: block;
             text-shadow: 0 2px 4px rgba(39,174,96,0.1);
         }
-        /* ----- 經濟效益表格 (移除金額數字) ----- */
+
+        /* ----- 經濟效益表格 (使用主題變數) ----- */
         .economic-card {
-            background: linear-gradient(135deg, #fff, #fef9ec);
+            background: linear-gradient(135deg, var(--card-bg), #fef9ec);
             padding: 20px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
+            border-radius: var(--border-radius-medium);
+            box-shadow: var(--shadow-card);
             margin-bottom: 15px;
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
@@ -389,41 +508,42 @@
             font-size: 0.9rem;
         }
         .profit-table th {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
             color: white;
             position: sticky;
             left: 0;
-            font-weight: 600;
+            font-weight: var(--font-weight-semibold);
         }
         .profit-table tr:nth-child(even) { background: #f9f9f9; }
         .profit-table tr:hover { background: #fff8e1; }
         .roi-badge {
             text-align: center;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
             color: white;
             padding: 25px 20px;
-            border-radius: var(--border-radius);
-            font-weight: bold;
+            border-radius: var(--border-radius-medium);
+            font-weight: var(--font-weight-bold);
             margin-top: 20px;
-            box-shadow: 0 4px 20px rgba(230,126,34,0.3);
+            box-shadow: 0 4px 20px rgba(42,122,42,0.3);
         }
         .roi-value { font-size: 2.8rem; margin: 15px 0; text-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+
         /* ----- 高峰機制區塊 ----- */
         .peak-mechanism {
             background: linear-gradient(135deg, #fdf2e9, #fff);
             padding: 25px 20px;
-            border-radius: var(--border-radius);
+            border-radius: var(--border-radius-medium);
             margin: 25px 0;
-            border-left: 4px solid var(--secondary);
+            border-left: 4px solid var(--secondary-green);
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s;
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(211,84,0,0.1);
+            box-shadow: var(--shadow-card);
+            border: 1px solid rgba(27,94,27,0.1);
         }
         .peak-mechanism.visible { opacity: 1; transform: translateY(0); }
         .peak-mechanism h3 {
-            color: var(--secondary);
+            color: var(--secondary-green);
             font-size: 1.3rem;
             margin-bottom: 15px;
             display: flex;
@@ -444,13 +564,14 @@
             top: 2px;
             font-size: 1.1rem;
         }
+
         /* ----- 圖片容器 ----- */
         .egg-image-container {
             width: 100%;
             margin: 20px 0;
-            border-radius: var(--border-radius);
+            border-radius: var(--border-radius-medium);
             overflow: hidden;
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-card);
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.6s ease, transform 0.6s ease;
@@ -477,6 +598,7 @@
             font-size: 0.85rem;
             border-top: 1px solid #eee;
         }
+
         /* ----- 動畫淡入 ----- */
         .fade-in {
             opacity: 0;
@@ -485,12 +607,13 @@
             will-change: transform, opacity;
         }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
-        /* ----- CTA 區塊 ----- */
+
+        /* ----- CTA 區塊 (使用主題變數) ----- */
         .cta-section {
-            background: linear-gradient(135deg, var(--dark), #2a4365);
+            background: linear-gradient(135deg, var(--primary-dark), #2a4365);
             color: white;
             padding: 35px 20px;
-            border-radius: var(--border-radius);
+            border-radius: var(--border-radius-medium);
             text-align: center;
             margin: 35px 0;
             padding-bottom: max(35px, var(--safe-area-inset-bottom, 35px));
@@ -499,8 +622,8 @@
         }
         .big-number {
             font-size: 3rem;
-            font-weight: bold;
-            color: var(--warning);
+            font-weight: var(--font-weight-bold);
+            color: var(--accent-gold);
             margin: 8px 0;
             text-shadow: 0 2px 8px rgba(0,0,0,0.3);
         }
@@ -512,9 +635,9 @@
         }
         .btn {
             padding: 16px 24px;
-            border-radius: 30px;
+            border-radius: var(--border-radius-pill);
             text-decoration: none;
-            font-weight: bold;
+            font-weight: var(--font-weight-bold);
             font-size: 1rem;
             transition: all 0.3s;
             display: block;
@@ -529,8 +652,8 @@
         }
         .btn:active { transform: scale(0.98); }
         .btn-primary {
-            background: linear-gradient(135deg, var(--warning), #f39c12);
-            color: var(--dark);
+            background: linear-gradient(135deg, var(--accent-gold), #f39c12);
+            color: var(--primary-dark);
             box-shadow: 0 4px 15px rgba(241,196,15,0.4);
         }
         .btn-secondary {
@@ -539,29 +662,47 @@
             color: white;
             backdrop-filter: blur(10px);
         }
+
         /* ----- 頁腳 (公司資訊更新) ----- */
         footer {
             text-align: center;
             padding: 30px 20px;
-            border-radius: var(--border-radius);
+            border-radius: var(--border-radius-medium);
             margin-top: 35px;
-            background: linear-gradient(135deg, var(--dark), #1a252f);
-            color: rgba(255,255,255,0.9);
+            background: linear-gradient(135deg, var(--footer-gradient-start), var(--footer-gradient-end));
+            color: var(--footer-text);
             padding-bottom: max(30px, var(--safe-area-inset-bottom, 30px));
             border-top: 1px solid rgba(255,255,255,0.1);
         }
         footer p { margin-bottom: 12px; font-size: 0.9rem; line-height: 1.6; }
         .contact-info a {
-            color: var(--warning);
+            color: var(--accent-gold);
             text-decoration: none;
         }
         .contact-info a:hover {
             text-decoration: underline;
         }
-        /* ----- 響應式 ----- */
+
+        /* ----- 響應式 (參考 JSON 中的 mediaQueries) ----- */
+        @media (min-width: 480px) {
+            .product-footer {
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+
+        @media (min-width: 640px) {
+            .stats-container {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (min-width: 768px) {
             html { font-size: 16px; }
-            .container { padding: 25px; max-width: 100%; border-radius: 20px; margin: 15px auto; }
+            .container { padding: 25px; max-width: 100%; border-radius: var(--border-radius-large); margin: 15px auto; }
             header { padding-top: 0; margin: 20px; padding: 30px; }
             .company-info h1 { font-size: 2rem; }
             .highlight-badge { width: auto; padding: 15px 30px; font-size: 1.1rem; }
@@ -574,20 +715,25 @@
             h2 { font-size: 1.6rem; margin: 35px 0 25px; }
             .egg-image-container img { height: 250px; }
         }
-        @media (min-width: 992px) {
-            .container { max-width: 1200px; padding: 35px; margin: 20px auto; border-radius: 25px; }
+
+        @media (min-width: 1024px) {
+            .container { max-width: 1200px; padding: 35px; margin: 20px auto; border-radius: var(--border-radius-xlarge); }
             .egg-grid, .quality-grid, .benefits-grid { grid-template-columns: repeat(4, 1fr); }
             .specs-grid { grid-template-columns: repeat(6, 1fr); }
             .company-info h1 { font-size: 2.2rem; }
             .big-number { font-size: 4rem; }
             .roi-value { font-size: 3.5rem; }
-            .egg-card:hover, .quality-card:hover, .benefit-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
+            .egg-card:hover, .quality-card:hover, .benefit-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-card-hover); }
             .btn:hover { transform: scale(1.05); }
-            .btn-secondary:hover { background: white; color: var(--dark); }
-            .btn-primary:hover { background: linear-gradient(135deg, #f39c12, #e67e22); }
+            .btn-secondary:hover { background: white; color: var(--primary-dark); }
+            .btn-primary:hover { background: linear-gradient(135deg, #f39c12, var(--accent-gold)); }
             .egg-image-container img { height: 300px; }
             header { margin: 25px; padding: 40px; }
+            .footer-content {
+                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            }
         }
+
         @media (max-width: 360px) {
             html { font-size: 13px; }
             .container { padding: 12px; border-radius: 15px; }
@@ -600,14 +746,20 @@
             .egg-metric { font-size: 1.8rem; }
             h2 { padding: 10px 12px; font-size: 1.2rem; }
         }
+
         @media (max-height: 500px) and (orientation: landscape) {
             header { padding-top: 20px; }
             .egg-grid, .quality-grid, .benefits-grid { grid-template-columns: repeat(2, 1fr); }
             .container { padding: 15px; }
         }
+
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
             .fade-in, .egg-image-container, .peak-mechanism { opacity: 1; transform: none; transition: none; }
+        }
+
+        @media print {
+            .language-switcher, .btn-view { display: none !important; }
         }
     </style>
 </head>
@@ -641,7 +793,7 @@
 
         <!-- 產蛋率提升專區 (更新成分說明) -->
         <section class="egg-production-section">
-            <h2 style="border-left-color: #d35400;">🥚 產蛋率提升專區｜高產穩定持久</h2>
+            <h2 style="border-left-color: var(--secondary-green);">🥚 產蛋率提升專區｜高產穩定持久</h2>
             <p style="font-size: 1rem; margin-bottom: 15px; font-weight: 600; color: #666;">專為蛋雞設計的營養調控方案，顯著提升產蛋率，延長產蛋高峰，改善蛋品品質，創造更高經濟價值。</p>
             <div class="egg-grid">
                 <div class="egg-card fade-in" onclick="alert('產蛋率提升詳細數據諮詢請洽吉升飼料業務')">
@@ -696,7 +848,7 @@
                 </div>
                 <div class="spec-card" onclick="alert('適用階段')">
                     <span class="label">適用階段</span>
-                    <span class="value" style="color: var(--primary); font-size: 1.2rem;">產蛋全程</span>
+                    <span class="value" style="color: var(--primary-green); font-size: 1.2rem;">產蛋全程</span>
                     <span class="unit">18-72週齡</span>
                 </div>
                 <div class="spec-card" onclick="alert('蛋雞日採食量')">
@@ -710,7 +862,7 @@
                     <span class="unit">/箱</span>
                 </div>
             </div>
-            <div style="background: #fff8e1; padding: 18px; border-radius: 12px; margin-top: 18px; border-left: 4px solid var(--primary); box-shadow: 0 2px 8px rgba(0,0,0,0.05);" class="fade-in">
+            <div style="background: #fff8e1; padding: 18px; border-radius: 12px; margin-top: 18px; border-left: 4px solid var(--primary-green); box-shadow: 0 2px 8px rgba(0,0,0,0.05);" class="fade-in">
                 <p><strong>使用方法：</strong>每噸蛋雞全價飼料均勻添加倍力素蛋雞專用配方1公斤，從產蛋開始全程使用，無需調整現有飼養管理流程。</p>
             </div>
             <div class="egg-image-container">
@@ -801,7 +953,7 @@
         <!-- 經濟效益分析 (移除所有金額數字，僅保留百分比) -->
         <section>
             <h2>💰 經濟效益分析｜每隻蛋雞淨利提升</h2>
-            <div style="background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%); padding: 18px; border-radius: 12px; margin-bottom: 22px; border-left: 4px solid var(--primary); box-shadow: 0 2px 10px rgba(0,0,0,0.05);" class="fade-in">
+            <div style="background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%); padding: 18px; border-radius: 12px; margin-bottom: 22px; border-left: 4px solid var(--primary-green); box-shadow: 0 2px 10px rgba(0,0,0,0.05);" class="fade-in">
                 <p><strong>計算基準：</strong>蛋雞產蛋期40週(280天)｜產蛋率92%→97%｜料蛋比2.2→2.05｜每隻雞日採食量115克</p>
             </div>
             <div class="economic-card fade-in">
@@ -829,7 +981,7 @@
                     <div style="font-size: 0.9rem; opacity: 0.9;">產蛋期投資回報豐厚，回收期 &lt;15天</div>
                 </div>
             </div>
-            <div style="background: #fff8e1; padding: 18px; border-radius: 12px; margin-top: 18px; border-left: 4px solid var(--secondary); box-shadow: 0 2px 8px rgba(0,0,0,0.05);" class="fade-in">
+            <div style="background: #fff8e1; padding: 18px; border-radius: 12px; margin-top: 18px; border-left: 4px solid var(--secondary-green); box-shadow: 0 2px 8px rgba(0,0,0,0.05);" class="fade-in">
                 <p><strong>萬隻蛋雞場年度效益：</strong>每批蛋雞淨利增加極顯著，年更新1.5批次效益倍增。</p>
             </div>
             <div class="egg-image-container">
@@ -840,10 +992,10 @@
 
         <!-- CTA行動區塊 (電話更新) -->
         <section class="cta-section">
-            <h2 style="color: white; border-bottom: 2px solid var(--warning); padding-bottom: 10px;">🚀 立即啟動蛋雞性能提升方案</h2>
+            <h2 style="color: white; border-bottom: 2px solid var(--accent-gold); padding-bottom: 10px;">🚀 立即啟動蛋雞性能提升方案</h2>
             <div class="big-number">576%</div>
             <p>投資報酬率(ROI)</p>
-            <div style="background: rgba(241, 196, 15, 0.2); padding: 12px 20px; border-radius: 25px; display: inline-block; margin: 15px 0; font-weight: bold; font-size: 0.9rem; border: 1px solid rgba(241, 196, 15, 0.3);">🥚 產蛋率提升5-8%｜⭐ 蛋黃品質提升3-4級｜🩺 發炎降低40-50%</div>
+            <div style="background: rgba(212, 160, 23, 0.2); padding: 12px 20px; border-radius: 25px; display: inline-block; margin: 15px 0; font-weight: bold; font-size: 0.9rem; border: 1px solid rgba(212, 160, 23, 0.3);">🥚 產蛋率提升5-8%｜⭐ 蛋黃品質提升3-4級｜🩺 發炎降低40-50%</div>
             <div class="cta-buttons">
                 <a class="btn btn-primary" href="tel:+886-5-6972238">📞 獲取蛋雞專案技術諮詢 +886-5-6972238</a>
                 <a class="btn btn-secondary" href="#">📋 免費索取蛋雞試用方案</a>
