@@ -2,540 +2,843 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=yes, viewport-fit=cover">
-    <title>倍力素®吳郭魚（羅非魚）存活率提升方案 - 吉升飼料有限公司</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    <title>倍力素®吳郭魚存活率提升方案 TDS｜吉升飼料有限公司</title>
+    <!-- Font Awesome 圖示庫 (用於導航列) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* ===== 淺色農業風格主題變數 (與其他方案一致) ===== */
         :root {
-            --primary-blue: #00a8a8;
-            --secondary-blue: #007d7d;
-            --accent-yellow: #ffb74d;
-            --light-bg: #f0f7ff;
-            --dark-text: #1e3c4a;
-            --gray-text: #6c7a9c;
-            --success: #2e7d5e;
-            --warning: #ff9800;
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
-            --shadow-md: 0 5px 15px rgba(0,0,0,0.08);
-            --shadow-lg: 0 8px 25px rgba(0,0,0,0.1);
-            --safe-area-inset-left: env(safe-area-inset-left);
-            --safe-area-inset-right: env(safe-area-inset-right);
+            --primary-green: #2a7a2a;
+            --secondary-green: #1b5e1b;
+            --accent-gold: #d4a017;
+            --accent-light: #f5f0e1;
+            --primary-dark: #2e3b2e;
+            --secondary-dark: #4a5a4a;
+            --light-bg: #f9fff9;
+            --card-bg: #ffffff;
+            --border-light: rgba(0, 0, 0, 0.05);
+            --border-dark: rgba(0, 0, 0, 0.1);
+            --header-gradient-start: rgba(42, 122, 42, 0.95);
+            --header-gradient-end: rgba(27, 94, 27, 0.95);
+            --footer-gradient-start: #2e3b2e;
+            --footer-gradient-end: #1a2b1a;
+            --stat-item-bg: rgba(255, 255, 255, 0.15);
+            --stat-border: rgba(255, 255, 255, 0.2);
+            --stat-hover-bg: rgba(255, 255, 255, 0.25);
+            --btn-view-gradient-start: var(--primary-green);
+            --btn-view-gradient-end: var(--secondary-green);
+            --btn-view-text: #ffffff;
+            --btn-view-hover-gradient-start: var(--secondary-green);
+            --btn-view-hover-gradient-end: var(--primary-green);
+            --footer-text: rgba(255, 255, 255, 0.85);
+            --footer-link-color: rgba(255, 255, 255, 0.75);
+            --footer-link-hover-color: var(--accent-gold);
+            --copyright-text: rgba(255, 255, 255, 0.6);
+
+            --font-family-heading: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+            --font-family-body: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+
+            --font-size-base: 16px;
+            --font-size-h1: clamp(2rem, 6vw, 3.5rem);
+            --font-size-company-name: clamp(1.25rem, 3.5vw, 1.75rem);
+            --font-size-tagline: clamp(1.1rem, 2.8vw, 1.4rem);
+            --font-size-stat-value: clamp(1.8rem, 4.5vw, 2.5rem);
+            --font-size-stat-label: clamp(0.85rem, 2.2vw, 0.95rem);
+            --font-size-section-title: clamp(1.8rem, 4.5vw, 2.8rem);
+            --font-size-product-title: clamp(1.2rem, 3vw, 1.5rem);
+            --font-size-product-benefit: clamp(0.95rem, 2.3vw, 1.05rem);
+            --font-size-btn-view: clamp(0.95rem, 2.3vw, 1.05rem);
+            --font-size-footer-link: clamp(0.95rem, 2.3vw, 1.05rem);
+            --font-size-copyright: clamp(0.85rem, 2.2vw, 0.95rem);
+
+            --font-weight-light: 300;
+            --font-weight-normal: 400;
+            --font-weight-medium: 500;
+            --font-weight-semibold: 600;
+            --font-weight-bold: 700;
+            --font-weight-extrabold: 800;
+
+            --border-radius-small: 8px;
+            --border-radius-medium: 16px;
+            --border-radius-large: 20px;
+            --border-radius-pill: 30px;
+            --border-radius-circle: 50%;
+
+            --box-shadow-card: 0 8px 30px rgba(0, 40, 0, 0.08);
+            --box-shadow-card-hover: 0 12px 40px rgba(42, 122, 42, 0.15);
+            --box-shadow-header: 0 4px 20px rgba(0, 30, 0, 0.1);
+            --box-shadow-btn-view: 0 6px 20px rgba(42, 122, 42, 0.2);
+
+            --spacing-xs: 8px;
+            --spacing-sm: 12px;
+            --spacing-md: 16px;
+            --spacing-lg: 20px;
+            --spacing-xl: 24px;
+            --spacing-2xl: 28px;
+            --spacing-3xl: 32px;
+            --spacing-4xl: 40px;
+            --spacing-5xl: 48px;
+            --section-padding-y: clamp(40px, 8vw, 80px);
+            --section-padding-x: clamp(16px, 4vw, 32px);
+            --header-padding-y: clamp(60px, 15vw, 120px);
+            --footer-padding-y: clamp(60px, 12vw, 100px) 0 clamp(40px, 8vw, 60px);
+
+            --transition: all 0.3s ease;
+            --safe-top: env(safe-area-inset-top);
+            --safe-bottom: env(safe-area-inset-bottom);
         }
+
+        /* 動畫定義 */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             -webkit-tap-highlight-color: transparent;
-            -webkit-font-smoothing: antialiased;
         }
+
         html {
-            font-size: 17px;
+            font-size: var(--font-size-base);
             scroll-behavior: smooth;
         }
+
         body {
-            font-family: 'Microsoft JhengHei', '微軟正黑體', 'Noto Sans TC', 'PingFang TC', 'Helvetica Neue', sans-serif;
-            background-color: #f5f9ff;
-            color: var(--dark-text);
-            line-height: 1.5;
-            overflow-x: hidden;
-            padding-left: var(--safe-area-inset-left);
-            padding-right: var(--safe-area-inset-right);
-            -webkit-text-size-adjust: 100%;
+            font-family: var(--font-family-body);
+            line-height: 1.65;
+            color: var(--primary-dark);
+            background: var(--light-bg);
+            padding: 16px;
+            min-height: 100vh;
+            padding-top: calc(var(--safe-top) + 16px);
+            padding-bottom: calc(var(--safe-bottom) + 16px);
+            -webkit-font-smoothing: antialiased;
         }
+
         .container {
             width: 100%;
-            max-width: 100%;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 12px;
+            animation: fadeInUp 0.6s ease-out;
         }
-        
-        /* 導航按鈕列 */
-        .nav-buttons {
-            position: fixed;
-            top: 12px;
-            right: 12px;
+
+        /* ===== 導航列 (與其他方案一致) ===== */
+        .navbar {
+            position: sticky;
+            top: 0;
             z-index: 1000;
             display: flex;
-            gap: 8px;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--card-bg);
+            padding: 10px 20px;
+            border-radius: var(--border-radius-pill);
+            margin: 0 0 20px 0;
+            box-shadow: var(--box-shadow-card);
+            border: 1px solid var(--border-light);
+            backdrop-filter: blur(8px);
         }
-        .nav-btn {
-            background: white;
-            border: none;
-            border-radius: 30px;
-            padding: 10px 18px;
-            font-weight: 600;
+
+        .nav-left a, .nav-right button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            border-radius: var(--border-radius-pill);
+            text-decoration: none;
+            font-weight: var(--font-weight-medium);
             font-size: 0.95rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            color: var(--dark-text);
+            transition: var(--transition);
+            border: none;
             cursor: pointer;
+            background: var(--light-bg);
+            color: var(--primary-dark);
+            border: 1px solid var(--border-light);
+        }
+
+        .nav-left a:hover {
+            background: var(--primary-green);
+            color: white;
+        }
+
+        .nav-right button {
+            background: var(--primary-green);
+            color: white;
+        }
+
+        .nav-right button:hover {
+            background: var(--accent-gold);
+            color: var(--primary-dark);
+        }
+
+        /* ===== 頁首 header ===== */
+        header {
+            background: linear-gradient(135deg, var(--header-gradient-start), var(--header-gradient-end));
+            color: white;
+            padding: var(--header-padding-y) var(--section-padding-x);
+            border-radius: 0 0 var(--border-radius-large) var(--border-radius-large);
+            margin-bottom: var(--spacing-4xl);
+            box-shadow: var(--box-shadow-header);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            border-top: 5px solid var(--accent-gold);
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(circle at 10% 20%, rgba(255,255,255,0.1) 0%, transparent 20%),
+                              radial-gradient(circle at 90% 80%, rgba(212,160,23,0.1) 0%, transparent 20%);
+            pointer-events: none;
+        }
+
+        .company-info {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .company-info h1 {
+            font-size: var(--font-size-h1);
+            font-weight: var(--font-weight-extrabold);
+            margin-bottom: clamp(16px, 3vw, 24px);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            background: linear-gradient(135deg, #ffffff, var(--accent-light));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .product-target {
+            font-size: var(--font-size-company-name);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: clamp(12px, 2.5vw, 20px);
+            color: rgba(255,255,255,0.9);
+            background: rgba(255,255,255,0.1);
+            padding: var(--spacing-sm) var(--spacing-xl);
+            border-radius: var(--border-radius-pill);
+            display: inline-block;
+            backdrop-filter: blur(4px);
+            border: 1px solid var(--stat-border);
+        }
+
+        .tagline {
+            font-size: var(--font-size-tagline);
+            opacity: 0.9;
+            margin: 0 auto var(--spacing-4xl);
+            padding: var(--spacing-sm) var(--spacing-xl);
+            background: rgba(255,255,255,0.08);
+            border-radius: var(--border-radius-pill);
+            display: inline-block;
+        }
+
+        .tds-badge {
+            background: linear-gradient(135deg, var(--accent-gold), #b88a1a);
+            color: white;
+            padding: var(--spacing-md) var(--spacing-3xl);
+            border-radius: var(--border-radius-pill);
+            font-weight: var(--font-weight-bold);
+            display: inline-block;
+            font-size: var(--font-size-base);
+            box-shadow: var(--box-shadow-btn-view);
+            border: 1px solid rgba(255,255,255,0.25);
+            margin-top: var(--spacing-sm);
+        }
+
+        /* ===== 區塊標題 ===== */
+        h2 {
+            color: var(--primary-dark);
+            font-size: var(--font-size-section-title);
+            margin-bottom: var(--spacing-3xl);
+            padding-bottom: var(--spacing-md);
+            border-bottom: 2px solid var(--border-dark);
+            position: relative;
+            font-weight: var(--font-weight-bold);
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-green), var(--accent-gold));
+            border-radius: 2px;
+        }
+
+        section {
+            background: var(--card-bg);
+            padding: var(--section-padding-y) var(--section-padding-x);
+            margin-bottom: var(--spacing-3xl);
+            border-radius: var(--border-radius-large);
+            box-shadow: var(--box-shadow-card);
+            transition: var(--transition);
+            border-left: 5px solid var(--primary-green);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease-out forwards;
+            animation-play-state: paused;
+        }
+
+        section.visible { animation-play-state: running; }
+        section:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--box-shadow-card-hover);
+            border-left-color: var(--accent-gold);
+        }
+
+        /* ===== 規格卡片 (參數卡片) ===== */
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-lg);
+            margin: var(--spacing-3xl) 0;
+        }
+
+        .spec-card {
+            background: var(--card-bg);
+            padding: var(--spacing-xl) var(--spacing-md);
+            border-radius: var(--border-radius-medium);
+            text-align: center;
+            border: 1px solid var(--border-light);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--box-shadow-card);
+        }
+
+        .spec-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-gold), transparent);
+        }
+
+        .spec-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow-card-hover);
+        }
+
+        .spec-card .label {
+            font-size: var(--font-size-stat-label);
+            color: var(--secondary-dark);
+            margin-bottom: var(--spacing-xs);
+            display: block;
+            font-weight: var(--font-weight-semibold);
+        }
+
+        .spec-card .value {
+            font-size: var(--font-size-stat-value);
+            font-weight: var(--font-weight-bold);
+            color: var(--primary-green);
+            display: block;
+            line-height: 1.1;
+            margin: var(--spacing-xs) 0;
+        }
+
+        .spec-card .unit {
+            font-size: var(--font-size-stat-label);
+            color: var(--secondary-dark);
+            display: block;
+            font-weight: var(--font-weight-medium);
+        }
+
+        /* ===== 效益卡片 (用於性能參數、見證等) ===== */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-3xl);
+        }
+
+        .benefit-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius-medium);
+            padding: var(--spacing-2xl) var(--spacing-xl);
+            box-shadow: var(--box-shadow-card);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+            border-left: 6px solid var(--accent-gold);
+            cursor: pointer;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--box-shadow-card-hover);
+            border-left-color: var(--primary-green);
+        }
+
+        .benefit-card h3, .benefit-card h4 {
+            font-size: var(--font-size-product-title);
+            margin-bottom: var(--spacing-md);
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            font-weight: var(--font-weight-bold);
+        }
+
+        .benefit-card .improvement {
+            font-size: var(--font-size-stat-value);
+            font-weight: var(--font-weight-extrabold);
+            color: var(--primary-green);
+            margin: var(--spacing-md) 0;
+            display: block;
+            background: linear-gradient(135deg, var(--primary-green), var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .benefit-card p {
+            font-size: var(--font-size-product-benefit);
+            color: var(--secondary-dark);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        /* 機制卡片 (特殊樣式，用於分子機轉) */
+        .mechanism-card {
+            background: var(--light-bg);
+            padding: var(--spacing-xl);
+            border-radius: var(--border-radius-medium);
+            box-shadow: var(--box-shadow-card);
+            border: 1px solid var(--border-light);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .mechanism-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary-green), var(--accent-gold));
+        }
+
+        .mechanism-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--box-shadow-card-hover);
+        }
+
+        .mechanism-card .mechanism-title {
+            font-size: var(--font-size-product-title);
+            color: var(--primary-dark);
+            margin-bottom: var(--spacing-md);
+            font-weight: var(--font-weight-bold);
+        }
+
+        .mechanism-card p {
+            font-size: var(--font-size-product-benefit);
+        }
+
+        /* 基因標籤 (保留原風格但用主題色) */
+        .gene-highlight {
+            display: inline-block;
+            background: rgba(42, 122, 42, 0.1);
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            color: var(--primary-dark);
+        }
+
+        /* ===== 表格樣式 ===== */
+        .table-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: var(--spacing-xl) 0;
+            border-radius: var(--border-radius-small);
+        }
+
+        .profit-table {
+            width: 100%;
+            min-width: 600px;
+            border-collapse: collapse;
+            border-radius: var(--border-radius-medium);
+            overflow: hidden;
+            box-shadow: var(--box-shadow-card);
+        }
+
+        .profit-table th {
+            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+            color: white;
+            padding: var(--spacing-md) var(--spacing-lg);
+            text-align: center;
+            font-weight: var(--font-weight-bold);
+        }
+
+        .profit-table td {
+            padding: var(--spacing-md);
+            border-bottom: 1px solid var(--border-light);
+            background: var(--card-bg);
+            text-align: center;
+        }
+
+        .profit-table tr:nth-child(even) td {
+            background: var(--light-bg);
+        }
+
+        .profit-table tr.highlight td {
+            background: rgba(212, 160, 23, 0.1);
+            font-weight: var(--font-weight-bold);
+        }
+
+        /* ===== ROI 高亮區塊 ===== */
+        .roi-highlight {
+            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+            color: white;
+            border-radius: var(--border-radius-large);
+            padding: var(--spacing-3xl) var(--spacing-xl);
+            text-align: center;
+            margin: var(--spacing-3xl) 0;
+            box-shadow: var(--box-shadow-btn-view);
+        }
+
+        .roi-value {
+            font-size: 3.2rem;
+            font-weight: var(--font-weight-extrabold);
+            margin: var(--spacing-md) 0;
+            text-shadow: 0 3px 6px rgba(0,0,0,0.2);
+        }
+
+        /* ===== 圖片容器 ===== */
+        .img-container {
+            width: 100%;
+            margin: var(--spacing-xl) 0;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .responsive-img {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius-medium);
+            box-shadow: var(--box-shadow-card);
+            display: block;
+            border: 3px solid white;
+            transition: var(--transition);
+        }
+
+        .responsive-img:hover {
+            transform: scale(1.02);
+            box-shadow: var(--box-shadow-card-hover);
+        }
+
+        .img-title {
+            font-size: var(--font-size-product-benefit);
+            color: var(--secondary-dark);
+            margin-top: var(--spacing-xs);
+            margin-bottom: var(--spacing-xl);
+            font-weight: var(--font-weight-medium);
+            padding: var(--spacing-sm) var(--spacing-md);
+            background: var(--light-bg);
+            border-radius: var(--border-radius-small);
+            border: 1px solid var(--border-light);
+            text-align: center;
+        }
+
+        /* ===== 數據來源框 ===== */
+        .data-source {
+            background: var(--light-bg);
+            border-left: 4px solid var(--primary-green);
+            padding: var(--spacing-md);
+            border-radius: 0 var(--border-radius-small) var(--border-radius-small) 0;
+            margin-top: var(--spacing-xl);
+            font-size: var(--font-size-product-benefit);
+        }
+
+        /* ===== CTA 區塊 ===== */
+        .cta-block {
+            background: linear-gradient(135deg, var(--footer-gradient-start), var(--footer-gradient-end));
+            color: white;
+            padding: var(--spacing-5xl) var(--spacing-xl);
+            border-radius: var(--border-radius-large);
+            text-align: center;
+            margin-top: var(--spacing-3xl);
+            border-top: 5px solid var(--accent-gold);
+        }
+
+        .cta-block h2 {
+            color: white;
+            border-bottom: 2px solid var(--accent-gold);
+            justify-content: center;
+        }
+
+        .cta-block h2::after {
+            background: linear-gradient(90deg, var(--accent-gold), var(--primary-green));
+            width: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .big-number {
+            font-size: 3.5rem;
+            font-weight: var(--font-weight-extrabold);
+            margin: var(--spacing-xl) 0;
+            color: var(--accent-gold);
+        }
+
+        .btn {
+            padding: var(--spacing-lg) var(--spacing-2xl);
+            border-radius: var(--border-radius-pill);
+            font-size: var(--font-size-btn-view);
+            font-weight: var(--font-weight-bold);
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            transition: all 0.3s ease;
-            border: 1px solid var(--primary-blue);
+            justify-content: center;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            min-height: 56px;
+            cursor: pointer;
+            box-shadow: var(--box-shadow-btn-view);
+            margin: var(--spacing-xs);
         }
-        .nav-btn:hover {
-            background: var(--primary-blue);
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--btn-view-gradient-start), var(--btn-view-gradient-end));
+            color: var(--btn-view-text);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--btn-view-hover-gradient-start), var(--btn-view-hover-gradient-end));
+            transform: scale(1.02);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary-green);
+            border: 2px solid var(--primary-green);
+        }
+
+        .btn-secondary:hover {
+            background: var(--light-bg);
+            transform: scale(1.02);
+        }
+
+        /* ===== 頂部特徵標籤 (調整為主題色) ===== */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-sm);
+            margin-top: calc(-1 * var(--spacing-3xl));
+            margin-bottom: var(--spacing-xl);
+        }
+        .badge {
+            background: var(--primary-green);
             color: white;
-            transform: translateY(-2px);
+            padding: var(--spacing-md) var(--spacing-lg);
+            border-radius: var(--border-radius-pill);
+            font-weight: var(--font-weight-bold);
+            font-size: 1rem;
+            text-align: center;
+            box-shadow: var(--box-shadow-card);
+            border: 1px solid var(--accent-gold);
         }
-        
-        /* 返回頂部按鈕 */
+
+        /* ===== 頁腳 ===== */
+        footer {
+            background: linear-gradient(135deg, var(--footer-gradient-start), var(--footer-gradient-end));
+            color: var(--footer-text);
+            padding: var(--footer-padding-y);
+            margin-top: var(--spacing-5xl);
+            border-radius: var(--border-radius-large) var(--border-radius-large) 0 0;
+            text-align: center;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-green), var(--accent-gold));
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .footer-content p {
+            color: var(--footer-text);
+            margin-bottom: var(--spacing-sm);
+            font-size: var(--font-size-footer-link);
+        }
+
+        .footer-content a {
+            color: var(--footer-link-color);
+            text-decoration: none;
+        }
+
+        .footer-content a:hover {
+            color: var(--footer-link-hover-color);
+        }
+
+        .copyright {
+            margin-top: var(--spacing-3xl);
+            padding-top: var(--spacing-xl);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: var(--font-size-copyright);
+            color: var(--copyright-text);
+        }
+
+        /* ===== 響應式 ===== */
+        @media (min-width: 576px) {
+            .specs-grid { grid-template-columns: repeat(3, 1fr); }
+            .benefits-grid { grid-template-columns: repeat(2, 1fr); }
+            .feature-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+
+        @media (min-width: 768px) {
+            .specs-grid { grid-template-columns: repeat(4, 1fr); }
+            .benefits-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        @media (min-width: 992px) {
+            .benefits-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+
+        /* ===== Lightbox 樣式 ===== */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+            flex-direction: column;
+        }
+        .lightbox img {
+            max-width: 90%;
+            max-height: 80%;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 0 40px rgba(0,0,0,0.5);
+        }
+        .lightbox .caption {
+            color: white;
+            margin-top: 20px;
+            font-size: 1.1rem;
+            max-width: 80%;
+            text-align: center;
+        }
+
+        /* ===== 返回頂部按鈕 (浮動) ===== */
         .back-to-top {
             position: fixed;
             bottom: 20px;
             right: 20px;
             width: 50px;
             height: 50px;
-            background: var(--primary-blue);
+            background-color: var(--primary-green);
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 24px;
-            box-shadow: var(--shadow-lg);
             cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
             z-index: 999;
             transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
             border: none;
-            text-decoration: none;
+            outline: none;
+        }
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
         }
         .back-to-top:hover {
-            background: var(--secondary-blue);
-            transform: scale(1.1);
-        }
-        
-        header {
-            background: linear-gradient(rgba(0, 168, 168, 0.92), rgba(0, 125, 125, 0.95)), url('assets/tilapia-header-bg.jpg');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 40px 0 30px;
-            text-align: center;
-            position: relative;
-            margin-top: 60px;
-            min-height: 40vh;
-            display: flex;
-            align-items: center;
-        }
-        header .container {
-            padding: 0 15px;
-        }
-        h1 {
-            font-size: 1.8rem;
-            margin-bottom: 12px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-            letter-spacing: 0.5px;
-            line-height: 1.3;
-        }
-        .subtitle {
-            font-size: 1rem;
-            opacity: 0.95;
-            margin: 0 auto 18px;
-            line-height: 1.5;
-            padding: 0 10px;
-        }
-        .tagline {
-            background: linear-gradient(90deg, var(--accent-yellow), #e6b800);
-            color: var(--dark-text);
-            padding: 14px 20px;
-            border-radius: 20px;
-            display: inline-block;
-            font-weight: bold;
-            margin: 15px auto;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-            font-size: 1rem;
-            letter-spacing: 0.3px;
-            max-width: 90%;
-        }
-        
-        section {
-            padding: 35px 0;
-            opacity: 0;
-            transform: translateY(15px);
-            transition: all 0.5s ease;
-        }
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .section-title {
-            text-align: center;
-            font-size: 1.6rem;
-            color: var(--primary-blue);
-            margin-bottom: 25px;
-            position: relative;
-            font-weight: 700;
-            letter-spacing: 0.3px;
-            padding: 0 10px;
-        }
-        .section-title::after {
-            content: "";
-            display: block;
-            width: 60px;
-            height: 4px;
-            background: var(--accent-yellow);
-            margin: 15px auto;
-            border-radius: 2px;
-        }
-        
-        .card {
-            background: white;
-            border-radius: 12px;
-            padding: 20px 15px;
-            box-shadow: var(--shadow-md);
-            transition: all 0.3s ease;
-            margin-bottom: 20px;
-            border-top: 4px solid var(--secondary-blue);
-            cursor: pointer;
-            -webkit-tap-highlight-color: rgba(0,0,0,0.05);
-        }
-        .card:hover, .card:active {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-            border-top-color: var(--accent-yellow);
-        }
-        
-        .img-container {
-            width: 100%;
-            margin: 20px 0;
-            text-align: center;
-            cursor: pointer;
-        }
-        .responsive-img {
-            width: 100%;
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: var(--shadow-md);
-            transition: all 0.3s ease;
-        }
-        .responsive-img:hover {
-            transform: scale(1.02);
-            box-shadow: var(--shadow-lg);
-        }
-        .img-title {
-            font-size: 1rem;
-            font-weight: bold;
-            margin: 12px 0 6px;
-            color: var(--dark-text);
-            padding: 0 10px;
-        }
-        
-        .grid {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        @media (min-width: 769px) {
-            .grid {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 30px;
-            }
-        }
-        
-        .table-container {
-            width: 100%;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            margin: 15px 0;
-            border-radius: 10px;
-        }
-        table {
-            width: 100%;
-            min-width: 600px;
-            border-collapse: collapse;
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
-        }
-        th {
-            background: linear-gradient(120deg, var(--primary-blue), #007d7d);
-            color: white;
-            padding: 14px 12px;
-            text-align: center;
-            font-weight: 600;
-            font-size: 0.9rem;
-            white-space: nowrap;
-        }
-        td {
-            padding: 12px 10px;
-            border-bottom: 1px solid #eaeaea;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-        tr:last-child td {
-            border-bottom: none;
-        }
-        tr:hover td {
-            background-color: #f0f7ff;
-        }
-        .highlight {
-            color: var(--accent-yellow);
-            font-weight: bold;
-            font-size: 1rem;
-        }
-        .positive {
-            color: var(--success);
-            font-weight: bold;
-        }
-        
-        .roi-highlight {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, #007d7d 100%);
-            color: white;
-            border-radius: 15px;
-            padding: 30px 15px;
-            text-align: center;
-            margin: 30px 0;
-            box-shadow: 0 10px 25px rgba(0,168,168,0.25);
-            position: relative;
-            overflow: hidden;
-        }
-        .roi-highlight::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
-            z-index: 0;
-        }
-        .roi-value {
-            font-size: 3rem;
-            font-weight: bold;
-            margin: 15px 0;
-            text-shadow: 0 4px 8px rgba(0,0,0,0.3);
-            position: relative;
-            z-index: 1;
-            background: linear-gradient(90deg, #ffeb3b, #ffc107, #ffeb3b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1.2;
-        }
-        
-        .param-cards {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin: 20px 0;
-        }
-        .param-card {
-            background: white;
-            border-radius: 10px;
-            padding: 15px 10px;
-            text-align: center;
-            box-shadow: var(--shadow-sm);
-            border-top: 3px solid var(--accent-yellow);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        .param-card:hover, .param-card:active {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-md);
-        }
-        .param-label {
-            font-size: 0.85rem;
-            color: var(--gray-text);
-            margin-bottom: 5px;
-        }
-        .param-value {
-            font-size: 1.7rem;
-            font-weight: bold;
-            color: var(--primary-blue);
-            margin: 5px 0;
-        }
-        
-        .mechanism-card {
-            background: linear-gradient(135deg, #f8fbff 0%, #eef5ff 100%);
-            border-left: 4px solid var(--primary-blue);
-            padding: 16px 14px;
-            border-radius: 0 10px 10px 0;
-            margin: 16px 0;
-        }
-        .mechanism-title {
-            font-weight: bold;
-            color: var(--primary-blue);
-            margin-bottom: 6px;
-            font-size: 1.05rem;
-        }
-        .gene-highlight {
-            background: linear-gradient(120deg, rgba(255,204,0,0.2), rgba(255,204,0,0.3));
-            padding: 3px 6px;
-            border-radius: 4px;
-            font-weight: bold;
-            font-family: 'Courier New', monospace;
-            font-size: 0.95rem;
-        }
-        
-        footer {
-            background: linear-gradient(135deg, var(--dark-text), #0d1b2e);
-            color: rgba(255,255,255,0.85);
-            text-align: center;
-            padding: 35px 0 20px;
-            margin-top: 40px;
-        }
-        
-        @media (min-width: 769px) {
-            .container {
-                max-width: 1200px;
-                padding: 0 25px;
-            }
-            .nav-buttons {
-                top: 20px;
-                right: 20px;
-                gap: 12px;
-            }
-            .nav-btn {
-                padding: 12px 24px;
-                font-size: 1rem;
-            }
-            header {
-                padding: 80px 0 60px;
-                margin-top: 70px;
-                min-height: 50vh;
-            }
-            h1 {
-                font-size: 2.5rem;
-            }
-            .subtitle {
-                font-size: 1.2rem;
-                max-width: 850px;
-            }
-            .tagline {
-                padding: 16px 35px;
-                font-size: 1.1rem;
-            }
-            section {
-                padding: 60px 0;
-            }
-            .section-title {
-                font-size: 2rem;
-                margin-bottom: 40px;
-            }
-            .card {
-                padding: 30px 25px;
-                margin-bottom: 30px;
-            }
-            .grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 30px;
-                margin-top: 30px;
-            }
-            .param-cards {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 25px;
-                margin: 30px 0;
-            }
-            .param-card {
-                padding: 25px 20px;
-            }
-            .param-value {
-                font-size: 2.2rem;
-            }
-            .roi-highlight {
-                padding: 60px 40px;
-                margin: 60px 0;
-            }
-            .roi-value {
-                font-size: 4rem;
-            }
-        }
-        
-        @supports (-webkit-touch-callout: none) {
-            header {
-                min-height: -webkit-fill-available;
-                height: auto;
-            }
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
         }
     </style>
 </head>
 <body>
-    <!-- 導航按鈕列：返回首頁 & 返回頂部 -->
-    <div class="nav-buttons">
-        <a href="index.html" class="nav-btn"><i class="fas fa-home"></i> 返回首頁</a>
-        <a href="#" class="nav-btn" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;"><i class="fas fa-arrow-up"></i> 頁首</a>
-    </div>
-
-    <!-- 返回頂部按鈕 (保留) -->
-    <a href="#" class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">↑</a>
-
-    <!-- 頁頭 -->
-    <header>
-        <div class="container">
-            <h1>🐟 倍力素®吳郭魚（羅非魚）存活率提升方案</h1>
-            <p class="subtitle">三大機密載體｜重組型煙醯胺蛋白酶‧單核苷小核酸‧褐藻萃取物 · 發酵豆粕/枯草芽孢桿菌/發酵紙莎草葉技術</p>
-            <div class="tagline">飼料轉換率 ↓0.12-0.18 · 存活率 ↑18%+ · 投資報酬率 1,250%</div>
-        </div>
-    </header>
-
-    <!-- 頂部特徵網格 (移除金額) -->
-    <section>
-        <div class="container">
-            <div class="feature-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: -30px; margin-bottom: 20px;">
-                <div class="badge" style="background: var(--primary-blue); color: white; padding: 12px 16px; border-radius: 60px; font-weight: 700; font-size: 1rem; text-align: center;">
-                    添加量：1公斤/噸飼料
-                </div>
-                <div class="badge" style="background: var(--primary-blue); color: white; padding: 12px 16px; border-radius: 60px; font-weight: 700; font-size: 1rem; text-align: center;">
-                    實證尾數：800萬+
-                </div>
-                <div class="badge" style="background: var(--primary-blue); color: white; padding: 12px 16px; border-radius: 60px; font-weight: 700; font-size: 1rem; text-align: center;">
-                    天然來源：蛋白草萃取
-                </div>
-                <div class="badge" style="background: var(--primary-blue); color: white; padding: 12px 16px; border-radius: 60px; font-weight: 700; font-size: 1rem; text-align: center;">
-                    ROI：1,250%
-                </div>
+    <div class="container">
+        <!-- 導航列 (返回主頁 + 返回頂部) -->
+        <div class="navbar">
+            <div class="nav-left">
+                <a href="index.html"><i class="fa-solid fa-arrow-left"></i> 返回主頁</a>
+            </div>
+            <div class="nav-right">
+                <button id="scrollToTopBtn" onclick="window.scrollTo({top:0, behavior:'smooth'});"><i class="fa-solid fa-arrow-up"></i> 頂部</button>
             </div>
         </div>
-    </section>
 
-    <!-- ========== 1. 核心規格對比 (移除金額) ========== -->
-    <section>
-        <div class="container">
-            <h2 class="section-title">⚙️ 吳郭魚養殖性能參數｜高密度·高存活</h2>
-            <div class="grid">
-                <div class="card" style="border-top-color: #ffb74d;">
-                    <div style="font-size: 2.8rem; text-align: center;">📉</div>
-                    <h3>飼料轉換率 (FCR)</h3>
-                    <p class="highlight" style="font-size: 2rem; margin: 8px 0;">↓12-16%</p>
+        <!-- 頁頭 (優化標題區塊) -->
+        <header>
+            <div class="company-info">
+                <h1>倍力素®吳郭魚存活率提升方案 TDS</h1>
+                <div class="product-target">存活率↑15-20% · FCR↓12-16% · 鏈球菌損失↓50-70%</div>
+                <div class="tagline">三大機密載體｜重組型煙醯胺蛋白酶‧單核苷小核酸‧褐藻萃取物 · 發酵豆粕/枯草芽孢桿菌/發酵紙莎草葉技術</div>
+                <div class="tds-badge">飼料轉換率 ↓0.12-0.18 · 存活率 ↑18%+ · 投資報酬率 1,250%</div>
+            </div>
+        </header>
+
+        <!-- 頂部特徵網格 (已移除成本金額，改用純文字) -->
+        <div class="feature-grid">
+            <div class="badge">添加量：1公斤/噸飼料</div>
+            <div class="badge">實證尾數：800萬+</div>
+            <div class="badge">天然來源：蛋白草萃取</div>
+            <div class="badge">ROI：1,250%</div>
+        </div>
+
+        <!-- ===== 1. 核心規格對比 ===== -->
+        <section>
+            <h2>⚙️ 吳郭魚養殖性能參數｜高密度·高存活</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3>📉 飼料轉換率 (FCR)</h3>
+                    <span class="improvement">↓12-16%</span>
                     <p>飼料效率顯著提升</p>
                 </div>
-                <div class="card" style="border-top-color: #4fc3f7;">
-                    <div style="font-size: 2.8rem; text-align: center;">🐟</div>
-                    <h3>存活率</h3>
-                    <p class="highlight" style="font-size: 2rem; margin: 8px 0;">↑15-20%</p>
+                <div class="benefit-card">
+                    <h3>🐟 存活率</h3>
+                    <span class="improvement">↑15-20%</span>
                     <p>育成率大幅提高</p>
                 </div>
-                <div class="card" style="border-top-color: #66bb6a;">
-                    <div style="font-size: 2.8rem; text-align: center;">📏</div>
-                    <h3>生長速率</h3>
-                    <p class="highlight" style="font-size: 2rem; margin: 8px 0;">↑12-16%</p>
+                <div class="benefit-card">
+                    <h3>📏 生長速率</h3>
+                    <span class="improvement">↑12-16%</span>
                     <p>縮短養殖天數</p>
                 </div>
-                <div class="card" style="border-top-color: #ff9800;">
-                    <div style="font-size: 2.8rem; text-align: center;">🛡️</div>
-                    <h3>鏈球菌損失減少</h3>
-                    <p class="highlight" style="font-size: 2rem; margin: 8px 0;">↓50-70%</p>
+                <div class="benefit-card">
+                    <h3>🛡️ 鏈球菌損失減少</h3>
+                    <span class="improvement">↓50-70%</span>
                     <p>疾病風險降低</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ========== 2. 三大機密載體 (更新成分名稱與天然來源說明) ========== -->
-    <section style="background-color: #f0f7ff;">
-        <div class="container">
-            <h2 class="section-title">🔬 倍力素® 吳郭魚專利配方 – 三大機密載體</h2>
+        <!-- ===== 2. 三大機密載體 ===== -->
+        <section style="background-color: var(--light-bg);">
+            <h2>🔬 倍力素® 吳郭魚專利配方 – 三大機密載體</h2>
             
             <!-- 重組型煙醯胺蛋白酶卡片 -->
-            <div class="card">
-                <h3 style="display: flex; align-items: center; gap: 10px;"><span style="font-size: 2.4rem;">🧪</span> <span>1. 「重組型煙醯胺蛋白酶（蛋白草萃取）」—— 發酵複合酶製劑</span></h3>
+            <div class="benefit-card" style="border-left-color: var(--primary-green);">
+                <h3><span style="font-size: 2.4rem;">🧪</span> 1. 「重組型煙醯胺蛋白酶（蛋白草萃取）」—— 發酵複合酶製劑</h3>
                 <p><strong>降FCR、促生長</strong> · 仿生發酵技術 · 植物蛋白消化率 ↑28% · 每噸飼料省12%成本</p>
                 
                 <div class="mechanism-card">
@@ -545,13 +848,12 @@
                 
                 <p><strong>📊 高密度養殖實證：</strong> <span>腸道絨毛高度提升約30%，吸收面積增加，FCR下降0.12–0.18，每噸飼料成本降低約12–15%，養殖週期縮短10–18天。</span></p>
                 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin: 16px 0;">
-                    <div class="gene-highlight" style="text-align: center; background: rgba(0,168,168,0.1);"><span style="font-size:1.6rem;">+30%</span><br>絨毛高度</div>
-                    <div class="gene-highlight" style="text-align: center; background: rgba(0,168,168,0.1);"><span style="font-size:1.6rem;">↓0.15</span><br>FCR</div>
-                    <div class="gene-highlight" style="text-align: center; background: rgba(0,168,168,0.1);"><span style="font-size:1.6rem;">-14d</span><br>養殖天數</div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: var(--spacing-sm); margin: var(--spacing-md) 0;">
+                    <div class="gene-highlight" style="text-align: center;"><span style="font-size:1.6rem;">+30%</span><br>絨毛高度</div>
+                    <div class="gene-highlight" style="text-align: center;"><span style="font-size:1.6rem;">↓0.15</span><br>FCR</div>
+                    <div class="gene-highlight" style="text-align: center;"><span style="font-size:1.6rem;">-14d</span><br>養殖天數</div>
                 </div>
                 
-                <!-- 生長對比圖 -->
                 <div class="img-container" onclick="openLightbox(this)">
                     <img src="assets/tilapia-growth-comparison.jpg" alt="生長對比圖" class="responsive-img" loading="lazy">
                     <div class="img-title">圖1：重組型煙醯胺蛋白酶促進吳郭魚快速增重（左對照 / 右倍力素）</div>
@@ -559,8 +861,8 @@
             </div>
             
             <!-- 單核苷小核酸卡片 -->
-            <div class="card">
-                <h3 style="display: flex; align-items: center; gap: 10px;"><span style="font-size: 2.4rem;">🧬</span> <span>2. 「單核苷小核酸（蛋白草萃取）」—— 免疫調控肽</span></h3>
+            <div class="benefit-card" style="border-left-color: var(--primary-green);">
+                <h3><span style="font-size: 2.4rem;">🧬</span> 2. 「單核苷小核酸（蛋白草萃取）」—— 免疫調控肽</h3>
                 <p><strong>抗鏈球菌、提高存活率</strong> · 枯草芽孢桿菌+發酵紙莎草葉 · 鏈球菌感染存活率 52%→82%</p>
                 
                 <div class="mechanism-card">
@@ -570,18 +872,16 @@
                 
                 <p><strong>🛡️ 實證數據：</strong> <span>鏈球菌攻毒存活率由52%→82%，死亡率下降50–70%，抗生素依賴度明顯降低。</span></p>
                 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin: 16px 0;">
-                    <div class="gene-highlight" style="text-align: center; background: rgba(0,168,168,0.1);"><span style="font-size:1.6rem;">IgM↑3x</span><br>抗體提升</div>
-                    <div class="gene-highlight" style="text-align: center; background: rgba(0,168,168,0.1);"><span style="font-size:1.6rem;">52%→82%</span><br>鏈球菌存活</div>
-                    <div class="gene-highlight" style="text-align: center; background: rgba(0,168,168,0.1);"><span style="font-size:1.6rem;">↓60%</span><br>死亡率</div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: var(--spacing-sm); margin: var(--spacing-md) 0;">
+                    <div class="gene-highlight" style="text-align: center;"><span style="font-size:1.6rem;">IgM↑3x</span><br>抗體提升</div>
+                    <div class="gene-highlight" style="text-align: center;"><span style="font-size:1.6rem;">52%→82%</span><br>鏈球菌存活</div>
+                    <div class="gene-highlight" style="text-align: center;"><span style="font-size:1.6rem;">↓60%</span><br>死亡率</div>
                 </div>
                 
-                <!-- 頭腎巨噬細胞圖 -->
                 <div class="img-container" onclick="openLightbox(this)">
                     <img src="assets/tilapia-head-kidney-macrophage.jpg" alt="頭腎巨噬細胞" class="responsive-img" loading="lazy">
                     <div class="img-title">圖2：頭腎巨噬細胞 · 吞噬活性提升65%</div>
                 </div>
-                <!-- 免疫基因表達圖 -->
                 <div class="img-container" onclick="openLightbox(this)">
                     <img src="assets/tilapia-immune-gene-expression.jpg" alt="免疫基因表達" class="responsive-img" loading="lazy">
                     <div class="img-title">圖3：免疫相關基因表達 (IgM, IL-1β, TNF-α) 顯著上調</div>
@@ -589,8 +889,8 @@
             </div>
             
             <!-- 褐藻萃取物卡片 -->
-            <div class="card">
-                <h3 style="display: flex; align-items: center; gap: 10px;"><span style="font-size: 2.4rem;">🌿</span> <span>3. 「褐藻萃取物」—— 藻源性抗氧化複合物</span></h3>
+            <div class="benefit-card" style="border-left-color: var(--primary-green);">
+                <h3><span style="font-size: 2.4rem;">🌿</span> 3. 「褐藻萃取物」—— 藻源性抗氧化複合物</h3>
                 <p><strong>抗氧化、抗緊迫、腸道健康</strong> · Nrf2路徑 · 總抗氧化能力↑41%</p>
                 
                 <div class="mechanism-card">
@@ -600,27 +900,25 @@
                 
                 <p><strong>📊 綜合效應：</strong> <span>高密度條件下仍維持 85–92% 存活率，嗜水氣單胞菌攻毒存活率達 86%，腸道屏障完整性顯著優於對照組。</span></p>
                 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin: 16px 0;">
-                    <div class="gene-highlight" style="text-align: center; background: rgba(0,168,168,0.1);"><span style="font-size:1.6rem;">SOD↑41%</span><br>超氧化物歧化酶</div>
-                    <div class="gene-highlight" style="text-align: center; background: rgba(0,168,168,0.1);"><span style="font-size:1.6rem;">86%</span><br>嗜水氣單胞菌存活</div>
-                    <div class="gene-highlight" style="text-align: center; background: rgba(0,168,168,0.1);"><span style="font-size:1.6rem;">Hsp70↑</span><br>抗緊迫</div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: var(--spacing-sm); margin: var(--spacing-md) 0;">
+                    <div class="gene-highlight" style="text-align: center;"><span style="font-size:1.6rem;">SOD↑41%</span><br>超氧化物歧化酶</div>
+                    <div class="gene-highlight" style="text-align: center;"><span style="font-size:1.6rem;">86%</span><br>嗜水氣單胞菌存活</div>
+                    <div class="gene-highlight" style="text-align: center;"><span style="font-size:1.6rem;">Hsp70↑</span><br>抗緊迫</div>
                 </div>
                 
-                <!-- 腸道絨毛圖 -->
                 <div class="img-container" onclick="openLightbox(this)">
                     <img src="assets/tilapia-gut-villi.jpg" alt="腸道絨毛組織" class="responsive-img" loading="lazy">
                     <div class="img-title">圖4：腸道絨毛組織切片 · 絨毛高度與密度提升</div>
                 </div>
-                <!-- Nrf2路徑圖 -->
                 <div class="img-container" onclick="openLightbox(this)">
                     <img src="assets/tilapia-nrf2-pathway.jpg" alt="Nrf2抗氧化路徑" class="responsive-img" loading="lazy">
                     <div class="img-title">圖5：褐藻萃取物激活Nrf2路徑，提升抗氧化酶活性</div>
                 </div>
             </div>
             
-            <!-- 效能總表 (移除金額) -->
+            <!-- 效能總表 (移除貨幣列) -->
             <div class="table-container">
-                <table class="data-table">
+                <table class="profit-table">
                     <thead><tr><th>效能項目</th><th>對應載體</th><th>實證績效</th><th>文獻來源</th></tr></thead>
                     <tbody>
                         <tr><td>降FCR、促生長</td><td>重組型煙醯胺蛋白酶</td><td>絨毛↑30% · FCR 1.42→1.22</td><td>PMID:38481478</td></tr>
@@ -631,92 +929,106 @@
                     </tbody>
                 </table>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ========== 3. 養殖實證數據 (移除金額) ========== -->
-    <section>
-        <div class="container">
-            <h2 class="section-title">📋 台灣/東南亞養殖場實證數據（2025-2026）</h2>
+        <!-- ===== 3. 養殖實證數據 ===== -->
+        <section>
+            <h2>📋 台灣/東南亞養殖場實證數據（2025-2026）</h2>
             
-            <div style="background:var(--light-bg); padding:16px; border-radius:18px; margin-bottom:16px; border-left:6px solid var(--success);">
+            <div style="background:var(--light-bg); padding:var(--spacing-md); border-radius:var(--border-radius-medium); margin-bottom:var(--spacing-xl); border-left:6px solid var(--primary-green);">
                 <p style="font-weight:700;">📍 雲林口湖 · 嘉義義竹 · 屏東佳冬 · 泰國猜納 共18場 · 有效樣本800萬尾</p>
             </div>
             
-            <!-- 高密度存活率圖 -->
             <div class="img-container" onclick="openLightbox(this)">
                 <img src="assets/tilapia-survival-high-density.jpg" alt="高密度存活率" class="responsive-img" loading="lazy">
                 <div class="img-title">圖6：高密度養殖條件下，倍力素組存活率達85-92%</div>
             </div>
             
             <div class="table-container">
-                <table class="data-table">
+                <table class="profit-table">
                     <thead><tr><th>養殖模式</th><th>對照組<br>存活率/FCR</th><th>倍力素組<br>存活率/FCR</th><th>改善幅度</th></tr></thead>
                     <tbody>
-                        <tr><td>傳統土塘</td><td>68% / 1.45</td><td><span style="color:var(--success);font-weight:700;">83% / 1.28</span></td><td>↑15% / ↓0.17</td></tr>
-                        <tr><td>循環水(RAS)</td><td>78% / 1.25</td><td><span style="color:var(--success);font-weight:700;">92% / 1.08</span></td><td>↑14% / ↓0.17</td></tr>
-                        <tr><td>湖上網箱</td><td>72% / 1.38</td><td><span style="color:var(--success);font-weight:700;">88% / 1.18</span></td><td>↑16% / ↓0.20</td></tr>
+                        <tr><td>傳統土塘</td><td>68% / 1.45</td><td><span style="color:var(--primary-green);font-weight:700;">83% / 1.28</span></td><td>↑15% / ↓0.17</td></tr>
+                        <tr><td>循環水(RAS)</td><td>78% / 1.25</td><td><span style="color:var(--primary-green);font-weight:700;">92% / 1.08</span></td><td>↑14% / ↓0.17</td></tr>
+                        <tr><td>湖上網箱</td><td>72% / 1.38</td><td><span style="color:var(--primary-green);font-weight:700;">88% / 1.18</span></td><td>↑16% / ↓0.20</td></tr>
                     </tbody>
                 </table>
             </div>
             
-            <p style="margin-top:16px; background:#e3f2fd; padding:14px; border-radius:14px; font-weight:600;">🔬 平均存活率提升15-18%，FCR降低0.15-0.20，每萬尾淨利增加顯著</p>
-        </div>
-    </section>
+            <p style="margin-top:var(--spacing-xl); background:var(--light-bg); padding:var(--spacing-md); border-radius:var(--border-radius-medium); font-weight:600;">🔬 平均存活率提升15-18%，FCR降低0.15-0.20，每萬尾淨利增加顯著</p>
+        </section>
 
-    <!-- ========== 4. 經濟效益精算 (移除金額，保留百分比) ========== -->
-    <section style="background-color: #f8f9fa;">
-        <div class="container">
-            <h2 class="section-title">💰 單造效益精算｜飼料節省＋存活率提升＋生長加速</h2>
+        <!-- ===== 4. 經濟效益精算 ===== -->
+        <section style="background-color: var(--light-bg);">
+            <h2>💰 單造效益精算｜飼料節省＋存活率提升＋生長加速</h2>
             
-            <div class="card">
-                <div style="background:#e8f4fd; padding:15px; border-radius:12px; margin-bottom:20px;">
+            <div class="benefit-card" style="border-left-color: var(--primary-green);">
+                <div style="background:var(--light-bg); padding:var(--spacing-md); border-radius:var(--border-radius-small); margin-bottom:var(--spacing-xl);">
                     <p><strong>🔁 三重協同效應：</strong> <span>「消化效率提升 × 免疫強化 × 抗氧化穩定」三軸同步作用，帶來存活率↑15–20%、生長速率↑12–16%、FCR↓0.15左右，每萬尾淨利顯著增加，最終形成1,250%投資報酬率，12天內回本。</span></p>
                 </div>
                 
-                <div style="background:#fff3e0; padding:16px; border-radius:18px; margin-bottom:20px;">
+                <div style="background:var(--light-bg); padding:var(--spacing-md); border-radius:var(--border-radius-small); margin-bottom:var(--spacing-xl);">
                     <p style="font-size:1rem;"><strong>📐 基準：</strong><span>尼羅吳郭魚 · 放養密度2萬尾/公頃 · 養殖150天 · 飼料28元/kg · 出魚均價65元/kg · 添加量1kg/噸飼料</span></p>
                 </div>
                 
                 <div class="table-container">
-                    <table class="data-table">
+                    <table class="profit-table">
                         <thead><tr><th>效益項目</th><th>改善幅度</th></tr></thead>
                         <tbody>
                             <tr><td>飼料節省</td><td>FCR 1.42→1.22，省14.1%</td></tr>
                             <tr><td>存活率提升</td><td>72%→87%，多收1,500尾</td></tr>
                             <tr><td>生長加速效益</td><td>150天規格提升80克/尾，溢價5元/kg</td></tr>
                             <tr><td>鏈球菌損失減少</td><td>鏈球菌感染率↓60%，節省藥費與死魚</td></tr>
-                            <tr style="background:#ffeaa7;"><td><strong>總效益增加</strong></td><td>顯著提升</td></tr>
-                            <tr><td>倍力素添加成本</td><td>全程耗料450kg/萬尾 × 添加量</td></tr>
-                            <tr style="background:linear-gradient(145deg,var(--primary-blue),var(--secondary-blue)); color:white;"><td><strong>每萬尾淨利增加</strong></td><td>大幅增加</td></tr>
+                            <tr style="background:rgba(212,160,23,0.1);"><td><strong>總效益增加</strong></td><td>顯著提升</td></tr>
                         </tbody>
                     </table>
                 </div>
                 
                 <div class="roi-highlight">
-                    <h3 style="font-size:1.6rem; margin-bottom:12px; position: relative; z-index: 1;">投資報酬率 ROI —— 1,250%</h3>
+                    <h3 style="font-size:1.6rem; margin-bottom:12px;">投資報酬率 ROI —— 1,250%</h3>
                     <div class="roi-value">1,250%</div>
-                    <p style="font-size:1.2rem; margin:15px 0; position: relative; z-index: 1;">💰 每投入1元，創造13.5元淨收益 · 回收期<12天</p>
+                    <p style="font-size:1.2rem; margin:15px 0;">💰 每投入1元，創造13.5元淨收益 · 回收期<12天</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ========== 5. 產品規格 (移除金額) ========== -->
-    <section>
-        <div class="container">
-            <h2 class="section-title">📋 產品規格｜每噸全價飼料添加1kg</h2>
+        <!-- ===== 5. 產品規格 ===== -->
+        <section>
+            <h2>📋 產品規格｜每噸全價飼料添加1kg</h2>
             
-            <div class="param-cards">
-                <div class="param-card"><div class="param-label">添加量</div><div class="param-value">1</div><div>kg/噸</div><div class="spec-note">高密度可增至1.5kg</div></div>
-                <div class="param-card"><div class="param-label">單價</div><div class="param-value">請洽業務</div><div></div></div>
-                <div class="param-card"><div class="param-label">飼料成本增</div><div class="param-value">微量</div><div>/噸</div></div>
-                <div class="param-card"><div class="param-label">適用階段</div><div class="param-value">全程</div><div>魚苗至成魚</div></div>
-                <div class="param-card"><div class="param-label">每萬尾耗料</div><div class="param-value">~450</div><div>kg</div><div class="spec-note">FCR 1.22基準</div></div>
-                <div class="param-card"><div class="param-label">每萬尾成本</div><div class="param-value">依添加量</div><div></div></div>
+            <div class="specs-grid">
+                <div class="spec-card">
+                    <span class="label">添加量</span>
+                    <span class="value">1 kg/噸</span>
+                    <span class="unit">高密度可增至1.5kg</span>
+                </div>
+                <div class="spec-card">
+                    <span class="label">單價</span>
+                    <span class="value">請洽業務</span>
+                    <span class="unit"></span>
+                </div>
+                <div class="spec-card">
+                    <span class="label">飼料成本增</span>
+                    <span class="value">微量</span>
+                    <span class="unit">/噸</span>
+                </div>
+                <div class="spec-card">
+                    <span class="label">適用階段</span>
+                    <span class="value">全程</span>
+                    <span class="unit">魚苗至成魚</span>
+                </div>
+                <div class="spec-card">
+                    <span class="label">每萬尾耗料</span>
+                    <span class="value">~450 kg</span>
+                    <span class="unit">FCR 1.22基準</span>
+                </div>
+                <div class="spec-card">
+                    <span class="label">每萬尾成本</span>
+                    <span class="value">依添加量</span>
+                    <span class="unit"></span>
+                </div>
             </div>
             
-            <!-- 收穫與包裝圖 -->
             <div class="img-container" onclick="openLightbox(this)">
                 <img src="assets/tilapia-harvest.jpg" alt="收穫場景" class="responsive-img" loading="lazy">
                 <div class="img-title">圖7：倍力素養殖吳郭魚豐收場景</div>
@@ -725,59 +1037,53 @@
                 <img src="assets/tilapia-harvest-boxing.jpg" alt="裝箱出貨" class="responsive-img" loading="lazy">
                 <div class="img-title">圖8：整齊規格的成魚裝箱，出肉率提升</div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ========== 6. 見證與CTA (電話更新) ========== -->
-    <section style="background: linear-gradient(135deg, #f0f7ff 0%, #e6f0ff 100%);">
-        <div class="container">
-            <div class="grid" style="grid-template-columns: repeat(2, 1fr);">
-                <div class="card">
+        <!-- ===== 6. 見證與CTA ===== -->
+        <section style="background: linear-gradient(135deg, var(--light-bg) 0%, #e0f0e0 100%);">
+            <div class="benefits-grid" style="margin-bottom: var(--spacing-3xl);">
+                <div class="benefit-card">
                     <p style="font-size:1rem;">「雲林口湖循環水場，連續兩批使用倍力素，FCR從1.42降到1.20，存活率從71%衝到89%，每萬尾多賺顯著，今年打算全場導入！」</p>
                     <div style="margin-top: 16px; font-weight: 700;">雲林 · 張養殖</div>
-                    <div style="color: #777; font-size:0.9rem;">循環水RAS · 2026.03結算</div>
+                    <div style="color: var(--secondary-dark); font-size:0.9rem;">循環水RAS · 2026.03結算</div>
                 </div>
-                <div class="card">
+                <div class="benefit-card">
                     <p style="font-size:1rem;">「泰國猜納網箱養殖，鏈球菌一直困擾我們，倍力素添加後死亡率明顯下降，肝臟健康，料比1.18，今年增設20個網箱！」</p>
                     <div style="margin-top: 16px; font-weight: 700;">泰國 · Somchai</div>
-                    <div style="color: #777; font-size:0.9rem;">湖上網箱 · 年產2批</div>
+                    <div style="color: var(--secondary-dark); font-size:0.9rem;">湖上網箱 · 年產2批</div>
                 </div>
             </div>
             
-            <div class="cta-block" style="background: linear-gradient(145deg, #1e4a5a, #0f3a45); color: white; padding: 40px 20px; border-radius: 30px; text-align: center; margin: 40px 0;">
-                <h2 style="font-size:2rem; color:white;">🚀 試算您魚場的1,250% ROI</h2>
-                <div class="big-number" style="font-size: 3rem; font-weight: 900; color: var(--accent-yellow);">效益顯著</div>
+            <div class="cta-block">
+                <h2 style="font-size:2rem;">🚀 試算您魚場的1,250% ROI</h2>
+                <div class="big-number">1,250%</div>
                 <p style="font-size:1.3rem;">每萬尾額外淨利 × 您的規模</p>
-                <div class="big-number" style="font-size:2.6rem;">1,250%</div>
                 <p style="font-size:1.3rem;">養殖業高報酬 · 12天回本</p>
                 <div style="margin:25px 0;">
-                    <a class="btn btn-primary" href="tel:+886-5-6972238" style="padding: 16px 30px; border-radius: 60px; font-weight: 800; font-size: 1.2rem; display: inline-flex; align-items: center; gap: 10px; text-decoration: none; background: linear-gradient(145deg, var(--accent-yellow), #f39c12); color: var(--dark-text); box-shadow: 0 8px 20px rgba(255,180,70,0.4);">📞 免費ROI試算 +886-5-6972238</a>
-                    <a class="btn btn-secondary" href="#" style="padding: 16px 30px; border-radius: 60px; font-weight: 800; font-size: 1.2rem; display: inline-flex; align-items: center; gap: 10px; text-decoration: none; background: transparent; border: 2px solid rgba(255,255,255,0.9); color: white;">📋 領取吳郭魚實證手冊</a>
+                    <a class="btn btn-primary" href="tel:+886-5-6972238">📞 免費ROI試算 +886-5-6972238</a>
+                    <a class="btn btn-secondary" href="#">📋 領取吳郭魚實證手冊</a>
                 </div>
                 <p style="opacity:0.9; font-size:1rem;">* 800萬尾田間實證 · 18養殖場 · 吉升飼料無效退費</p>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
     <!-- 頁尾 (吉升飼料資訊) -->
     <footer>
-        <div class="container">
-            <div style="margin-bottom: 20px;">
-                <h3 style="font-size: 1.5rem; margin-bottom: 10px;">吉升飼料有限公司｜CHI SHENG FEED CO., LTD.</h3>
-                <p style="font-size: 1rem; opacity: 0.9;">吳郭魚高效養殖 · 免疫與生長領導品牌</p>
-                <p style="margin-top: 10px;">地址：634雲林縣褒忠鄉中正路28-18號<br>電話：<a href="tel:+886-5-6972238" style="color: white;">+886-5-6972238</a>｜Email：<a href="mailto:info@chishengfeed.com" style="color: white;">info@chishengfeed.com</a></p>
-            </div>
-            <div style="padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.95rem; opacity: 0.85; line-height: 1.6;">
-                <p>© 2026 吉升飼料有限公司 · 引用PubMed/水生生物學報 · 實拍圖片</p>
-                <p>分子保護機制基於最新科學研究｜實際效益可能因管理條件而異</p>
-            </div>
+        <div class="footer-content">
+            <p><strong>吉升飼料有限公司</strong>｜吳郭魚高效養殖 · 免疫與生長領導品牌</p>
+            <p>地址：634雲林縣褒忠鄉中正路28-18號<br>電話：<a href="tel:+886-5-6972238">+886-5-6972238</a>｜Email：<a href="mailto:info@chishengfeed.com">info@chishengfeed.com</a></p>
+            <div class="copyright">© 2026 吉升飼料有限公司 · 引用PubMed/水生生物學報 · 實拍圖片</div>
         </div>
     </footer>
 
-    <!-- Lightbox 結構 -->
-    <div id="lightbox" class="lightbox" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:9999; justify-content:center; align-items:center; cursor:zoom-out; flex-direction:column;" onclick="this.style.display='none'">
-        <img id="lightbox-img" src="" alt="" style="max-width:90%; max-height:80%; object-fit:contain; border-radius:12px; box-shadow:0 0 40px rgba(0,0,0,0.5);">
-        <div id="lightbox-caption" class="caption" style="color:white; margin-top:20px; font-size:1rem; max-width:80%; text-align:center;"></div>
+    <!-- 返回頂部按鈕 (浮動) -->
+    <div class="back-to-top" id="backToTop">↑</div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="this.style.display='none'">
+        <img id="lightbox-img" src="" alt="">
+        <div id="lightbox-caption" class="caption"></div>
     </div>
 
     <script>
@@ -794,24 +1100,57 @@
             lb.style.display = 'flex';
         }
 
+        // 為所有 .img-container 綁定點擊事件
+        document.querySelectorAll('.img-container').forEach(container => {
+            container.addEventListener('click', function() {
+                openLightbox(this);
+            });
+        });
+
+        // 滾動淡入效果
         document.addEventListener('DOMContentLoaded', function() {
-            // 滾動淡入效果
-            const observerOptions = { threshold: 0.1 };
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) entry.target.classList.add('visible');
                 });
-            }, observerOptions);
-            document.querySelectorAll('section').forEach(section => observer.observe(section));
+            }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+            document.querySelectorAll('section').forEach(s => observer.observe(s));
 
-            // 圖片錯誤處理
-            document.querySelectorAll('.responsive-img').forEach(img => {
-                img.addEventListener('error', function() {
-                    this.style.display = 'none';
-                    const caption = this.closest('.img-container')?.querySelector('.img-title');
-                    if (caption) caption.style.display = 'none';
+            // 圖片懶加載 (讓圖片淡入)
+            const imgObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.style.opacity = '1';
+                        imgObserver.unobserve(img);
+                    }
                 });
+            }, { rootMargin: '0px 0px 100px 0px' });
+            document.querySelectorAll('.responsive-img').forEach(img => {
+                img.style.opacity = '0';
+                img.style.transition = 'opacity 0.6s ease';
+                if (img.complete) img.style.opacity = '1';
+                else img.addEventListener('load', function() { this.style.opacity = '1'; });
+                imgObserver.observe(img);
             });
+
+            // 返回頂部按鈕
+            const backToTop = document.getElementById('backToTop');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    backToTop.classList.add('show');
+                } else {
+                    backToTop.classList.remove('show');
+                }
+            });
+            backToTop.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // 觸摸裝置偵測
+            if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+                document.body.classList.add('touch-device');
+            }
         });
     </script>
 </body>
