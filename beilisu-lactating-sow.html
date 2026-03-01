@@ -88,7 +88,7 @@
       color: var(--dark);
       line-height: 1.7;
       scroll-behavior: smooth;
-      padding-top: 70px; /* 為語言切換器留出空間 */
+      padding-top: 70px; /* 為語言切換器留出空間，返回首頁按鈕也在此區域 */
     }
     .container {
       width: 100%;
@@ -96,7 +96,7 @@
       margin: 0 auto;
       padding: 0 20px;
     }
-    /* 語言切換器樣式 (移除匯率相關) */
+    /* 語言切換器樣式 (保留原有位置) */
     .language-switcher {
       position: fixed;
       top: 15px;
@@ -128,6 +128,63 @@
     .lang-btn:hover:not(.active) {
       background: #f0f0f0;
     }
+
+    /* ===== 新增返回首頁按鈕 (左上角固定) ===== */
+    .back-home-btn {
+      position: fixed;
+      top: 15px;
+      left: 20px;
+      z-index: 1000;
+      background: var(--primary);
+      color: white;
+      padding: 8px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      box-shadow: var(--shadow-md);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: 0.2s;
+      border: 1px solid var(--secondary);
+    }
+    .back-home-btn:hover {
+      background: var(--secondary);
+      transform: scale(1.02);
+    }
+
+    /* ===== 新增返回頂部按鈕 (右下角浮動) ===== */
+    .scroll-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 999;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: white;
+      border: none;
+      cursor: pointer;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      transition: 0.2s;
+      opacity: 0;
+      visibility: hidden;
+    }
+    .scroll-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+    .scroll-to-top:hover {
+      background: var(--accent);
+      color: var(--dark);
+    }
+
     /* 響應式圖片樣式 */
     .responsive-img {
       width: 100%;
@@ -512,6 +569,33 @@
       margin: 0 auto 25px;
       line-height: 1.8;
     }
+
+    /* ===== 新增產品連結列 ===== */
+    .product-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin: 25px 0;
+      list-style: none;
+      padding: 0 15px;
+    }
+    .product-links a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 18px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: 0.2s;
+      border: 1px solid transparent;
+    }
+    .product-links a:hover {
+      background: var(--primary);
+      border-color: var(--accent);
+    }
+
     /* 淡入動畫 */
     .fade-in {
       opacity: 0;
@@ -524,6 +608,9 @@
     }
     /* 響應式優化 */
     @media (max-width: 768px) {
+      body {
+        padding-top: 120px;
+      }
       header {
         padding: 40px 0;
       }
@@ -563,8 +650,18 @@
         padding: 5px 10px;
         font-size: 0.8rem;
       }
-      body {
-        padding-top: 120px;
+      .back-home-btn {
+        top: 10px;
+        left: 10px;
+        padding: 6px 12px;
+        font-size: 0.8rem;
+      }
+      .scroll-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
       }
     }
     @media (max-width: 480px) {
@@ -586,14 +683,18 @@
         top: 5px;
         right: 5px;
       }
-      body {
-        padding-top: 80px;
+      .back-home-btn {
+        top: 5px;
+        left: 5px;
       }
     }
   </style>
 </head>
 <body>
-  <!-- 語言切換器 (移除匯率屬性) -->
+  <!-- 返回首頁按鈕 (左上角固定) -->
+  <a href="index.html" class="back-home-btn"><i class="fa-solid fa-arrow-left"></i> 返回主頁</a>
+
+  <!-- 語言切換器 (保留原有) -->
   <div class="language-switcher">
     <button class="lang-btn active" data-lang="zh-TW">繁體中文</button>
     <button class="lang-btn" data-lang="zh-CN">简体中文</button>
@@ -1004,11 +1105,34 @@
         <p data-translate="footer_tagline">Precision Nutrition · Advanced Biotechnology · Sustainable Agriculture</p>
         <p>地址：634雲林縣褒忠鄉中正路28-18號<br>電話：+886-5-6972238｜Email: info@chishengfeed.com</p>
       </div>
+
+      <!-- 新增產品連結列 (使用英文檔名) -->
+      <ul class="product-links">
+        <li><a href="index.html">🏠 主頁</a></li>
+        <li><a href="beilisu-boar-semen.html">🐗 種公豬</a></li>
+        <li><a href="beilisu-pregnant-sow.html">🤰 懷孕母豬</a></li>
+        <li><a href="beilisu-lactating-sow.html">🍼 哺乳母豬</a></li>
+        <li><a href="beilisu-piglet-milk.html">🐷 仔豬</a></li>
+        <li><a href="beilisu-finisher-fcr.html">📈 育肥豬</a></li>
+        <li><a href="beilisu-breeder-chicken.html">🐔 種雞</a></li>
+        <li><a href="beilisu-layer-chicken.html">🥚 蛋雞</a></li>
+        <li><a href="beilisu-native-chicken.html">🌾 土雞</a></li>
+        <li><a href="beilisu-broiler-fcr.html">🍗 白肉雞</a></li>
+        <li><a href="beilisu-tilapia.html">🐟 吳郭魚</a></li>
+        <li><a href="beilisu-shrimp.html">🦐 白蝦</a></li>
+      </ul>
+
       <div style="margin-top: 25px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.9rem; opacity: 0.7;">
         <p data-translate="footer_copyright">© 2026 吉升飼料有限公司 版權所有</p>
       </div>
     </div>
   </footer>
+
+  <!-- 返回頂部按鈕 (右下角浮動) -->
+  <button class="scroll-to-top" id="scrollToTopBtn" onclick="scrollToTop()"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <!-- Font Awesome 圖示庫 (確保圖標正常顯示) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <script>
     // 多語言翻譯數據 (公司名、品牌名、成分名已更新)
@@ -1220,7 +1344,7 @@
         'subtitle': '离乳仔猪体重、泌乳量与母猪繁殖寿命全面优化｜28天离乳体重提升 >1.5公斤，从饲料成本中心转化为育成价值引擎',
         'tagline': '每吨饲料添加1KG · 母猪年效益提升 >35% · 投资报酬率极高',
         'footer_company': '吉升饲料有限公司｜Chi Sheng Feed Co., Ltd.',
-        // ... 其他键值同理，此处省略以保持代码长度合理，实际应用时需完整
+        // ... 其他键值同理
       },
       'en': {
         'title': 'Beilisu Lactating Sow Performance Enhancement Program',
@@ -1242,6 +1366,19 @@
           element.classList.add('visible');
         }
       });
+
+      // 返回頂部按鈕顯示/隱藏
+      const scrollBtn = document.getElementById('scrollToTopBtn');
+      if (window.scrollY > 300) {
+        scrollBtn.classList.add('visible');
+      } else {
+        scrollBtn.classList.remove('visible');
+      }
+    }
+
+    // 返回頂部功能
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     // 語言切換功能 (移除貨幣轉換)
