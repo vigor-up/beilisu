@@ -59,12 +59,86 @@
                 transform: scale(1.03);
             }
         }
+        /* 產品連結列樣式 (與其他產品頁一致) */
+        .product-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin: 25px 0;
+            list-style: none;
+        }
+        .product-links a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 18px;
+            background: rgba(255,255,255,0.12);
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+        .product-links a:hover {
+            background: var(--primary-green, #2E7D32);
+        }
+        /* 導航列樣式 */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            margin: 10px 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .nav-left a, .nav-right button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+            background: #f8f9fa;
+            color: #212121;
+        }
+        .nav-left a:hover {
+            background: #2E7D32;
+            color: white;
+        }
+        .nav-right button {
+            background: #2E7D32;
+            color: white;
+        }
+        .nav-right button:hover {
+            background: #FFB300;
+            color: #212121;
+        }
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 </head>
 <body class="font-sans bg-white text-dark">
+    <!-- 導航列 (返回主頁 + 返回頂部) -->
+    <div class="navbar">
+        <div class="nav-left">
+            <a href="index.html"><i class="fa-solid fa-arrow-left"></i> 返回主頁</a>
+        </div>
+        <div class="nav-right">
+            <button id="scrollToTopBtn" onclick="window.scrollTo({top:0, behavior:'smooth'});"><i class="fa-solid fa-arrow-up"></i> 頂部</button>
+        </div>
+    </div>
+
     <!-- 頂部橫幅 -->
     <header class="relative w-full h-[50vh] md:h-[60vh] overflow-hidden">
         <img src="assets/header-boar.jpg" alt="科技化種公豬養殖" class="absolute inset-0 w-full h-full object-cover">
@@ -540,20 +614,37 @@
         </section>
     </div>
 
-    <!-- 頁腳 (更新為吉升飼料資訊) -->
+    <!-- 頁腳 (吉升飼料資訊 + 產品連結) -->
     <footer class="bg-dark text-white py-8 mt-16">
         <div class="container mx-auto px-4 max-w-7xl">
             <div class="text-center">
                 <div class="text-xl font-bold mb-2">吉升飼料有限公司</div>
                 <div class="text-sm text-gray-400 mb-2">地址：634雲林縣褒忠鄉中正路28-18號</div>
                 <div class="text-sm text-gray-400 mb-2">電話：<a href="tel:+886-5-6972238" class="hover:text-white">+886-5-6972238</a>｜Email：<a href="mailto:info@chishengfeed.com" class="hover:text-white">info@chishengfeed.com</a></div>
+                
+                <!-- 產品方案連結 (新增) -->
+                <ul class="product-links">
+                    <li><a href="index.html">🏠 主頁</a></li>
+                    <li><a href="beilisu-boar-semen.html">🐗 種公豬</a></li>
+                    <li><a href="beilisu-pregnant-sow.html">🤰 懷孕母豬</a></li>
+                    <li><a href="beilisu-lactating-sow.html">🍼 哺乳母豬</a></li>
+                    <li><a href="beilisu-piglet-milk.html">🐷 仔豬</a></li>
+                    <li><a href="beilisu-finisher-fcr.html">📈 育肥豬</a></li>
+                    <li><a href="beilisu-breeder-chicken.html">🐔 種雞</a></li>
+                    <li><a href="beilisu-layer-chicken.html">🥚 蛋雞</a></li>
+                    <li><a href="beilisu-native-chicken.html">🌾 土雞</a></li>
+                    <li><a href="beilisu-broiler-fcr.html">🍗 白肉雞</a></li>
+                    <li><a href="beilisu-tilapia.html">🐟 吳郭魚</a></li>
+                    <li><a href="beilisu-shrimp.html">🦐 白蝦</a></li>
+                </ul>
+
                 <div class="text-sm text-gray-400 mb-4">倍力素種公豬精液品質提升方案 &copy; 2026 版權所有</div>
                 <div class="text-sm text-gray-400">Precision Nutrition · Advanced Biotechnology · Sustainable Agriculture</div>
             </div>
         </div>
     </footer>
 
-    <!-- 回到頂部按鈕 -->
+    <!-- 回到頂部按鈕 (已存在，但確保功能) -->
     <button id="backToTop" class="fixed bottom-8 right-8 bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-secondary">
         <i class="fa-solid fa-arrow-up"></i>
     </button>
@@ -579,7 +670,7 @@
             });
         });
 
-        // 平滑滾動
+        // 平滑滾動 (若有錨點連結)
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
