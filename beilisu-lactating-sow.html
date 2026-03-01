@@ -88,7 +88,7 @@
       color: var(--dark);
       line-height: 1.7;
       scroll-behavior: smooth;
-      padding-top: 70px; /* 為語言切換器留出空間，返回首頁按鈕也在此區域 */
+      padding-top: 70px; /* 為返回首頁按鈕留出空間 */
     }
     .container {
       width: 100%;
@@ -96,40 +96,8 @@
       margin: 0 auto;
       padding: 0 20px;
     }
-    /* 語言切換器樣式 (保留原有位置) */
-    .language-switcher {
-      position: fixed;
-      top: 15px;
-      right: 20px;
-      z-index: 1000;
-      display: flex;
-      gap: 10px;
-      background: white;
-      padding: 8px 12px;
-      border-radius: 30px;
-      box-shadow: var(--shadow-md);
-      border: 1px solid #e0e0e0;
-    }
-    .lang-btn {
-      background: transparent;
-      border: none;
-      padding: 6px 15px;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      color: var(--dark);
-    }
-    .lang-btn.active {
-      background: var(--primary);
-      color: white;
-    }
-    .lang-btn:hover:not(.active) {
-      background: #f0f0f0;
-    }
 
-    /* ===== 新增返回首頁按鈕 (左上角固定) ===== */
+    /* ===== 返回首頁按鈕 (左上角固定) ===== */
     .back-home-btn {
       position: fixed;
       top: 15px;
@@ -154,7 +122,7 @@
       transform: scale(1.02);
     }
 
-    /* ===== 新增返回頂部按鈕 (右下角浮動) ===== */
+    /* ===== 返回頂部按鈕 (右下角浮動) ===== */
     .scroll-to-top {
       position: fixed;
       bottom: 30px;
@@ -640,16 +608,6 @@
       .responsive-img {
         margin: 15px 0;
       }
-      .language-switcher {
-        flex-direction: column;
-        right: 10px;
-        top: 10px;
-        padding: 6px 10px;
-      }
-      .lang-btn {
-        padding: 5px 10px;
-        font-size: 0.8rem;
-      }
       .back-home-btn {
         top: 10px;
         left: 10px;
@@ -678,11 +636,6 @@
       .benefit-value {
         font-size: 2.2rem;
       }
-      .language-switcher {
-        flex-direction: row;
-        top: 5px;
-        right: 5px;
-      }
       .back-home-btn {
         top: 5px;
         left: 5px;
@@ -694,18 +647,11 @@
   <!-- 返回首頁按鈕 (左上角固定) -->
   <a href="index.html" class="back-home-btn"><i class="fa-solid fa-arrow-left"></i> 返回主頁</a>
 
-  <!-- 語言切換器 (保留原有) -->
-  <div class="language-switcher">
-    <button class="lang-btn active" data-lang="zh-TW">繁體中文</button>
-    <button class="lang-btn" data-lang="zh-CN">简体中文</button>
-    <button class="lang-btn" data-lang="en">English</button>
-  </div>
-
   <header>
     <div class="container">
-      <h1 data-translate="title">倍力素哺乳母豬泌乳性能提升方案</h1>
-      <p class="subtitle" data-translate="subtitle">離乳仔豬體重、泌乳量與母豬繁殖壽命全面優化｜28天離乳體重提升 >1.5公斤，從飼料成本中心轉化為育成價值引擎</p>
-      <div class="tagline" data-translate="tagline">每噸飼料添加1KG · 母豬年效益提升 >35% · 投資報酬率極高</div>
+      <h1>倍力素哺乳母豬泌乳性能提升方案</h1>
+      <p class="subtitle">離乳仔豬體重、泌乳量與母豬繁殖壽命全面優化｜28天離乳體重提升 >1.5公斤，從飼料成本中心轉化為育成價值引擎</p>
+      <div class="tagline">每噸飼料添加1KG · 母豬年效益提升 >35% · 投資報酬率極高</div>
     </div>
   </header>
 
@@ -714,30 +660,30 @@
       <!-- 圖片1：母豬哺乳整體場景 (嵌入AI咒語) -->
       <div class="img-container" onclick="openLightbox(this)">
         <img src="assets/lactating-sow-overall.jpg" alt="哺乳母豬與仔豬，倍力素方案提升泌乳性能" class="responsive-img fade-in">
-        <div class="img-title" data-translate="caption1">倍力素方案透過強化母豬泌乳性能，顯著提升仔豬離乳體重與存活率</div>
+        <div class="img-title">倍力素方案透過強化母豬泌乳性能，顯著提升仔豬離乳體重與存活率</div>
         <!-- AI咒語建議: 檔名 lactating-sow-overall.jpg, 建議: 現代化豬舍哺乳母豬與仔豬，母豬躺臥哺乳，仔豬健康活潑，柔和光線，專業畜牧攝影，8k -->
       </div>
       
-      <h2 class="section-title" data-translate="section1_title">執行摘要：哺乳母豬生產性能全面升級</h2>
+      <h2 class="section-title">執行摘要：哺乳母豬生產性能全面升級</h2>
       <div class="executive-summary">
-        <p data-translate="summary1">吉升飼料有限公司基於獨家專利發酵平台與國際前沿代謝科學研究成果，耗時三年研發推出「倍力素哺乳母豬泌乳性能提升方案」。本方案整合精密複合酶製劑、免疫調控肽、代謝調控複方（單核苷小核酸+褐藻萃取物）三層協同技術架構，針對台灣養豬產業哺乳母豬泌乳階段的核心痛點——離乳仔豬體重偏低、離乳前死亡率高、母豬繁殖壽命短等問題，實現三大關鍵指標的精準優化，徹底改變傳統養殖思維，將哺乳母豬從「成本中心」轉型為育成環節的「價值引擎」。</p>
-        <p data-translate="summary2">透過科學營養調控與分子層級的代謝優化，倍力素方案不僅能顯著提升單頭母豬的生產效益，更能幫助養殖場建立高品質離乳仔豬的核心競爭力，在同質化競爭激烈的市場中打造獨特的品牌護城河。</p>
+        <p>吉升飼料有限公司基於獨家專利發酵平台與國際前沿代謝科學研究成果，耗時三年研發推出「倍力素哺乳母豬泌乳性能提升方案」。本方案整合精密複合酶製劑、免疫調控肽、代謝調控複方（單核苷小核酸+褐藻萃取物）三層協同技術架構，針對台灣養豬產業哺乳母豬泌乳階段的核心痛點——離乳仔豬體重偏低、離乳前死亡率高、母豬繁殖壽命短等問題，實現三大關鍵指標的精準優化，徹底改變傳統養殖思維，將哺乳母豬從「成本中心」轉型為育成環節的「價值引擎」。</p>
+        <p>透過科學營養調控與分子層級的代謝優化，倍力素方案不僅能顯著提升單頭母豬的生產效益，更能幫助養殖場建立高品質離乳仔豬的核心競爭力，在同質化競爭激烈的市場中打造獨特的品牌護城河。</p>
         
         <div class="summary-grid">
           <div class="summary-card fade-in">
-            <div class="card-title" data-translate="card1_title">離乳仔豬體重</div>
-            <div class="card-value" data-translate="card1_value">+20~27%</div>
-            <div class="card-desc" data-translate="card1_desc">28天離乳平均體重從產業平均7.5kg提升至9.0~9.5kg，不僅降低後續育成階段的飼料成本，更能提前上市日齡3~4天，奠定全程生長性能優勢</div>
+            <div class="card-title">離乳仔豬體重</div>
+            <div class="card-value">+20~27%</div>
+            <div class="card-desc">28天離乳平均體重從產業平均7.5kg提升至9.0~9.5kg，不僅降低後續育成階段的飼料成本，更能提前上市日齡3~4天，奠定全程生長性能優勢</div>
           </div>
           <div class="summary-card fade-in">
-            <div class="card-title" data-translate="card2_title">離乳前死亡率</div>
-            <div class="card-value" data-translate="card2_value">↓30~40%</div>
-            <div class="card-desc" data-translate="card2_desc">從產業平均8~10%降至5~6%，每胎可多離乳0.5~0.8頭健康仔豬，直接提升每頭母豬的年產值與投資報酬率</div>
+            <div class="card-title">離乳前死亡率</div>
+            <div class="card-value">↓30~40%</div>
+            <div class="card-desc">從產業平均8~10%降至5~6%，每胎可多離乳0.5~0.8頭健康仔豬，直接提升每頭母豬的年產值與投資報酬率</div>
           </div>
           <div class="summary-card fade-in">
-            <div class="card-title" data-translate="card3_title">母豬使用壽命</div>
-            <div class="card-value" data-translate="card3_value">+39%</div>
-            <div class="card-desc" data-translate="card3_desc">有效生產胎次從產業平均3.8胎延長至5.3胎，大幅降低種母豬更新成本與培育週期，減少非生產天數損失</div>
+            <div class="card-title">母豬使用壽命</div>
+            <div class="card-value">+39%</div>
+            <div class="card-desc">有效生產胎次從產業平均3.8胎延長至5.3胎，大幅降低種母豬更新成本與培育週期，減少非生產天數損失</div>
           </div>
         </div>
       </div>
@@ -745,12 +691,12 @@
       <!-- 圖片5：投資報酬率數據圖表 (改為效益圖) -->
       <div class="benefit-highlight fade-in">
         <img src="assets/sow-weaning-comparison.jpg" alt="效益提升圖表" class="responsive-img" style="max-width: 80%; margin: 0 auto 20px; display: block;">
-        <p class="img-caption" style="color: rgba(255,255,255,0.9);" data-translate="caption5">倍力素方案帶來的效益提升百分比</p>
+        <p class="img-caption" style="color: rgba(255,255,255,0.9);">倍力素方案帶來的效益提升百分比</p>
         <!-- AI咒語建議: 檔名 roi-chart.jpg, 建議: 現代資訊圖表，顯示哺乳母豬生產效益提升百分比，柱狀圖與箭頭，簡潔專業，綠色金色調，8k -->
-        <div class="benefit-subtitle" data-translate="roi_subtitle1">單頭哺乳母豬年效益提升</div>
-        <div class="benefit-value" data-translate="roi_value">>35%</div>
-        <div class="benefit-subtitle" data-translate="roi_subtitle2">投資報酬率超過65倍｜效益顯現期 <7天</div>
-        <div style="margin-top: 15px; font-size: clamp(0.9rem, 2vw, 1.1rem); opacity: 0.9;" data-translate="roi_desc">
+        <div class="benefit-subtitle">單頭哺乳母豬年效益提升</div>
+        <div class="benefit-value">>35%</div>
+        <div class="benefit-subtitle">投資報酬率超過65倍｜效益顯現期 <7天</div>
+        <div style="margin-top: 15px; font-size: clamp(0.9rem, 2vw, 1.1rem); opacity: 0.9;">
           每投入1元，創造超過65元淨效益｜每噸飼料添加成本極低，成本回收速度領先業界
         </div>
       </div>
@@ -759,112 +705,112 @@
 
   <section class="tech-mechanism">
     <div class="container">
-      <h2 class="section-title" data-translate="section2_title">三大生產性能提升核心機轉</h2>
+      <h2 class="section-title">三大生產性能提升核心機轉</h2>
       
       <div class="mechanism-grid">
         <div class="mechanism-card fade-in">
-          <div class="mechanism-title" data-translate="mechanism1_title">離乳仔豬體重提升至9.0~9.5kg</div>
+          <div class="mechanism-title">離乳仔豬體重提升至9.0~9.5kg</div>
           <!-- 圖片2：母豬泌乳特寫 -->
           <div class="img-container" onclick="openLightbox(this)">
             <img src="assets/sow-lactating-detail.jpg" alt="母豬泌乳特写，仔豬順利攝取營養" class="responsive-img">
-            <div class="img-title" data-translate="caption2">母豬泌乳量與乳汁品質提升，確保仔豬獲得充足營養，日增重顯著提高</div>
+            <div class="img-title">母豬泌乳量與乳汁品質提升，確保仔豬獲得充足營養，日增重顯著提高</div>
             <!-- AI咒語建議: 檔名 sow-lactating-detail.jpg, 建議: 母豬哺乳特寫，仔豬吸乳，母豬乳房健康，柔和光線，畜牧細節攝影，8k -->
           </div>
-          <p data-translate="mechanism1_desc1"><strong>核心作用機制：</strong>強化乳腺發育+提升泌乳量+優化乳汁營養組成，從源頭解決仔豬營養供給不足問題</p>
+          <p><strong>核心作用機制：</strong>強化乳腺發育+提升泌乳量+優化乳汁營養組成，從源頭解決仔豬營養供給不足問題</p>
           <!-- 圖片3：乳腺細胞泌乳機制 -->
           <div class="img-container" onclick="openLightbox(this)">
             <img src="assets/mammary-cell-mechanism.jpg" alt="乳腺細胞泌乳機制圖，倍力素激活乳腺細胞合成乳汁" class="responsive-img">
-            <div class="img-title" data-translate="caption3">倍力素透過激活乳腺上皮細胞，強化乳汁合成與營養輸送通路，提升泌乳量與品質</div>
+            <div class="img-title">倍力素透過激活乳腺上皮細胞，強化乳汁合成與營養輸送通路，提升泌乳量與品質</div>
             <!-- AI咒語建議: 檔名 mammary-cell-mechanism.jpg, 建議: 3D醫學風格示意圖，乳腺細胞分泌乳汁，分子路徑圖，科學插畫，8k -->
           </div>
           <table>
             <tr>
-              <th data-translate="table1_header1">技術層面</th>
-              <th data-translate="table1_header2">分子調控機制</th>
-              <th data-translate="table1_header3">直接生產效益</th>
+              <th>技術層面</th>
+              <th>分子調控機制</th>
+              <th>直接生產效益</th>
             </tr>
             <tr>
-              <td data-translate="table1_row1_col1">乳腺功能強化</td>
-              <td data-translate="table1_row1_col2">精密複合酶提升氨基酸吸收效率18%，單核苷小核酸透過激活STAT5信號通路，促進乳腺上皮細胞增殖與分化，擴大泌乳細胞總量</td>
-              <td data-translate="table1_row1_col3">泌乳量提升15~20%，乳脂率提升2~3%，乳蛋白含量同步提高1.5%，仔豬日增重顯著提升</td>
+              <td>乳腺功能強化</td>
+              <td>精密複合酶提升氨基酸吸收效率18%，單核苷小核酸透過激活STAT5信號通路，促進乳腺上皮細胞增殖與分化，擴大泌乳細胞總量</td>
+              <td>泌乳量提升15~20%，乳脂率提升2~3%，乳蛋白含量同步提高1.5%，仔豬日增重顯著提升</td>
             </tr>
             <tr>
-              <td data-translate="table1_row2_col1">乳汁品質優化</td>
-              <td data-translate="table1_row2_col2">免疫調控肽提升初乳IgG含量30%，褐藻萃取物作為功能性添加劑增加乳汁中ω-3脂肪酸比例，強化仔豬免疫基礎</td>
-              <td data-translate="table1_row2_col3">仔豬初生72小時內獲得充足被動免疫，腸道發育更完善，腹瀉率降低40%，採食慾望提升</td>
+              <td>乳汁品質優化</td>
+              <td>免疫調控肽提升初乳IgG含量30%，褐藻萃取物作為功能性添加劑增加乳汁中ω-3脂肪酸比例，強化仔豬免疫基礎</td>
+              <td>仔豬初生72小時內獲得充足被動免疫，腸道發育更完善，腹瀉率降低40%，採食慾望提升</td>
             </tr>
             <tr>
-              <td data-translate="table1_row3_col1">母豬採食量維持</td>
-              <td data-translate="table1_row3_col2">單核苷小核酸調控下丘腦食慾中樞的神經肽Y表達，降低熱緊迫與泌乳壓力對採食的抑制作用</td>
-              <td data-translate="table1_row3_col3">哺乳期日均採食量穩定維持4.3~4.8kg，減少體儲動員，避免母豬過度失重影響泌乳</td>
+              <td>母豬採食量維持</td>
+              <td>單核苷小核酸調控下丘腦食慾中樞的神經肽Y表達，降低熱緊迫與泌乳壓力對採食的抑制作用</td>
+              <td>哺乳期日均採食量穩定維持4.3~4.8kg，減少體儲動員，避免母豬過度失重影響泌乳</td>
             </tr>
           </table>
-          <p><small data-translate="reference1">科學依據：《Journal of Animal Science》2023年研究顯示，單核苷小核酸可提升哺乳母豬泌乳量18.7%，離乳仔豬體重顯著增加1.62kg（Chen et al., 2023）；免疫調控肽技術可顯著提升初乳免疫球蛋白含量，降低仔豬離乳前死亡率35%（Animals, 2022）。</small></p>
+          <p><small>科學依據：《Journal of Animal Science》2023年研究顯示，單核苷小核酸可提升哺乳母豬泌乳量18.7%，離乳仔豬體重顯著增加1.62kg（Chen et al., 2023）；免疫調控肽技術可顯著提升初乳免疫球蛋白含量，降低仔豬離乳前死亡率35%（Animals, 2022）。</small></p>
           <!-- 新增天然來源說明 -->
           <p style="margin-top:15px; background:#e8f4ec; padding:10px; border-radius:8px;"><strong>🌱 天然來源：</strong>單核苷小核酸萃取自蛋白草，保留天然活性成分；褐藻萃取物源自純淨海域巨藻，全程無化學合成。</p>
         </div>
         
         <div class="mechanism-card fade-in">
-          <div class="mechanism-title" data-translate="mechanism2_title">離乳前死亡率降至5~6%</div>
-          <p data-translate="mechanism2_desc1"><strong>核心作用機制：</strong>提升乳汁免疫保護+改善仔豬腸道健康+降低母豬應激，全方位降低仔豬死亡風險</p>
+          <div class="mechanism-title">離乳前死亡率降至5~6%</div>
+          <p><strong>核心作用機制：</strong>提升乳汁免疫保護+改善仔豬腸道健康+降低母豬應激，全方位降低仔豬死亡風險</p>
           <table>
             <tr>
-              <th data-translate="table2_header1">技術層面</th>
-              <th data-translate="table2_header2">分子調控機制</th>
-              <th data-translate="table2_header3">直接生產效益</th>
+              <th>技術層面</th>
+              <th>分子調控機制</th>
+              <th>直接生產效益</th>
             </tr>
             <tr>
-              <td data-translate="table2_row1_col1">初乳品質提升</td>
-              <td data-translate="table2_row1_col2">免疫調控肽激活母豬乳腺組織的NF-κB通路，顯著提升乳汁中sIgA與乳鐵蛋白含量，增強被動免疫效果</td>
-              <td data-translate="table2_row1_col3">仔豬7日齡內腹瀉率降低50%，整體抗病能力提升，壓死率因仔豬活力提升而下降25~30%</td>
+              <td>初乳品質提升</td>
+              <td>免疫調控肽激活母豬乳腺組織的NF-κB通路，顯著提升乳汁中sIgA與乳鐵蛋白含量，增強被動免疫效果</td>
+              <td>仔豬7日齡內腹瀉率降低50%，整體抗病能力提升，壓死率因仔豬活力提升而下降25~30%</td>
             </tr>
             <tr>
-              <td data-translate="table2_row2_col1">仔豬腸道發育</td>
-              <td data-translate="table2_row2_col2">褐藻萃取物作為益生元促進仔豬腸道乳酸桿菌與雙歧桿菌增殖，單核苷小核酸透過修復腸黏膜緊密連接蛋白，降低腸道通透性</td>
-              <td data-translate="table2_row2_col3">14日齡仔豬腸絨毛高度提升25%，隱窩深度減少15%，營養吸收效率提高，生長均勻度提升</td>
+              <td>仔豬腸道發育</td>
+              <td>褐藻萃取物作為益生元促進仔豬腸道乳酸桿菌與雙歧桿菌增殖，單核苷小核酸透過修復腸黏膜緊密連接蛋白，降低腸道通透性</td>
+              <td>14日齡仔豬腸絨毛高度提升25%，隱窩深度減少15%，營養吸收效率提高，生長均勻度提升</td>
             </tr>
             <tr>
-              <td data-translate="table2_row3_col1">母豬行為安定</td>
-              <td data-translate="table2_row3_col2">精密複合酶改善母豬腸道菌相平衡，降低內毒素血症發生率，減少炎症反應對中樞神經的影響</td>
-              <td data-translate="table2_row3_col3">母豬焦躁行為減少40%，臥地時間增加，壓死仔豬風險降低30%，母性顯著提升</td>
+              <td>母豬行為安定</td>
+              <td>精密複合酶改善母豬腸道菌相平衡，降低內毒素血症發生率，減少炎症反應對中樞神經的影響</td>
+              <td>母豬焦躁行為減少40%，臥地時間增加，壓死仔豬風險降低30%，母性顯著提升</td>
             </tr>
           </table>
-          <p><small data-translate="reference2">科學依據：褐藻萃取物可顯著改善哺乳仔豬腸道菌相平衡，降低大腸桿菌感染風險達45%（Theriogenology, 2021）；母豬飼糧添加免疫調控肽可使離乳前死亡率從9.2%降至5.8%（Porcine Health Management, 2020）。</small></p>
+          <p><small>科學依據：褐藻萃取物可顯著改善哺乳仔豬腸道菌相平衡，降低大腸桿菌感染風險達45%（Theriogenology, 2021）；母豬飼糧添加免疫調控肽可使離乳前死亡率從9.2%降至5.8%（Porcine Health Management, 2020）。</small></p>
           <p style="margin-top:15px; background:#e8f4ec; padding:10px; border-radius:8px;"><strong>🌱 天然來源：</strong>重組型煙醯胺蛋白酶源自蛋白草發酵萃取，非化學合成，安全無殘留。</p>
         </div>
         
         <div class="mechanism-card fade-in">
-          <div class="mechanism-title" data-translate="mechanism3_title">母豬繁殖壽命延長1.5胎次</div>
+          <div class="mechanism-title">母豬繁殖壽命延長1.5胎次</div>
           <!-- 圖片4：母豬能量代謝與激素調控 -->
           <div class="img-container" onclick="openLightbox(this)">
             <img src="assets/sow-energy-metabolism.jpg" alt="母豬能量代謝路徑與生殖激素調控圖" class="responsive-img">
-            <div class="img-title" data-translate="caption4">倍力素調控母豬能量代謝與生殖激素分泌，減少體儲損失，加速離乳後發情</div>
+            <div class="img-title">倍力素調控母豬能量代謝與生殖激素分泌，減少體儲損失，加速離乳後發情</div>
             <!-- AI咒語建議: 檔名 sow-energy-metabolism.jpg, 建議: 生物代謝路徑圖，顯示AMPK、激素調控，科學風格，綠色金色標註，8k -->
           </div>
-          <p data-translate="mechanism3_desc1"><strong>核心作用機制：</strong>減少哺乳期體重損失+加速離乳後發情+降低肢蹄問題，延長母豬有效生產年限</p>
+          <p><strong>核心作用機制：</strong>減少哺乳期體重損失+加速離乳後發情+降低肢蹄問題，延長母豬有效生產年限</p>
           <table>
             <tr>
-              <th data-translate="table3_header1">技術層面</th>
-              <th data-translate="table3_header2">分子調控機制</th>
-              <th data-translate="table3_header3">直接生產效益</th>
+              <th>技術層面</th>
+              <th>分子調控機制</th>
+              <th>直接生產效益</th>
             </tr>
             <tr>
-              <td data-translate="table3_row1_col1">體儲損失控制</td>
-              <td data-translate="table3_row1_col2">單核苷小核酸優化AMPK能量代謝通路，提升飼料轉化效率12%，減少背脂與肌肉組織的動員分解</td>
-              <td data-translate="table3_row1_col3">28天哺乳期體重損失從15~20kg降至8~12kg，離乳體況評分(BCS)提升0.5分，避免過度失重影響後續繁殖</td>
+              <td>體儲損失控制</td>
+              <td>單核苷小核酸優化AMPK能量代謝通路，提升飼料轉化效率12%，減少背脂與肌肉組織的動員分解</td>
+              <td>28天哺乳期體重損失從15~20kg降至8~12kg，離乳體況評分(BCS)提升0.5分，避免過度失重影響後續繁殖</td>
             </tr>
             <tr>
-              <td data-translate="table3_row2_col1">發情間隔縮短</td>
-              <td data-translate="table3_row2_col2">免疫調控肽透過調控下丘腦-垂體-卵巢軸的激素分泌，提升GnRH脈衝頻率與濃度</td>
-              <td data-translate="table3_row2_col3">離乳至發情間隔從5.8天縮短至4.2天，發情率提升5~8%，分娩率提升3~5%，減少非生產天數</td>
+              <td>發情間隔縮短</td>
+              <td>免疫調控肽透過調控下丘腦-垂體-卵巢軸的激素分泌，提升GnRH脈衝頻率與濃度</td>
+              <td>離乳至發情間隔從5.8天縮短至4.2天，發情率提升5~8%，分娩率提升3~5%，減少非生產天數</td>
             </tr>
             <tr>
-              <td data-translate="table3_row3_col1">肢蹄健康維持</td>
-              <td data-translate="table3_row3_col2">精密複合酶提升鈣磷吸收效率22%，褐藻萃取物抑制NF-κB炎症通路，降低關節炎症反應</td>
-              <td data-translate="table3_row3_col3">淘汰主因中肢蹄問題比例下降40%，蹄部受傷率降低35%，有效生產胎次從3.8胎延長至5.3胎</td>
+              <td>肢蹄健康維持</td>
+              <td>精密複合酶提升鈣磷吸收效率22%，褐藻萃取物抑制NF-κB炎症通路，降低關節炎症反應</td>
+              <td>淘汰主因中肢蹄問題比例下降40%，蹄部受傷率降低35%，有效生產胎次從3.8胎延長至5.3胎</td>
             </tr>
           </table>
-          <p><small data-translate="reference3">科學依據：哺乳期母豬體重損失每減少1kg，離乳後發情間隔可縮短0.3天（Journal of Swine Health and Production, 2019）；飼糧中添加功能性肽可顯著改善母豬肢蹄健康，延長使用壽命1.2~1.8胎（Livestock Science, 2021）。</small></p>
+          <p><small>科學依據：哺乳期母豬體重損失每減少1kg，離乳後發情間隔可縮短0.3天（Journal of Swine Health and Production, 2019）；飼糧中添加功能性肽可顯著改善母豬肢蹄健康，延長使用壽命1.2~1.8胎（Livestock Science, 2021）。</small></p>
           <p style="margin-top:15px; background:#e8f4ec; padding:10px; border-radius:8px;"><strong>🌱 天然來源：</strong>褐藻萃取物取自天然巨藻，經物理萃取保留多酚與岩藻黃質；單核苷小核酸源自蛋白草發酵，符合歐盟天然添加劑標準。</p>
         </div>
       </div>
@@ -873,117 +819,117 @@
 
   <section>
     <div class="container">
-      <h2 class="section-title" data-translate="section3_title">台灣市場數據對比與效益分析</h2>
+      <h2 class="section-title">台灣市場數據對比與效益分析</h2>
       
       <div class="comparison">
         <div class="comparison-card fade-in">
-          <div class="comparison-title" data-translate="comparison1_title">離乳仔豬體重（28天）</div>
+          <div class="comparison-title">離乳仔豬體重（28天）</div>
           <div class="market-value">7.5 kg</div>
-          <div class="improvement" data-translate="comparison1_subtitle1">台灣市場平均值</div>
+          <div class="improvement">台灣市場平均值</div>
           <div style="margin: 15px 0; font-size: clamp(2rem, 4vw, 2.5rem);">→</div>
           <div class="improved-value">9.0~9.5 kg</div>
-          <div class="improvement" data-translate="comparison1_subtitle2">+20~27%</div>
-          <p style="margin-top: 15px; color: var(--gray); font-size: 0.9rem;" data-translate="comparison1_desc">每增加1kg離乳體重，上市日齡可提前3~4天，育成效益顯著提升</p>
+          <div class="improvement">+20~27%</div>
+          <p style="margin-top: 15px; color: var(--gray); font-size: 0.9rem;">每增加1kg離乳體重，上市日齡可提前3~4天，育成效益顯著提升</p>
         </div>
         <div class="comparison-card fade-in">
-          <div class="comparison-title" data-translate="comparison2_title">離乳前死亡率</div>
+          <div class="comparison-title">離乳前死亡率</div>
           <div class="market-value">8~10%</div>
-          <div class="improvement" data-translate="comparison2_subtitle1">台灣產業平均</div>
+          <div class="improvement">台灣產業平均</div>
           <div style="margin: 15px 0; font-size: clamp(2rem, 4vw, 2.5rem);">→</div>
           <div class="improved-value">5~6%</div>
-          <div class="improvement" data-translate="comparison2_subtitle2">↓30~40%</div>
-          <p style="margin-top: 15px; color: var(--gray); font-size: 0.9rem;" data-translate="comparison2_desc">每胎多獲得0.5~0.8頭健康仔豬，直接提升母豬年產值</p>
+          <div class="improvement">↓30~40%</div>
+          <p style="margin-top: 15px; color: var(--gray); font-size: 0.9rem;">每胎多獲得0.5~0.8頭健康仔豬，直接提升母豬年產值</p>
         </div>
         <div class="comparison-card fade-in">
-          <div class="comparison-title" data-translate="comparison3_title">母豬年離乳頭數(PSY)</div>
+          <div class="comparison-title">母豬年離乳頭數(PSY)</div>
           <div class="market-value">19.7 頭</div>
-          <div class="improvement" data-translate="comparison3_subtitle1">台灣批次生產平均</div>
+          <div class="improvement">台灣批次生產平均</div>
           <div style="margin: 15px 0; font-size: clamp(2rem, 4vw, 2.5rem);">→</div>
           <div class="improved-value">24.5 頭</div>
-          <div class="improvement" data-translate="comparison3_subtitle2">+24.4%</div>
-          <p style="margin-top: 15px; color: var(--gray); font-size: 0.9rem;" data-translate="comparison3_desc">PSY提升24.4%，遠超產業平均成長速度，大幅提升養殖場整體效益</p>
+          <div class="improvement">+24.4%</div>
+          <p style="margin-top: 15px; color: var(--gray); font-size: 0.9rem;">PSY提升24.4%，遠超產業平均成長速度，大幅提升養殖場整體效益</p>
         </div>
       </div>
 
-      <h3 style="text-align: center; margin: clamp(30px, 5vw, 40px) 0 25px; color: var(--primary); font-size: clamp(1.5rem, 3vw, 1.8rem); font-weight: 700;" data-translate="section3_subtitle1">單頭哺乳母豬年度效益提升百分比</h3>
+      <h3 style="text-align: center; margin: clamp(30px, 5vw, 40px) 0 25px; color: var(--primary); font-size: clamp(1.5rem, 3vw, 1.8rem); font-weight: 700;">單頭哺乳母豬年度效益提升百分比</h3>
       
       <!-- 表格移除貨幣欄位，改為效益百分比 -->
       <table>
         <tr>
-          <th data-translate="table4_header1">效益提升項目</th>
-          <th data-translate="table4_header2">台灣市場基準</th>
-          <th data-translate="table4_header3">倍力素方案</th>
-          <th data-translate="table4_header4">效益提升百分比</th>
+          <th>效益提升項目</th>
+          <th>台灣市場基準</th>
+          <th>倍力素方案</th>
+          <th>效益提升百分比</th>
         </tr>
         <tr>
-          <td data-translate="table4_row1_col1">離乳仔豬體重增加</td>
+          <td>離乳仔豬體重增加</td>
           <td>7.5 kg/頭</td>
           <td>9.0 kg/頭 (+1.5kg)</td>
-          <td class="highlight" data-translate="table4_row1_col4">+20%</td>
+          <td class="highlight">+20%</td>
         </tr>
         <tr>
-          <td data-translate="table4_row2_col1">離乳頭數增加</td>
+          <td>離乳頭數增加</td>
           <td>10.6 頭/胎</td>
           <td>11.2 頭/胎 (+0.6頭)</td>
-          <td class="highlight" data-translate="table4_row2_col4">+5.7%</td>
+          <td class="highlight">+5.7%</td>
         </tr>
         <tr>
-          <td data-translate="table4_row3_col1">後續育成率提升</td>
+          <td>後續育成率提升</td>
           <td>92%</td>
           <td>95%</td>
-          <td class="highlight" data-translate="table4_row3_col4">+3.3%</td>
+          <td class="highlight">+3.3%</td>
         </tr>
         <tr>
-          <td data-translate="table4_row4_col1">母豬使用壽命延長</td>
+          <td>母豬使用壽命延長</td>
           <td>3.8 胎</td>
           <td>5.3 胎 (+1.5胎)</td>
-          <td class="highlight" data-translate="table4_row4_col4">+39%</td>
+          <td class="highlight">+39%</td>
         </tr>
         <tr>
-          <td data-translate="table4_row5_col1"><strong>綜合效益提升</strong></td>
+          <td><strong>綜合效益提升</strong></td>
           <td>—</td>
           <td>—</td>
-          <td class="highlight" data-translate="table4_row5_col4"><strong>>35%</strong></td>
+          <td class="highlight"><strong>>35%</strong></td>
         </tr>
       </table>
       
       <div style="background-color: #e3f2fd; border-left: 4px solid var(--primary); padding: 20px; border-radius: 0 8px 8px 0; margin: 30px 0;">
-        <p data-translate="cost_calculation1"><strong>效益說明：</strong>母豬日採食量4.5kg × 28天哺乳期 × 2.33胎/年，每噸飼料添加1kg倍力素，添加成本極低，換取整體效益提升超過35%，投資報酬率超過65倍。</p>
-        <p data-translate="cost_calculation2"><strong>離乳體重經濟價值：</strong>28天離乳體重每增加1kg，可使上市日齡提前3~4天，節省飼料成本效益顯著。</p>
+        <p><strong>效益說明：</strong>母豬日採食量4.5kg × 28天哺乳期 × 2.33胎/年，每噸飼料添加1kg倍力素，添加成本極低，換取整體效益提升超過35%，投資報酬率超過65倍。</p>
+        <p><strong>離乳體重經濟價值：</strong>28天離乳體重每增加1kg，可使上市日齡提前3~4天，節省飼料成本效益顯著。</p>
       </div>
 
-      <h3 style="text-align: center; margin: clamp(30px, 5vw, 40px) 0 25px; color: var(--primary); font-size: clamp(1.5rem, 3vw, 1.8rem); font-weight: 700;" data-translate="section3_subtitle2">100頭母豬場年度綜合效益提升</h3>
+      <h3 style="text-align: center; margin: clamp(30px, 5vw, 40px) 0 25px; color: var(--primary); font-size: clamp(1.5rem, 3vw, 1.8rem); font-weight: 700;">100頭母豬場年度綜合效益提升</h3>
       
       <table>
         <tr>
-          <th data-translate="table5_header1">效益來源</th>
-          <th data-translate="table5_header2">計算基數</th>
-          <th data-translate="table5_header3">效益提升百分比</th>
-          <th data-translate="table5_header4">綜合效益</th>
+          <th>效益來源</th>
+          <th>計算基數</th>
+          <th>效益提升百分比</th>
+          <th>綜合效益</th>
         </tr>
         <tr>
-          <td data-translate="table5_row1_col1">離乳仔豬體重提升</td>
+          <td>離乳仔豬體重提升</td>
           <td>100頭 × 24.5頭/年</td>
           <td>+20%</td>
           <td rowspan="3" style="vertical-align: middle; font-size:1.3rem; color:var(--primary);">整體效益<br>提升 >35%</td>
         </tr>
         <tr>
-          <td data-translate="table5_row2_col1">離乳頭數增加</td>
+          <td>離乳頭數增加</td>
           <td>100頭 × +0.6頭/胎 × 2.33胎</td>
           <td>+5.7%</td>
         </tr>
         <tr>
-          <td data-translate="table5_row3_col1">母豬更新成本降低</td>
+          <td>母豬更新成本降低</td>
           <td>更新率30% → 21%</td>
           <td>+9%</td>
         </tr>
       </table>
       
       <div class="benefit-highlight fade-in" style="background: linear-gradient(135deg, #4a9b52 0%, #2c6e36 100%); margin-top: 40px;">
-        <div class="benefit-subtitle" data-translate="roi2_subtitle">100頭母豬場綜合投資報酬率 (ROI)</div>
-        <div class="benefit-value" data-translate="roi2_value">>65倍</div>
-        <div class="benefit-subtitle" data-translate="roi2_desc">每投入1元，創造超過65元淨效益｜年綜合效益提升超過35%</div>
-        <div style="margin-top: 15px; font-size: clamp(0.9rem, 2vw, 1.1rem); opacity: 0.9;" data-translate="roi2_note">
+        <div class="benefit-subtitle">100頭母豬場綜合投資報酬率 (ROI)</div>
+        <div class="benefit-value">>65倍</div>
+        <div class="benefit-subtitle">每投入1元，創造超過65元淨效益｜年綜合效益提升超過35%</div>
+        <div style="margin-top: 15px; font-size: clamp(0.9rem, 2vw, 1.1rem); opacity: 0.9;">
           相較於傳統飼料優化方案，投資報酬率高出10倍以上，且風險更低、回收更快
         </div>
       </div>
@@ -992,56 +938,56 @@
 
   <section class="tech-mechanism">
     <div class="container">
-      <h2 class="section-title" data-translate="section4_title">核心技術壁壘與三階段實施建議</h2>
+      <h2 class="section-title">核心技術壁壘與三階段實施建議</h2>
       
       <div class="implementation">
         <!-- 圖片6：現代化養豬場技術人員稱重仔豬 -->
         <div class="img-container" onclick="openLightbox(this)">
           <img src="assets/modern-farm-weighing.jpg" alt="現代化養豬場技術人員監測仔豬體重，確保生產性能" class="responsive-img fade-in">
-          <div class="img-title" data-translate="caption6">倍力素方案結合現代化養殖管理，實現生產數據可視化、效益可量化</div>
+          <div class="img-title">倍力素方案結合現代化養殖管理，實現生產數據可視化、效益可量化</div>
           <!-- AI咒語建議: 檔名 modern-farm-weighing.jpg, 建議: 現代化養豬場，技術人員使用電子秤稱重仔豬，乾淨整齊，專業服裝，8k -->
         </div>
         
-        <h3 style="color: var(--primary); margin-bottom: 25px; text-align: center; font-size: clamp(1.3rem, 3vw, 1.6rem); font-weight: 700;" data-translate="section4_subtitle">低風險三階段實施建議｜小規模試驗，大規模獲利</h3>
+        <h3 style="color: var(--primary); margin-bottom: 25px; text-align: center; font-size: clamp(1.3rem, 3vw, 1.6rem); font-weight: 700;">低風險三階段實施建議｜小規模試驗，大規模獲利</h3>
         
         <div class="stage-grid">
           <div class="stage-card fade-in">
             <div class="stage-number">1</div>
-            <h3 data-translate="stage1_title">效果驗證階段</h3>
-            <p data-translate="stage1_desc1"><strong>推薦規模：</strong>5頭哺乳母豬（同品系、相近胎次）</p>
-            <p data-translate="stage1_desc2"><strong>試驗週期：</strong>1胎次（約3個月）</p>
-            <p data-translate="stage1_desc3"><strong>總投入成本：</strong>極低（約0.3噸飼料添加成本）</p>
-            <p data-translate="stage1_desc4"><strong>核心驗證指標：</strong>28天離乳仔豬平均體重、離乳頭數、母豬離乳體況評分</p>
-            <p data-translate="stage1_desc5"><strong>階段目標：</strong>以最小成本驗證方案基礎效果，建立數據對比基準</p>
+            <h3>效果驗證階段</h3>
+            <p><strong>推薦規模：</strong>5頭哺乳母豬（同品系、相近胎次）</p>
+            <p><strong>試驗週期：</strong>1胎次（約3個月）</p>
+            <p><strong>總投入成本：</strong>極低（約0.3噸飼料添加成本）</p>
+            <p><strong>核心驗證指標：</strong>28天離乳仔豬平均體重、離乳頭數、母豬離乳體況評分</p>
+            <p><strong>階段目標：</strong>以最小成本驗證方案基礎效果，建立數據對比基準</p>
           </div>
           
           <div class="stage-card fade-in">
             <div class="stage-number">2</div>
-            <h3 data-translate="stage2_title">效益驗證階段</h3>
-            <p data-translate="stage2_desc1"><strong>推薦規模：</strong>20頭哺乳母豬</p>
-            <p data-translate="stage2_desc2"><strong>試驗週期：</strong>2胎次（約6個月）</p>
-            <p data-translate="stage2_desc3"><strong>總投入成本：</strong>輕微（約1.2噸飼料添加成本）</p>
-            <p data-translate="stage2_desc4"><strong>核心驗證指標：</strong>離乳前死亡率、後續保育期日增重、離乳至發情間隔</p>
-            <p data-translate="stage2_desc5"><strong>階段目標：</strong>驗證全周期效益，評估大規模導入的投資報酬率</p>
+            <h3>效益驗證階段</h3>
+            <p><strong>推薦規模：</strong>20頭哺乳母豬</p>
+            <p><strong>試驗週期：</strong>2胎次（約6個月）</p>
+            <p><strong>總投入成本：</strong>輕微（約1.2噸飼料添加成本）</p>
+            <p><strong>核心驗證指標：</strong>離乳前死亡率、後續保育期日增重、離乳至發情間隔</p>
+            <p><strong>階段目標：</strong>驗證全周期效益，評估大規模導入的投資報酬率</p>
           </div>
           
           <div class="stage-card fade-in">
             <div class="stage-number">3</div>
-            <h3 data-translate="stage3_title">全面導入階段</h3>
-            <p data-translate="stage3_desc1"><strong>推薦規模：</strong>全場哺乳母豬</p>
-            <p data-translate="stage3_desc2"><strong>實施時機：</strong>分娩前7天開始添加至離乳</p>
-            <p data-translate="stage3_desc3"><strong>年投入成本：</strong>總頭數 × 0.294噸/頭/年 × 極低成本</p>
-            <p data-translate="stage3_desc4"><strong>核心效益：</strong>建立「高品質離乳仔豬」品牌差異化優勢</p>
-            <p data-translate="stage3_desc5"><strong>階段目標：</strong>實現全場生產效益最大化，建立長期競爭優勢</p>
+            <h3>全面導入階段</h3>
+            <p><strong>推薦規模：</strong>全場哺乳母豬</p>
+            <p><strong>實施時機：</strong>分娩前7天開始添加至離乳</p>
+            <p><strong>年投入成本：</strong>總頭數 × 0.294噸/頭/年 × 極低成本</p>
+            <p><strong>核心效益：</strong>建立「高品質離乳仔豬」品牌差異化優勢</p>
+            <p><strong>階段目標：</strong>實現全場生產效益最大化，建立長期競爭優勢</p>
           </div>
         </div>
         
         <div style="background-color: #fff8e1; border-left: 4px solid var(--accent); padding: 20px; border-radius: 0 8px 8px 0; margin-top: 30px;">
-          <p data-translate="implementation_keypoint1"><strong>※ 關鍵實施要點：</strong></p>
-          <p data-translate="implementation_keypoint2">1. 建議試驗期間設立對照組，相同飼養管理條件下，更直觀驗證倍力素實際效果</p>
-          <p data-translate="implementation_keypoint3">2. 重點監測指標：分娩當天記錄仔豬總數→7日齡記錄存活數→28天離乳秤重並記錄離乳頭數</p>
-          <p data-translate="implementation_keypoint4">3. 母豬體況評分(BCS)：分娩時與離乳時各評分一次，目標離乳BCS維持在2.75~3.25分（5分制）</p>
-          <p data-translate="implementation_keypoint5">4. 技術支援：提供全程數據追蹤與效益分析服務，確保投資回報可視化、可量化</p>
+          <p><strong>※ 關鍵實施要點：</strong></p>
+          <p>1. 建議試驗期間設立對照組，相同飼養管理條件下，更直觀驗證倍力素實際效果</p>
+          <p>2. 重點監測指標：分娩當天記錄仔豬總數→7日齡記錄存活數→28天離乳秤重並記錄離乳頭數</p>
+          <p>3. 母豬體況評分(BCS)：分娩時與離乳時各評分一次，目標離乳BCS維持在2.75~3.25分（5分制）</p>
+          <p>4. 技術支援：提供全程數據追蹤與效益分析服務，確保投資回報可視化、可量化</p>
         </div>
       </div>
     </div>
@@ -1049,35 +995,35 @@
 
   <section>
     <div class="container">
-      <h2 class="section-title" data-translate="section5_title">結論：哺乳母豬從「成本中心」邁向「價值引擎」</h2>
+      <h2 class="section-title">結論：哺乳母豬從「成本中心」邁向「價值引擎」</h2>
       
       <div style="background: white; border-radius: 15px; box-shadow: var(--shadow-lg); padding: clamp(25px, 5vw, 40px); margin-bottom: 40px;">
         <div class="conclusion-grid">
           <div class="conclusion-card fade-in">
-            <h3 style="color: var(--gray);" data-translate="conclusion1_title">傳統養殖思維</h3>
+            <h3 style="color: var(--gray);">傳統養殖思維</h3>
             <ul style="padding-left: 20px; line-height: 2.2;">
-              <li style="margin-bottom: 15px;" data-translate="conclusion1_point1">哺乳母豬飼料 = 成本中心，僅追求降低單位成本</li>
-              <li style="margin-bottom: 15px;" data-translate="conclusion1_point2">過度強調飼料最低單價，忽視整體投資報酬率</li>
-              <li style="margin-bottom: 15px;" data-translate="conclusion1_point3">離乳體重仰賴「遺傳品種」與飼養「運氣」，無法主動掌控</li>
-              <li style="margin-bottom: 15px;" data-translate="conclusion1_point4">同質化生產模式，只能陷入低價格惡性競爭</li>
-              <li data-translate="conclusion1_point5">母豬繁殖壽命短，頻繁更換種豬增加隱性成本</li>
+              <li style="margin-bottom: 15px;">哺乳母豬飼料 = 成本中心，僅追求降低單位成本</li>
+              <li style="margin-bottom: 15px;">過度強調飼料最低單價，忽視整體投資報酬率</li>
+              <li style="margin-bottom: 15px;">離乳體重仰賴「遺傳品種」與飼養「運氣」，無法主動掌控</li>
+              <li style="margin-bottom: 15px;">同質化生產模式，只能陷入低價格惡性競爭</li>
+              <li>母豬繁殖壽命短，頻繁更換種豬增加隱性成本</li>
             </ul>
           </div>
           <div class="conclusion-card fade-in">
-            <h3 style="color: var(--primary);" data-translate="conclusion2_title">倍力素方案思維</h3>
+            <h3 style="color: var(--primary);">倍力素方案思維</h3>
             <ul style="padding-left: 20px; line-height: 2.2; color: var(--primary);">
-              <li style="margin-bottom: 15px; font-weight: bold;" data-translate="conclusion2_point1">哺乳母豬飼料 = 育成價值引擎，創造最大產出效益</li>
-              <li style="margin-bottom: 15px; font-weight: bold;" data-translate="conclusion2_point2">以投資報酬率為核心，輕微成本增加換取數十倍回報</li>
-              <li style="margin-bottom: 15px; font-weight: bold;" data-translate="conclusion2_point3">透過「科學營養調控」精準掌控離乳體重與存活率</li>
-              <li style="margin-bottom: 15px; font-weight: bold;" data-translate="conclusion2_point4">打造高品質離乳仔豬優勢，建立品牌護城河</li>
-              <li style="font-weight: bold;" data-translate="conclusion2_point5">延長母豬生產壽命，降低固定成本分攤比例</li>
+              <li style="margin-bottom: 15px; font-weight: bold;">哺乳母豬飼料 = 育成價值引擎，創造最大產出效益</li>
+              <li style="margin-bottom: 15px; font-weight: bold;">以投資報酬率為核心，輕微成本增加換取數十倍回報</li>
+              <li style="margin-bottom: 15px; font-weight: bold;">透過「科學營養調控」精準掌控離乳體重與存活率</li>
+              <li style="margin-bottom: 15px; font-weight: bold;">打造高品質離乳仔豬優勢，建立品牌護城河</li>
+              <li style="font-weight: bold;">延長母豬生產壽命，降低固定成本分攤比例</li>
             </ul>
           </div>
         </div>
         
         <div class="conclusion-highlight fade-in">
-          <p style="font-size: clamp(1.1rem, 2.5vw, 1.3rem); margin-bottom: 20px;" data-translate="conclusion_highlight1">倍力素的核心價值，不在於「省小錢」，而在於「創造大價值」——</p>
-          <p class="key-value" data-translate="conclusion_highlight2">
+          <p style="font-size: clamp(1.1rem, 2.5vw, 1.3rem); margin-bottom: 20px;">倍力素的核心價值，不在於「省小錢」，而在於「創造大價值」——</p>
+          <p class="key-value">
             以每頭母豬年投入極低成本，<br>
             換取年效益提升超過35%，投資報酬率超過65倍，<br>
             讓哺乳母豬從「成本負擔」變成「盈利引擎」，<br>
@@ -1087,11 +1033,11 @@
       </div>
       
       <div class="benefit-highlight fade-in" style="background: linear-gradient(135deg, #f8a51c 0%, #e68a00 100%);">
-        <div class="benefit-value" style="color: white; font-size: clamp(2rem, 5vw, 2.8rem);" data-translate="cta_title">立即導入倍力素方案，開啟育成盈利新紀元</div>
-        <div style="font-size: clamp(1.1rem, 3vw, 1.5rem); margin: 25px 0; color: white; line-height: 1.6;" data-translate="cta_subtitle">
+        <div class="benefit-value" style="color: white; font-size: clamp(2rem, 5vw, 2.8rem);">立即導入倍力素方案，開啟育成盈利新紀元</div>
+        <div style="font-size: clamp(1.1rem, 3vw, 1.5rem); margin: 25px 0; color: white; line-height: 1.6;">
           單頭母豬年效益提升 >35%｜100頭場綜合效益提升 >35%
         </div>
-        <div style="font-size: clamp(1rem, 2.5vw, 1.4rem); color: white; opacity: 0.9;" data-translate="cta_desc">
+        <div style="font-size: clamp(1rem, 2.5vw, 1.4rem); color: white; opacity: 0.9;">
           投資報酬率超過65倍｜效益顯現期不到7天｜風險低、效益高、回收快
         </div>
       </div>
@@ -1101,8 +1047,8 @@
   <footer>
     <div class="container">
       <div class="company-info">
-        <p data-translate="footer_company">吉升飼料有限公司｜Chi Sheng Feed Co., Ltd.</p>
-        <p data-translate="footer_tagline">Precision Nutrition · Advanced Biotechnology · Sustainable Agriculture</p>
+        <p>吉升飼料有限公司｜Chi Sheng Feed Co., Ltd.</p>
+        <p>Precision Nutrition · Advanced Biotechnology · Sustainable Agriculture</p>
         <p>地址：634雲林縣褒忠鄉中正路28-18號<br>電話：+886-5-6972238｜Email: info@chishengfeed.com</p>
       </div>
 
@@ -1123,7 +1069,7 @@
       </ul>
 
       <div style="margin-top: 25px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.9rem; opacity: 0.7;">
-        <p data-translate="footer_copyright">© 2026 吉升飼料有限公司 版權所有</p>
+        <p>© 2026 吉升飼料有限公司 版權所有</p>
       </div>
     </div>
   </footer>
@@ -1135,226 +1081,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <script>
-    // 多語言翻譯數據 (公司名、品牌名、成分名已更新)
-    const translations = {
-      'zh-TW': {
-        // 標題和副標題
-        'title': '倍力素哺乳母豬泌乳性能提升方案',
-        'subtitle': '離乳仔豬體重、泌乳量與母豬繁殖壽命全面優化｜28天離乳體重提升 >1.5公斤，從飼料成本中心轉化為育成價值引擎',
-        'tagline': '每噸飼料添加1KG · 母豬年效益提升 >35% · 投資報酬率極高',
-        
-        // 圖片說明
-        'caption1': '倍力素方案透過強化母豬泌乳性能，顯著提升仔豬離乳體重與存活率',
-        'caption2': '母豬泌乳量與乳汁品質提升，確保仔豬獲得充足營養，日增重顯著提高',
-        'caption3': '倍力素透過激活乳腺上皮細胞，強化乳汁合成與營養輸送通路，提升泌乳量與品質',
-        'caption4': '倍力素調控母豬能量代謝與生殖激素分泌，減少體儲損失，加速離乳後發情',
-        'caption5': '倍力素方案帶來的效益提升百分比',
-        'caption6': '倍力素方案結合現代化養殖管理，實現生產數據可視化、效益可量化',
-        
-        // 執行摘要
-        'section1_title': '執行摘要：哺乳母豬生產性能全面升級',
-        'summary1': '吉升飼料有限公司基於獨家專利發酵平台與國際前沿代謝科學研究成果，耗時三年研發推出「倍力素哺乳母豬泌乳性能提升方案」。本方案整合精密複合酶製劑、免疫調控肽、代謝調控複方（單核苷小核酸+褐藻萃取物）三層協同技術架構，針對台灣養豬產業哺乳母豬泌乳階段的核心痛點——離乳仔豬體重偏低、離乳前死亡率高、母豬繁殖壽命短等問題，實現三大關鍵指標的精準優化，徹底改變傳統養殖思維，將哺乳母豬從「成本中心」轉型為育成環節的「價值引擎」。',
-        'summary2': '透過科學營養調控與分子層級的代謝優化，倍力素方案不僅能顯著提升單頭母豬的生產效益，更能幫助養殖場建立高品質離乳仔豬的核心競爭力，在同質化競爭激烈的市場中打造獨特的品牌護城河。',
-        
-        // 卡片內容
-        'card1_title': '離乳仔豬體重',
-        'card1_value': '+20~27%',
-        'card1_desc': '28天離乳平均體重從產業平均7.5kg提升至9.0~9.5kg，不僅降低後續育成階段的飼料成本，更能提前上市日齡3~4天，奠定全程生長性能優勢',
-        'card2_title': '離乳前死亡率',
-        'card2_value': '↓30~40%',
-        'card2_desc': '從產業平均8~10%降至5~6%，每胎可多離乳0.5~0.8頭健康仔豬，直接提升每頭母豬的年產值與投資報酬率',
-        'card3_title': '母豬使用壽命',
-        'card3_value': '+39%',
-        'card3_desc': '有效生產胎次從產業平均3.8胎延長至5.3胎，大幅降低種母豬更新成本與培育週期，減少非生產天數損失',
-        
-        // 效益部分
-        'roi_subtitle1': '單頭哺乳母豬年效益提升',
-        'roi_value': '>35%',
-        'roi_subtitle2': '投資報酬率超過65倍｜效益顯現期 <7天',
-        'roi_desc': '每投入1元，創造超過65元淨效益｜每噸飼料添加成本極低，成本回收速度領先業界',
-        
-        // 技術機制
-        'section2_title': '三大生產性能提升核心機轉',
-        'mechanism1_title': '離乳仔豬體重提升至9.0~9.5kg',
-        'mechanism1_desc1': '核心作用機制：強化乳腺發育+提升泌乳量+優化乳汁營養組成，從源頭解決仔豬營養供給不足問題',
-        'mechanism2_title': '離乳前死亡率降至5~6%',
-        'mechanism2_desc1': '核心作用機制：提升乳汁免疫保護+改善仔豬腸道健康+降低母豬應激，全方位降低仔豬死亡風險',
-        'mechanism3_title': '母豬繁殖壽命延長1.5胎次',
-        'mechanism3_desc1': '核心作用機制：減少哺乳期體重損失+加速離乳後發情+降低肢蹄問題，延長母豬有效生產年限',
-        
-        // 表格標題
-        'table1_header1': '技術層面',
-        'table1_header2': '分子調控機制',
-        'table1_header3': '直接生產效益',
-        'table1_row1_col1': '乳腺功能強化',
-        'table1_row1_col2': '精密複合酶提升氨基酸吸收效率18%，單核苷小核酸透過激活STAT5信號通路，促進乳腺上皮細胞增殖與分化，擴大泌乳細胞總量',
-        'table1_row1_col3': '泌乳量提升15~20%，乳脂率提升2~3%，乳蛋白含量同步提高1.5%，仔豬日增重顯著提升',
-        'table1_row2_col1': '乳汁品質優化',
-        'table1_row2_col2': '免疫調控肽提升初乳IgG含量30%，褐藻萃取物作為功能性添加劑增加乳汁中ω-3脂肪酸比例，強化仔豬免疫基礎',
-        'table1_row2_col3': '仔豬初生72小時內獲得充足被動免疫，腸道發育更完善，腹瀉率降低40%，採食慾望提升',
-        'table1_row3_col1': '母豬採食量維持',
-        'table1_row3_col2': '單核苷小核酸調控下丘腦食慾中樞的神經肽Y表達，降低熱緊迫與泌乳壓力對採食的抑制作用',
-        'table1_row3_col3': '哺乳期日均採食量穩定維持4.3~4.8kg，減少體儲動員，避免母豬過度失重影響泌乳',
-        
-        'table2_header1': '技術層面',
-        'table2_header2': '分子調控機制',
-        'table2_header3': '直接生產效益',
-        'table2_row1_col1': '初乳品質提升',
-        'table2_row1_col2': '免疫調控肽激活母豬乳腺組織的NF-κB通路，顯著提升乳汁中sIgA與乳鐵蛋白含量，增強被動免疫效果',
-        'table2_row1_col3': '仔豬7日齡內腹瀉率降低50%，整體抗病能力提升，壓死率因仔豬活力提升而下降25~30%',
-        'table2_row2_col1': '仔豬腸道發育',
-        'table2_row2_col2': '褐藻萃取物作為益生元促進仔豬腸道乳酸桿菌與雙歧桿菌增殖，單核苷小核酸透過修復腸黏膜緊密連接蛋白，降低腸道通透性',
-        'table2_row2_col3': '14日齡仔豬腸絨毛高度提升25%，隱窩深度減少15%，營養吸收效率提高，生長均勻度提升',
-        'table2_row3_col1': '母豬行為安定',
-        'table2_row3_col2': '精密複合酶改善母豬腸道菌相平衡，降低內毒素血症發生率，減少炎症反應對中樞神經的影響',
-        'table2_row3_col3': '母豬焦躁行為減少40%，臥地時間增加，壓死仔豬風險降低30%，母性顯著提升',
-        
-        'table3_header1': '技術層面',
-        'table3_header2': '分子調控機制',
-        'table3_header3': '直接生產效益',
-        'table3_row1_col1': '體儲損失控制',
-        'table3_row1_col2': '單核苷小核酸優化AMPK能量代謝通路，提升飼料轉化效率12%，減少背脂與肌肉組織的動員分解',
-        'table3_row1_col3': '28天哺乳期體重損失從15~20kg降至8~12kg，離乳體況評分(BCS)提升0.5分，避免過度失重影響後續繁殖',
-        'table3_row2_col1': '發情間隔縮短',
-        'table3_row2_col2': '免疫調控肽透過調控下丘腦-垂體-卵巢軸的激素分泌，提升GnRH脈衝頻率與濃度',
-        'table3_row2_col3': '離乳至發情間隔從5.8天縮短至4.2天，發情率提升5~8%，分娩率提升3~5%，減少非生產天數',
-        'table3_row3_col1': '肢蹄健康維持',
-        'table3_row3_col2': '精密複合酶提升鈣磷吸收效率22%，褐藻萃取物抑制NF-κB炎症通路，降低關節炎症反應',
-        'table3_row3_col3': '淘汰主因中肢蹄問題比例下降40%，蹄部受傷率降低35%，有效生產胎次從3.8胎延長至5.3胎',
-        
-        // 參考文獻
-        'reference1': '科學依據：《Journal of Animal Science》2023年研究顯示，單核苷小核酸可提升哺乳母豬泌乳量18.7%，離乳仔豬體重顯著增加1.62kg（Chen et al., 2023）；免疫調控肽技術可顯著提升初乳免疫球蛋白含量，降低仔豬離乳前死亡率35%（Animals, 2022）。',
-        'reference2': '科學依據：褐藻萃取物可顯著改善哺乳仔豬腸道菌相平衡，降低大腸桿菌感染風險達45%（Theriogenology, 2021）；母豬飼糧添加免疫調控肽可使離乳前死亡率從9.2%降至5.8%（Porcine Health Management, 2020）。',
-        'reference3': '科學依據：哺乳期母豬體重損失每減少1kg，離乳後發情間隔可縮短0.3天（Journal of Swine Health and Production, 2019）；飼糧中添加功能性肽可顯著改善母豬肢蹄健康，延長使用壽命1.2~1.8胎（Livestock Science, 2021）。',
-        
-        // 市場數據對比
-        'section3_title': '台灣市場數據對比與效益分析',
-        'comparison1_title': '離乳仔豬體重（28天）',
-        'comparison1_subtitle1': '台灣市場平均值',
-        'comparison1_subtitle2': '+20~27%',
-        'comparison1_desc': '每增加1kg離乳體重，上市日齡可提前3~4天，育成效益顯著提升',
-        'comparison2_title': '離乳前死亡率',
-        'comparison2_subtitle1': '台灣產業平均',
-        'comparison2_subtitle2': '↓30~40%',
-        'comparison2_desc': '每胎多獲得0.5~0.8頭健康仔豬，直接提升母豬年產值',
-        'comparison3_title': '母豬年離乳頭數(PSY)',
-        'comparison3_subtitle1': '台灣批次生產平均',
-        'comparison3_subtitle2': '+24.4%',
-        'comparison3_desc': 'PSY提升24.4%，遠超產業平均成長速度，大幅提升養殖場整體效益',
-        
-        'section3_subtitle1': '單頭哺乳母豬年度效益提升百分比',
-        'section3_subtitle2': '100頭母豬場年度綜合效益提升',
-        
-        // 效益表格
-        'table4_header1': '效益提升項目',
-        'table4_header2': '台灣市場基準',
-        'table4_header3': '倍力素方案',
-        'table4_header4': '效益提升百分比',
-        'table4_row1_col1': '離乳仔豬體重增加',
-        'table4_row1_col4': '+20%',
-        'table4_row2_col1': '離乳頭數增加',
-        'table4_row2_col4': '+5.7%',
-        'table4_row3_col1': '後續育成率提升',
-        'table4_row3_col4': '+3.3%',
-        'table4_row4_col1': '母豬使用壽命延長',
-        'table4_row4_col4': '+39%',
-        'table4_row5_col1': '綜合效益提升',
-        'table4_row5_col4': '>35%',
-        
-        'table5_header1': '效益來源',
-        'table5_header2': '計算基數',
-        'table5_header3': '效益提升百分比',
-        'table5_header4': '綜合效益',
-        'table5_row1_col1': '離乳仔豬體重提升',
-        'table5_row1_col2': '100頭 × 24.5頭/年',
-        'table5_row2_col1': '離乳頭數增加',
-        'table5_row2_col2': '100頭 × +0.6頭/胎 × 2.33胎',
-        'table5_row3_col1': '母豬更新成本降低',
-        'table5_row3_col2': '更新率30% → 21%',
-        
-        // 成本計算說明
-        'cost_calculation1': '效益說明：母豬日採食量4.5kg × 28天哺乳期 × 2.33胎/年，每噸飼料添加1kg倍力素，添加成本極低，換取整體效益提升超過35%，投資報酬率超過65倍。',
-        'cost_calculation2': '離乳體重經濟價值：28天離乳體重每增加1kg，可使上市日齡提前3~4天，節省飼料成本效益顯著。',
-        
-        // ROI 2
-        'roi2_subtitle': '100頭母豬場綜合投資報酬率 (ROI)',
-        'roi2_value': '>65倍',
-        'roi2_desc': '每投入1元，創造超過65元淨效益｜年綜合效益提升超過35%',
-        'roi2_note': '相較於傳統飼料優化方案，投資報酬率高出10倍以上，且風險更低、回收更快',
-        
-        // 實施建議
-        'section4_title': '核心技術壁壘與三階段實施建議',
-        'section4_subtitle': '低風險三階段實施建議｜小規模試驗，大規模獲利',
-        'stage1_title': '效果驗證階段',
-        'stage1_desc1': '推薦規模：5頭哺乳母豬（同品系、相近胎次）',
-        'stage1_desc2': '試驗週期：1胎次（約3個月）',
-        'stage1_desc3': '總投入成本：極低（約0.3噸飼料添加成本）',
-        'stage1_desc4': '核心驗證指標：28天離乳仔豬平均體重、離乳頭數、母豬離乳體況評分',
-        'stage1_desc5': '階段目標：以最小成本驗證方案基礎效果，建立數據對比基準',
-        'stage2_title': '效益驗證階段',
-        'stage2_desc1': '推薦規模：20頭哺乳母豬',
-        'stage2_desc2': '試驗週期：2胎次（約6個月）',
-        'stage2_desc3': '總投入成本：輕微（約1.2噸飼料添加成本）',
-        'stage2_desc4': '核心驗證指標：離乳前死亡率、後續保育期日增重、離乳至發情間隔',
-        'stage2_desc5': '階段目標：驗證全周期效益，評估大規模導入的投資報酬率',
-        'stage3_title': '全面導入階段',
-        'stage3_desc1': '推薦規模：全場哺乳母豬',
-        'stage3_desc2': '實施時機：分娩前7天開始添加至離乳',
-        'stage3_desc3': '年投入成本：總頭數 × 0.294噸/頭/年 × 極低成本',
-        'stage3_desc4': '核心效益：建立「高品質離乳仔豬」品牌差異化優勢',
-        'stage3_desc5': '階段目標：實現全場生產效益最大化，建立長期競爭優勢',
-        
-        // 實施要點
-        'implementation_keypoint1': '※ 關鍵實施要點：',
-        'implementation_keypoint2': '1. 建議試驗期間設立對照組，相同飼養管理條件下，更直觀驗證倍力素實際效果',
-        'implementation_keypoint3': '2. 重點監測指標：分娩當天記錄仔豬總數→7日齡記錄存活數→28天離乳秤重並記錄離乳頭數',
-        'implementation_keypoint4': '3. 母豬體況評分(BCS)：分娩時與離乳時各評分一次，目標離乳BCS維持在2.75~3.25分（5分制）',
-        'implementation_keypoint5': '4. 技術支援：提供全程數據追蹤與效益分析服務，確保投資回報可視化、可量化',
-        
-        // 結論
-        'section5_title': '結論：哺乳母豬從「成本中心」邁向「價值引擎」',
-        'conclusion1_title': '傳統養殖思維',
-        'conclusion1_point1': '哺乳母豬飼料 = 成本中心，僅追求降低單位成本',
-        'conclusion1_point2': '過度強調飼料最低單價，忽視整體投資報酬率',
-        'conclusion1_point3': '離乳體重仰賴「遺傳品種」與飼養「運氣」，無法主動掌控',
-        'conclusion1_point4': '同質化生產模式，只能陷入低價格惡性競爭',
-        'conclusion1_point5': '母豬繁殖壽命短，頻繁更換種豬增加隱性成本',
-        'conclusion2_title': '倍力素方案思維',
-        'conclusion2_point1': '哺乳母豬飼料 = 育成價值引擎，創造最大產出效益',
-        'conclusion2_point2': '以投資報酬率為核心，輕微成本增加換取數十倍回報',
-        'conclusion2_point3': '透過「科學營養調控」精準掌控離乳體重與存活率',
-        'conclusion2_point4': '打造高品質離乳仔豬優勢，建立品牌護城河',
-        'conclusion2_point5': '延長母豬生產壽命，降低固定成本分攤比例',
-        'conclusion_highlight1': '倍力素的核心價值，不在於「省小錢」，而在於「創造大價值」——',
-        'conclusion_highlight2': '以每頭母豬年投入極低成本，<br>換取年效益提升超過35%，投資報酬率超過65倍，<br>讓哺乳母豬從「成本負擔」變成「盈利引擎」，<br>實現育成環節的全面價值升級。',
-        
-        // 行動呼籲
-        'cta_title': '立即導入倍力素方案，開啟育成盈利新紀元',
-        'cta_subtitle': '單頭母豬年效益提升 >35%｜100頭場綜合效益提升 >35%',
-        'cta_desc': '投資報酬率超過65倍｜效益顯現期不到7天｜風險低、效益高、回收快',
-        
-        // 頁腳
-        'footer_company': '吉升飼料有限公司｜Chi Sheng Feed Co., Ltd.',
-        'footer_tagline': 'Precision Nutrition · Advanced Biotechnology · Sustainable Agriculture',
-        'footer_copyright': '© 2026 吉升飼料有限公司 版權所有'
-      },
-      'zh-CN': {
-        // 为节省篇幅，仅提供关键键值，实际应用中应补全所有
-        'title': '倍力素哺乳母猪泌乳性能提升方案',
-        'subtitle': '离乳仔猪体重、泌乳量与母猪繁殖寿命全面优化｜28天离乳体重提升 >1.5公斤，从饲料成本中心转化为育成价值引擎',
-        'tagline': '每吨饲料添加1KG · 母猪年效益提升 >35% · 投资报酬率极高',
-        'footer_company': '吉升饲料有限公司｜Chi Sheng Feed Co., Ltd.',
-        // ... 其他键值同理
-      },
-      'en': {
-        'title': 'Beilisu Lactating Sow Performance Enhancement Program',
-        'subtitle': 'Comprehensive optimization of weaning piglet weight, milk yield, and sow reproductive lifespan｜28-day weaning weight increased by >1.5kg, transforming from feed cost center to growth value engine',
-        'tagline': 'Add 1KG per ton of feed · Annual sow benefit increase >35% · Extremely high ROI',
-        'footer_company': 'Chi Sheng Feed Co., Ltd.',
-        // ... 其他键值同理
-      }
-    };
-
     // 滾動淡入動畫
     function handleScroll() {
       const fadeElements = document.querySelectorAll('.fade-in');
@@ -1381,41 +1107,11 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // 語言切換功能 (移除貨幣轉換)
-    function switchLanguage(lang) {
-      // 更新按鈕狀態
-      document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.getAttribute('data-lang') === lang) {
-          btn.classList.add('active');
-        }
-      });
-      
-      // 更新文字內容
-      document.querySelectorAll('[data-translate]').forEach(element => {
-        const key = element.getAttribute('data-translate');
-        if (translations[lang] && translations[lang][key]) {
-          element.innerHTML = translations[lang][key];
-        }
-      });
-    }
-
     // 初始化
     document.addEventListener('DOMContentLoaded', function() {
       // 添加滾動事件監聽器
       window.addEventListener('scroll', handleScroll);
       handleScroll(); // 初始檢查
-      
-      // 語言切換按鈕事件
-      document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-          const lang = this.getAttribute('data-lang');
-          switchLanguage(lang);
-        });
-      });
-      
-      // 設置默認語言
-      switchLanguage('zh-TW');
     });
   </script>
 </body>
