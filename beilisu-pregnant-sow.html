@@ -58,6 +58,28 @@
             .img-hover-zoom:hover img {
                 transform: scale(1.03);
             }
+            /* 產品連結列樣式 */
+            .product-links {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+                margin: 25px 0;
+                list-style: none;
+            }
+            .product-links a {
+                color: white;
+                text-decoration: none;
+                padding: 10px 18px;
+                background: rgba(255,255,255,0.12);
+                border-radius: 30px;
+                font-size: 0.85rem;
+                font-weight: 600;
+                transition: 0.2s;
+            }
+            .product-links a:hover {
+                background: var(--primary, #00a8a8);
+            }
         }
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -65,19 +87,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 </head>
 <body class="font-sans bg-white text-dark antialiased">
-    <!-- 導航列 (返回主頁按鈕保留) -->
+    <!-- 導航列 (僅保留返回主頁按鈕) -->
     <div class="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <div class="container mx-auto px-4 py-3 flex justify-start items-center">
             <a href="index.html" class="px-4 py-2 rounded-base bg-gray-100 text-gray-800 text-sm font-medium hover:bg-gray-200 transition-colors flex items-center gap-2">
                 <i class="fa-solid fa-arrow-left"></i>
                 返回主頁
             </a>
-            <!-- 語言切換器已移除 -->
         </div>
     </div>
 
-    <!-- ========== 繁體中文內容 ========== -->
-    <div id="content-tw" class="mt-16">
+    <!-- 主要內容 (繁體中文) -->
+    <div class="mt-16">
         <!-- 頂部橫幅（圖1） -->
         <header class="relative w-full h-[50vh] md:h-[60vh] overflow-hidden">
             <img src="assets/modern_pig_farm_temperature_control.jpg" alt="現代化母豬舍溫控設施" class="absolute inset-0 w-full h-full object-cover">
@@ -106,7 +127,6 @@
                     <div class="bg-neutral rounded-card shadow-card p-6 hover:shadow-hover transition-shadow"><h4 class="font-bold text-lg mb-3 text-secondary">均勻度改善</h4><div class="text-2xl font-bold text-accent mb-3">↓20~25%</div><p class="text-gray-700 text-sm">倍力素減少胚胎發育差異，使初生重變異係數降低，顯著減少弱仔比例，提升整齊度與育成率。</p></div>
                 </div>
                 <div class="bg-gradient-teal rounded-card p-8 flex flex-col md:flex-row items-center justify-between">
-                    <!-- 此處移除具體金額，僅保留定性描述 -->
                     <div class="text-center md:text-left mb-6 md:mb-0"><div class="text-4xl md:text-5xl font-black text-secondary">15倍</div><div class="text-base text-dark/80 mt-2">單頭母豬年增淨利潤</div></div>
                     <div class="flex flex-col md:flex-row items-center gap-4 md:gap-8 text-center">
                         <div class="text-lg font-bold text-primary-dark">投資報酬率 1,594%</div>
@@ -283,7 +303,7 @@
         </div>
     </div>
 
-    <!-- 頁腳 (吉升飼料資訊) -->
+    <!-- 頁尾 (吉升飼料資訊 + 產品連結列) -->
     <footer class="bg-dark text-white py-8 mt-16">
         <div class="container mx-auto px-4 max-w-7xl">
             <div class="text-center">
@@ -292,6 +312,23 @@
                 <div class="text-sm text-gray-400 mb-2">地址：634雲林縣褒忠鄉中正路28-18號</div>
                 <div class="text-sm text-gray-400 mb-2">電話：<a href="tel:+886-5-6972238" class="hover:text-white">+886-5-6972238</a>｜Email：<a href="mailto:info@chishengfeed.com" class="hover:text-white">info@chishengfeed.com</a></div>
                 <div class="text-sm text-gray-400">精準營養・先進生物科技・永續農業</div>
+                
+                <!-- 產品連結列 (英文檔名) -->
+                <ul class="product-links">
+                    <li><a href="index.html">🏠 主頁</a></li>
+                    <li><a href="beilisu-boar-semen.html">🐗 種公豬</a></li>
+                    <li><a href="beilisu-pregnant-sow.html">🤰 懷孕母豬</a></li>
+                    <li><a href="beilisu-lactating-sow.html">🍼 哺乳母豬</a></li>
+                    <li><a href="beilisu-piglet-milk.html">🐷 仔豬</a></li>
+                    <li><a href="beilisu-finisher-fcr.html">📈 育肥豬</a></li>
+                    <li><a href="beilisu-breeder-chicken.html">🐔 種雞</a></li>
+                    <li><a href="beilisu-layer-chicken.html">🥚 蛋雞</a></li>
+                    <li><a href="beilisu-native-chicken.html">🌾 土雞</a></li>
+                    <li><a href="beilisu-broiler-fcr.html">🍗 白肉雞</a></li>
+                    <li><a href="beilisu-tilapia.html">🐟 吳郭魚</a></li>
+                    <li><a href="beilisu-shrimp.html">🦐 白蝦</a></li>
+                </ul>
+
                 <div class="mt-4">
                     <a href="tel:+886-5-6972238" class="inline-block bg-accent text-dark px-6 py-3 rounded-full font-bold hover:bg-yellow-400 transition-colors">📞 免費效率試算 立即諮詢 +886-5-6972238</a>
                 </div>
@@ -305,9 +342,19 @@
     </button>
 
     <script>
-        // 回到頂部按鈕功能
-        const backToTopBtn = document.getElementById('backToTop');
-        window.addEventListener('scroll', () => {
+        // 滾動淡入動畫
+        function handleScroll() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+
+            // 返回頂部按鈕顯示/隱藏
+            const backToTopBtn = document.getElementById('backToTop');
             if (window.scrollY > 300) {
                 backToTopBtn.classList.remove('opacity-0', 'invisible');
                 backToTopBtn.classList.add('opacity-100', 'visible');
@@ -315,8 +362,22 @@
                 backToTopBtn.classList.add('opacity-0', 'invisible');
                 backToTopBtn.classList.remove('opacity-100', 'visible');
             }
+        }
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 滾動監聽
+            window.addEventListener('scroll', handleScroll);
+            handleScroll();
+
+            // 圖片懶加載（如果需要）
+            // (可選)
         });
-        backToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // 返回頂部功能
+        document.getElementById('backToTop')?.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
     </script>
 </body>
 </html>
